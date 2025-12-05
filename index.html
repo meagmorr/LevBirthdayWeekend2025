@@ -352,6 +352,45 @@
         0 18px 40px rgba(22, 163, 74, 0.7);
     }
 
+    .star-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: rgba(42, 22, 64, 0.9);
+      border: 1px solid rgba(139, 92, 246, 0.6);
+      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+
+    .star-button:hover {
+      background: rgba(42, 22, 64, 1);
+      border-color: rgba(139, 92, 246, 0.9);
+      transform: scale(1.05);
+    }
+
+    .star-button.selected {
+      background: rgba(22, 163, 74, 0.2);
+      border-color: rgba(34, 197, 94, 0.9);
+      color: var(--accent-strong);
+    }
+
+    .star-button.auto-selected {
+      background: rgba(22, 163, 74, 0.15);
+      border-color: rgba(34, 197, 94, 0.7);
+      color: var(--accent-strong);
+      cursor: default;
+    }
+
     .choice-tag-row {
       display: flex;
       justify-content: space-between;
@@ -623,142 +662,147 @@
         <div class="section-header">
           <div class="section-title">Saturday · Let's Go</div>
           <p class="section-subtitle">
-            Hotel & show are set. <strong>Everything else? Your call.</strong>
+            Hotel, dinner & show are set. <strong>Pick your morning vibe and pre-dinner plans.</strong>
           </p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">PM</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Check‑in at AC Hotel</div>
-                <span class="walk-pill">3:00 PM · Waterfront</span>
-              </div>
-              <p class="timeline-detail">
-                Drop your bags, check out the harbor views, get settled.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">4–6</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Old Port exploring (optional)</div>
-                <span class="walk-pill">AC Hotel → Old Port · easy walk</span>
-              </div>
-              <p class="timeline-detail">
-                Vintage shops, sneakers, random side streets. Or just chill at the hotel bar – totally up to you.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">5–6</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Dinner · Pick one below</div>
-                <span class="walk-pill">Old Port · short walk</span>
-              </div>
-              <p class="timeline-detail">
-                Choose your dinner spot from the options below. We'll book wherever you want.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">7–10</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Pink Talking Fish · State Theatre ✓</div>
-                <span class="walk-pill">Dinner → Theatre · 5 min walk</span>
-              </div>
-              <p class="timeline-detail">
-                Doors 7pm, show 8pm. After the encore, grab a drink or wander around if you're feeling it.
-              </p>
-            </div>
-          </div>
-        </div>
-
+        <!-- Morning Departure -->
         <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Pick Your Dinner Spot</div>
+          <div class="section-title">Morning Departure</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="morning-early" data-name="Early Start" data-time="Saturday 8:00am" data-activity="Early start to Portland">
+            <button type="button" class="star-button" data-fav-button="morning" data-fav-id="morning-early">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Get there early</span>
+            </div>
+            <h2 class="choice-title">Early Start</h2>
+            <p class="choice-meta">Leave around 8am</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="morning-mid" data-name="Mid-Morning" data-time="Saturday 10:00am" data-activity="Mid-morning departure">
+            <button type="button" class="star-button" data-fav-button="morning" data-fav-id="morning-mid">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Relaxed timing</span>
+            </div>
+            <h2 class="choice-title">Mid-Morning</h2>
+            <p class="choice-meta">Leave around 10am</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="morning-late" data-name="Late Morning" data-time="Saturday 11:00am" data-activity="Late morning departure">
+            <button type="button" class="star-button" data-fav-button="morning" data-fav-id="morning-late">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Sleep in</span>
+            </div>
+            <h2 class="choice-title">Late Morning</h2>
+            <p class="choice-meta">Leave around 11am</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
         </div>
 
+        <!-- Hotel Check-in -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Check-In</div>
+        </div>
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Tapas & cocktails at Central Provisions">
+          <article class="choice-card booked" data-choice-id="hotel-checkin" data-name="AC Hotel" data-time="Saturday 3:00pm" data-activity="Hotel check-in" data-auto-selected="true" style="grid-column: 1 / -1;">
+            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Waterfront</span>
+            </div>
+            <h2 class="choice-title">AC Hotel Portland Downtown/Waterfront</h2>
+            <p class="choice-meta">3:00 PM check-in</p>
+            <ul class="choice-list">
+              <li>Drop your bags, check out the harbor views, get settled</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Pre-Dinner Options -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Pre-Dinner</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="predinner-explore" data-name="Explore Old Port" data-time="Saturday 4:00pm" data-activity="Old Port exploring">
+            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-explore">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Wander & explore</span>
+            </div>
+            <h2 class="choice-title">Explore Old Port</h2>
+            <p class="choice-meta">4:00 PM – 5:30 PM</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="predinner-drinks" data-name="Hotel Bar" data-time="Saturday 4:00pm" data-activity="Drinks at hotel bar">
+            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-drinks">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Relax & unwind</span>
+            </div>
+            <h2 class="choice-title">Hotel Bar</h2>
+            <p class="choice-meta">4:00 PM – 5:30 PM</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="predinner-chill" data-name="Chill in Room" data-time="Saturday 4:00pm" data-activity="Relax in room">
+            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-chill">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Downtime</span>
+            </div>
+            <h2 class="choice-title">Chill in Room</h2>
+            <p class="choice-meta">4:00 PM – 5:30 PM</p>
+            <ul class="choice-list">
+              <li>Details forthcoming</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Early Dinner -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Dinner</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card booked" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Early dinner at Central Provisions" data-auto-selected="true" style="grid-column: 1 / -1;">
+            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Small plates & energy</span>
             </div>
             <h2 class="choice-title">Central Provisions</h2>
-            <p class="choice-meta">
-              Old Port · 5 min walk from hotel
-            </p>
+            <p class="choice-meta">5:30 PM reservation · Old Port</p>
             <ul class="choice-list">
               <li>Tapas-style shareables, good cocktails</li>
-              <li>Buzzy vibe but still cozy</li>
-              <li>Perfect pre-show spot</li>
+              <li>Early dinner to make the show on time</li>
             </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="dinner"
-                data-fav-id="central"
-              >
-                MY FAV
-              </button>
-            </div>
           </article>
+        </div>
 
-          <article class="choice-card" data-choice-id="dinner-leeward" data-name="Leeward" data-time="Saturday 5:30pm" data-activity="Fresh pasta at Leeward">
+        <!-- Show -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">The Show</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card booked" data-choice-id="show" data-name="Pink Talking Fish" data-time="Saturday 7:00pm" data-activity="Pink Talking Fish at State Theatre" data-auto-selected="true" style="grid-column: 1 / -1;">
+            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
             <div class="choice-tag-row">
-              <span class="choice-tag">Fresh pasta & vibes</span>
+              <span class="choice-tag">State Theatre</span>
             </div>
-            <h2 class="choice-title">Leeward</h2>
-            <p class="choice-meta">
-              Arts District · 7 min walk from hotel
-            </p>
+            <h2 class="choice-title">Pink Talking Fish</h2>
+            <p class="choice-meta">Doors 7:00 PM · Show 8:00 PM</p>
             <ul class="choice-list">
-              <li>Handmade pasta, seasonal plates</li>
-              <li>Quieter vibe, more intimate</li>
-              <li>Close to the theatre for after</li>
+              <li>5 min walk from Central Provisions</li>
+              <li>After the encore, grab a drink or wander if you're feeling it</li>
             </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="dinner"
-                data-fav-id="leeward"
-              >
-                MY FAV
-              </button>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="dinner-eventide" data-name="Eventide Oyster Co." data-time="Saturday 5:30pm" data-activity="Lobster rolls & oysters at Eventide">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Seafood & oysters</span>
-            </div>
-            <h2 class="choice-title">Eventide Oyster Co.</h2>
-            <p class="choice-meta">
-              Old Port · 6 min walk from hotel
-            </p>
-            <ul class="choice-list">
-              <li>Brown-butter lobster rolls, fresh oysters</li>
-              <li>Lighter feel before the show</li>
-              <li>Classic Maine coastal vibes</li>
-            </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="dinner"
-                data-fav-id="eventide"
-              >
-                MY FAV
-              </button>
-            </div>
           </article>
         </div>
       </section>
@@ -792,6 +836,7 @@
 
         <div class="choice-grid">
           <article class="choice-card" data-choice-id="sun-lighthouse" data-name="Portland Head Light" data-time="Sunday 11:30am" data-activity="Lighthouse & coastal cliff walk">
+            <button type="button" class="star-button" data-fav-button="sunday" data-fav-id="sun-lighthouse">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Ocean & cliffs</span>
             </div>
@@ -804,16 +849,6 @@
               <li>Lighthouse views & photo ops</li>
               <li>Nice "we got away" vibe before heading back</li>
             </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="sunday"
-                data-fav-id="sun-lighthouse"
-              >
-                MY FAV
-              </button>
-            </div>
             <div class="pill-row">
               <span class="pill">Short drive</span>
               <span class="pill accent">Fresh air</span>
@@ -821,6 +856,7 @@
           </article>
 
           <article class="choice-card" data-choice-id="sun-vintage" data-name="Shopping Loop" data-time="Sunday 11:30am" data-activity="Vintage shopping & sneakers">
+            <button type="button" class="star-button" data-fav-button="sunday" data-fav-id="sun-vintage">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Shops & sneakers</span>
             </div>
@@ -833,16 +869,6 @@
               <li>Grab something cool if you find it</li>
               <li>Coffee stop before driving back</li>
             </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="sunday"
-                data-fav-id="sun-vintage"
-              >
-                MY FAV
-              </button>
-            </div>
             <div class="pill-row">
               <span class="pill accent">Vintage & style</span>
               <span class="pill">Easy walk</span>
@@ -850,6 +876,7 @@
           </article>
 
           <article class="choice-card" data-choice-id="sun-chill" data-name="Chill Mode" data-time="Sunday 11:30am" data-activity="Harbor walk & coffee">
+            <button type="button" class="star-button" data-fav-button="sunday" data-fav-id="sun-chill">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Keep it easy</span>
             </div>
@@ -862,16 +889,6 @@
               <li>Grab coffee, then head back</li>
               <li>Soft landing after a big Saturday</li>
             </ul>
-            <div class="choice-cta">
-              <button
-                type="button"
-                class="choice-note"
-                data-fav-button="sunday"
-                data-fav-id="sun-chill"
-              >
-                MY FAV
-              </button>
-            </div>
             <div class="pill-row">
               <span class="pill accent">Low key</span>
               <span class="pill">Zero stress</span>
@@ -918,27 +935,35 @@
 
         const items = [];
 
-        // Check for favorite dinner
-        const favDinner = localStorage.getItem(STORAGE_KEY_PREFIX + "fav-dinner");
-        if (favDinner) {
-          const dinnerCard = document.querySelector(`[data-fav-id='${favDinner}']`)?.closest('.choice-card');
-          if (dinnerCard) {
-            const activity = dinnerCard.getAttribute('data-activity');
-            const time = dinnerCard.getAttribute('data-time');
-            if (activity && time) items.push({ time, activity });
-          }
-        }
+        // Add auto-selected items (hotel, dinner, show)
+        document.querySelectorAll("[data-auto-selected='true']").forEach((card) => {
+          const activity = card.getAttribute('data-activity');
+          const time = card.getAttribute('data-time');
+          if (activity && time) items.push({ time, activity });
+        });
 
-        // Check for favorite Sunday activity
-        const favSunday = localStorage.getItem(STORAGE_KEY_PREFIX + "fav-sunday");
-        if (favSunday) {
-          const sundayCard = document.querySelector(`[data-fav-id='${favSunday}']`)?.closest('.choice-card');
-          if (sundayCard) {
-            const activity = sundayCard.getAttribute('data-activity');
-            const time = sundayCard.getAttribute('data-time');
-            if (activity && time) items.push({ time, activity });
+        // Add user-selected items
+        const categories = ['morning', 'predinner', 'sunday'];
+        categories.forEach(category => {
+          const favId = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          if (favId) {
+            const card = document.querySelector(`[data-fav-id='${favId}']`)?.closest('.choice-card');
+            if (card) {
+              const activity = card.getAttribute('data-activity');
+              const time = card.getAttribute('data-time');
+              if (activity && time) items.push({ time, activity });
+            }
           }
-        }
+        });
+
+        // Sort by time (basic sort)
+        items.sort((a, b) => {
+          const timeA = a.time.toLowerCase();
+          const timeB = b.time.toLowerCase();
+          if (timeA.includes('saturday') && timeB.includes('sunday')) return -1;
+          if (timeA.includes('sunday') && timeB.includes('saturday')) return 1;
+          return 0;
+        });
 
         // Update the summary
         if (items.length > 0) {
@@ -951,10 +976,13 @@
         }
       }
 
-      function applyFavDinner(favId) {
-        // Remove highlight from all dinner cards
-        document.querySelectorAll("[data-choice-id^='dinner-']").forEach((card) => {
-          card.classList.remove("booked");
+      function applyFavorite(category, favId) {
+        // Remove highlight and unselect stars from all cards in this category
+        document.querySelectorAll(`[data-fav-button='${category}']`).forEach((btn) => {
+          const card = btn.closest('.choice-card');
+          if (card) card.classList.remove("booked");
+          btn.textContent = "☆";
+          btn.classList.remove("selected");
         });
 
         if (!favId) {
@@ -962,83 +990,59 @@
           return;
         }
 
-        // Add highlight to selected dinner card
-        const selectorMap = {
-          central: "[data-choice-id='dinner-central']",
-          leeward: "[data-choice-id='dinner-leeward']",
-          eventide: "[data-choice-id='dinner-eventide']"
-        };
-
-        const card = document.querySelector(selectorMap[favId]);
-        if (card) {
-          card.classList.add("booked");
-        }
-        updateItinerary();
-      }
-
-      function applyFavSunday(favId) {
-        // Remove highlight from all Sunday cards
-        document.querySelectorAll("[data-choice-id^='sun-']").forEach((card) => {
-          card.classList.remove("booked");
-        });
-
-        if (!favId) {
-          updateItinerary();
-          return;
-        }
-
-        // Add highlight to selected Sunday card
-        const card = document.querySelector(`[data-choice-id='${favId}']`);
-        if (card) {
-          card.classList.add("booked");
+        // Add highlight to selected card and fill star
+        const selectedBtn = document.querySelector(`[data-fav-button='${category}'][data-fav-id='${favId}']`);
+        if (selectedBtn) {
+          const card = selectedBtn.closest('.choice-card');
+          if (card) card.classList.add("booked");
+          selectedBtn.textContent = "★";
+          selectedBtn.classList.add("selected");
         }
         updateItinerary();
       }
 
       function resetAll() {
-        localStorage.removeItem(STORAGE_KEY_PREFIX + "fav-dinner");
-        localStorage.removeItem(STORAGE_KEY_PREFIX + "fav-sunday");
-
-        document.querySelectorAll(".choice-card").forEach((card) => card.classList.remove("booked"));
-
-        updateItinerary();
+        const categories = ['morning', 'predinner', 'sunday'];
+        categories.forEach(category => {
+          localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          applyFavorite(category, null);
+        });
         flashSaveStatus();
       }
 
       function initFavorites() {
         // Load saved favorites
-        const savedDinner = localStorage.getItem(STORAGE_KEY_PREFIX + "fav-dinner");
-        const savedSunday = localStorage.getItem(STORAGE_KEY_PREFIX + "fav-sunday");
-
-        if (savedDinner) applyFavDinner(savedDinner);
-        if (savedSunday) applyFavSunday(savedSunday);
-
-        // Set up dinner button handlers
-        document.querySelectorAll("[data-fav-button='dinner']").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const id = btn.getAttribute("data-fav-id");
-            if (!id) return;
-            try {
-              localStorage.setItem(STORAGE_KEY_PREFIX + "fav-dinner", id);
-              applyFavDinner(id);
-              flashSaveStatus();
-            } catch (e) {
-              console.warn("Unable to save favorite dinner", e);
-            }
-          });
+        const categories = ['morning', 'predinner', 'sunday'];
+        categories.forEach(category => {
+          const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          if (saved) applyFavorite(category, saved);
         });
 
-        // Set up Sunday button handlers
-        document.querySelectorAll("[data-fav-button='sunday']").forEach((btn) => {
+        // Set up star button handlers
+        document.querySelectorAll("[data-fav-button]").forEach((btn) => {
+          // Skip auto-selected buttons
+          if (btn.hasAttribute('data-auto-selected')) return;
+
           btn.addEventListener("click", () => {
+            const category = btn.getAttribute("data-fav-button");
             const id = btn.getAttribute("data-fav-id");
-            if (!id) return;
+            if (!category || !id) return;
+
+            const currentFav = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+
             try {
-              localStorage.setItem(STORAGE_KEY_PREFIX + "fav-sunday", id);
-              applyFavSunday(id);
+              if (currentFav === id) {
+                // Unselect if clicking the same item
+                localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+                applyFavorite(category, null);
+              } else {
+                // Select new item
+                localStorage.setItem(STORAGE_KEY_PREFIX + `fav-${category}`, id);
+                applyFavorite(category, id);
+              }
               flashSaveStatus();
             } catch (e) {
-              console.warn("Unable to save favorite Sunday activity", e);
+              console.warn("Unable to save favorite", e);
             }
           });
         });

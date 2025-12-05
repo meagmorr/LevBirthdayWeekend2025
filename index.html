@@ -113,10 +113,10 @@
     }
 
     h1 {
-      font-size: clamp(26px, 3vw + 16px, 36px);
+      font-size: clamp(28px, 4vw + 16px, 42px);
       line-height: 1.1;
-      font-weight: 650;
-      letter-spacing: 0.02em;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       margin-bottom: 6px;
     }
 
@@ -126,14 +126,14 @@
     }
 
     .meta {
-      background: rgba(42, 22, 64, 0.85);
+      background: rgba(88, 28, 135, 0.3);
       border-radius: 18px;
-      padding: 10px 12px;
-      border: 1px solid rgba(139, 92, 246, 0.35);
+      padding: 14px 16px;
+      border: 1px solid rgba(139, 92, 246, 0.5);
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4px 12px;
-      max-width: 260px;
+      gap: 8px 16px;
+      max-width: 100%;
       font-size: 12px;
     }
 
@@ -150,11 +150,10 @@
 
     .sticky-note {
       margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      background: radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.07), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(248, 250, 252, 0.04), transparent 55%);
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      background: rgba(42, 22, 64, 0.4);
       font-size: 12px;
       color: var(--text-muted);
       max-width: 520px;
@@ -166,11 +165,10 @@
     }
 
     .itinerary-summary {
-      margin-top: 20px;
-      padding: 16px 18px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(34, 197, 94, 0.08));
-      border: 1px solid rgba(52, 211, 153, 0.5);
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+      border: 2px solid rgba(52, 211, 153, 0.6);
       display: none;
     }
 
@@ -179,12 +177,15 @@
     }
 
     .itinerary-summary-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #a7f3d0;
-      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .itinerary-list {
@@ -202,14 +203,14 @@
     }
 
     .itinerary-list li.day-header {
-      font-weight: 600;
-      font-size: 12px;
+      font-weight: 700;
+      font-size: 18px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       color: var(--accent);
-      margin-top: 12px;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(52, 211, 153, 0.3);
+      margin-top: 16px;
+      padding-bottom: 8px;
+      border-bottom: none;
     }
 
     .itinerary-list li.day-header:first-child {
@@ -690,7 +691,7 @@
             Check off what sounds good – this page saves your picks automatically. <strong>No login, no fuss.</strong>
           </div>
           <div class="itinerary-summary" id="itinerary-summary">
-            <div class="itinerary-summary-title">✨ Selected Options</div>
+            <div class="itinerary-summary-title">🔥 SELECTED OPTIONS</div>
             <ul class="itinerary-list" id="itinerary-list">
               <!-- Dynamically populated -->
             </ul>
@@ -858,9 +859,6 @@
             Brunch is set. <strong>What's next is up to you.</strong> Choose whatever sounds good to you!
           </p>
         </div>
-        <p class="section-subtitle" style="margin-bottom: 18px;">
-          Brunch is set. <strong>What's next is up to you.</strong> Heart whatever sounds good. Or do none of it and just drive home – also totally fine.
-        </p>
 
         <div class="timeline">
           <div class="timeline-row">

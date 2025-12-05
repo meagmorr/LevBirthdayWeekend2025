@@ -1,1047 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Matt’s Birthday Weekend – Portland 2025</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="MattsBDayWebpage.css" />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0f172a;
-      --card: #111827;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.16);
-      --accent-strong: #22c55e;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --danger: #f97373;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 52%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      padding: 32px 16px 40px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 980px;
-      background: radial-gradient(circle at top left, #1e293b 0, #020617 55%);
-      border-radius: 28px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .page::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 8% 0%, rgba(56, 189, 248, 0.12) 0, transparent 55%),
-        radial-gradient(circle at 100% 10%, rgba(34, 197, 94, 0.12) 0, transparent 50%);
-      mix-blend-mode: screen;
-    }
-
-    .inner {
-      position: relative;
-      padding: 28px 22px 30px;
-    }
-
-    @media (min-width: 768px) {
-      body { padding: 40px 24px; }
-      .inner { padding: 32px 32px 34px; }
-    }
-
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 24px;
-    }
-
-    .title-block {
-      max-width: 520px;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-
-    .pill-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent-strong);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
-    }
-
-    h1 {
-      font-size: clamp(26px, 3vw + 16px, 36px);
-      line-height: 1.1;
-      font-weight: 650;
-      letter-spacing: 0.02em;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .meta {
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 18px;
-      padding: 10px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 4px 12px;
-      max-width: 260px;
-      font-size: 12px;
-    }
-
-    .meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    .meta-value {
-      font-weight: 500;
-    }
-
-    .sticky-note {
-      margin-top: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      background: radial-gradient(circle at 0% 0%, rgba(251, 191, 36, 0.07), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(248, 250, 252, 0.04), transparent 55%);
-      font-size: 12px;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
-
-    .sticky-note strong {
-      color: #facc15;
-      font-weight: 600;
-    }
-
-    .section {
-      margin-top: 26px;
-      padding-top: 4px;
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 12px;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .section-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .section-subtitle strong {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 64px minmax(0, 1fr);
-      gap: 8px;
-      align-items: stretch;
-    }
-
-    .time-pill {
-      align-self: stretch;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-muted);
-      padding: 4px 0;
-    }
-
-    .timeline-card {
-      background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.86)
-        );
-      border-radius: 14px;
-      padding: 10px 11px 9px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      display: grid;
-      gap: 4px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .timeline-card::before {
-      content: "";
-      position: absolute;
-      inset: -10%;
-      opacity: 0.4;
-      background:
-        radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.32), transparent 54%),
-        radial-gradient(circle at 100% 120%, rgba(34, 197, 94, 0.22), transparent 56%);
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-    }
-
-    .timeline-main {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: baseline;
-    }
-
-    .timeline-title {
-      font-size: 13px;
-      font-weight: 550;
-    }
-
-    .walk-pill {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.9);
-      white-space: nowrap;
-    }
-
-    .timeline-detail {
-      position: relative;
-      z-index: 1;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .choice-grid {
-      display: grid;
-      gap: 10px;
-    }
-
-    @media (min-width: 720px) {
-      .choice-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .choice-card {
-      position: relative;
-      border-radius: 16px;
-      padding: 11px 12px 10px;
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.18), transparent 50%),
-        radial-gradient(circle at 100% 120%, rgba(37, 99, 235, 0.4), transparent 60%),
-        linear-gradient(145deg, #020617, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
-      overflow: hidden;
-    }
-
-    .choice-card.booked {
-      border-color: rgba(34, 197, 94, 0.9);
-      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.75),
-        0 18px 40px rgba(22, 163, 74, 0.7);
-    }
-
-    .choice-tag-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .choice-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-    }
-
-    .booked-badge {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.18);
-      border: 1px solid rgba(34, 197, 94, 0.9);
-      color: #bbf7d0;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .booked-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 4px rgba(22, 163, 74, 0.9);
-    }
-
-    .choice-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-
-    .choice-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .choice-list {
-      list-style: none;
-      font-size: 12px;
-      color: var(--text-muted);
-      display: grid;
-      gap: 2px;
-      margin-bottom: 8px;
-    }
-
-    .choice-list li::before {
-      content: "• ";
-      color: #38bdf8;
-      margin-right: 2px;
-    }
-
-    .choice-cta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-top: 4px;
-    }
-
-    .choice-checkbox-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .choice-checkbox {
-      width: 14px;
-      height: 14px;
-      border-radius: 4px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      appearance: none;
-      background: rgba(15, 23, 42, 0.95);
-      cursor: pointer;
-      display: inline-block;
-      position: relative;
-    }
-
-    .choice-checkbox:checked {
-      background: var(--accent-strong);
-      border-color: var(--accent-strong);
-      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.3);
-    }
-
-    .choice-checkbox:checked::after {
-      content: "";
-      position: absolute;
-      inset: 3px;
-      border-radius: 2px;
-      border: 2px solid #022c22;
-      border-top: none;
-      border-right: none;
-      transform: rotate(-45deg);
-    }
-
-    .choice-note {
-      font-size: 11px;
-      color: #e5e7eb;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-    }
-
-    .note-soft {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
-    }
-
-    .pill.accent {
-      background: rgba(56, 189, 248, 0.16);
-      border-color: rgba(56, 189, 248, 0.8);
-      color: #e0f2fe;
-    }
-
-    .footer-note {
-      margin-top: 22px;
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .save-status {
-      font-size: 11px;
-      color: #a5b4fc;
-    }
-
-    .save-status span {
-      opacity: 0.65;
-    }
-
-    .reset-btn {
-      border: none;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.92);
-      color: var(--text-muted);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .reset-btn:hover {
-      background: rgba(15, 23, 42, 1);
-      color: #fee2e2;
-      border-color: rgba(248, 113, 113, 0.9);
-      box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.5);
-    }
-
-    .mini-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(248, 113, 113, 0.8);
-    }
-
-    .print-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .print-hint strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    @media print {
-      body {
-        background: #fff;
-        padding: 0;
-      }
-      .page {
-        box-shadow: none;
-        border-radius: 0;
-        border: none;
-      }
-      .inner {
-        padding: 16px 18px;
-      }
-      .save-status,
-      .reset-btn {
-        display: none !important;
-      }
-    }
-  </style>
-</head>
-<body>
-  <main class="page">
-    <div class="inner">
-      <header>
-        <div class="title-block">
-          <div class="eyebrow">
-            <span class="pill-dot"></span>
-            <span>Birthday Weekend · Portland, ME</span>
-          </div>
-          <h1>Matt’s One‑Night Adventure</h1>
-          <p class="subtitle">
-            December 20–21, 2025 · Walkable eats, music, and exploring.
-            Circle your favorites, and they’ll be here when you come back.
-          </p>
-        </div>
-        <div>
-          <div class="meta">
-            <div>
-              <div class="meta-label">Hotel</div>
-              <div class="meta-value">AC Hotel Portland Downtown/Waterfront</div>
-            </div>
-            <div>
-              <div class="meta-label">Concert</div>
-              <div class="meta-value">Pink Talking Fish · State Theatre</div>
-            </div>
-            <div>
-              <div class="meta-label">Dates</div>
-              <div class="meta-value">Sat Dec 20 – Sun Dec 21</div>
-            </div>
-            <div>
-              <div class="meta-label">Status</div>
-              <div class="meta-value">Booked · You just pick the vibes</div>
-            </div>
-          </div>
-          <div class="sticky-note">
-            This page quietly remembers what you choose on this device
-            using your browser’s storage. <strong>No login, no tracking, just your
-            weekend.</strong>
-          </div>
-        </div>
-      </header>
-
-      <section class="section" id="saturday">
-        <div class="section-header">
-          <div class="section-title">Saturday · Arrival & Night Out</div>
-          <p class="section-subtitle">
-            Hotel, show & city are locked. <strong>You pick the path between.</strong>
-          </p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">PM</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Check‑in at AC Hotel</div>
-                <span class="walk-pill">3:00 PM · Waterfront</span>
-              </div>
-              <p class="timeline-detail">
-                Drop bags, take in the harbor views, and settle into home base before the fun starts.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">4–6</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Old Port wandering</div>
-                <span class="walk-pill">AC Hotel → Old Port · easy walk</span>
-              </div>
-              <p class="timeline-detail">
-                Vintage shops, menswear, sneakers, and side‑street discoveries before dinner.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">5–6</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Dinner · choose your vibe</div>
-                <span class="walk-pill">Hotel → dinner · short walk</span>
-              </div>
-              <p class="timeline-detail">
-                Pick one of the dinner cards below as your “official” birthday meal.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">7–10</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Pink Talking Fish · State Theatre</div>
-                <span class="walk-pill">Dinner → Theatre · quick walk</span>
-              </div>
-              <p class="timeline-detail">
-                Doors at 7:00 PM, show at 8:00 PM. Float out after the encore and decide if the night needs one last drink, dessert, or a snowy walk.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Dinner Choice Cards</div>
-          <p class="section-subtitle">
-            Tap the checkbox on any card to save it as a favorite. One can be your “Booked” pick.
-          </p>
-        </div>
-
-        <div class="choice-grid">
-          <article class="choice-card" data-choice-id="dinner-central">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option A · Small plates & energy</span>
-              <span class="booked-badge booked-badge-visual" style="display:none;">
-                <span class="booked-dot"></span>Booked
-              </span>
-            </div>
-            <h2 class="choice-title">Central Provisions</h2>
-            <p class="choice-meta">
-              Old Port · Top‑tier small plates, buzzy but cozy.
-            </p>
-            <ul class="choice-list">
-              <li>Tapas‑style menu made for sharing bites.</li>
-              <li>Creative plates, great cocktails, and a warm room.</li>
-              <li>Perfect “birthday night” energy right in the Old Port.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="favorite-dinner-central"
-                />
-                <span>Save as favorite</span>
-              </label>
-              <button
-                type="button"
-                class="choice-note"
-                data-booked-button="dinner"
-                data-booked-id="central"
-              >
-                Mark as booked
-              </button>
-            </div>
-            <p class="note-soft">
-              Note for planner: book as early dinner before show; reservations open ~2 weeks prior.
-            </p>
-          </article>
-
-          <article class="choice-card" data-choice-id="dinner-leeward">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option B · Handmade pasta</span>
-              <span class="booked-badge booked-badge-visual" style="display:none;">
-                <span class="booked-dot"></span>Booked
-              </span>
-            </div>
-            <h2 class="choice-title">Leeward</h2>
-            <p class="choice-meta">
-              Arts District · Italian, modern, and glowing.
-            </p>
-            <ul class="choice-list">
-              <li>Fresh pastas, seasonal plates, and a quietly special room.</li>
-              <li>Feels like a “just us” celebration dinner.</li>
-              <li>A short stroll back toward the theatre after dessert.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="favorite-dinner-leeward"
-                />
-                <span>Save as favorite</span>
-              </label>
-              <button
-                type="button"
-                class="choice-note"
-                data-booked-button="dinner"
-                data-booked-id="leeward"
-              >
-                Mark as booked
-              </button>
-            </div>
-            <p class="note-soft">
-              Note for planner: great fallback if Central Provisions is full; choose an earlier seating before showtime.
-            </p>
-          </article>
-
-          <article class="choice-card" data-choice-id="dinner-eventide">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option C · Seafood & oysters</span>
-              <span class="booked-badge booked-badge-visual" style="display:none;">
-                <span class="booked-dot"></span>Booked
-              </span>
-            </div>
-            <h2 class="choice-title">Eventide Oyster Co.</h2>
-            <p class="choice-meta">
-              Old Port · Oysters, brown‑butter lobster rolls, coastal vibes.
-            </p>
-            <ul class="choice-list">
-              <li>Iconic lobster rolls and a bar full of local oysters.</li>
-              <li>Light but indulgent before a night of music.</li>
-              <li>Steps from the rest of downtown wandering.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="favorite-dinner-eventide"
-                />
-                <span>Save as favorite</span>
-              </label>
-              <button
-                type="button"
-                class="choice-note"
-                data-booked-button="dinner"
-                data-booked-id="eventide"
-              >
-                Mark as booked
-              </button>
-            </div>
-            <p class="note-soft">
-              Note for planner: consider timing around walk‑in waits if not reservable.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="sunday">
-        <div class="section-header">
-          <div class="section-title">Sunday · Brunch & Explore</div>
-          <p class="section-subtitle">
-            Brunch is locked. <strong>Morning activity is your call.</strong>
-          </p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">10:00</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Brunch at UNION</div>
-                <span class="walk-pill">AC Hotel → UNION · quick walk</span>
-              </div>
-              <p class="timeline-detail">
-                Reservation at 10:00 AM at The Press Hotel. Slow coffee, good food, zero rush.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">After‑Brunch Options</div>
-          <p class="section-subtitle">
-            Check any blocks that sound like “yes please.” You can mix and match.
-          </p>
-        </div>
-
-        <div class="choice-grid">
-          <article class="choice-card" data-choice-id="sun-lighthouse">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option 1 · Ocean & cliffs</span>
-            </div>
-            <h2 class="choice-title">Portland Head Light & Fort Williams</h2>
-            <p class="choice-meta">
-              Short drive · Classic Maine coastline walk.
-            </p>
-            <ul class="choice-list">
-              <li>Walk the cliff paths and watch the waves crash on the rocks.</li>
-              <li>Photo‑worthy lighthouse and park views.</li>
-              <li>Perfect “we actually got away” moment before heading home.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="sun-lighthouse"
-                />
-                <span>Save this idea</span>
-              </label>
-            </div>
-            <div class="pill-row">
-              <span class="pill">Short drive</span>
-              <span class="pill accent">Walk + fresh air</span>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="sun-vintage">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option 2 · Shops & sneakers</span>
-            </div>
-            <h2 class="choice-title">Vintage & Menswear Loop</h2>
-            <p class="choice-meta">
-              Back through Old Port & Arts District.
-            </p>
-            <ul class="choice-list">
-              <li>Hit vintage spots, menswear, and sneaker shops you didn’t get to on Saturday.</li>
-              <li>Pick one “birthday piece” as a souvenir.</li>
-              <li>Cap with coffee before the drive home.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="sun-vintage"
-                />
-                <span>Save this idea</span>
-              </label>
-            </div>
-            <div class="pill-row">
-              <span class="pill accent">Vintage & style</span>
-              <span class="pill">Flexible timing</span>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="sun-chill">
-            <div class="choice-tag-row">
-              <span class="choice-tag">Option 3 · Slow & cozy</span>
-            </div>
-            <h2 class="choice-title">Hotel, Harbor Walk & Coffee</h2>
-            <p class="choice-meta">
-              Minimal moving parts, maximum cozy.
-            </p>
-            <ul class="choice-list">
-              <li>Sleep a little later, linger over brunch, and stroll the waterfront.</li>
-              <li>Grab a final coffee, then an easy drive back to Boston.</li>
-              <li>Low‑key landing from a big night out.</li>
-            </ul>
-            <div class="choice-cta">
-              <label class="choice-checkbox-row">
-                <input
-                  type="checkbox"
-                  class="choice-checkbox"
-                  data-save-key="sun-chill"
-                />
-                <span>Save this idea</span>
-              </label>
-            </div>
-            <div class="pill-row">
-              <span class="pill accent">Soft landing</span>
-              <span class="pill">Zero rush</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <div class="footer-note">
-        <div class="save-status" id="save-status">
-          Choices are saved in this browser. <span>Close the tab and come back later – your picks will still be here.</span>
-        </div>
-        <div style="display:flex; gap:10px; align-items:center;">
-          <button class="reset-btn" type="button" id="reset-choices">
-            <span class="mini-dot"></span>
-            Clear all choices
-          </button>
-          <div class="print-hint">
-            <strong>Print tip:</strong> Use your browser’s “Print” to bring a paper copy with final picks.
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <script>
-    (function () {
-      const STORAGE_KEY_PREFIX = "matt-bday-2025-";
-      const FAVORITE_KEYS = [
-        "favorite-dinner-central",
-        "favorite-dinner-leeward",
-        "favorite-dinner-eventide",
-        "sun-lighthouse",
-        "sun-vintage",
-        "sun-chill"
-      ];
-
-      const savedBookedDinner = localStorage.getItem(STORAGE_KEY_PREFIX + "booked-dinner") || "";
-
-      function loadCheckboxes() {
-        document.querySelectorAll(".choice-checkbox").forEach((cb) => {
-          const key = cb.getAttribute("data-save-key");
-          if (!key) return;
+< !DOCTYPE html><html lang="en"><head><meta charset="UTF-8" /><title>Matt’s Birthday Weekend – Portland 2025</title><meta name="viewport" content="width=device-width, initial-scale=1" /><link rel="stylesheet" href="MattsBDayWebpage.css" />
+</head><body><main class="page"><div class="inner"><header><div class="title-block"><div class="eyebrow"><span class="pill-dot"></span><span>Birthday Weekend · Portland,
+ME</span></div><h1>Matt’s One‑Night Adventure</h1><p class="subtitle">December 20–21,
+2025 · Walkable eats,
+music,
+and exploring. Circle your favorites,
+and they’ll be here when you come back. </p></div><div><div class="meta"><div><div class="meta-label">Hotel</div><div class="meta-value">AC Hotel Portland Downtown/Waterfront</div></div><div><div class="meta-label">Concert</div><div class="meta-value">Pink Talking Fish · State Theatre</div></div><div><div class="meta-label">Dates</div><div class="meta-value">Sat Dec 20 – Sun Dec 21</div></div><div><div class="meta-label">Status</div><div class="meta-value">Booked · You just pick the vibes</div></div></div><div class="sticky-note">This page quietly remembers what you choose on this device using your browser’s storage. <strong>No login,
+no tracking,
+just your weekend.</strong></div></div></header><section class="section" id="saturday"><div class="section-header"><div class="section-title">Saturday · Arrival & Night Out</div><p class="section-subtitle">Hotel,
+show & city are locked. <strong>You pick the path between.</strong></p></div><div class="timeline"><div class="timeline-row"><div class="time-pill">PM</div><div class="timeline-card"><div class="timeline-main"><div class="timeline-title">Check‑in at AC Hotel</div><span class="walk-pill">3:00 PM · Waterfront</span></div><p class="timeline-detail">Drop bags,
+take in the harbor views,
+and settle into home base before the fun starts. </p></div></div><div class="timeline-row"><div class="time-pill">4–6</div><div class="timeline-card"><div class="timeline-main"><div class="timeline-title">Old Port wandering</div><span class="walk-pill">AC Hotel → Old Port · easy walk</span></div><p class="timeline-detail">Vintage shops,
+menswear,
+sneakers,
+and side‑street discoveries before dinner. </p></div></div><div class="timeline-row"><div class="time-pill">5–6</div><div class="timeline-card"><div class="timeline-main"><div class="timeline-title">Dinner · choose your vibe</div><span class="walk-pill">Hotel → dinner · short walk</span></div><p class="timeline-detail">Pick one of the dinner cards below as your “official” birthday meal. </p></div></div><div class="timeline-row"><div class="time-pill">7–10</div><div class="timeline-card"><div class="timeline-main"><div class="timeline-title">Pink Talking Fish · State Theatre</div><span class="walk-pill">Dinner → Theatre · quick walk</span></div><p class="timeline-detail">Doors at 7:00 PM,
+show at 8:00 PM. Float out after the encore and decide if the night needs one last drink,
+dessert,
+or a snowy walk. </p></div></div></div><div class="section-header" style="margin-top:18px;"><div class="section-title">Dinner Choice Cards</div><p class="section-subtitle">Tap the checkbox on any card to save it as a favorite. One can be your “Booked” pick. </p></div><div class="choice-grid"><article class="choice-card" data-choice-id="dinner-central"><div class="choice-tag-row"><span class="choice-tag">Option A · Small plates & energy</span><span class="booked-badge booked-badge-visual" style="display:none;"><span class="booked-dot"></span>Booked </span></div><h2 class="choice-title">Central Provisions</h2><p class="choice-meta">Old Port · Top‑tier small plates,
+buzzy but cozy. </p><ul class="choice-list"><li>Tapas‑style menu made for sharing bites.</li><li>Creative plates,
+great cocktails,
+and a warm room.</li><li>Perfect “birthday night” energy right in the Old Port.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="favorite-dinner-central"
+/><span>Save as favorite</span></label><button type="button"
+class="choice-note"
+data-booked-button="dinner"
+data-booked-id="central"
+>Mark as booked </button></div><p class="note-soft">Note for planner: book as early dinner before show;
+reservations open~2 weeks prior. </p></article><article class="choice-card" data-choice-id="dinner-leeward"><div class="choice-tag-row"><span class="choice-tag">Option B · Handmade pasta</span><span class="booked-badge booked-badge-visual" style="display:none;"><span class="booked-dot"></span>Booked </span></div><h2 class="choice-title">Leeward</h2><p class="choice-meta">Arts District · Italian,
+modern,
+and glowing. </p><ul class="choice-list"><li>Fresh pastas,
+seasonal plates,
+and a quietly special room.</li><li>Feels like a “just us” celebration dinner.</li><li>A short stroll back toward the theatre after dessert.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="favorite-dinner-leeward"
+/><span>Save as favorite</span></label><button type="button"
+class="choice-note"
+data-booked-button="dinner"
+data-booked-id="leeward"
+>Mark as booked </button></div><p class="note-soft">Note for planner: great fallback if Central Provisions is full;
+choose an earlier seating before showtime. </p></article><article class="choice-card" data-choice-id="dinner-eventide"><div class="choice-tag-row"><span class="choice-tag">Option C · Seafood & oysters</span><span class="booked-badge booked-badge-visual" style="display:none;"><span class="booked-dot"></span>Booked </span></div><h2 class="choice-title">Eventide Oyster Co.</h2><p class="choice-meta">Old Port · Oysters,
+brown‑butter lobster rolls,
+coastal vibes. </p><ul class="choice-list"><li>Iconic lobster rolls and a bar full of local oysters.</li><li>Light but indulgent before a night of music.</li><li>Steps from the rest of downtown wandering.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="favorite-dinner-eventide"
+/><span>Save as favorite</span></label><button type="button"
+class="choice-note"
+data-booked-button="dinner"
+data-booked-id="eventide"
+>Mark as booked </button></div><p class="note-soft">Note for planner: consider timing around walk‑in waits if not reservable. </p></article></div></section><section class="section" id="sunday"><div class="section-header"><div class="section-title">Sunday · Brunch & Explore</div><p class="section-subtitle">Brunch is locked. <strong>Morning activity is your call.</strong></p></div><div class="timeline"><div class="timeline-row"><div class="time-pill">10:00</div><div class="timeline-card"><div class="timeline-main"><div class="timeline-title">Brunch at UNION</div><span class="walk-pill">AC Hotel → UNION · quick walk</span></div><p class="timeline-detail">Reservation at 10:00 AM at The Press Hotel. Slow coffee,
+good food,
+zero rush. </p></div></div></div><div class="section-header" style="margin-top:18px;"><div class="section-title">After‑Brunch Options</div><p class="section-subtitle">Check any blocks that sound like “yes please.” You can mix and match. </p></div><div class="choice-grid"><article class="choice-card" data-choice-id="sun-lighthouse"><div class="choice-tag-row"><span class="choice-tag">Option 1 · Ocean & cliffs</span></div><h2 class="choice-title">Portland Head Light & Fort Williams</h2><p class="choice-meta">Short drive · Classic Maine coastline walk. </p><ul class="choice-list"><li>Walk the cliff paths and watch the waves crash on the rocks.</li><li>Photo‑worthy lighthouse and park views.</li><li>Perfect “we actually got away” moment before heading home.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="sun-lighthouse"
+/><span>Save this idea</span></label></div><div class="pill-row"><span class="pill">Short drive</span><span class="pill accent">Walk+fresh air</span></div></article><article class="choice-card" data-choice-id="sun-vintage"><div class="choice-tag-row"><span class="choice-tag">Option 2 · Shops & sneakers</span></div><h2 class="choice-title">Vintage & Menswear Loop</h2><p class="choice-meta">Back through Old Port & Arts District. </p><ul class="choice-list"><li>Hit vintage spots,
+menswear,
+and sneaker shops you didn’t get to on Saturday.</li><li>Pick one “birthday piece” as a souvenir.</li><li>Cap with coffee before the drive home.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="sun-vintage"
+/><span>Save this idea</span></label></div><div class="pill-row"><span class="pill accent">Vintage & style</span><span class="pill">Flexible timing</span></div></article><article class="choice-card" data-choice-id="sun-chill"><div class="choice-tag-row"><span class="choice-tag">Option 3 · Slow & cozy</span></div><h2 class="choice-title">Hotel,
+Harbor Walk & Coffee</h2><p class="choice-meta">Minimal moving parts,
+maximum cozy. </p><ul class="choice-list"><li>Sleep a little later,
+linger over brunch,
+and stroll the waterfront.</li><li>Grab a final coffee,
+then an easy drive back to Boston.</li><li>Low‑key landing from a big night out.</li></ul><div class="choice-cta"><label class="choice-checkbox-row"><input type="checkbox"
+class="choice-checkbox"
+data-save-key="sun-chill"
+
+/><span>Save this idea</span></label></div><div class="pill-row"><span class="pill accent">Soft landing</span><span class="pill">Zero rush</span></div></article></div></section><div class="footer-note"><div class="save-status" id="save-status">Choices are saved in this browser. <span>Close the tab and come back later – your picks will still be here.</span></div><div style="display:flex; gap:10px; align-items:center;"><button class="reset-btn" type="button" id="reset-choices"><span class="mini-dot"></span>Clear all choices </button><div class="print-hint"><strong>Print tip:</strong>Use your browser’s “Print” to bring a paper copy with final picks. </div></div></div></div></main><script>(function () {
+    const STORAGE_KEY_PREFIX="matt-bday-2025-";
+    const FAVORITE_KEYS=[ "favorite-dinner-central",
+    "favorite-dinner-leeward",
+    "favorite-dinner-eventide",
+    "sun-lighthouse",
+    "sun-vintage",
+    "sun-chill"
+    ];
+
+    const savedBookedDinner=localStorage.getItem(STORAGE_KEY_PREFIX + "booked-dinner") || "";
+
+    function loadCheckboxes() {
+      document.querySelectorAll(".choice-checkbox").forEach((cb)=> {
+          const key=cb.getAttribute("data-save-key");
+          if ( !key) return;
 
           try {
-            const raw = localStorage.getItem(STORAGE_KEY_PREFIX + key);
-            const isChecked = raw === "1";
-            cb.checked = isChecked;
-          } catch (e) {
-            cb.checked = false;
+            const raw=localStorage.getItem(STORAGE_KEY_PREFIX + key);
+            const isChecked=raw==="1";
+            cb.checked=isChecked;
+          }
+
+          catch (e) {
+            cb.checked=false;
           }
         });
-      }
+    }
 
-      function saveCheckbox(key, checked) {
-        try {
-          localStorage.setItem(STORAGE_KEY_PREFIX + key, checked ? "1" : "0");
-          flashSaveStatus();
-        } catch (e) {
-          console.warn("Unable to save choice", e);
-        }
-      }
-
-      function flashSaveStatus() {
-        const el = document.getElementById("save-status");
-        if (!el) return;
-        el.style.opacity = "1";
-        el.style.transition = "opacity 0.4s ease";
-        setTimeout(() => {
-          el.style.opacity = "0.72";
-        }, 900);
-      }
-
-      function resetAll() {
-        FAVORITE_KEYS.forEach((k) =>
-          localStorage.removeItem(STORAGE_KEY_PREFIX + k)
-        );
-        localStorage.removeItem(STORAGE_KEY_PREFIX + "booked-dinner");
-
-        document
-          .querySelectorAll(".choice-checkbox")
-          .forEach((cb) => (cb.checked = false));
-
-        document
-          .querySelectorAll("[data-choice-id^='dinner-']")
-          .forEach((card) => card.classList.remove("booked"));
-
-        document
-          .querySelectorAll("[data-choice-id^='dinner-'] .booked-badge-visual")
-          .forEach((b) => (b.style.display = "none"));
-
+    function saveCheckbox(key, checked) {
+      try {
+        localStorage.setItem(STORAGE_KEY_PREFIX + key, checked ? "1" : "0");
         flashSaveStatus();
       }
 
-      function applyBookedDinner(bookedId) {
-        document
-          .querySelectorAll("[data-choice-id^='dinner-']")
-          .forEach((card) => {
-            card.classList.remove("booked");
-            const badge = card.querySelector(".booked-badge-visual");
-            if (badge) badge.style.display = "none";
-          });
-
-        if (!bookedId) return;
-
-        const selectorMap = {
-          central: "[data-choice-id='dinner-central']",
-          leeward: "[data-choice-id='dinner-leeward']",
-          eventide: "[data-choice-id='dinner-eventide']"
-        };
-
-        const sel = selectorMap[bookedId];
-        if (!sel) return;
-
-        const card = document.querySelector(sel);
-        if (!card) return;
-
-        card.classList.add("booked");
-        const badge = card.querySelector(".booked-badge-visual");
-        if (badge) badge.style.display = "inline-flex";
+      catch (e) {
+        console.warn("Unable to save choice", e);
       }
+    }
 
-      function initBookedDinner() {
-        if (savedBookedDinner) {
-          applyBookedDinner(savedBookedDinner);
+    function flashSaveStatus() {
+      const el=document.getElementById("save-status");
+      if ( !el) return;
+      el.style.opacity="1";
+      el.style.transition="opacity 0.4s ease";
+
+      setTimeout(()=> {
+          el.style.opacity="0.72";
         }
 
-        document
-          .querySelectorAll("[data-booked-button='dinner']")
-          .forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const id = btn.getAttribute("data-booked-id");
-              if (!id) return;
+        , 900);
+    }
+
+    function resetAll() {
+      FAVORITE_KEYS.forEach((k)=> localStorage.removeItem(STORAGE_KEY_PREFIX + k));
+      localStorage.removeItem(STORAGE_KEY_PREFIX + "booked-dinner");
+
+      document .querySelectorAll(".choice-checkbox") .forEach((cb)=> (cb.checked=false));
+
+      document .querySelectorAll("[data-choice-id^='dinner-']") .forEach((card)=> card.classList.remove("booked"));
+
+      document .querySelectorAll("[data-choice-id^='dinner-'] .booked-badge-visual") .forEach((b)=> (b.style.display="none"));
+
+      flashSaveStatus();
+    }
+
+    function applyBookedDinner(bookedId) {
+      document .querySelectorAll("[data-choice-id^='dinner-']") .forEach((card)=> {
+          card.classList.remove("booked");
+          const badge=card.querySelector(".booked-badge-visual");
+          if (badge) badge.style.display="none";
+        });
+
+      if ( !bookedId) return;
+
+      const selectorMap= {
+        central: "[data-choice-id='dinner-central']",
+        leeward: "[data-choice-id='dinner-leeward']",
+        eventide: "[data-choice-id='dinner-eventide']"
+      }
+
+      ;
+
+      const sel=selectorMap[bookedId];
+      if ( !sel) return;
+
+      const card=document.querySelector(sel);
+      if ( !card) return;
+
+      card.classList.add("booked");
+      const badge=card.querySelector(".booked-badge-visual");
+      if (badge) badge.style.display="inline-flex";
+    }
+
+    function initBookedDinner() {
+      if (savedBookedDinner) {
+        applyBookedDinner(savedBookedDinner);
+      }
+
+      document .querySelectorAll("[data-booked-button='dinner']") .forEach((btn)=> {
+          btn.addEventListener("click", ()=> {
+              const id=btn.getAttribute("data-booked-id");
+              if ( !id) return;
+
               try {
-                localStorage.setItem(
-                  STORAGE_KEY_PREFIX + "booked-dinner",
-                  id
-                );
+                localStorage.setItem(STORAGE_KEY_PREFIX + "booked-dinner",
+                  id);
                 applyBookedDinner(id);
                 flashSaveStatus();
-              } catch (e) {
+              }
+
+              catch (e) {
                 console.warn("Unable to save booked dinner", e);
               }
             });
-          });
-      }
+        });
+    }
 
-      document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", ()=> {
         loadCheckboxes();
         initBookedDinner();
 
-        document
-          .querySelectorAll(".choice-checkbox")
-          .forEach((cb) => {
-            cb.addEventListener("change", () => {
-              const key = cb.getAttribute("data-save-key");
-              if (!key) return;
-              saveCheckbox(key, cb.checked);
-            });
+        document .querySelectorAll(".choice-checkbox") .forEach((cb)=> {
+            cb.addEventListener("change", ()=> {
+                const key=cb.getAttribute("data-save-key");
+                if ( !key) return;
+                saveCheckbox(key, cb.checked);
+              });
           });
 
-        const resetBtn = document.getElementById("reset-choices");
+        const resetBtn=document.getElementById("reset-choices");
+
         if (resetBtn) {
-          resetBtn.addEventListener("click", () => {
-            if (
-              confirm(
-                "Clear all saved choices for this weekend on this device?"
-              )
-            ) {
-              resetAll();
-            }
-          });
+          resetBtn.addEventListener("click", ()=> {
+              if (confirm("Clear all saved choices for this weekend on this device?"
+
+                )) {
+                resetAll();
+              }
+            });
         }
       });
-    })();
-  </script>
-</body>
-</html>
+  })();
+</script></body></html>

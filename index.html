@@ -331,6 +331,20 @@
       max-width: 600px;
     }
 
+    .day-section-header {
+      font-size: clamp(28px, 4vw + 16px, 42px);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+      color: var(--text-main);
+      margin-top: 24px;
+    }
+
+    .day-section-header:first-of-type {
+      margin-top: 18px;
+    }
+
     .section-header {
       margin-bottom: 12px;
     }
@@ -825,14 +839,12 @@
           Hotel, dinner & show are set. <strong>Pick from activities below, or just relax before check-in.</strong>
         </p>
 
-        <!-- Activities -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Activities (Saturday & Sunday)</div>
-          <p class="section-subtitle">Mix and match whatever sounds good — available both days unless noted</p>
-        </div>
+        <!-- Saturday Activities -->
+        <h2 class="day-section-header">Saturday Activities</h2>
+        <p class="section-subtitle" style="margin-bottom: 18px;">Pick whatever sounds good before or after check-in</p>
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="victoria-mansion" data-name="Victoria Mansion" data-time="Saturday 10:00am" data-activity="Victoria Mansion tour">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="victoria-mansion">☆</button>
+          <article class="choice-card" data-choice-id="victoria-mansion-sat" data-name="Victoria Mansion" data-time="Saturday 10:00am" data-activity="Victoria Mansion tour">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="victoria-mansion-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Museum & History</span>
             </div>
@@ -843,9 +855,6 @@
               <li>Purchase tickets for your preferred entry time</li>
               <li>Available both Saturday and Sunday</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-            </div>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://victoriamansion.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
@@ -853,8 +862,8 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="pma-film" data-name="Portland Museum of Art" data-time="Saturday 12:00pm" data-activity="PMA Film: Safe (1995)">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="pma-film">☆</button>
+          <article class="choice-card" data-choice-id="pma-film-sat" data-name="Portland Museum of Art" data-time="Saturday 12:00pm" data-activity="PMA Film: Safe (1995)">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="pma-film-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Film & Art</span>
             </div>
@@ -865,9 +874,6 @@
               <li>Available both Saturday and Sunday</li>
               <li>Perfect for a rainy afternoon</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-            </div>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://www.portlandmuseum.org/" class="quick-link" target="_blank" rel="noopener">🌐 Museum</a>
@@ -875,8 +881,8 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="frost-factory" data-name="Frost Factory" data-time="Saturday 12:00pm" data-activity="Frost Factory visit">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="frost-factory">☆</button>
+          <article class="choice-card" data-choice-id="frost-factory-sat" data-name="Frost Factory" data-time="Saturday 12:00pm" data-activity="Frost Factory visit">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="frost-factory-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Cannabis Dispensary</span>
             </div>
@@ -887,9 +893,6 @@
               <li>Loyalty members get a birthday gift!</li>
               <li>Available both Saturday and Sunday</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-            </div>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://thefrostfactory.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
@@ -897,8 +900,8 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="old-port" data-name="Explore Old Port" data-time="Saturday 1:00pm" data-activity="Old Port exploring & lobster trap trees">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="old-port">☆</button>
+          <article class="choice-card" data-choice-id="old-port-sat" data-name="Explore Old Port" data-time="Saturday 1:00pm" data-activity="Old Port exploring & lobster trap trees">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="old-port-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Wander & Explore</span>
             </div>
@@ -909,17 +912,14 @@
               <li>Browse shops, galleries, and waterfront</li>
               <li>Perfect for wandering at your own pace</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-            </div>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port Wharf</a>
               <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About the Trees</a>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="ice-skating" data-name="Ice Skating" data-time="Saturday 2:00pm" data-activity="Ice skating at Thompson's Point">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="ice-skating">☆</button>
+          <article class="choice-card" data-choice-id="ice-skating-sat" data-name="Ice Skating" data-time="Saturday 2:00pm" data-activity="Ice skating at Thompson's Point">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="ice-skating-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Active & Fun</span>
             </div>
@@ -930,9 +930,6 @@
               <li>Heated bathrooms (important!)</li>
               <li>Tickets available Sunday, Dec 14th at 5pm</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-            </div>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/8Ma9LMGf2gbAeeZc9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="http://www.thompsonspointrink.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
@@ -940,8 +937,8 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="washington-baths" data-name="Washington Baths" data-time="Saturday 12:00pm" data-activity="Sauna & cold plunge at Washington Baths">
-            <button type="button" class="star-button" data-fav-button="activities" data-fav-id="washington-baths">☆</button>
+          <article class="choice-card" data-choice-id="washington-baths-sat" data-name="Washington Baths" data-time="Saturday 12:00pm" data-activity="Sauna & cold plunge at Washington Baths">
+            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="washington-baths-sat">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Relax & Recharge</span>
             </div>
@@ -953,10 +950,6 @@
               <li>No reservations, all genders welcome</li>
               <li>Bring bathing suit, towel, sandals (towels $3 to rent)</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Saturday & Sunday</span>
-              <span class="pill">Different hours each day</span>
-            </div>
             <div class="quick-links">
               <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
               <a href="https://washingtonbaths.com/faq.html" class="quick-link" target="_blank" rel="noopener">🌐 FAQs</a>
@@ -1082,8 +1075,126 @@
         <div class="section-header">
           <div class="section-title">Sunday · Easy Morning</div>
           <p class="section-subtitle">
-            <strong>Pick your brunch spot,</strong> then check out the activities above or just head home!
+            <strong>Pick your brunch spot and activities,</strong> or just head home after breakfast!
           </p>
+        </div>
+
+        <!-- Sunday Activities -->
+        <h2 class="day-section-header">Sunday Activities</h2>
+        <p class="section-subtitle" style="margin-bottom: 18px;">Same great options — pick what you want to do Sunday</p>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="victoria-mansion-sun" data-name="Victoria Mansion" data-time="Sunday 10:00am" data-activity="Victoria Mansion tour">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="victoria-mansion-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Museum & History</span>
+            </div>
+            <h2 class="choice-title">Victoria Mansion</h2>
+            <p class="choice-meta">Victorian-era house museum</p>
+            <ul class="choice-list">
+              <li>Stunning Victorian architecture and holiday decor</li>
+              <li>Purchase tickets for your preferred entry time</li>
+              <li>Available both Saturday and Sunday</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://victoriamansion.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="pma-film-sun" data-name="Portland Museum of Art" data-time="Sunday 12:00pm" data-activity="PMA Film: Safe (1995)">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="pma-film-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Film & Art</span>
+            </div>
+            <h2 class="choice-title">Portland Museum of Art: Safe (1995)</h2>
+            <p class="choice-meta">Noon – 2:05pm · Introduction by Xander Berkeley</p>
+            <ul class="choice-list">
+              <li>Classic 1995 film with special introduction</li>
+              <li>Available both Saturday and Sunday</li>
+              <li>Perfect for a rainy afternoon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://www.portlandmuseum.org/" class="quick-link" target="_blank" rel="noopener">🌐 Museum</a>
+              <a href="https://www.portlandmuseum.org/eventscalendar/safe-4" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="frost-factory-sun" data-name="Frost Factory" data-time="Sunday 12:00pm" data-activity="Frost Factory visit">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="frost-factory-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Cannabis Dispensary</span>
+            </div>
+            <h2 class="choice-title">Frost Factory</h2>
+            <p class="choice-meta">South Portland · 10am–8pm</p>
+            <ul class="choice-list">
+              <li>Matt's favorite dispensary — preorder online</li>
+              <li>Loyalty members get a birthday gift!</li>
+              <li>Available both Saturday and Sunday</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://thefrostfactory.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🎟️ Preorder</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="old-port-sun" data-name="Explore Old Port" data-time="Sunday 1:00pm" data-activity="Old Port exploring & lobster trap trees">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="old-port-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Wander & Explore</span>
+            </div>
+            <h2 class="choice-title">Explore Old Port & Lobster Trap Trees</h2>
+            <p class="choice-meta">Waterfront & downtown</p>
+            <ul class="choice-list">
+              <li>See the famous lobster trap holiday trees</li>
+              <li>Browse shops, galleries, and waterfront</li>
+              <li>Perfect for wandering at your own pace</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port Wharf</a>
+              <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About the Trees</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="ice-skating-sun" data-name="Ice Skating" data-time="Sunday 2:00pm" data-activity="Ice skating at Thompson's Point">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="ice-skating-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Active & Fun</span>
+            </div>
+            <h2 class="choice-title">Ice Skating at Thompson's Point</h2>
+            <p class="choice-meta">$18 including skate rentals · 1.5-2 hour sessions</p>
+            <ul class="choice-list">
+              <li>Timed entry sessions, book in advance</li>
+              <li>Heated bathrooms (important!)</li>
+              <li>Tickets available Sunday, Dec 14th at 5pm</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/8Ma9LMGf2gbAeeZc9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="http://www.thompsonspointrink.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://www.thompsonspointrink.com/iceschedule" class="quick-link" target="_blank" rel="noopener">🎟️ Book Session</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="washington-baths-sun" data-name="Washington Baths" data-time="Sunday 7:00am" data-activity="Sauna & cold plunge at Washington Baths">
+            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="washington-baths-sun">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Relax & Recharge</span>
+            </div>
+            <h2 class="choice-title">Washington Baths</h2>
+            <p class="choice-meta">$36/person · No time limit</p>
+            <ul class="choice-list">
+              <li>Sauna, cold plunge, hot pool, and relaxation</li>
+              <li>Saturday: 12pm-9pm · Sunday: 7am-12pm (Winter Solstice!)</li>
+              <li>No reservations, all genders welcome</li>
+              <li>Bring bathing suit, towel, sandals (towels $3 to rent)</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://washingtonbaths.com/faq.html" class="quick-link" target="_blank" rel="noopener">🌐 FAQs</a>
+            </div>
+          </article>
         </div>
 
         <!-- Brunch Options -->
@@ -1289,7 +1400,7 @@
         const items = [];
 
         // Add all selected items (including auto-selected that are toggled on)
-        const categories = ['hotel', 'dinner', 'show', 'activities', 'predinner', 'brunch'];
+        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
         categories.forEach(category => {
           const favId = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (favId) {
@@ -1383,7 +1494,7 @@
       }
 
       function resetAll() {
-        const categories = ['hotel', 'dinner', 'show', 'activities', 'predinner', 'brunch'];
+        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
         categories.forEach(category => {
           localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           applyFavorite(category, null);
@@ -1414,7 +1525,7 @@
         initAutoSelected();
 
         // Load saved favorites
-        const categories = ['hotel', 'dinner', 'show', 'activities', 'predinner', 'brunch'];
+        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
         categories.forEach(category => {
           const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (saved) applyFavorite(category, saved);

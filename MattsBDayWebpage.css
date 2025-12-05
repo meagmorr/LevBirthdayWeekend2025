@@ -34,6 +34,7 @@ body {
   padding: 32px 16px 40px;
   display: flex;
   justify-content: center;
+  border: 10px solid red !important;
 }
 
 .page {

@@ -196,6 +196,21 @@
       align-items: baseline;
     }
 
+    .itinerary-list li.day-header {
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-top: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .itinerary-list li.day-header:first-child {
+      margin-top: 0;
+    }
+
     .itinerary-time {
       color: var(--green-highlight);
       font-weight: 500;
@@ -278,6 +293,11 @@
       gap: 4px;
       position: relative;
       overflow: hidden;
+    }
+
+    .timeline-card.booked {
+      border-color: rgba(34, 197, 94, 0.9);
+      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.75);
     }
 
     .timeline-card::before {
@@ -712,18 +732,20 @@
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">Check-In</div>
         </div>
-        <div class="choice-grid">
-          <article class="choice-card booked" data-choice-id="hotel-checkin" data-name="AC Hotel" data-time="Saturday 3:00pm" data-activity="Hotel check-in" data-auto-selected="true" style="grid-column: 1 / -1;">
-            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Waterfront</span>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="time-pill">3:00</div>
+            <div class="timeline-card booked" data-choice-id="hotel-checkin" data-name="AC Hotel" data-time="Saturday 3:00pm" data-activity="Hotel check-in" data-auto-selected="true">
+              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <div class="timeline-main">
+                <div class="timeline-title">AC Hotel Portland Downtown/Waterfront</div>
+                <span class="walk-pill">Waterfront</span>
+              </div>
+              <p class="timeline-detail">
+                Drop your bags, check out the harbor views, get settled.
+              </p>
             </div>
-            <h2 class="choice-title">AC Hotel Portland Downtown/Waterfront</h2>
-            <p class="choice-meta">3:00 PM check-in</p>
-            <ul class="choice-list">
-              <li>Drop your bags, check out the harbor views, get settled</li>
-            </ul>
-          </article>
+          </div>
         </div>
 
         <!-- Pre-Dinner Options -->
@@ -772,38 +794,40 @@
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">Dinner</div>
         </div>
-        <div class="choice-grid">
-          <article class="choice-card booked" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Early dinner at Central Provisions" data-auto-selected="true" style="grid-column: 1 / -1;">
-            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Small plates & energy</span>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="time-pill">5:30</div>
+            <div class="timeline-card booked" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Early dinner at Central Provisions" data-auto-selected="true">
+              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <div class="timeline-main">
+                <div class="timeline-title">Central Provisions</div>
+                <span class="walk-pill">Old Port · 5 min walk</span>
+              </div>
+              <p class="timeline-detail">
+                Tapas-style shareables, good cocktails. Early dinner to make the show on time.
+              </p>
             </div>
-            <h2 class="choice-title">Central Provisions</h2>
-            <p class="choice-meta">5:30 PM reservation · Old Port</p>
-            <ul class="choice-list">
-              <li>Tapas-style shareables, good cocktails</li>
-              <li>Early dinner to make the show on time</li>
-            </ul>
-          </article>
+          </div>
         </div>
 
         <!-- Show -->
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">The Show</div>
         </div>
-        <div class="choice-grid">
-          <article class="choice-card booked" data-choice-id="show" data-name="Pink Talking Fish" data-time="Saturday 7:00pm" data-activity="Pink Talking Fish at State Theatre" data-auto-selected="true" style="grid-column: 1 / -1;">
-            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">State Theatre</span>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="time-pill">8:00</div>
+            <div class="timeline-card booked" data-choice-id="show" data-name="Pink Talking Fish" data-time="Saturday 8:00pm" data-activity="Pink Talking Fish at State Theatre" data-auto-selected="true">
+              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <div class="timeline-main">
+                <div class="timeline-title">Pink Talking Fish · State Theatre</div>
+                <span class="walk-pill">Doors 7pm · Show 8pm</span>
+              </div>
+              <p class="timeline-detail">
+                5 min walk from Central Provisions. After the encore, grab a drink or wander if you're feeling it.
+              </p>
             </div>
-            <h2 class="choice-title">Pink Talking Fish</h2>
-            <p class="choice-meta">Doors 7:00 PM · Show 8:00 PM</p>
-            <ul class="choice-list">
-              <li>5 min walk from Central Provisions</li>
-              <li>After the encore, grab a drink or wander if you're feeling it</li>
-            </ul>
-          </article>
+          </div>
         </div>
       </section>
 
@@ -818,9 +842,10 @@
         <div class="timeline">
           <div class="timeline-row">
             <div class="time-pill">10:00</div>
-            <div class="timeline-card">
+            <div class="timeline-card booked" data-choice-id="brunch" data-name="Brunch at UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION" data-auto-selected="true">
+              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
               <div class="timeline-main">
-                <div class="timeline-title">Brunch at UNION ✓</div>
+                <div class="timeline-title">Brunch at UNION</div>
                 <span class="walk-pill">AC Hotel → UNION · 3 min walk</span>
               </div>
               <p class="timeline-detail">
@@ -935,7 +960,7 @@
 
         const items = [];
 
-        // Add auto-selected items (hotel, dinner, show)
+        // Add auto-selected items (hotel, dinner, show, brunch)
         document.querySelectorAll("[data-auto-selected='true']").forEach((card) => {
           const activity = card.getAttribute('data-activity');
           const time = card.getAttribute('data-time');
@@ -956,20 +981,46 @@
           }
         });
 
-        // Sort by time (basic sort)
-        items.sort((a, b) => {
-          const timeA = a.time.toLowerCase();
-          const timeB = b.time.toLowerCase();
-          if (timeA.includes('saturday') && timeB.includes('sunday')) return -1;
-          if (timeA.includes('sunday') && timeB.includes('saturday')) return 1;
-          return 0;
+        // Parse and sort by actual time
+        items.forEach(item => {
+          const match = item.time.match(/(Saturday|Sunday)\s+(\d+:\d+\s*[ap]m)/i);
+          if (match) {
+            item.day = match[1];
+            item.timeOnly = match[2];
+          }
         });
 
-        // Update the summary
+        items.sort((a, b) => {
+          if (a.day !== b.day) {
+            return a.day === 'Saturday' ? -1 : 1;
+          }
+          // Simple time comparison (good enough for this use case)
+          return a.timeOnly.localeCompare(b.timeOnly);
+        });
+
+        // Group by day
+        const saturday = items.filter(item => item.day === 'Saturday');
+        const sunday = items.filter(item => item.day === 'Sunday');
+
+        // Update the summary with day headers
         if (items.length > 0) {
-          itineraryList.innerHTML = items.map(item =>
-            `<li><span class="itinerary-time">${item.time}</span><span class="itinerary-item">${item.activity}</span></li>`
-          ).join('');
+          let html = '';
+
+          if (saturday.length > 0) {
+            html += '<li class="day-header">Saturday</li>';
+            saturday.forEach(item => {
+              html += `<li><span class="itinerary-time">${item.timeOnly}</span><span class="itinerary-item">${item.activity}</span></li>`;
+            });
+          }
+
+          if (sunday.length > 0) {
+            html += '<li class="day-header">Sunday</li>';
+            sunday.forEach(item => {
+              html += `<li><span class="itinerary-time">${item.timeOnly}</span><span class="itinerary-item">${item.activity}</span></li>`;
+            });
+          }
+
+          itineraryList.innerHTML = html;
           itinerarySummary.classList.add('has-items');
         } else {
           itinerarySummary.classList.remove('has-items');

@@ -689,7 +689,7 @@
         </div>
 
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm">
+          <article class="choice-card" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Tapas & cocktails at Central Provisions">
             <div class="choice-tag-row">
               <span class="choice-tag">Small plates & energy</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
@@ -725,7 +725,7 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="dinner-leeward" data-name="Leeward" data-time="Saturday 5:30pm">
+          <article class="choice-card" data-choice-id="dinner-leeward" data-name="Leeward" data-time="Saturday 5:30pm" data-activity="Fresh pasta at Leeward">
             <div class="choice-tag-row">
               <span class="choice-tag">Fresh pasta & vibes</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
@@ -761,7 +761,7 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="dinner-eventide" data-name="Eventide Oyster Co." data-time="Saturday 5:30pm">
+          <article class="choice-card" data-choice-id="dinner-eventide" data-name="Eventide Oyster Co." data-time="Saturday 5:30pm" data-activity="Lobster rolls & oysters at Eventide">
             <div class="choice-tag-row">
               <span class="choice-tag">Seafood & oysters</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
@@ -830,7 +830,7 @@
         </div>
 
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="sun-lighthouse" data-name="Portland Head Light" data-time="Sunday 11:30am">
+          <article class="choice-card" data-choice-id="sun-lighthouse" data-name="Portland Head Light" data-time="Sunday 11:30am" data-activity="Lighthouse & coastal cliff walk">
             <div class="choice-tag-row">
               <span class="choice-tag">Ocean & cliffs</span>
             </div>
@@ -861,7 +861,7 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sun-vintage" data-name="Shopping Loop" data-time="Sunday 11:30am">
+          <article class="choice-card" data-choice-id="sun-vintage" data-name="Shopping Loop" data-time="Sunday 11:30am" data-activity="Vintage shopping & sneakers">
             <div class="choice-tag-row">
               <span class="choice-tag">Shops & sneakers</span>
             </div>
@@ -892,7 +892,7 @@
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sun-chill" data-name="Chill Mode" data-time="Sunday 11:30am">
+          <article class="choice-card" data-choice-id="sun-chill" data-name="Chill Mode" data-time="Sunday 11:30am" data-activity="Harbor walk & coffee">
             <div class="choice-tag-row">
               <span class="choice-tag">Keep it easy</span>
             </div>
@@ -1023,9 +1023,9 @@
         if (bookedDinner) {
           const dinnerCard = document.querySelector(`[data-booked-id='${bookedDinner}']`)?.closest('.choice-card');
           if (dinnerCard) {
-            const name = dinnerCard.getAttribute('data-name');
+            const activity = dinnerCard.getAttribute('data-activity');
             const time = dinnerCard.getAttribute('data-time');
-            if (name && time) items.push({ time, name });
+            if (activity && time) items.push({ time, activity });
           }
         }
 
@@ -1033,16 +1033,16 @@
         document.querySelectorAll(".choice-checkbox:checked").forEach((cb) => {
           const card = cb.closest('.choice-card');
           if (card && card.id !== 'dinner-central' && card.id !== 'dinner-leeward' && card.id !== 'dinner-eventide') {
-            const name = card.getAttribute('data-name');
+            const activity = card.getAttribute('data-activity');
             const time = card.getAttribute('data-time');
-            if (name && time) items.push({ time, name });
+            if (activity && time) items.push({ time, activity });
           }
         });
 
         // Update the summary
         if (items.length > 0) {
           itineraryList.innerHTML = items.map(item =>
-            `<li><span class="itinerary-time">${item.time}</span><span class="itinerary-item">${item.name}</span></li>`
+            `<li><span class="itinerary-time">${item.time}</span><span class="itinerary-item">${item.activity}</span></li>`
           ).join('');
           itinerarySummary.classList.add('has-items');
         } else {

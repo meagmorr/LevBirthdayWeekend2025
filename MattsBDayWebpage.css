@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #050816;
-      --bg-alt: #0f172a;
-      --card: #111827;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.16);
-      --accent-strong: #22c55e;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.25);
-      --danger: #f97373;
-      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
-      --radius-lg: 18px;
-      --radius-pill: 999px;
-    }
+  --bg: #050316;
+  --bg-alt: #0b0520;
+  --card: #130825;
+  --accent: #c084fc;
+  --accent-soft: rgba(192, 132, 252, 0.18);
+  --accent-strong: #a855f7;
+  --text-main: #f9fafb;
+  --text-muted: #a5b4fc;
+  --border-subtle: rgba(129, 140, 248, 0.4);
+  --danger: #fb7185;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.9);
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+}
 
     * {
       box-sizing: border-box;
@@ -28,16 +28,16 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 52%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      padding: 32px 16px 40px;
-      display: flex;
-      justify-content: center;
-    }
-
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, #3b0764 0, #020617 45%, #000 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 32px 16px 40px;
+  display: flex;
+  justify-content: center;
+}
     .page {
       width: 100%;
       max-width: 980px;
@@ -1044,3 +1044,4 @@
   </script>
 </body>
 </html>
+

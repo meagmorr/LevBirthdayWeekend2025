@@ -160,6 +160,52 @@
       font-weight: 600;
     }
 
+    .itinerary-summary {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(34, 197, 94, 0.08));
+      border: 1px solid rgba(52, 211, 153, 0.5);
+      display: none;
+    }
+
+    .itinerary-summary.has-items {
+      display: block;
+    }
+
+    .itinerary-summary-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #a7f3d0;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .itinerary-list {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .itinerary-list li {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .itinerary-time {
+      color: var(--green-highlight);
+      font-weight: 500;
+      min-width: 80px;
+    }
+
+    .itinerary-item {
+      color: #d1fae5;
+    }
+
     .section {
       margin-top: 26px;
       padding-top: 4px;
@@ -537,10 +583,9 @@
             <span class="pill-dot"></span>
             <span>Birthday Weekend · Portland, ME</span>
           </div>
-          <h1>Matt’s One‑Night Adventure</h1>
+          <h1>Matt's Birthday Weekend</h1>
           <p class="subtitle">
-            December 20–21, 2025 · Walkable eats, music, and exploring.
-            Circle your favorites, and they’ll be here when you come back.
+            December 20–21, 2025 · Portland awaits. Pick your vibe, we'll handle the rest.
           </p>
         </div>
         <div>
@@ -558,23 +603,27 @@
               <div class="meta-value">Sat Dec 20 – Sun Dec 21</div>
             </div>
             <div>
-              <div class="meta-label">Status</div>
-              <div class="meta-value">Booked · You just pick the vibes</div>
+              <div class="meta-label">Your Job</div>
+              <div class="meta-value">Pick your favorites</div>
             </div>
           </div>
           <div class="sticky-note">
-            This page quietly remembers what you choose on this device
-            using your browser’s storage. <strong>No login, no tracking, just your
-            weekend.</strong>
+            Check off what sounds good – this page saves your picks automatically. <strong>No login, no fuss.</strong>
+          </div>
+          <div class="itinerary-summary" id="itinerary-summary">
+            <div class="itinerary-summary-title">✨ Your Weekend So Far</div>
+            <ul class="itinerary-list" id="itinerary-list">
+              <!-- Dynamically populated -->
+            </ul>
           </div>
         </div>
       </header>
 
       <section class="section" id="saturday">
         <div class="section-header">
-          <div class="section-title">Saturday · Arrival & Night Out</div>
+          <div class="section-title">Saturday · Let's Go</div>
           <p class="section-subtitle">
-            Hotel, show & city are locked. <strong>You pick the path between.</strong>
+            Hotel & show are set. <strong>Everything else? Your call.</strong>
           </p>
         </div>
 
@@ -587,7 +636,7 @@
                 <span class="walk-pill">3:00 PM · Waterfront</span>
               </div>
               <p class="timeline-detail">
-                Drop bags, take in the harbor views, and settle into home base before the fun starts.
+                Drop your bags, check out the harbor views, get settled.
               </p>
             </div>
           </div>
@@ -596,11 +645,11 @@
             <div class="time-pill">4–6</div>
             <div class="timeline-card">
               <div class="timeline-main">
-                <div class="timeline-title">Old Port wandering</div>
+                <div class="timeline-title">Old Port exploring (optional)</div>
                 <span class="walk-pill">AC Hotel → Old Port · easy walk</span>
               </div>
               <p class="timeline-detail">
-                Vintage shops, menswear, sneakers, and side‑street discoveries before dinner.
+                Vintage shops, sneakers, random side streets. Or just chill at the hotel bar – totally up to you.
               </p>
             </div>
           </div>
@@ -609,11 +658,11 @@
             <div class="time-pill">5–6</div>
             <div class="timeline-card">
               <div class="timeline-main">
-                <div class="timeline-title">Dinner · choose your vibe</div>
-                <span class="walk-pill">Hotel → dinner · short walk</span>
+                <div class="timeline-title">Dinner · Pick one below</div>
+                <span class="walk-pill">Old Port · short walk</span>
               </div>
               <p class="timeline-detail">
-                Pick one of the dinner cards below as your “official” birthday meal.
+                Choose your dinner spot from the options below. We'll book wherever you want.
               </p>
             </div>
           </div>
@@ -622,39 +671,39 @@
             <div class="time-pill">7–10</div>
             <div class="timeline-card">
               <div class="timeline-main">
-                <div class="timeline-title">Pink Talking Fish · State Theatre</div>
-                <span class="walk-pill">Dinner → Theatre · quick walk</span>
+                <div class="timeline-title">Pink Talking Fish · State Theatre ✓</div>
+                <span class="walk-pill">Dinner → Theatre · 5 min walk</span>
               </div>
               <p class="timeline-detail">
-                Doors at 7:00 PM, show at 8:00 PM. Float out after the encore and decide if the night needs one last drink, dessert, or a snowy walk.
+                Doors 7pm, show 8pm. After the encore, grab a drink or wander around if you're feeling it.
               </p>
             </div>
           </div>
         </div>
 
         <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Dinner Choice Cards</div>
+          <div class="section-title">Pick Your Dinner Spot</div>
           <p class="section-subtitle">
-            Tap the checkbox on any card to save it as a favorite. One can be your “Booked” pick.
+            Heart your favorites, then hit "Book This One" when you're ready.
           </p>
         </div>
 
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="dinner-central">
+          <article class="choice-card" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option A · Small plates & energy</span>
+              <span class="choice-tag">Small plates & energy</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
                 <span class="booked-dot"></span>Booked
               </span>
             </div>
             <h2 class="choice-title">Central Provisions</h2>
             <p class="choice-meta">
-              Old Port · Top‑tier small plates, buzzy but cozy.
+              Old Port · 5 min walk from hotel
             </p>
             <ul class="choice-list">
-              <li>Tapas‑style menu made for sharing bites.</li>
-              <li>Creative plates, great cocktails, and a warm room.</li>
-              <li>Perfect “birthday night” energy right in the Old Port.</li>
+              <li>Tapas-style shareables, good cocktails</li>
+              <li>Buzzy vibe but still cozy</li>
+              <li>Perfect pre-show spot</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -663,7 +712,7 @@
                   class="choice-checkbox"
                   data-save-key="favorite-dinner-central"
                 />
-                <span>Save as favorite</span>
+                <span>Maybe this one</span>
               </label>
               <button
                 type="button"
@@ -671,29 +720,26 @@
                 data-booked-button="dinner"
                 data-booked-id="central"
               >
-                Mark as booked
+                Book this one
               </button>
             </div>
-            <p class="note-soft">
-              Note for planner: book as early dinner before show; reservations open ~2 weeks prior.
-            </p>
           </article>
 
-          <article class="choice-card" data-choice-id="dinner-leeward">
+          <article class="choice-card" data-choice-id="dinner-leeward" data-name="Leeward" data-time="Saturday 5:30pm">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option B · Handmade pasta</span>
+              <span class="choice-tag">Fresh pasta & vibes</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
                 <span class="booked-dot"></span>Booked
               </span>
             </div>
             <h2 class="choice-title">Leeward</h2>
             <p class="choice-meta">
-              Arts District · Italian, modern, and glowing.
+              Arts District · 7 min walk from hotel
             </p>
             <ul class="choice-list">
-              <li>Fresh pastas, seasonal plates, and a quietly special room.</li>
-              <li>Feels like a “just us” celebration dinner.</li>
-              <li>A short stroll back toward the theatre after dessert.</li>
+              <li>Handmade pasta, seasonal plates</li>
+              <li>Quieter vibe, more intimate</li>
+              <li>Close to the theatre for after</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -702,7 +748,7 @@
                   class="choice-checkbox"
                   data-save-key="favorite-dinner-leeward"
                 />
-                <span>Save as favorite</span>
+                <span>Maybe this one</span>
               </label>
               <button
                 type="button"
@@ -710,29 +756,26 @@
                 data-booked-button="dinner"
                 data-booked-id="leeward"
               >
-                Mark as booked
+                Book this one
               </button>
             </div>
-            <p class="note-soft">
-              Note for planner: great fallback if Central Provisions is full; choose an earlier seating before showtime.
-            </p>
           </article>
 
-          <article class="choice-card" data-choice-id="dinner-eventide">
+          <article class="choice-card" data-choice-id="dinner-eventide" data-name="Eventide Oyster Co." data-time="Saturday 5:30pm">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option C · Seafood & oysters</span>
+              <span class="choice-tag">Seafood & oysters</span>
               <span class="booked-badge booked-badge-visual" style="display:none;">
                 <span class="booked-dot"></span>Booked
               </span>
             </div>
             <h2 class="choice-title">Eventide Oyster Co.</h2>
             <p class="choice-meta">
-              Old Port · Oysters, brown‑butter lobster rolls, coastal vibes.
+              Old Port · 6 min walk from hotel
             </p>
             <ul class="choice-list">
-              <li>Iconic lobster rolls and a bar full of local oysters.</li>
-              <li>Light but indulgent before a night of music.</li>
-              <li>Steps from the rest of downtown wandering.</li>
+              <li>Brown-butter lobster rolls, fresh oysters</li>
+              <li>Lighter feel before the show</li>
+              <li>Classic Maine coastal vibes</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -741,7 +784,7 @@
                   class="choice-checkbox"
                   data-save-key="favorite-dinner-eventide"
                 />
-                <span>Save as favorite</span>
+                <span>Maybe this one</span>
               </label>
               <button
                 type="button"
@@ -749,21 +792,18 @@
                 data-booked-button="dinner"
                 data-booked-id="eventide"
               >
-                Mark as booked
+                Book this one
               </button>
             </div>
-            <p class="note-soft">
-              Note for planner: consider timing around walk‑in waits if not reservable.
-            </p>
           </article>
         </div>
       </section>
 
       <section class="section" id="sunday">
         <div class="section-header">
-          <div class="section-title">Sunday · Brunch & Explore</div>
+          <div class="section-title">Sunday · Easy Morning</div>
           <p class="section-subtitle">
-            Brunch is locked. <strong>Morning activity is your call.</strong>
+            Brunch is set. <strong>What happens after? Up to you.</strong>
           </p>
         </div>
 
@@ -772,36 +812,36 @@
             <div class="time-pill">10:00</div>
             <div class="timeline-card">
               <div class="timeline-main">
-                <div class="timeline-title">Brunch at UNION</div>
-                <span class="walk-pill">AC Hotel → UNION · quick walk</span>
+                <div class="timeline-title">Brunch at UNION ✓</div>
+                <span class="walk-pill">AC Hotel → UNION · 3 min walk</span>
               </div>
               <p class="timeline-detail">
-                Reservation at 10:00 AM at The Press Hotel. Slow coffee, good food, zero rush.
+                10am reservation. Good coffee, solid food, no rush.
               </p>
             </div>
           </div>
         </div>
 
         <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">After‑Brunch Options</div>
+          <div class="section-title">After Brunch</div>
           <p class="section-subtitle">
-            Check any blocks that sound like “yes please.” You can mix and match.
+            Heart whatever sounds good. Or do none of it and just drive home – also totally fine.
           </p>
         </div>
 
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="sun-lighthouse">
+          <article class="choice-card" data-choice-id="sun-lighthouse" data-name="Portland Head Light" data-time="Sunday 11:30am">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option 1 · Ocean & cliffs</span>
+              <span class="choice-tag">Ocean & cliffs</span>
             </div>
             <h2 class="choice-title">Portland Head Light & Fort Williams</h2>
             <p class="choice-meta">
-              Short drive · Classic Maine coastline walk.
+              15 min drive · Classic Maine coastline
             </p>
             <ul class="choice-list">
-              <li>Walk the cliff paths and watch the waves crash on the rocks.</li>
-              <li>Photo‑worthy lighthouse and park views.</li>
-              <li>Perfect “we actually got away” moment before heading home.</li>
+              <li>Walk cliff paths, watch waves crash</li>
+              <li>Lighthouse views & photo ops</li>
+              <li>Nice "we got away" vibe before heading back</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -810,27 +850,27 @@
                   class="choice-checkbox"
                   data-save-key="sun-lighthouse"
                 />
-                <span>Save this idea</span>
+                <span>Yeah, maybe</span>
               </label>
             </div>
             <div class="pill-row">
               <span class="pill">Short drive</span>
-              <span class="pill accent">Walk + fresh air</span>
+              <span class="pill accent">Fresh air</span>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sun-vintage">
+          <article class="choice-card" data-choice-id="sun-vintage" data-name="Shopping Loop" data-time="Sunday 11:30am">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option 2 · Shops & sneakers</span>
+              <span class="choice-tag">Shops & sneakers</span>
             </div>
             <h2 class="choice-title">Vintage & Menswear Loop</h2>
             <p class="choice-meta">
-              Back through Old Port & Arts District.
+              Old Port & Arts District
             </p>
             <ul class="choice-list">
-              <li>Hit vintage spots, menswear, and sneaker shops you didn’t get to on Saturday.</li>
-              <li>Pick one “birthday piece” as a souvenir.</li>
-              <li>Cap with coffee before the drive home.</li>
+              <li>Hit the vintage/menswear/sneaker shops you missed Saturday</li>
+              <li>Grab something cool if you find it</li>
+              <li>Coffee stop before driving back</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -839,27 +879,27 @@
                   class="choice-checkbox"
                   data-save-key="sun-vintage"
                 />
-                <span>Save this idea</span>
+                <span>Yeah, maybe</span>
               </label>
             </div>
             <div class="pill-row">
               <span class="pill accent">Vintage & style</span>
-              <span class="pill">Flexible timing</span>
+              <span class="pill">Easy walk</span>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sun-chill">
+          <article class="choice-card" data-choice-id="sun-chill" data-name="Chill Mode" data-time="Sunday 11:30am">
             <div class="choice-tag-row">
-              <span class="choice-tag">Option 3 · Slow & cozy</span>
+              <span class="choice-tag">Keep it easy</span>
             </div>
             <h2 class="choice-title">Hotel, Harbor Walk & Coffee</h2>
             <p class="choice-meta">
-              Minimal moving parts, maximum cozy.
+              Waterfront · No rush
             </p>
             <ul class="choice-list">
-              <li>Sleep a little later, linger over brunch, and stroll the waterfront.</li>
-              <li>Grab a final coffee, then an easy drive back to Boston.</li>
-              <li>Low‑key landing from a big night out.</li>
+              <li>Linger over brunch, walk the waterfront</li>
+              <li>Grab coffee, then head back</li>
+              <li>Soft landing after a big Saturday</li>
             </ul>
             <div class="choice-cta">
               <label class="choice-checkbox-row">
@@ -868,12 +908,12 @@
                   class="choice-checkbox"
                   data-save-key="sun-chill"
                 />
-                <span>Save this idea</span>
+                <span>Yeah, maybe</span>
               </label>
             </div>
             <div class="pill-row">
-              <span class="pill accent">Soft landing</span>
-              <span class="pill">Zero rush</span>
+              <span class="pill accent">Low key</span>
+              <span class="pill">Zero stress</span>
             </div>
           </article>
         </div>
@@ -881,15 +921,15 @@
 
       <div class="footer-note">
         <div class="save-status" id="save-status">
-          Choices are saved in this browser. <span>Close the tab and come back later – your picks will still be here.</span>
+          Your picks save automatically in this browser. <span>Come back anytime.</span>
         </div>
         <div style="display:flex; gap:10px; align-items:center;">
           <button class="reset-btn" type="button" id="reset-choices">
             <span class="mini-dot"></span>
-            Clear all choices
+            Start over
           </button>
           <div class="print-hint">
-            <strong>Print tip:</strong> Use your browser’s “Print” to bring a paper copy with final picks.
+            <strong>Pro tip:</strong> Print this page to take a hard copy with you
           </div>
         </div>
       </div>
@@ -944,6 +984,45 @@
         }, 900);
       }
 
+      function updateItinerary() {
+        const itinerarySummary = document.getElementById("itinerary-summary");
+        const itineraryList = document.getElementById("itinerary-list");
+        if (!itinerarySummary || !itineraryList) return;
+
+        const items = [];
+
+        // Check for booked dinner
+        const bookedDinner = localStorage.getItem(STORAGE_KEY_PREFIX + "booked-dinner");
+        if (bookedDinner) {
+          const dinnerCard = document.querySelector(`[data-booked-id='${bookedDinner}']`)?.closest('.choice-card');
+          if (dinnerCard) {
+            const name = dinnerCard.getAttribute('data-name');
+            const time = dinnerCard.getAttribute('data-time');
+            if (name && time) items.push({ time, name });
+          }
+        }
+
+        // Check for checked Sunday activities
+        document.querySelectorAll(".choice-checkbox:checked").forEach((cb) => {
+          const card = cb.closest('.choice-card');
+          if (card && card.id !== 'dinner-central' && card.id !== 'dinner-leeward' && card.id !== 'dinner-eventide') {
+            const name = card.getAttribute('data-name');
+            const time = card.getAttribute('data-time');
+            if (name && time) items.push({ time, name });
+          }
+        });
+
+        // Update the summary
+        if (items.length > 0) {
+          itineraryList.innerHTML = items.map(item =>
+            `<li><span class="itinerary-time">${item.time}</span><span class="itinerary-item">${item.name}</span></li>`
+          ).join('');
+          itinerarySummary.classList.add('has-items');
+        } else {
+          itinerarySummary.classList.remove('has-items');
+        }
+      }
+
       function resetAll() {
         FAVORITE_KEYS.forEach((k) =>
           localStorage.removeItem(STORAGE_KEY_PREFIX + k)
@@ -962,6 +1041,7 @@
           .querySelectorAll("[data-choice-id^='dinner-'] .booked-badge-visual")
           .forEach((b) => (b.style.display = "none"));
 
+        updateItinerary();
         flashSaveStatus();
       }
 
@@ -974,7 +1054,10 @@
             if (badge) badge.style.display = "none";
           });
 
-        if (!bookedId) return;
+        if (!bookedId) {
+          updateItinerary();
+          return;
+        }
 
         const selectorMap = {
           central: "[data-choice-id='dinner-central']",
@@ -991,6 +1074,7 @@
         card.classList.add("booked");
         const badge = card.querySelector(".booked-badge-visual");
         if (badge) badge.style.display = "inline-flex";
+        updateItinerary();
       }
 
       function initBookedDinner() {
@@ -1021,6 +1105,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         loadCheckboxes();
         initBookedDinner();
+        updateItinerary();
 
         document
           .querySelectorAll(".choice-checkbox")
@@ -1029,6 +1114,7 @@
               const key = cb.getAttribute("data-save-key");
               if (!key) return;
               saveCheckbox(key, cb.checked);
+              updateItinerary();
             });
           });
 
@@ -1037,7 +1123,7 @@
           resetBtn.addEventListener("click", () => {
             if (
               confirm(
-                "Clear all saved choices for this weekend on this device?"
+                "Start over? This will clear all your picks."
               )
             ) {
               resetAll();

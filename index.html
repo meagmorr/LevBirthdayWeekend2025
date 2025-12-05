@@ -846,9 +846,11 @@
             <div class="choice-cta">
               <label class="choice-checkbox-row">
                 <input
-                  type="checkbox"
+                  type="radio"
+                  name="sunday-activity"
                   class="choice-checkbox"
                   data-save-key="sun-lighthouse"
+                  value="sun-lighthouse"
                 />
                 <span>Yeah, maybe</span>
               </label>
@@ -875,9 +877,11 @@
             <div class="choice-cta">
               <label class="choice-checkbox-row">
                 <input
-                  type="checkbox"
+                  type="radio"
+                  name="sunday-activity"
                   class="choice-checkbox"
                   data-save-key="sun-vintage"
+                  value="sun-vintage"
                 />
                 <span>Yeah, maybe</span>
               </label>
@@ -904,9 +908,11 @@
             <div class="choice-cta">
               <label class="choice-checkbox-row">
                 <input
-                  type="checkbox"
+                  type="radio"
+                  name="sunday-activity"
                   class="choice-checkbox"
                   data-save-key="sun-chill"
+                  value="sun-chill"
                 />
                 <span>Yeah, maybe</span>
               </label>
@@ -951,7 +957,8 @@
       const savedBookedDinner = localStorage.getItem(STORAGE_KEY_PREFIX + "booked-dinner") || "";
 
       function loadCheckboxes() {
-        document.querySelectorAll(".choice-checkbox").forEach((cb) => {
+        // Load dinner favorites (checkboxes)
+        document.querySelectorAll(".choice-checkbox[type='checkbox']").forEach((cb) => {
           const key = cb.getAttribute("data-save-key");
           if (!key) return;
 
@@ -963,11 +970,31 @@
             cb.checked = false;
           }
         });
+
+        // Load Sunday activity (radio buttons - only one can be checked)
+        const sundayActivityKeys = ["sun-lighthouse", "sun-vintage", "sun-chill"];
+        const savedSundayActivity = sundayActivityKeys.find(key =>
+          localStorage.getItem(STORAGE_KEY_PREFIX + key) === "1"
+        );
+
+        if (savedSundayActivity) {
+          const radio = document.querySelector(`input[type='radio'][data-save-key='${savedSundayActivity}']`);
+          if (radio) radio.checked = true;
+        }
       }
 
       function saveCheckbox(key, checked) {
         try {
-          localStorage.setItem(STORAGE_KEY_PREFIX + key, checked ? "1" : "0");
+          // If this is a Sunday activity radio button, clear other Sunday activities
+          const sundayActivityKeys = ["sun-lighthouse", "sun-vintage", "sun-chill"];
+          if (sundayActivityKeys.includes(key)) {
+            sundayActivityKeys.forEach(k => {
+              localStorage.setItem(STORAGE_KEY_PREFIX + k, k === key && checked ? "1" : "0");
+            });
+          } else {
+            // Regular checkbox
+            localStorage.setItem(STORAGE_KEY_PREFIX + key, checked ? "1" : "0");
+          }
           flashSaveStatus();
         } catch (e) {
           console.warn("Unable to save choice", e);

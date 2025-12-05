@@ -83,14 +83,29 @@
 
     @media (min-width: 768px) {
       header {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 360px;
         gap: 24px;
+        align-items: start;
       }
     }
 
     .title-block {
-      flex: 1;
       min-width: 0;
+    }
+
+    .left-column {
+      display: grid;
+      gap: 12px;
+    }
+
+    .right-column {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .right-column {
+        display: block;
+      }
     }
 
     .eyebrow {
@@ -131,10 +146,14 @@
       padding: 14px 16px;
       border: 1px solid rgba(139, 92, 246, 0.5);
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px 16px;
+      gap: 10px;
       max-width: 100%;
       font-size: 12px;
+    }
+
+    .meta-row {
+      display: grid;
+      gap: 4px;
     }
 
     .meta-label {
@@ -146,6 +165,17 @@
 
     .meta-value {
       font-weight: 500;
+    }
+
+    .meta-value a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .meta-value a:hover {
+      color: var(--accent-strong);
+      text-decoration: underline;
     }
 
     .sticky-note {
@@ -385,12 +415,23 @@
       border: 1px solid rgba(139, 92, 246, 0.4);
       box-shadow: 0 14px 30px rgba(26, 10, 40, 0.9);
       overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .choice-card:hover {
+      border-color: rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
     }
 
     .choice-card.booked {
       border-color: rgba(34, 197, 94, 0.9);
       box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.75),
         0 18px 40px rgba(22, 163, 74, 0.7);
+    }
+
+    .choice-card.booked:hover {
+      border-color: rgba(34, 197, 94, 1);
     }
 
     .star-button {
@@ -403,7 +444,6 @@
       border-radius: 8px;
       width: 32px;
       height: 32px;
-      display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -411,12 +451,12 @@
       color: var(--text-muted);
       transition: all 0.2s ease;
       z-index: 10;
+      display: none;
+      pointer-events: none;
     }
 
-    .star-button:hover {
-      background: rgba(42, 22, 64, 1);
-      border-color: rgba(139, 92, 246, 0.9);
-      transform: scale(1.05);
+    .choice-card.booked .star-button {
+      display: flex;
     }
 
     .star-button.selected {
@@ -426,6 +466,7 @@
     }
 
     .star-button.auto-selected {
+      display: flex;
       background: rgba(22, 163, 74, 0.15);
       border-color: rgba(34, 197, 94, 0.7);
       color: var(--accent-strong);
@@ -576,6 +617,33 @@
       color: #d1fae5;
     }
 
+    .quick-links {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .quick-link {
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(42, 22, 64, 0.9);
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .quick-link:hover {
+      background: rgba(42, 22, 64, 1);
+      border-color: rgba(139, 92, 246, 0.8);
+      color: var(--text-main);
+    }
+
     .footer-note {
       margin-top: 22px;
       font-size: 11px;
@@ -658,38 +726,36 @@
   <main class="page">
     <div class="inner">
       <header>
-        <div class="title-block">
-          <div class="eyebrow">
-            <span class="pill-dot"></span>
-            <span>Birthday Weekend · Portland, ME</span>
+        <div class="left-column">
+          <div class="title-block">
+            <div class="eyebrow">
+              <span class="pill-dot"></span>
+              <span>Birthday Weekend · Portland, ME</span>
+            </div>
+            <h1>35th Birthday Weekend</h1>
+            <p class="subtitle">
+              December 20–21, 2025 · Portland awaits. Options selected especially for you! Differentiated by vibes to (hopefully) make choosing easy-peasy!
+            </p>
           </div>
-          <h1>35th Birthday Weekend</h1>
-          <p class="subtitle">
-            December 20–21, 2025 · Portland awaits. Options selected especially for you! Differentiated by vibes to (hopefully) make choosing easy-peasy!
-          </p>
-        </div>
-        <div>
           <div class="meta">
-            <div>
+            <div class="meta-row">
               <div class="meta-label">Hotel</div>
               <div class="meta-value">AC Hotel Portland Downtown/Waterfront</div>
             </div>
-            <div>
-              <div class="meta-label">Concert</div>
-              <div class="meta-value">Pink Talking Fish · State Theatre</div>
-            </div>
-            <div>
+            <div class="meta-row">
               <div class="meta-label">Dates</div>
               <div class="meta-value">Sat Dec 20 – Sun Dec 21</div>
             </div>
-            <div>
-              <div class="meta-label">Your Job</div>
-              <div class="meta-value">Pick your favorites</div>
+            <div class="meta-row">
+              <div class="meta-label">Portland Favorites</div>
+              <div class="meta-value"><a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" rel="noopener">View Google Map →</a></div>
             </div>
           </div>
           <div class="sticky-note">
             Check off what sounds good – this page saves your picks automatically. <strong>No login, no fuss.</strong>
           </div>
+        </div>
+        <div class="right-column">
           <div class="itinerary-summary" id="itinerary-summary">
             <div class="itinerary-summary-title">🔥 SELECTED OPTIONS</div>
             <ul class="itinerary-list" id="itinerary-list">
@@ -720,8 +786,15 @@
             <h2 class="choice-title">Early Start</h2>
             <p class="choice-meta">Leave around 8am</p>
             <ul class="choice-list">
-              <li>Details forthcoming</li>
+              <li>Tour <strong>Victoria Mansion</strong>, a stunning Victorian-era house museum</li>
+              <li>Purchase tickets for the entry time of your choice on the drive; there should still be plenty of availability</li>
+              <li>Then explore Old Port before check-in</li>
             </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+              <a href="#" class="quick-link" onclick="return false;">🎟️ Reservations</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="morning-mid" data-name="Mid-Morning" data-time="Saturday 10:00am" data-activity="Mid-morning departure">
@@ -732,8 +805,15 @@
             <h2 class="choice-title">Mid-Morning</h2>
             <p class="choice-meta">Leave around 10am</p>
             <ul class="choice-list">
-              <li>Details forthcoming</li>
+              <li>Grab lunch in Old Port after arrival</li>
+              <li>Swing by Frost Factory (cannabis dispensary) if you'd like</li>
+              <li>Browse shops & explore before check-in</li>
             </ul>
+            <p class="note-soft">Note: Frost Factory also available Sunday</p>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="morning-late" data-name="Late Morning" data-time="Saturday 11:00am" data-activity="Late morning departure">
@@ -744,8 +824,13 @@
             <h2 class="choice-title">Late Morning</h2>
             <p class="choice-meta">Leave around 11am</p>
             <ul class="choice-list">
-              <li>Details forthcoming</li>
+              <li>Sleep in, leisurely breakfast at home</li>
+              <li>Arrive just in time for hotel check-in</li>
+              <li>Easy, relaxed start to the weekend</li>
             </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+            </div>
           </article>
         </div>
 
@@ -784,6 +869,10 @@
             <ul class="choice-list">
               <li>Details forthcoming</li>
             </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="predinner-drinks" data-name="Hotel Bar" data-time="Saturday 4:00pm" data-activity="Drinks at hotel bar">
@@ -796,6 +885,10 @@
             <ul class="choice-list">
               <li>Details forthcoming</li>
             </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="predinner-chill" data-name="Chill in Room" data-time="Saturday 4:00pm" data-activity="Relax in room">
@@ -808,6 +901,9 @@
             <ul class="choice-list">
               <li>Details forthcoming</li>
             </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+            </div>
           </article>
         </div>
 
@@ -856,24 +952,77 @@
         <div class="section-header">
           <div class="section-title">Sunday · Easy Morning</div>
           <p class="section-subtitle">
-            Brunch is set. <strong>What's next is up to you.</strong> Choose whatever sounds good to you!
+            <strong>Pick your brunch spot,</strong> then decide what comes next!
           </p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">10:00</div>
-            <div class="timeline-card booked" data-choice-id="brunch" data-name="Brunch at UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
-              <div class="timeline-main">
-                <div class="timeline-title">Brunch at UNION</div>
-                <span class="walk-pill">AC Hotel → UNION · 3 min walk</span>
-              </div>
-              <p class="timeline-detail">
-                10am reservation. Good coffee, solid food, no rush.
-              </p>
+        <!-- Brunch Options -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Brunch at 10:00am</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card booked" data-choice-id="brunch-union" data-name="UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION" data-auto-selected="true">
+            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Classic brunch</span>
             </div>
-          </div>
+            <h2 class="choice-title">UNION</h2>
+            <p class="choice-meta">10am reservation · 3 min walk from hotel</p>
+            <ul class="choice-list">
+              <li>Good coffee, solid food, no rush</li>
+              <li>Walkable from AC Hotel</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill accent">Walkable</span>
+            </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+              <a href="#" class="quick-link" onclick="return false;">🎟️ Reservations</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="brunch-juicery" data-name="The Juicery" data-time="Sunday 10:00am" data-activity="Brunch at The Juicery">
+            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-juicery">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Light & fresh</span>
+            </div>
+            <h2 class="choice-title">The Juicery</h2>
+            <p class="choice-meta">Old Port · Health-focused</p>
+            <ul class="choice-list">
+              <li>Smoothie bowls, avocado toast, fresh juice</li>
+              <li>Light & energizing before exploring</li>
+              <li>Quick, healthy, no reservations needed</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill accent">Light & fresh</span>
+            </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="brunch-hotsuppa" data-name="Hot Suppa" data-time="Sunday 10:00am" data-activity="Brunch at Hot Suppa">
+            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-hotsuppa">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Comfort food</span>
+            </div>
+            <h2 class="choice-title">Hot Suppa</h2>
+            <p class="choice-meta">Arts District · Southern comfort</p>
+            <ul class="choice-list">
+              <li>Biscuits & gravy, fried chicken & waffles</li>
+              <li>Hearty, indulgent, stick-to-your-ribs brunch</li>
+              <li>Worth the wait if there's a line</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill accent">Comfort food</span>
+            </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
+          </article>
         </div>
 
         <div class="section-header" style="margin-top:18px;">
@@ -899,6 +1048,10 @@
               <span class="pill">Short drive</span>
               <span class="pill accent">Fresh air</span>
             </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="sun-vintage" data-name="Shopping Loop" data-time="Sunday 11:30am" data-activity="Vintage shopping & sneakers">
@@ -919,6 +1072,10 @@
               <span class="pill accent">Vintage & style</span>
               <span class="pill">Easy walk</span>
             </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+            </div>
           </article>
 
           <article class="choice-card" data-choice-id="sun-chill" data-name="Chill Mode" data-time="Sunday 11:30am" data-activity="Harbor walk & coffee">
@@ -926,18 +1083,98 @@
             <div class="choice-tag-row">
               <span class="choice-tag">Keep it easy</span>
             </div>
-            <h2 class="choice-title">Hotel, Harbor Walk & Coffee</h2>
+            <h2 class="choice-title">Chill Mode: Harbor Walk & Frost Factory</h2>
             <p class="choice-meta">
               Waterfront · No rush
             </p>
             <ul class="choice-list">
               <li>Linger over brunch, walk the waterfront</li>
+              <li>Stop by Frost Factory (South Portland, 10a-8p) to preorder favorites</li>
               <li>Grab coffee, then head back</li>
               <li>Soft landing after a big Saturday</li>
             </ul>
             <div class="pill-row">
               <span class="pill accent">Low key</span>
               <span class="pill">Zero stress</span>
+            </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🌐 Preorder</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="drive-home">
+        <div class="section-header">
+          <div class="section-title">Drive Home</div>
+          <p class="section-subtitle">
+            <strong>Road trip entertainment</strong> for the 2-hour drive back
+          </p>
+        </div>
+
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Podcasts</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card">
+            <div class="choice-tag-row">
+              <span class="choice-tag">Podcast</span>
+            </div>
+            <h2 class="choice-title">Podcast Option 1</h2>
+            <p class="choice-meta">Placeholder podcast</p>
+            <ul class="choice-list">
+              <li>Episode description coming soon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">🎧 Listen</a>
+            </div>
+          </article>
+
+          <article class="choice-card">
+            <div class="choice-tag-row">
+              <span class="choice-tag">Podcast</span>
+            </div>
+            <h2 class="choice-title">Podcast Option 2</h2>
+            <p class="choice-meta">Placeholder podcast</p>
+            <ul class="choice-list">
+              <li>Episode description coming soon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">🎧 Listen</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Playlists</div>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card">
+            <div class="choice-tag-row">
+              <span class="choice-tag">Spotify Playlist</span>
+            </div>
+            <h2 class="choice-title">Playlist 1</h2>
+            <p class="choice-meta">Curated for the drive</p>
+            <ul class="choice-list">
+              <li>Playlist description coming soon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">🎵 Play on Spotify</a>
+            </div>
+          </article>
+
+          <article class="choice-card">
+            <div class="choice-tag-row">
+              <span class="choice-tag">Spotify Playlist</span>
+            </div>
+            <h2 class="choice-title">Playlist 2</h2>
+            <p class="choice-meta">Curated for the drive</p>
+            <ul class="choice-list">
+              <li>Playlist description coming soon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">🎵 Play on Spotify</a>
             </div>
           </article>
         </div>
@@ -989,7 +1226,7 @@
         });
 
         // Add user-selected items
-        const categories = ['morning', 'predinner', 'sunday'];
+        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           const favId = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (favId) {
@@ -1004,10 +1241,19 @@
 
         // Parse and sort by actual time
         items.forEach(item => {
-          const match = item.time.match(/(Saturday|Sunday)\s+(\d+:\d+\s*[ap]m)/i);
+          const match = item.time.match(/(Saturday|Sunday)\s+(\d+):(\d+)\s*([ap]m)/i);
           if (match) {
             item.day = match[1];
-            item.timeOnly = match[2];
+            let hour = parseInt(match[2]);
+            const minute = parseInt(match[3]);
+            const period = match[4].toLowerCase();
+
+            // Convert to 24-hour format for proper sorting
+            if (period === 'pm' && hour !== 12) hour += 12;
+            if (period === 'am' && hour === 12) hour = 0;
+
+            item.sortTime = hour * 60 + minute;
+            item.timeOnly = `${match[2]}:${match[3]} ${match[4]}`;
           }
         });
 
@@ -1015,8 +1261,8 @@
           if (a.day !== b.day) {
             return a.day === 'Saturday' ? -1 : 1;
           }
-          // Simple time comparison (good enough for this use case)
-          return a.timeOnly.localeCompare(b.timeOnly);
+          // Sort by 24-hour time value
+          return a.sortTime - b.sortTime;
         });
 
         // Group by day
@@ -1074,7 +1320,7 @@
       }
 
       function resetAll() {
-        const categories = ['morning', 'predinner', 'sunday'];
+        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           applyFavorite(category, null);
@@ -1084,18 +1330,25 @@
 
       function initFavorites() {
         // Load saved favorites
-        const categories = ['morning', 'predinner', 'sunday'];
+        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (saved) applyFavorite(category, saved);
         });
 
-        // Set up star button handlers
-        document.querySelectorAll("[data-fav-button]").forEach((btn) => {
-          // Skip auto-selected buttons
-          if (btn.hasAttribute('data-auto-selected')) return;
+        // Set up card click handlers
+        document.querySelectorAll(".choice-card").forEach((card) => {
+          // Skip auto-selected cards
+          if (card.hasAttribute('data-auto-selected')) return;
 
-          btn.addEventListener("click", () => {
+          // Skip cards without fav-button (like Drive Home cards)
+          const btn = card.querySelector("[data-fav-button]");
+          if (!btn) return;
+
+          card.addEventListener("click", (e) => {
+            // Don't trigger if clicking on a link
+            if (e.target.tagName === 'A' || e.target.closest('a')) return;
+
             const category = btn.getAttribute("data-fav-button");
             const id = btn.getAttribute("data-fav-id");
             if (!category || !id) return;

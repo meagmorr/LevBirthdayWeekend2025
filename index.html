@@ -178,6 +178,50 @@
       text-decoration: underline;
     }
 
+    .map-button {
+      margin-top: 12px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.25), rgba(16, 185, 129, 0.15));
+      border: 2px solid rgba(52, 211, 153, 0.7);
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .map-button:hover {
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.35), rgba(16, 185, 129, 0.25));
+      border-color: rgba(52, 211, 153, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+    }
+
+    .map-button-content {
+      flex: 1;
+    }
+
+    .map-button-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .map-button-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .map-button-icon {
+      font-size: 24px;
+      opacity: 0.8;
+    }
+
     .sticky-note {
       margin-top: 12px;
       padding: 10px 14px;
@@ -746,11 +790,14 @@
               <div class="meta-label">Dates</div>
               <div class="meta-value">Sat Dec 20 – Sun Dec 21</div>
             </div>
-            <div class="meta-row">
-              <div class="meta-label">Portland Favorites</div>
-              <div class="meta-value"><a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" rel="noopener">View Google Map →</a></div>
-            </div>
           </div>
+          <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" rel="noopener" class="map-button">
+            <div class="map-button-content">
+              <div class="map-button-title">Portland Favorites Map</div>
+              <div class="map-button-subtitle">All the spots we've curated — food, drinks, shops & more</div>
+            </div>
+            <div class="map-button-icon">🗺️</div>
+          </a>
           <div class="sticky-note">
             Check off what sounds good – this page saves your picks automatically. <strong>No login, no fuss.</strong>
           </div>
@@ -806,13 +853,10 @@
             <p class="choice-meta">Leave around 10am</p>
             <ul class="choice-list">
               <li>Grab lunch in Old Port after arrival</li>
-              <li>Swing by Frost Factory (cannabis dispensary) if you'd like</li>
               <li>Browse shops & explore before check-in</li>
             </ul>
-            <p class="note-soft">Note: Frost Factory also available Sunday</p>
             <div class="quick-links">
               <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
             </div>
           </article>
 
@@ -834,6 +878,33 @@
           </article>
         </div>
 
+        <!-- Frost Factory -->
+        <div class="section-header" style="margin-top:18px;">
+          <div class="section-title">Optional: Frost Factory</div>
+        </div>
+        <div class="choice-grid" style="grid-template-columns: 1fr;">
+          <article class="choice-card" data-choice-id="frost-sat" data-name="Frost Factory" data-time="Saturday 12:00pm" data-activity="Frost Factory visit">
+            <button type="button" class="star-button" data-fav-button="frost-sat" data-fav-id="frost-sat">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Cannabis Dispensary</span>
+            </div>
+            <h2 class="choice-title">Frost Factory</h2>
+            <p class="choice-meta">South Portland · 10am–8pm</p>
+            <ul class="choice-list">
+              <li>Matt's favorite dispensary — preorder online for easy pickup</li>
+              <li>Stop by on the way into Portland or anytime Saturday</li>
+              <li>Also available Sunday if you miss it</li>
+            </ul>
+            <div class="pill-row">
+              <span class="pill accent">Also available Sunday</span>
+            </div>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
+              <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🌐 Preorder</a>
+            </div>
+          </article>
+        </div>
+
         <!-- Hotel Check-in -->
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">Check-In</div>
@@ -842,7 +913,7 @@
           <div class="timeline-row">
             <div class="time-pill">3:00</div>
             <div class="timeline-card booked" data-choice-id="hotel-checkin" data-name="AC Hotel" data-time="Saturday 3:00pm" data-activity="Hotel check-in" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <button type="button" class="star-button auto-selected selected" data-fav-button="hotel" data-fav-id="hotel-checkin" data-auto-selected="true">★</button>
               <div class="timeline-main">
                 <div class="timeline-title">AC Hotel Portland Downtown/Waterfront</div>
                 <span class="walk-pill">Waterfront</span>
@@ -915,7 +986,7 @@
           <div class="timeline-row">
             <div class="time-pill">5:30</div>
             <div class="timeline-card booked" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Early dinner at Central Provisions" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <button type="button" class="star-button auto-selected selected" data-fav-button="dinner" data-fav-id="dinner-central" data-auto-selected="true">★</button>
               <div class="timeline-main">
                 <div class="timeline-title">Central Provisions</div>
                 <span class="walk-pill">Old Port · 5 min walk</span>
@@ -935,7 +1006,7 @@
           <div class="timeline-row">
             <div class="time-pill">8:00</div>
             <div class="timeline-card booked" data-choice-id="show" data-name="Pink Talking Fish" data-time="Saturday 8:00pm" data-activity="Pink Talking Fish at State Theatre" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+              <button type="button" class="star-button auto-selected selected" data-fav-button="show" data-fav-id="show-ptf" data-auto-selected="true">★</button>
               <div class="timeline-main">
                 <div class="timeline-title">Pink Talking Fish · State Theatre</div>
                 <span class="walk-pill">Doors 7pm · Show 8pm</span>
@@ -961,8 +1032,8 @@
           <div class="section-title">Brunch at 10:00am</div>
         </div>
         <div class="choice-grid">
-          <article class="choice-card booked" data-choice-id="brunch-union" data-name="UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION" data-auto-selected="true">
-            <button type="button" class="star-button auto-selected" data-auto-selected="true">★</button>
+          <article class="choice-card" data-choice-id="brunch-union" data-name="UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION">
+            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-union">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Classic brunch</span>
             </div>
@@ -1089,7 +1160,7 @@
             </p>
             <ul class="choice-list">
               <li>Linger over brunch, walk the waterfront</li>
-              <li>Stop by Frost Factory (South Portland, 10a-8p) to preorder favorites</li>
+              <li>Stop by Frost Factory (yes, we can go again if we didn't hit this on the way up — new day, new count)</li>
               <li>Grab coffee, then head back</li>
               <li>Soft landing after a big Saturday</li>
             </ul>
@@ -1218,19 +1289,12 @@
 
         const items = [];
 
-        // Add auto-selected items (hotel, dinner, show, brunch)
-        document.querySelectorAll("[data-auto-selected='true']").forEach((card) => {
-          const activity = card.getAttribute('data-activity');
-          const time = card.getAttribute('data-time');
-          if (activity && time) items.push({ time, activity });
-        });
-
-        // Add user-selected items
-        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
+        // Add all selected items (including auto-selected that are toggled on)
+        const categories = ['hotel', 'dinner', 'show', 'morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           const favId = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (favId) {
-            const card = document.querySelector(`[data-fav-id='${favId}']`)?.closest('.choice-card');
+            const card = document.querySelector(`[data-fav-id='${favId}']`)?.closest('.choice-card, .timeline-card');
             if (card) {
               const activity = card.getAttribute('data-activity');
               const time = card.getAttribute('data-time');
@@ -1297,7 +1361,7 @@
       function applyFavorite(category, favId) {
         // Remove highlight and unselect stars from all cards in this category
         document.querySelectorAll(`[data-fav-button='${category}']`).forEach((btn) => {
-          const card = btn.closest('.choice-card');
+          const card = btn.closest('.choice-card, .timeline-card');
           if (card) card.classList.remove("booked");
           btn.textContent = "☆";
           btn.classList.remove("selected");
@@ -1311,7 +1375,7 @@
         // Add highlight to selected card and fill star
         const selectedBtn = document.querySelector(`[data-fav-button='${category}'][data-fav-id='${favId}']`);
         if (selectedBtn) {
-          const card = selectedBtn.closest('.choice-card');
+          const card = selectedBtn.closest('.choice-card, .timeline-card');
           if (card) card.classList.add("booked");
           selectedBtn.textContent = "★";
           selectedBtn.classList.add("selected");
@@ -1320,27 +1384,45 @@
       }
 
       function resetAll() {
-        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
+        const categories = ['hotel', 'dinner', 'show', 'morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           applyFavorite(category, null);
         });
+        // Re-initialize auto-selected defaults
+        initAutoSelected();
         flashSaveStatus();
       }
 
+      function initAutoSelected() {
+        // Set auto-selected items as selected by default if not already set
+        const autoCategories = [
+          { category: 'hotel', id: 'hotel-checkin' },
+          { category: 'dinner', id: 'dinner-central' },
+          { category: 'show', id: 'show-ptf' }
+        ];
+        autoCategories.forEach(({ category, id }) => {
+          const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          if (!saved) {
+            localStorage.setItem(STORAGE_KEY_PREFIX + `fav-${category}`, id);
+            applyFavorite(category, id);
+          }
+        });
+      }
+
       function initFavorites() {
+        // Initialize auto-selected items first
+        initAutoSelected();
+
         // Load saved favorites
-        const categories = ['morning', 'predinner', 'brunch', 'sunday'];
+        const categories = ['hotel', 'dinner', 'show', 'morning', 'predinner', 'brunch', 'sunday'];
         categories.forEach(category => {
           const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
           if (saved) applyFavorite(category, saved);
         });
 
-        // Set up card click handlers
-        document.querySelectorAll(".choice-card").forEach((card) => {
-          // Skip auto-selected cards
-          if (card.hasAttribute('data-auto-selected')) return;
-
+        // Set up card click handlers for both choice-card and timeline-card
+        document.querySelectorAll(".choice-card, .timeline-card").forEach((card) => {
           // Skip cards without fav-button (like Drive Home cards)
           const btn = card.querySelector("[data-fav-button]");
           if (!btn) return;

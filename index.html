@@ -828,7 +828,7 @@
         </div>
         <div class="right-column">
           <div class="itinerary-summary" id="itinerary-summary">
-            <div class="itinerary-summary-title">🔥 SELECTED OPTIONS</div>
+            <div class="itinerary-summary-title">🔥 YOUR WEEKEND</div>
             <ul class="itinerary-list" id="itinerary-list">
               <!-- Dynamically populated -->
             </ul>
@@ -838,27 +838,78 @@
 
       <section class="section" id="saturday">
         <div class="section-header">
-          <div class="section-title">Saturday · Let's Go</div>
+          <div class="section-title">Saturday Schedule</div>
         </div>
-        <p class="section-subtitle" style="margin-bottom: 18px;">
-          Hotel, dinner & show are set. <strong>Pick from activities below, or just relax before check-in.</strong>
-        </p>
 
-        <!-- Saturday Activities -->
-        <h2 class="day-section-header">Saturday Activities</h2>
-        <p class="section-subtitle" style="margin-bottom: 18px;">Pick whatever sounds good before or after check-in</p>
+        <!-- Leave Boston -->
+        <div class="timeline" style="margin-bottom: 24px;">
+          <div class="timeline-row">
+            <div class="time-pill">11:00</div>
+            <div class="timeline-card">
+              <div class="timeline-main">
+                <div class="timeline-title">Leave Boston</div>
+              </div>
+              <p class="timeline-detail">Hit the road from Boston</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Before Check-In Choice -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Arrive Portland - Before Check-In</div>
+          <p class="section-subtitle">Pick ONE activity before 3pm check-in</p>
+        </div>
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="victoria-mansion-sat" data-name="Victoria Mansion" data-time="Saturday 10:00am" data-activity="Victoria Mansion tour">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="victoria-mansion-sat">☆</button>
+          <article class="choice-card" data-choice-id="sat-before-oldport" data-category="saturdayBeforeCheckin">
+            <button type="button" class="star-button" data-fav-button="saturdayBeforeCheckin" data-fav-id="sat-before-oldport">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Wander & Drinks</span>
+            </div>
+            <h2 class="choice-title">Explore Old Port + Novel Cocktail Bar</h2>
+            <p class="choice-meta">Wander the district, warm up with cocktails</p>
+            <ul class="choice-list">
+              <li>Wander the Old Port district</li>
+              <li>Warm up with cocktails at Novel</li>
+              <li>See the lobster trap trees</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port</a>
+              <a href="#" class="quick-link" onclick="return false;">📍 Novel [NEED LINK]</a>
+              <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About Trees</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-before-baths" data-category="saturdayBeforeCheckin">
+            <button type="button" class="star-button" data-fav-button="saturdayBeforeCheckin" data-fav-id="sat-before-baths">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Relax & Recharge</span>
+            </div>
+            <h2 class="choice-title">Washington Baths</h2>
+            <p class="choice-meta">$36/person · No time limit</p>
+            <ul class="choice-list">
+              <li>Arrive early for ultimate relaxation</li>
+              <li>Sauna, cold plunge, hot pool</li>
+              <li>Saturday hours: 12pm-9pm</li>
+              <li>Bring: bathing suit, towel, sandals</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://washingtonbaths.com/faq.html" class="quick-link" target="_blank" rel="noopener">🌐 FAQs</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-before-mansion" data-category="saturdayBeforeCheckin">
+            <button type="button" class="star-button" data-fav-button="saturdayBeforeCheckin" data-fav-id="sat-before-mansion">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Museum & History</span>
             </div>
             <h2 class="choice-title">Victoria Mansion</h2>
             <p class="choice-meta">Victorian-era house museum</p>
             <ul class="choice-list">
-              <li>Stunning Victorian architecture and holiday decor</li>
-              <li>Purchase tickets for your preferred entry time</li>
-              <li>Available both Saturday and Sunday</li>
+              <li>Stunning Victorian architecture</li>
+              <li>Holiday decor tour</li>
+              <li>Perfect for history buffs (1-1.5 hours)</li>
             </ul>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
@@ -866,334 +917,161 @@
               <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
             </div>
           </article>
-
-          <article class="choice-card" data-choice-id="pma-film-sat" data-name="Portland Museum of Art" data-time="Saturday 12:00pm" data-activity="PMA Film: Safe (1995)">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="pma-film-sat">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Film & Art</span>
-            </div>
-            <h2 class="choice-title">Portland Museum of Art: Safe (1995)</h2>
-            <p class="choice-meta">Noon – 2:05pm · Introduction by Xander Berkeley</p>
-            <ul class="choice-list">
-              <li>Classic 1995 film with special introduction</li>
-              <li>Available both Saturday and Sunday</li>
-              <li>Perfect for a rainy afternoon</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="https://www.portlandmuseum.org/" class="quick-link" target="_blank" rel="noopener">🌐 Museum</a>
-              <a href="https://www.portlandmuseum.org/eventscalendar/safe-4" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="frost-factory-sat" data-name="Frost Factory" data-time="Saturday 12:00pm" data-activity="Frost Factory visit">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="frost-factory-sat">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Cannabis Dispensary</span>
-            </div>
-            <h2 class="choice-title">Frost Factory</h2>
-            <p class="choice-meta">South Portland · 10am–8pm</p>
-            <ul class="choice-list">
-              <li>Matt's favorite dispensary — preorder online</li>
-              <li>Loyalty members get a birthday gift!</li>
-              <li>Available both Saturday and Sunday</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="https://thefrostfactory.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🎟️ Preorder</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="old-port-sat" data-name="Explore Old Port" data-time="Saturday 1:00pm" data-activity="Old Port exploring & lobster trap trees">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="old-port-sat">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Wander & Explore</span>
-            </div>
-            <h2 class="choice-title">Explore Old Port & Lobster Trap Trees</h2>
-            <p class="choice-meta">Waterfront & downtown</p>
-            <ul class="choice-list">
-              <li>See the famous lobster trap holiday trees</li>
-              <li>Browse shops, galleries, and waterfront</li>
-              <li>Perfect for wandering at your own pace</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port Wharf</a>
-              <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About the Trees</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="ice-skating-sat" data-name="Ice Skating" data-time="Saturday 2:00pm" data-activity="Ice skating at Thompson's Point">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="ice-skating-sat">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Active & Fun</span>
-            </div>
-            <h2 class="choice-title">Ice Skating at Thompson's Point</h2>
-            <p class="choice-meta">$18 including skate rentals · 1.5-2 hour sessions</p>
-            <ul class="choice-list">
-              <li>Timed entry sessions, book in advance</li>
-              <li>Heated bathrooms (important!)</li>
-              <li>Tickets available Sunday, Dec 14th at 5pm</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/8Ma9LMGf2gbAeeZc9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="http://www.thompsonspointrink.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://www.thompsonspointrink.com/iceschedule" class="quick-link" target="_blank" rel="noopener">🎟️ Book Session</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="washington-baths-sat" data-name="Washington Baths" data-time="Saturday 12:00pm" data-activity="Sauna & cold plunge at Washington Baths">
-            <button type="button" class="star-button" data-fav-button="activities-sat" data-fav-id="washington-baths-sat">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Relax & Recharge</span>
-            </div>
-            <h2 class="choice-title">Washington Baths</h2>
-            <p class="choice-meta">$36/person · No time limit</p>
-            <ul class="choice-list">
-              <li>Sauna, cold plunge, hot pool, and relaxation</li>
-              <li>Saturday: 12pm-9pm · Sunday: 7am-12pm (Winter Solstice!)</li>
-              <li>No reservations, all genders welcome</li>
-              <li>Bring bathing suit, towel, sandals (towels $3 to rent)</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://washingtonbaths.com/faq.html" class="quick-link" target="_blank" rel="noopener">🌐 FAQs</a>
-            </div>
-          </article>
         </div>
 
-        <!-- Hotel Check-in -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Check-In</div>
-        </div>
-        <div class="timeline">
+        <!-- Check-In -->
+        <div class="timeline" style="margin-top: 24px;">
           <div class="timeline-row">
             <div class="time-pill">3:00</div>
-            <div class="timeline-card booked" data-choice-id="hotel-checkin" data-name="AC Hotel" data-time="Saturday 3:00pm" data-activity="Hotel check-in" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected selected" data-fav-button="hotel" data-fav-id="hotel-checkin" data-auto-selected="true">★</button>
+            <div class="timeline-card booked">
               <div class="timeline-main">
-                <div class="timeline-title">AC Hotel Portland Downtown/Waterfront</div>
-                <span class="walk-pill">Waterfront</span>
+                <div class="timeline-title">Check-In ★</div>
               </div>
               <p class="timeline-detail">
-                Drop your bags, check out the harbor views, get settled.
+                AC Hotel Portland Downtown/Waterfront · Drop bags, check out harbor views, settle in
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Pre-Dinner Options -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Pre-Dinner</div>
-        </div>
-        <div class="choice-grid">
-          <article class="choice-card" data-choice-id="predinner-explore" data-name="Explore Old Port" data-time="Saturday 4:00pm" data-activity="Old Port exploring">
-            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-explore">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Wander & explore</span>
-            </div>
-            <h2 class="choice-title">Explore Old Port</h2>
-            <p class="choice-meta">4:00 PM – 5:30 PM</p>
-            <ul class="choice-list">
-              <li>Details forthcoming</li>
-            </ul>
-            <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="predinner-drinks" data-name="Hotel Bar" data-time="Saturday 4:00pm" data-activity="Drinks at hotel bar">
-            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-drinks">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Relax & unwind</span>
-            </div>
-            <h2 class="choice-title">Hotel Bar</h2>
-            <p class="choice-meta">4:00 PM – 5:30 PM</p>
-            <ul class="choice-list">
-              <li>Details forthcoming</li>
-            </ul>
-            <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="predinner-chill" data-name="Chill in Room" data-time="Saturday 4:00pm" data-activity="Relax in room">
-            <button type="button" class="star-button" data-fav-button="predinner" data-fav-id="predinner-chill">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Downtime</span>
-            </div>
-            <h2 class="choice-title">Chill in Room</h2>
-            <p class="choice-meta">4:00 PM – 5:30 PM</p>
-            <ul class="choice-list">
-              <li>Details forthcoming</li>
-            </ul>
-            <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-            </div>
-          </article>
-        </div>
-
-        <!-- Early Dinner -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Dinner</div>
+        <!-- Fixed Evening Schedule -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Saturday Evening (Fixed Schedule)</div>
         </div>
         <div class="timeline">
+          <div class="timeline-row">
+            <div class="time-pill">4:30</div>
+            <div class="timeline-card">
+              <div class="timeline-main">
+                <div class="timeline-title">Freshen Up</div>
+              </div>
+              <p class="timeline-detail">Get ready for dinner</p>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="time-pill">5:00</div>
+            <div class="timeline-card">
+              <div class="timeline-main">
+                <div class="timeline-title">Pre-Dinner Drinks</div>
+              </div>
+              <p class="timeline-detail">
+                Hotel bar, AC Lounge (waterfront views) · <em>If time allows: Stroll waterfront to see lobster trap trees lit up</em> · <strong>⚠️ Reminder: Set fantasy football lineup!</strong>
+              </p>
+            </div>
+          </div>
+
           <div class="timeline-row">
             <div class="time-pill">5:30</div>
-            <div class="timeline-card booked" data-choice-id="dinner-central" data-name="Central Provisions" data-time="Saturday 5:30pm" data-activity="Early dinner at Central Provisions" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected selected" data-fav-button="dinner" data-fav-id="dinner-central" data-auto-selected="true">★</button>
+            <div class="timeline-card booked">
               <div class="timeline-main">
-                <div class="timeline-title">Central Provisions</div>
-                <span class="walk-pill">Old Port · 5 min walk</span>
+                <div class="timeline-title">Dinner ★</div>
               </div>
               <p class="timeline-detail">
-                Tapas-style shareables, good cocktails. Early dinner to make the show on time.
+                Central Provisions (confirmed reservation) · 5 min walk from hotel · Tapas-style shareables, good cocktails
               </p>
+              <div class="quick-links" style="margin-top: 8px;">
+                <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+                <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div class="time-pill">8:00</div>
+            <div class="timeline-card booked">
+              <div class="timeline-main">
+                <div class="timeline-title">The Show ★</div>
+              </div>
+              <p class="timeline-detail">
+                Pink Talking Fish at State Theatre · Doors 7pm · 5 min walk from dinner
+              </p>
+              <div class="quick-links" style="margin-top: 8px;">
+                <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+                <a href="#" class="quick-link" onclick="return false;">🎟️ Tickets [NEED LINK]</a>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Show -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">The Show</div>
+        <!-- After The Show Choice -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">After The Show</div>
+          <p class="section-subtitle">Pick your post-show vibe</p>
         </div>
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">8:00</div>
-            <div class="timeline-card booked" data-choice-id="show" data-name="Pink Talking Fish" data-time="Saturday 8:00pm" data-activity="Pink Talking Fish at State Theatre" data-auto-selected="true">
-              <button type="button" class="star-button auto-selected selected" data-fav-button="show" data-fav-id="show-ptf" data-auto-selected="true">★</button>
-              <div class="timeline-main">
-                <div class="timeline-title">Pink Talking Fish · State Theatre</div>
-                <span class="walk-pill">Doors 7pm · Show 8pm</span>
-              </div>
-              <p class="timeline-detail">
-                5 min walk from Central Provisions. After the encore, grab a drink or wander if you're feeling it.
-              </p>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="sat-after-option1" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option1">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">[NAME NEEDED]</span>
             </div>
-          </div>
+            <h2 class="choice-title">[NAME NEEDED]</h2>
+            <p class="choice-meta">[Description]</p>
+            <ul class="choice-list">
+              <li>[Hours/location]</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-after-option2" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option2">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">[NAME NEEDED]</span>
+            </div>
+            <h2 class="choice-title">[NAME NEEDED]</h2>
+            <p class="choice-meta">[Description]</p>
+            <ul class="choice-list">
+              <li>[Hours/location]</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-after-option3" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option3">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">[NAME NEEDED]</span>
+            </div>
+            <h2 class="choice-title">[NAME NEEDED]</h2>
+            <p class="choice-meta">[Description]</p>
+            <ul class="choice-list">
+              <li>[Hours/location]</li>
+            </ul>
+            <div class="quick-links">
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+            </div>
+          </article>
         </div>
       </section>
 
       <section class="section" id="sunday">
         <div class="section-header">
-          <div class="section-title">Sunday · Easy Morning</div>
-          <p class="section-subtitle">
-            <strong>Pick your brunch spot and activities,</strong> or just head home after breakfast!
-          </p>
+          <div class="section-title">Sunday Schedule</div>
         </div>
 
-        <!-- Sunday Activities -->
-        <h2 class="day-section-header">Sunday Activities</h2>
-        <p class="section-subtitle" style="margin-bottom: 18px;">Same great options — pick what you want to do Sunday</p>
-        <div class="choice-grid">
-          <article class="choice-card" data-choice-id="victoria-mansion-sun" data-name="Victoria Mansion" data-time="Sunday 10:00am" data-activity="Victoria Mansion tour">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="victoria-mansion-sun">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Museum & History</span>
-            </div>
-            <h2 class="choice-title">Victoria Mansion</h2>
-            <p class="choice-meta">Victorian-era house museum</p>
-            <ul class="choice-list">
-              <li>Stunning Victorian architecture and holiday decor</li>
-              <li>Purchase tickets for your preferred entry time</li>
-              <li>Available both Saturday and Sunday</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="https://victoriamansion.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="pma-film-sun" data-name="Portland Museum of Art" data-time="Sunday 12:00pm" data-activity="PMA Film: Safe (1995)">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="pma-film-sun">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Film & Art</span>
-            </div>
-            <h2 class="choice-title">Portland Museum of Art: Safe (1995)</h2>
-            <p class="choice-meta">Noon – 2:05pm · Introduction by Xander Berkeley</p>
-            <ul class="choice-list">
-              <li>Classic 1995 film with special introduction</li>
-              <li>Available both Saturday and Sunday</li>
-              <li>Perfect for a rainy afternoon</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="https://www.portlandmuseum.org/" class="quick-link" target="_blank" rel="noopener">🌐 Museum</a>
-              <a href="https://www.portlandmuseum.org/eventscalendar/safe-4" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="frost-factory-sun" data-name="Frost Factory" data-time="Sunday 12:00pm" data-activity="Frost Factory visit">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="frost-factory-sun">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Cannabis Dispensary</span>
-            </div>
-            <h2 class="choice-title">Frost Factory</h2>
-            <p class="choice-meta">South Portland · 10am–8pm</p>
-            <ul class="choice-list">
-              <li>Matt's favorite dispensary — preorder online</li>
-              <li>Loyalty members get a birthday gift!</li>
-              <li>Available both Saturday and Sunday</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="https://thefrostfactory.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🎟️ Preorder</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="old-port-sun" data-name="Explore Old Port" data-time="Sunday 1:00pm" data-activity="Old Port exploring & lobster trap trees">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="old-port-sun">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Wander & Explore</span>
-            </div>
-            <h2 class="choice-title">Explore Old Port & Lobster Trap Trees</h2>
-            <p class="choice-meta">Waterfront & downtown</p>
-            <ul class="choice-list">
-              <li>See the famous lobster trap holiday trees</li>
-              <li>Browse shops, galleries, and waterfront</li>
-              <li>Perfect for wandering at your own pace</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port Wharf</a>
-              <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About the Trees</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="ice-skating-sun" data-name="Ice Skating" data-time="Sunday 2:00pm" data-activity="Ice skating at Thompson's Point">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="ice-skating-sun">☆</button>
-            <div class="choice-tag-row">
-              <span class="choice-tag">Active & Fun</span>
-            </div>
-            <h2 class="choice-title">Ice Skating at Thompson's Point</h2>
-            <p class="choice-meta">$18 including skate rentals · 1.5-2 hour sessions</p>
-            <ul class="choice-list">
-              <li>Timed entry sessions, book in advance</li>
-              <li>Heated bathrooms (important!)</li>
-              <li>Tickets available Sunday, Dec 14th at 5pm</li>
-            </ul>
-            <div class="quick-links">
-              <a href="https://maps.app.goo.gl/8Ma9LMGf2gbAeeZc9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-              <a href="http://www.thompsonspointrink.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              <a href="https://www.thompsonspointrink.com/iceschedule" class="quick-link" target="_blank" rel="noopener">🎟️ Book Session</a>
-            </div>
-          </article>
-
-          <article class="choice-card" data-choice-id="washington-baths-sun" data-name="Washington Baths" data-time="Sunday 7:00am" data-activity="Sauna & cold plunge at Washington Baths">
-            <button type="button" class="star-button" data-fav-button="activities-sun" data-fav-id="washington-baths-sun">☆</button>
+        <!-- Optional Early Morning Steam -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Optional: Early Morning Steam</div>
+          <p class="section-subtitle">Washington Baths - Winter Solstice Special</p>
+        </div>
+        <div class="choice-grid" style="grid-template-columns: 1fr;">
+          <article class="choice-card" data-choice-id="sun-early-baths" data-category="sundayEarlyBaths" style="cursor: pointer;">
+            <button type="button" class="star-button" data-fav-button="sundayEarlyBaths" data-fav-id="sun-early-baths">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Relax & Recharge</span>
             </div>
-            <h2 class="choice-title">Washington Baths</h2>
-            <p class="choice-meta">$36/person · No time limit</p>
+            <h2 class="choice-title">Washington Baths (7am-12pm)</h2>
+            <p class="choice-meta">$36/person · No time limit · Closes at noon for rest of year!</p>
             <ul class="choice-list">
-              <li>Sauna, cold plunge, hot pool, and relaxation</li>
-              <li>Saturday: 12pm-9pm · Sunday: 7am-12pm (Winter Solstice!)</li>
+              <li>Open 7am-12pm Sunday only (Winter Solstice)</li>
+              <li>Sauna, cold plunge, hot pool</li>
               <li>No reservations, all genders welcome</li>
-              <li>Bring bathing suit, towel, sandals (towels $3 to rent)</li>
             </ul>
             <div class="quick-links">
               <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
@@ -1202,34 +1080,31 @@
           </article>
         </div>
 
-        <!-- Brunch Options -->
-        <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Brunch at 10:00am</div>
+        <!-- Brunch Choice -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Brunch</div>
+          <p class="section-subtitle">Pick your style</p>
         </div>
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="brunch-union" data-name="UNION" data-time="Sunday 10:00am" data-activity="Brunch at UNION">
-            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-union">☆</button>
+          <article class="choice-card" data-choice-id="sun-brunch-union" data-category="sundayBrunch">
+            <button type="button" class="star-button" data-fav-button="sundayBrunch" data-fav-id="sun-brunch-union">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Classic brunch</span>
             </div>
-            <h2 class="choice-title">UNION</h2>
-            <p class="choice-meta">10am reservation · 3 min walk from hotel</p>
+            <h2 class="choice-title">UNION (Reservation Booked) ★</h2>
+            <p class="choice-meta">10:00am reservation confirmed · 3 min walk from hotel</p>
             <ul class="choice-list">
               <li>Good coffee, solid food, no rush</li>
               <li>Walkable from AC Hotel</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Walkable</span>
-            </div>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
-              <a href="#" class="quick-link" onclick="return false;">🎟️ Reservations</a>
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="brunch-juicery" data-name="The Juicery" data-time="Sunday 10:00am" data-activity="Brunch at The Juicery">
-            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-juicery">☆</button>
+          <article class="choice-card" data-choice-id="sun-brunch-juicery" data-category="sundayBrunch">
+            <button type="button" class="star-button" data-fav-button="sundayBrunch" data-fav-id="sun-brunch-juicery">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Light & fresh</span>
             </div>
@@ -1238,19 +1113,16 @@
             <ul class="choice-list">
               <li>Smoothie bowls, avocado toast, fresh juice</li>
               <li>Light & energizing before exploring</li>
-              <li>Quick, healthy, no reservations needed</li>
+              <li>No reservation needed</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Light & fresh</span>
-            </div>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="brunch-hotsuppa" data-name="Hot Suppa" data-time="Sunday 10:00am" data-activity="Brunch at Hot Suppa">
-            <button type="button" class="star-button" data-fav-button="brunch" data-fav-id="brunch-hotsuppa">☆</button>
+          <article class="choice-card" data-choice-id="sun-brunch-hotsuppa" data-category="sundayBrunch">
+            <button type="button" class="star-button" data-fav-button="sundayBrunch" data-fav-id="sun-brunch-hotsuppa">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Comfort food</span>
             </div>
@@ -1258,30 +1130,98 @@
             <p class="choice-meta">Arts District · Southern comfort</p>
             <ul class="choice-list">
               <li>Biscuits & gravy, fried chicken & waffles</li>
-              <li>Hearty, indulgent, stick-to-your-ribs brunch</li>
+              <li>Hearty, indulgent brunch</li>
               <li>Worth the wait if there's a line</li>
             </ul>
-            <div class="pill-row">
-              <span class="pill accent">Comfort food</span>
-            </div>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Webpage</a>
+              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Checkout -->
+        <div class="timeline" style="margin-top: 24px;">
+          <div class="timeline-row">
+            <div class="time-pill">12:00</div>
+            <div class="timeline-card">
+              <div class="timeline-main">
+                <div class="timeline-title">Checkout</div>
+              </div>
+              <p class="timeline-detail">Pack up, say goodbye to harbor views</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sunday Afternoon Choice -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Sunday Afternoon Options</div>
+          <p class="section-subtitle">Pick what sounds good before heading home</p>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="sun-after-pma" data-category="sundayAfternoon">
+            <button type="button" class="star-button" data-fav-button="sundayAfternoon" data-fav-id="sun-after-pma">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Film & Art</span>
+            </div>
+            <h2 class="choice-title">Movie at Portland Museum of Art</h2>
+            <p class="choice-meta">Safe (1995) · 12:00pm - 2:05pm</p>
+            <ul class="choice-list">
+              <li>Introduced by Xander Berkeley</li>
+              <li>Perfect for a rainy afternoon</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://www.portlandmuseum.org/" class="quick-link" target="_blank" rel="noopener">🌐 Museum</a>
+              <a href="https://www.portlandmuseum.org/eventscalendar/safe-4" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sun-after-shopping" data-category="sundayAfternoon">
+            <button type="button" class="star-button" data-fav-button="sundayAfternoon" data-fav-id="sun-after-shopping">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Wander & Explore</span>
+            </div>
+            <h2 class="choice-title">Explore Old Port Shopping</h2>
+            <p class="choice-meta">Vintage, Menswear, Shoes</p>
+            <ul class="choice-list">
+              <li>Browse at your own pace</li>
+              <li>Last chance photos with lobster trap trees</li>
+              <li>[List specific shops - NEED INFO]</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Shopping District</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sun-after-mansion" data-category="sundayAfternoon">
+            <button type="button" class="star-button" data-fav-button="sundayAfternoon" data-fav-id="sun-after-mansion">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Museum & History</span>
+            </div>
+            <h2 class="choice-title">Victoria Mansion</h2>
+            <p class="choice-meta">If you missed it Saturday</p>
+            <ul class="choice-list">
+              <li>Victorian architecture + holiday decor</li>
+              <li>Allow 1-1.5 hours</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://victoriamansion.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section" id="drive-home">
+      <section class="section" id="for-the-road">
         <div class="section-header">
-          <div class="section-title">Drive Home</div>
-          <p class="section-subtitle">
-            <strong>Last chance activities & road trip tunes</strong> for the 2-hour drive back
-          </p>
+          <div class="section-title">For The Road</div>
         </div>
 
         <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Last Chance!</div>
+          <div class="section-title">Last Chance: Frost Factory</div>
+          <p class="section-subtitle">On the way home</p>
         </div>
         <div class="choice-grid" style="grid-template-columns: 1fr;">
           <article class="choice-card">
@@ -1385,7 +1325,7 @@
 
   <script>
     (function () {
-      const STORAGE_KEY_PREFIX = "matt-bday-2025-";
+      const STORAGE_KEY_PREFIX = "matt-bday-2025-v2-";
 
       function flashSaveStatus() {
         const el = document.getElementById("save-status");
@@ -1397,86 +1337,89 @@
         }, 900);
       }
 
+      function getSelection(category) {
+        return localStorage.getItem(STORAGE_KEY_PREFIX + category);
+      }
+
+      function getCardTitle(favId) {
+        if (!favId) return null;
+        const btn = document.querySelector(`[data-fav-id='${favId}']`);
+        if (!btn) return null;
+        const card = btn.closest('.choice-card');
+        if (!card) return null;
+        const title = card.querySelector('.choice-title');
+        return title ? title.textContent.trim() : null;
+      }
+
       function updateItinerary() {
         const itinerarySummary = document.getElementById("itinerary-summary");
         const itineraryList = document.getElementById("itinerary-list");
         if (!itinerarySummary || !itineraryList) return;
 
-        const items = [];
+        // Get selections
+        const satBefore = getSelection('saturdayBeforeCheckin');
+        const satAfter = getSelection('saturdayAfterShow');
+        const sunBrunch = getSelection('sundayBrunch');
+        const sunAfternoon = getSelection('sundayAfternoon');
+        const sunEarly = getSelection('sundayEarlyBaths');
 
-        // Add all selected items (including auto-selected that are toggled on)
-        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
-        categories.forEach(category => {
-          const favId = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
-          if (favId) {
-            const card = document.querySelector(`[data-fav-id='${favId}']`)?.closest('.choice-card, .timeline-card');
-            if (card) {
-              const activity = card.getAttribute('data-activity');
-              const time = card.getAttribute('data-time');
-              if (activity && time) items.push({ time, activity });
-            }
-          }
-        });
+        let html = '';
 
-        // Parse and sort by actual time
-        items.forEach(item => {
-          const match = item.time.match(/(Saturday|Sunday)\s+(\d+):(\d+)\s*([ap]m)/i);
-          if (match) {
-            item.day = match[1];
-            let hour = parseInt(match[2]);
-            const minute = parseInt(match[3]);
-            const period = match[4].toLowerCase();
+        // Saturday
+        html += '<li class="day-header">SATURDAY</li>';
+        html += '<li><span class="itinerary-time">11:00am</span><span class="itinerary-item">Leave Boston</span></li>';
 
-            // Convert to 24-hour format for proper sorting
-            if (period === 'pm' && hour !== 12) hour += 12;
-            if (period === 'am' && hour === 12) hour = 0;
-
-            item.sortTime = hour * 60 + minute;
-            item.timeOnly = `${match[2]}:${match[3]} ${match[4]}`;
-          }
-        });
-
-        items.sort((a, b) => {
-          if (a.day !== b.day) {
-            return a.day === 'Saturday' ? -1 : 1;
-          }
-          // Sort by 24-hour time value
-          return a.sortTime - b.sortTime;
-        });
-
-        // Group by day
-        const saturday = items.filter(item => item.day === 'Saturday');
-        const sunday = items.filter(item => item.day === 'Sunday');
-
-        // Update the summary with day headers
-        if (items.length > 0) {
-          let html = '';
-
-          if (saturday.length > 0) {
-            html += '<li class="day-header">Saturday</li>';
-            saturday.forEach(item => {
-              html += `<li><span class="itinerary-time">${item.timeOnly}</span><span class="itinerary-item">${item.activity}</span></li>`;
-            });
-          }
-
-          if (sunday.length > 0) {
-            html += '<li class="day-header">Sunday</li>';
-            sunday.forEach(item => {
-              html += `<li><span class="itinerary-time">${item.timeOnly}</span><span class="itinerary-item">${item.activity}</span></li>`;
-            });
-          }
-
-          itineraryList.innerHTML = html;
-          itinerarySummary.classList.add('has-items');
-        } else {
-          itinerarySummary.classList.remove('has-items');
+        if (satBefore) {
+          const title = getCardTitle(satBefore);
+          if (title) html += `<li><span class="itinerary-time">Arrive</span><span class="itinerary-item">✓ ${title}</span></li>`;
         }
+
+        html += '<li><span class="itinerary-time">3:00pm</span><span class="itinerary-item">Check-in at AC Hotel ★</span></li>';
+        html += '<li><span class="itinerary-time">4:30pm</span><span class="itinerary-item">Freshen up</span></li>';
+        html += '<li><span class="itinerary-time">5:00pm</span><span class="itinerary-item">Pre-dinner drinks at AC Lounge</span></li>';
+        html += '<li><span class="itinerary-time">5:30pm</span><span class="itinerary-item">Dinner at Central Provisions ★</span></li>';
+        html += '<li><span class="itinerary-time">8:00pm</span><span class="itinerary-item">Pink Talking Fish at State Theatre ★</span></li>';
+
+        if (satAfter) {
+          const title = getCardTitle(satAfter);
+          if (title) html += `<li><span class="itinerary-time">After show</span><span class="itinerary-item">✓ ${title}</span></li>`;
+        }
+
+        // Sunday
+        html += '<li class="day-header" style="margin-top:16px;">SUNDAY</li>';
+
+        if (sunEarly) {
+          html += '<li><span class="itinerary-time">Optional</span><span class="itinerary-item">✓ Early steam at Washington Baths (7am)</span></li>';
+        }
+
+        if (sunBrunch) {
+          const title = getCardTitle(sunBrunch);
+          const isUnion = sunBrunch.includes('union');
+          if (title) html += `<li><span class="itinerary-time">Brunch</span><span class="itinerary-item">✓ ${title}${isUnion ? ' ★' : ''}</span></li>`;
+        } else {
+          html += '<li><span class="itinerary-time">Brunch</span><span class="itinerary-item">(pick an option below)</span></li>';
+        }
+
+        html += '<li><span class="itinerary-time">12:00pm</span><span class="itinerary-item">Checkout</span></li>';
+
+        if (sunAfternoon) {
+          const title = getCardTitle(sunAfternoon);
+          if (title) html += `<li><span class="itinerary-time">Afternoon</span><span class="itinerary-item">✓ ${title}</span></li>`;
+        }
+
+        // For the Road
+        html += '<li class="day-header" style="margin-top:16px;">FOR THE ROAD</li>';
+        html += '<li><span class="itinerary-time">🌿</span><span class="itinerary-item">Frost Factory stop</span></li>';
+        html += '<li><span class="itinerary-time">🎵</span><span class="itinerary-item">4 playlists ready</span></li>';
+
+        itineraryList.innerHTML = html;
+        itinerarySummary.classList.add('has-items');
       }
 
       function applyFavorite(category, favId) {
         // Remove highlight and unselect stars from all cards in this category
         document.querySelectorAll(`[data-fav-button='${category}']`).forEach((btn) => {
-          const card = btn.closest('.choice-card, .timeline-card');
+          const card = btn.closest('.choice-card');
           if (card) card.classList.remove("booked");
           btn.textContent = "☆";
           btn.classList.remove("selected");
@@ -1490,7 +1433,7 @@
         // Add highlight to selected card and fill star
         const selectedBtn = document.querySelector(`[data-fav-button='${category}'][data-fav-id='${favId}']`);
         if (selectedBtn) {
-          const card = selectedBtn.closest('.choice-card, .timeline-card');
+          const card = selectedBtn.closest('.choice-card');
           if (card) card.classList.add("booked");
           selectedBtn.textContent = "★";
           selectedBtn.classList.add("selected");
@@ -1499,46 +1442,24 @@
       }
 
       function resetAll() {
-        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
+        const categories = ['saturdayBeforeCheckin', 'saturdayAfterShow', 'sundayBrunch', 'sundayAfternoon', 'sundayEarlyBaths'];
         categories.forEach(category => {
-          localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          localStorage.removeItem(STORAGE_KEY_PREFIX + category);
           applyFavorite(category, null);
         });
-        // Re-initialize auto-selected defaults
-        initAutoSelected();
         flashSaveStatus();
       }
 
-      function initAutoSelected() {
-        // Set auto-selected items as selected by default if not already set
-        const autoCategories = [
-          { category: 'hotel', id: 'hotel-checkin' },
-          { category: 'dinner', id: 'dinner-central' },
-          { category: 'show', id: 'show-ptf' }
-        ];
-        autoCategories.forEach(({ category, id }) => {
-          const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
-          if (!saved) {
-            localStorage.setItem(STORAGE_KEY_PREFIX + `fav-${category}`, id);
-            applyFavorite(category, id);
-          }
-        });
-      }
-
-      function initFavorites() {
-        // Initialize auto-selected items first
-        initAutoSelected();
-
-        // Load saved favorites
-        const categories = ['hotel', 'dinner', 'show', 'activities-sat', 'activities-sun', 'predinner', 'brunch'];
+      function initSelections() {
+        // Load saved selections
+        const categories = ['saturdayBeforeCheckin', 'saturdayAfterShow', 'sundayBrunch', 'sundayAfternoon', 'sundayEarlyBaths'];
         categories.forEach(category => {
-          const saved = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+          const saved = getSelection(category);
           if (saved) applyFavorite(category, saved);
         });
 
-        // Set up card click handlers for both choice-card and timeline-card
-        document.querySelectorAll(".choice-card, .timeline-card").forEach((card) => {
-          // Skip cards without fav-button (like Drive Home cards)
+        // Set up card click handlers
+        document.querySelectorAll(".choice-card").forEach((card) => {
           const btn = card.querySelector("[data-fav-button]");
           if (!btn) return;
 
@@ -1550,28 +1471,28 @@
             const id = btn.getAttribute("data-fav-id");
             if (!category || !id) return;
 
-            const currentFav = localStorage.getItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+            const currentFav = getSelection(category);
 
             try {
               if (currentFav === id) {
                 // Unselect if clicking the same item
-                localStorage.removeItem(STORAGE_KEY_PREFIX + `fav-${category}`);
+                localStorage.removeItem(STORAGE_KEY_PREFIX + category);
                 applyFavorite(category, null);
               } else {
                 // Select new item
-                localStorage.setItem(STORAGE_KEY_PREFIX + `fav-${category}`, id);
+                localStorage.setItem(STORAGE_KEY_PREFIX + category, id);
                 applyFavorite(category, id);
               }
               flashSaveStatus();
             } catch (e) {
-              console.warn("Unable to save favorite", e);
+              console.warn("Unable to save selection", e);
             }
           });
         });
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        initFavorites();
+        initSelections();
         updateItinerary();
 
         const resetBtn = document.getElementById("reset-choices");

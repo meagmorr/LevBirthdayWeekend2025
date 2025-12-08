@@ -938,10 +938,6 @@
           <span>Heading Out</span>
           <span class="tab-indicator">✓</span>
         </button>
-        <button class="tab-button" data-tab="saturday-day">
-          <span>Saturday Day</span>
-          <span class="tab-indicator">✓</span>
-        </button>
         <button class="tab-button" data-tab="saturday-night">
           <span>Saturday Night</span>
           <span class="tab-indicator">✓</span>
@@ -959,27 +955,59 @@
       <!-- Tab 1: Heading Out -->
       <div class="tab-panel active" data-panel="heading-out">
       <section class="section" id="saturday">
+        <!-- Choose Departure Time -->
         <div class="section-header">
-          <div class="section-title">Saturday Schedule</div>
+          <div class="section-title">Choose Your Departure Time</div>
+          <p class="section-subtitle">Pick when you want to hit the road</p>
         </div>
-
-        <!-- Leave Boston -->
-        <div class="timeline" style="margin-bottom: 24px;">
-          <div class="timeline-row">
-            <div class="time-pill">11:00</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Leave Boston</div>
-              </div>
-              <p class="timeline-detail">Hit the road from Boston</p>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="depart-10am" data-category="departureTime">
+            <button type="button" class="star-button" data-fav-button="departureTime" data-fav-id="depart-10am">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Early Start</span>
             </div>
-          </div>
+            <h2 class="choice-title">Leave at 10:00 AM</h2>
+            <p class="choice-meta">Early start, more time in Portland</p>
+            <ul class="choice-list">
+              <li>Arrive in Portland by 12:00 PM</li>
+              <li>Extra time before check-in</li>
+              <li>Beat the lunch rush</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="depart-11am" data-category="departureTime">
+            <button type="button" class="star-button" data-fav-button="departureTime" data-fav-id="depart-11am">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Balanced</span>
+            </div>
+            <h2 class="choice-title">Leave at 11:00 AM</h2>
+            <p class="choice-meta">Balanced timing, arrive for lunch</p>
+            <ul class="choice-list">
+              <li>Arrive in Portland by 1:00 PM</li>
+              <li>Perfect for lunch before check-in</li>
+              <li>Not too early, not too late</li>
+            </ul>
+          </article>
+
+          <article class="choice-card" data-choice-id="depart-12pm" data-category="departureTime">
+            <button type="button" class="star-button" data-fav-button="departureTime" data-fav-id="depart-12pm">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Sleep In</span>
+            </div>
+            <h2 class="choice-title">Leave at 12:00 PM</h2>
+            <p class="choice-meta">Sleep in, shorter day trip</p>
+            <ul class="choice-list">
+              <li>Arrive in Portland by 2:00 PM</li>
+              <li>Maximize morning relaxation</li>
+              <li>Just in time for check-in</li>
+            </ul>
+          </article>
         </div>
 
-        <!-- Before Check-In Choice -->
+        <!-- Before Check-In Activities -->
         <div class="section-header" style="margin-top:24px;">
-          <div class="section-title">Arrive Portland - Before Check-In</div>
-          <p class="section-subtitle">Pick ONE activity before 3pm check-in</p>
+          <div class="section-title">Before Check-In Activities</div>
+          <p class="section-subtitle">Pick activities to fill your time before 3pm check-in</p>
         </div>
         <div class="choice-grid">
           <article class="choice-card" data-choice-id="sat-before-oldport" data-category="saturdayBeforeCheckin">
@@ -1040,18 +1068,168 @@
               <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
             </div>
           </article>
+        </div>
+      </section>
+      </div>
 
-          <article class="choice-card" data-choice-id="sat-before-blue" data-category="saturdayBeforeCheckin">
-            <button type="button" class="star-button" data-fav-button="saturdayBeforeCheckin" data-fav-id="sat-before-blue">☆</button>
+      <!-- Tab 2: Saturday Night -->
+      <div class="tab-panel" data-panel="saturday-night">
+      <section class="section">
+        <!-- Check-In -->
+        <div class="section-header">
+          <div class="section-title">3:00 PM - Check-In</div>
+        </div>
+        <div class="choice-grid" style="grid-template-columns: 1fr;">
+          <article class="choice-card" data-choice-id="sat-checkin" data-category="saturdayCheckIn">
+            <button type="button" class="star-button" data-fav-button="saturdayCheckIn" data-fav-id="sat-checkin">☆</button>
             <div class="choice-tag-row">
-              <span class="choice-tag">Live Music & Jazz</span>
+              <span class="choice-tag">Recommended</span>
+            </div>
+            <h2 class="choice-title">Check-In ★</h2>
+            <p class="choice-meta">AC Hotel Portland Downtown/Waterfront</p>
+            <ul class="choice-list">
+              <li>Drop bags, check out harbor views</li>
+              <li>Settle in and get comfortable</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Freshen Up -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">4:30 PM - Freshen Up</div>
+        </div>
+        <div class="choice-grid" style="grid-template-columns: 1fr;">
+          <article class="choice-card" data-choice-id="sat-freshen" data-category="saturdayFreshenUp">
+            <button type="button" class="star-button" data-fav-button="saturdayFreshenUp" data-fav-id="sat-freshen">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Get Ready</span>
+            </div>
+            <h2 class="choice-title">Freshen Up</h2>
+            <p class="choice-meta">Get ready for dinner</p>
+            <ul class="choice-list">
+              <li>Change and refresh</li>
+              <li>Perfect timing before evening plans</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Pre-Dinner Drinks -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">5:00 PM - Pre-Dinner Drinks</div>
+          <p class="section-subtitle">Pick your vibe before dinner · ⚠️ Reminder: Set fantasy football lineup!</p>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="sat-predrink-hotel" data-category="saturdayPreDinner">
+            <button type="button" class="star-button" data-fav-button="saturdayPreDinner" data-fav-id="sat-predrink-hotel">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Cocktails & Views</span>
+            </div>
+            <h2 class="choice-title">Hotel Bar (AC Lounge)</h2>
+            <p class="choice-meta">Waterfront views, signature cocktails</p>
+            <ul class="choice-list">
+              <li>Relaxed atmosphere in the hotel</li>
+              <li>Stunning harbor views</li>
+              <li>Easy walk to dinner</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" class="quick-link" target="_blank" rel="noopener">📍 Hotel Location</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-predrink-oldport" data-category="saturdayPreDinner">
+            <button type="button" class="star-button" data-fav-button="saturdayPreDinner" data-fav-id="sat-predrink-oldport">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Stroll & Explore</span>
+            </div>
+            <h2 class="choice-title">Explore Old Port</h2>
+            <p class="choice-meta">Stroll waterfront, see lobster trap trees lit up</p>
+            <ul class="choice-list">
+              <li>Evening waterfront walk</li>
+              <li>See the holiday lights</li>
+              <li>Photo opportunities</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port</a>
+              <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About Trees</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-predrink-chill" data-category="saturdayPreDinner">
+            <button type="button" class="star-button" data-fav-button="saturdayPreDinner" data-fav-id="sat-predrink-chill">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Relax</span>
+            </div>
+            <h2 class="choice-title">Chill in Room</h2>
+            <p class="choice-meta">Relax before dinner, save energy for the show</p>
+            <ul class="choice-list">
+              <li>Rest and recharge</li>
+              <li>Enjoy the room amenities</li>
+              <li>Save energy for later</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Dinner -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">5:30 PM - Dinner</div>
+        </div>
+        <div class="choice-grid" style="grid-template-columns: 1fr;">
+          <article class="choice-card" data-choice-id="sat-dinner" data-category="saturdayDinner">
+            <button type="button" class="star-button" data-fav-button="saturdayDinner" data-fav-id="sat-dinner">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Reservation Confirmed</span>
+            </div>
+            <h2 class="choice-title">Dinner ★</h2>
+            <p class="choice-meta">Central Provisions (confirmed reservation)</p>
+            <ul class="choice-list">
+              <li>5 min walk from hotel</li>
+              <li>Tapas-style shareables, good cocktails</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/4VLy6RwdtkrGrEvP8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="http://www.central-provisions.com/menus" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Show Options -->
+        <div class="section-header" style="margin-top:24px;">
+          <div class="section-title">Show Options - Pick Your Entertainment</div>
+          <p class="section-subtitle">Choose your evening show</p>
+        </div>
+        <div class="choice-grid">
+          <article class="choice-card" data-choice-id="sat-show-ptf" data-category="saturdayShow">
+            <button type="button" class="star-button" data-fav-button="saturdayShow" data-fav-id="sat-show-ptf">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Reserved</span>
+            </div>
+            <h2 class="choice-title">Pink Talking Fish at State Theatre ★</h2>
+            <p class="choice-meta">Doors 7pm · Show 8pm · 5 min walk from dinner</p>
+            <ul class="choice-list">
+              <li>Tribute band fusion of Pink Floyd, Talking Heads, Phish</li>
+              <li>Reserved tickets</li>
+              <li>Close to restaurant</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/yduqxtskCQKXiBSS7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://click.email.ticketmaster.com/?qs=0b8e3ecdf60ecfccb3cb93cb65494801d247caec1fe2c925ea24196d5abad4eebc1360df9a6c1843d0c7cc6746467272f01a830c574ab2aa0fcce2bbc9891ea9" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
+              <a href="https://statetheatreportland.com/events/pink-talking-fish/" class="quick-link" target="_blank" rel="noopener">🌐 Event Info</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-show-blue" data-category="saturdayShow">
+            <button type="button" class="star-button" data-fav-button="saturdayShow" data-fav-id="sat-show-blue">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Live Jazz</span>
             </div>
             <h2 class="choice-title">Blue Portland Maine</h2>
-            <p class="choice-meta">Intimate live-music bar · Congress Street</p>
+            <p class="choice-meta">Doors 6pm · Carl Dimow Jazz Quartet @ 7pm · Rot On The Vine @ 9pm</p>
             <ul class="choice-list">
-              <li>Doors @ 6PM · Carl Dimow Jazz Quartet @ 7PM</li>
-              <li>Rot On The Vine @ 9PM</li>
               <li>Pay What You Can at the door, bring cash!</li>
+              <li>Intimate live-music bar</li>
               <li>Jazz, folk, and small-venue shows</li>
             </ul>
             <div class="quick-links">
@@ -1060,94 +1238,8 @@
             </div>
           </article>
         </div>
-      </section>
-      </div>
 
-      <!-- Tab 2: Saturday Day -->
-      <div class="tab-panel" data-panel="saturday-day">
-      <section class="section">
-        <!-- Check-In -->
-        <div class="timeline" style="margin-top: 24px;">
-          <div class="timeline-row">
-            <div class="time-pill">3:00</div>
-            <div class="timeline-card booked">
-              <div class="timeline-main">
-                <div class="timeline-title">Check-In ★</div>
-              </div>
-              <p class="timeline-detail">
-                AC Hotel Portland Downtown/Waterfront · Drop bags, check out harbor views, settle in
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      </div>
-
-      <!-- Tab 3: Saturday Night -->
-      <div class="tab-panel" data-panel="saturday-night">
-      <section class="section">
-        <!-- Fixed Evening Schedule -->
-        <div class="section-header">
-          <div class="section-title">Saturday Evening (Fixed Schedule)</div>
-        </div>
-        <div class="timeline">
-          <div class="timeline-row">
-            <div class="time-pill">4:30</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Freshen Up</div>
-              </div>
-              <p class="timeline-detail">Get ready for dinner</p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">5:00</div>
-            <div class="timeline-card">
-              <div class="timeline-main">
-                <div class="timeline-title">Pre-Dinner Drinks</div>
-              </div>
-              <p class="timeline-detail">
-                Hotel bar, AC Lounge (waterfront views) · <em>If time allows: Stroll waterfront to see lobster trap trees lit up</em> · <strong>⚠️ Reminder: Set fantasy football lineup!</strong>
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">5:30</div>
-            <div class="timeline-card booked">
-              <div class="timeline-main">
-                <div class="timeline-title">Dinner ★</div>
-              </div>
-              <p class="timeline-detail">
-                Central Provisions (confirmed reservation) · 5 min walk from hotel · Tapas-style shareables, good cocktails
-              </p>
-              <div class="quick-links" style="margin-top: 8px;">
-                <a href="https://maps.app.goo.gl/4VLy6RwdtkrGrEvP8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-                <a href="http://www.central-provisions.com/menus" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-row">
-            <div class="time-pill">8:00</div>
-            <div class="timeline-card booked">
-              <div class="timeline-main">
-                <div class="timeline-title">The Show ★</div>
-              </div>
-              <p class="timeline-detail">
-                Pink Talking Fish at State Theatre · Doors 7pm · 5 min walk from dinner
-              </p>
-              <div class="quick-links" style="margin-top: 8px;">
-                <a href="https://maps.app.goo.gl/yduqxtskCQKXiBSS7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-                <a href="https://click.email.ticketmaster.com/?qs=0b8e3ecdf60ecfccb3cb93cb65494801d247caec1fe2c925ea24196d5abad4eebc1360df9a6c1843d0c7cc6746467272f01a830c574ab2aa0fcce2bbc9891ea9" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
-                <a href="https://statetheatreportland.com/events/pink-talking-fish/" class="quick-link" target="_blank" rel="noopener">🌐 Event Info</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- After The Show Choice -->
+        <!-- After The Show -->
         <div class="section-header" style="margin-top:24px;">
           <div class="section-title">After The Show</div>
           <p class="section-subtitle">Pick your post-show vibe</p>
@@ -1224,6 +1316,7 @@
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/Xm18wMEehsy1EHEj7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://flasklounge.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://flasklounge.com/event/among-moon-flowers/" class="quick-link" target="_blank" rel="noopener">🎟️ Dec 20 Event</a>
             </div>
           </article>
 
@@ -1431,10 +1524,11 @@
 
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">Fun Stops for the Way Home</div>
-          <p class="section-subtitle">On the way home</p>
+          <p class="section-subtitle">Select stops you want to make</p>
         </div>
         <div class="choice-grid">
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-frost" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-frost">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Cannabis Dispensary</span>
             </div>
@@ -1452,7 +1546,8 @@
             </div>
           </article>
 
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-lighthouse" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-lighthouse">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Scenic Stop</span>
             </div>
@@ -1473,9 +1568,11 @@
 
         <div class="section-header" style="margin-top:18px;">
           <div class="section-title">Playlists for the Drive</div>
+          <p class="section-subtitle">Pick your road trip soundtrack</p>
         </div>
         <div class="choice-grid">
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-playlist-matt" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-playlist-matt">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Spotify Playlist</span>
             </div>
@@ -1489,7 +1586,8 @@
             </div>
           </article>
 
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-playlist-babson" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-playlist-babson">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Spotify Playlist</span>
             </div>
@@ -1503,7 +1601,8 @@
             </div>
           </article>
 
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-playlist-notrap" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-playlist-notrap">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Spotify Playlist</span>
             </div>
@@ -1518,7 +1617,8 @@
             </div>
           </article>
 
-          <article class="choice-card">
+          <article class="choice-card" data-choice-id="home-playlist-acidjazz" data-category="headingHome">
+            <button type="button" class="star-button" data-fav-button="headingHome" data-fav-id="home-playlist-acidjazz">☆</button>
             <div class="choice-tag-row">
               <span class="choice-tag">Spotify Playlist</span>
             </div>
@@ -1588,11 +1688,10 @@
       function updateTabIndicators() {
         // Check each tab for selections
         const tabs = {
-          'heading-out': ['saturdayBeforeCheckin'],
-          'saturday-day': [],
-          'saturday-night': ['saturdayAfterShow'],
+          'heading-out': ['departureTime', 'saturdayBeforeCheckin'],
+          'saturday-night': ['saturdayCheckIn', 'saturdayFreshenUp', 'saturdayPreDinner', 'saturdayDinner', 'saturdayShow', 'saturdayAfterShow'],
           'sunday-morning': ['sundayEarlyBaths', 'sundayBrunch', 'sundayAfternoon'],
-          'heading-home': []
+          'heading-home': ['headingHome']
         };
 
         Object.entries(tabs).forEach(([tabName, categories]) => {
@@ -1745,7 +1844,12 @@
       }
 
       function resetAll() {
-        const categories = ['saturdayBeforeCheckin', 'saturdayAfterShow', 'sundayBrunch', 'sundayAfternoon', 'sundayEarlyBaths'];
+        const categories = [
+          'departureTime', 'saturdayBeforeCheckin',
+          'saturdayCheckIn', 'saturdayFreshenUp', 'saturdayPreDinner', 'saturdayDinner', 'saturdayShow', 'saturdayAfterShow',
+          'sundayEarlyBaths', 'sundayBrunch', 'sundayAfternoon',
+          'headingHome'
+        ];
         categories.forEach(category => {
           localStorage.removeItem(STORAGE_KEY_PREFIX + category);
           applyFavorite(category, null);
@@ -1755,7 +1859,12 @@
 
       function initSelections() {
         // Load saved selections
-        const categories = ['saturdayBeforeCheckin', 'saturdayAfterShow', 'sundayBrunch', 'sundayAfternoon', 'sundayEarlyBaths'];
+        const categories = [
+          'departureTime', 'saturdayBeforeCheckin',
+          'saturdayCheckIn', 'saturdayFreshenUp', 'saturdayPreDinner', 'saturdayDinner', 'saturdayShow', 'saturdayAfterShow',
+          'sundayEarlyBaths', 'sundayBrunch', 'sundayAfternoon',
+          'headingHome'
+        ];
         categories.forEach(category => {
           const saved = getSelection(category);
           if (saved) applyFavorite(category, saved);

@@ -765,6 +765,96 @@
       font-weight: 500;
     }
 
+    /* Tab Navigation Styles */
+    .tab-navigation {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(135deg, #0a0415 0%, #1a0a28 40%, #0f0820 100%);
+      border-bottom: 2px solid rgba(139, 92, 246, 0.4);
+      margin: -28px -22px 24px;
+      padding: 16px 22px 0;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    @media (min-width: 768px) {
+      .tab-navigation {
+        margin: -32px -32px 24px;
+        padding: 20px 32px 0;
+        gap: 12px;
+      }
+    }
+
+    .tab-button {
+      position: relative;
+      border: none;
+      background: rgba(42, 22, 64, 0.6);
+      border-radius: 12px 12px 0 0;
+      padding: 12px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-bottom: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-width: fit-content;
+    }
+
+    .tab-button:hover {
+      background: rgba(42, 22, 64, 0.8);
+      color: var(--text-main);
+      border-color: rgba(139, 92, 246, 0.5);
+    }
+
+    .tab-button.active {
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.15), rgba(88, 28, 135, 0.3));
+      border-color: rgba(52, 211, 153, 0.7);
+      color: var(--accent);
+      box-shadow: 0 -2px 8px rgba(52, 211, 153, 0.2);
+    }
+
+    .tab-indicator {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.2);
+      border: 1px solid rgba(52, 211, 153, 0.5);
+      color: var(--accent);
+      display: none;
+    }
+
+    .tab-button.has-selections .tab-indicator {
+      display: inline-flex;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media print {
       body {
         background: #fff;
@@ -781,6 +871,12 @@
       .save-status,
       .reset-btn {
         display: none !important;
+      }
+      .tab-navigation {
+        display: none !important;
+      }
+      .tab-panel {
+        display: block !important;
       }
     }
   </style>
@@ -836,6 +932,32 @@
         </div>
       </header>
 
+      <!-- Tab Navigation -->
+      <nav class="tab-navigation">
+        <button class="tab-button active" data-tab="heading-out">
+          <span>Heading Out</span>
+          <span class="tab-indicator">✓</span>
+        </button>
+        <button class="tab-button" data-tab="saturday-day">
+          <span>Saturday Day</span>
+          <span class="tab-indicator">✓</span>
+        </button>
+        <button class="tab-button" data-tab="saturday-night">
+          <span>Saturday Night</span>
+          <span class="tab-indicator">✓</span>
+        </button>
+        <button class="tab-button" data-tab="sunday-morning">
+          <span>Sunday Morning</span>
+          <span class="tab-indicator">✓</span>
+        </button>
+        <button class="tab-button" data-tab="heading-home">
+          <span>Heading Home</span>
+          <span class="tab-indicator">✓</span>
+        </button>
+      </nav>
+
+      <!-- Tab 1: Heading Out -->
+      <div class="tab-panel active" data-panel="heading-out">
       <section class="section" id="saturday">
         <div class="section-header">
           <div class="section-title">Saturday Schedule</div>
@@ -874,7 +996,8 @@
             </ul>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port</a>
-              <a href="#" class="quick-link" onclick="return false;">📍 Novel [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/g6gTPQq5osMav4WB7" class="quick-link" target="_blank" rel="noopener">📍 Novel</a>
+              <a href="https://www.novelmaine.com/" class="quick-link" target="_blank" rel="noopener">🌐 Novel Website</a>
               <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About Trees</a>
             </div>
           </article>
@@ -893,7 +1016,7 @@
               <li>Bring: bathing suit, towel, sandals</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/f2xBGmGCVoqZvhFN9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://washingtonbaths.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
               <a href="https://washingtonbaths.com/faq.html" class="quick-link" target="_blank" rel="noopener">🌐 FAQs</a>
             </div>
@@ -917,8 +1040,32 @@
               <a href="https://victoriamansion.org/visit-us/" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
             </div>
           </article>
-        </div>
 
+          <article class="choice-card" data-choice-id="sat-before-blue" data-category="saturdayBeforeCheckin">
+            <button type="button" class="star-button" data-fav-button="saturdayBeforeCheckin" data-fav-id="sat-before-blue">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Live Music & Jazz</span>
+            </div>
+            <h2 class="choice-title">Blue Portland Maine</h2>
+            <p class="choice-meta">Intimate live-music bar · Congress Street</p>
+            <ul class="choice-list">
+              <li>Doors @ 6PM · Carl Dimow Jazz Quartet @ 7PM</li>
+              <li>Rot On The Vine @ 9PM</li>
+              <li>Pay What You Can at the door, bring cash!</li>
+              <li>Jazz, folk, and small-venue shows</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/UC4stiNfQf7Ntf7T8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="http://www.blueportlandmaine.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      </div>
+
+      <!-- Tab 2: Saturday Day -->
+      <div class="tab-panel" data-panel="saturday-day">
+      <section class="section">
         <!-- Check-In -->
         <div class="timeline" style="margin-top: 24px;">
           <div class="timeline-row">
@@ -933,9 +1080,14 @@
             </div>
           </div>
         </div>
+      </section>
+      </div>
 
+      <!-- Tab 3: Saturday Night -->
+      <div class="tab-panel" data-panel="saturday-night">
+      <section class="section">
         <!-- Fixed Evening Schedule -->
-        <div class="section-header" style="margin-top:24px;">
+        <div class="section-header">
           <div class="section-title">Saturday Evening (Fixed Schedule)</div>
         </div>
         <div class="timeline">
@@ -971,8 +1123,8 @@
                 Central Provisions (confirmed reservation) · 5 min walk from hotel · Tapas-style shareables, good cocktails
               </p>
               <div class="quick-links" style="margin-top: 8px;">
-                <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-                <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+                <a href="https://maps.app.goo.gl/4VLy6RwdtkrGrEvP8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+                <a href="http://www.central-provisions.com/menus" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
               </div>
             </div>
           </div>
@@ -987,8 +1139,9 @@
                 Pink Talking Fish at State Theatre · Doors 7pm · 5 min walk from dinner
               </p>
               <div class="quick-links" style="margin-top: 8px;">
-                <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-                <a href="#" class="quick-link" onclick="return false;">🎟️ Tickets [NEED LINK]</a>
+                <a href="https://maps.app.goo.gl/yduqxtskCQKXiBSS7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+                <a href="https://click.email.ticketmaster.com/?qs=0b8e3ecdf60ecfccb3cb93cb65494801d247caec1fe2c925ea24196d5abad4eebc1360df9a6c1843d0c7cc6746467272f01a830c574ab2aa0fcce2bbc9891ea9" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
+                <a href="https://statetheatreportland.com/events/pink-talking-fish/" class="quick-link" target="_blank" rel="noopener">🌐 Event Info</a>
               </div>
             </div>
           </div>
@@ -1000,56 +1153,103 @@
           <p class="section-subtitle">Pick your post-show vibe</p>
         </div>
         <div class="choice-grid">
-          <article class="choice-card" data-choice-id="sat-after-option1" data-category="saturdayAfterShow">
-            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option1">☆</button>
+          <article class="choice-card" data-choice-id="sat-after-hunt" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-hunt">☆</button>
             <div class="choice-tag-row">
-              <span class="choice-tag">[NAME NEEDED]</span>
+              <span class="choice-tag">Cocktails & Small Plates</span>
             </div>
-            <h2 class="choice-title">[NAME NEEDED]</h2>
-            <p class="choice-meta">[Description]</p>
+            <h2 class="choice-title">Hunt & Alpine</h2>
+            <p class="choice-meta">10:30pm Reservation · Scandinavian small plates</p>
             <ul class="choice-list">
-              <li>[Hours/location]</li>
+              <li>Clever cocktails in minimalist space</li>
+              <li>Highlights: Bonecrusher, Green Chili Popcorn</li>
+              <li>Oysters, Espresso Martini</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/G5WbA7GazA23xxb79" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="http://www.huntandalpineclub.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://indd.adobe.com/view/a2f6449c-e917-4f42-ac98-4158a9899f4a" class="quick-link" target="_blank" rel="noopener">🌐 Menu</a>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sat-after-option2" data-category="saturdayAfterShow">
-            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option2">☆</button>
+          <article class="choice-card" data-choice-id="sat-after-blyth" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-blyth">☆</button>
             <div class="choice-tag-row">
-              <span class="choice-tag">[NAME NEEDED]</span>
+              <span class="choice-tag">Upscale Cocktails</span>
             </div>
-            <h2 class="choice-title">[NAME NEEDED]</h2>
-            <p class="choice-meta">[Description]</p>
+            <h2 class="choice-title">Blyth & Burrows</h2>
+            <p class="choice-meta">Saturday: 12 PM–12 AM · Maritime theme</p>
             <ul class="choice-list">
-              <li>[Hours/location]</li>
+              <li>Vintage-inspired cocktail bar</li>
+              <li>House cocktails & upscale small plates</li>
+              <li>Maritime-themed ambiance</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/5KSA2oB92Ak83nC8A" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://www.blythandburrows.com/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://www.blythandburrows.com/menu-2/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Menu</a>
             </div>
           </article>
 
-          <article class="choice-card" data-choice-id="sat-after-option3" data-category="saturdayAfterShow">
-            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-option3">☆</button>
+          <article class="choice-card" data-choice-id="sat-after-gritty" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-gritty">☆</button>
             <div class="choice-tag-row">
-              <span class="choice-tag">[NAME NEEDED]</span>
+              <span class="choice-tag">Casual Brewpub</span>
             </div>
-            <h2 class="choice-title">[NAME NEEDED]</h2>
-            <p class="choice-meta">[Description]</p>
+            <h2 class="choice-title">Gritty McDuff's Brew Pub</h2>
+            <p class="choice-meta">Open until ~1am Saturday · Old Port classic</p>
             <ul class="choice-list">
-              <li>[Hours/location]</li>
+              <li>Known for house ales</li>
+              <li>Lively but unfussy atmosphere</li>
+              <li>Perfect easygoing last stop</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/cHRyAQnnQoQznhEQ6" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://grittys.com/portland-brew-pub/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-after-flask" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-flask">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Dancing & Nightlife</span>
+            </div>
+            <h2 class="choice-title">Flask Lounge</h2>
+            <p class="choice-meta">Open until ~1am Saturday · High-energy</p>
+            <ul class="choice-list">
+              <li>Bar and dance club with DJs</li>
+              <li>Themed nights and karaoke</li>
+              <li>Short walk from State Theatre</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/Xm18wMEehsy1EHEj7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://flasklounge.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+            </div>
+          </article>
+
+          <article class="choice-card" data-choice-id="sat-after-luna" data-category="saturdayAfterShow">
+            <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-luna">☆</button>
+            <div class="choice-tag-row">
+              <span class="choice-tag">Rooftop Views</span>
+            </div>
+            <h2 class="choice-title">Luna Rooftop Bar</h2>
+            <p class="choice-meta">Open until ~11pm Saturday · Waterfront views</p>
+            <ul class="choice-list">
+              <li>Rooftop bar overlooking working waterfront</li>
+              <li>Craft cocktails and small bites</li>
+              <li>Quieter, view-forward option</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/ixt2YczcHRp33ySBA" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://lunarooftopbarmaine.com/?SEO_id=GMB--R-PWMOPPY-2&y_source=1_MTAxOTc5OTkyOC03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
             </div>
           </article>
         </div>
       </section>
+      </div>
 
+      <!-- Tab 4: Sunday Morning -->
+      <div class="tab-panel" data-panel="sunday-morning">
       <section class="section" id="sunday">
         <div class="section-header">
           <div class="section-title">Sunday Schedule</div>
@@ -1091,15 +1291,16 @@
             <div class="choice-tag-row">
               <span class="choice-tag">Classic brunch</span>
             </div>
-            <h2 class="choice-title">UNION (Reservation Booked) ★</h2>
+            <h2 class="choice-title">UNION (Reservation Booked)</h2>
             <p class="choice-meta">10:00am reservation confirmed · 3 min walk from hotel</p>
             <ul class="choice-list">
               <li>Good coffee, solid food, no rush</li>
               <li>Walkable from AC Hotel</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/gBATyXPNz5DhrUwL6" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="http://www.unionportland.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://thepresshotel.com/wp-content/uploads/2025/11/Fall-Brunch-Menu-2025-2.pdf" class="quick-link" target="_blank" rel="noopener">🌐 Brunch Menu</a>
             </div>
           </article>
 
@@ -1116,8 +1317,9 @@
               <li>No reservation needed</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/3EM1gDuyW1KoSxS69" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://juicery.com/locations-and-menus/portland/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
+              <a href="https://orderjuicery.square.site/?location=11ea62fccaf5e5aba1470cc47a2aeaec#TE4ZF5ROZS6QJ6MXOZLSD5MM" class="quick-link" target="_blank" rel="noopener">🌐 Order Ahead</a>
             </div>
           </article>
 
@@ -1134,8 +1336,8 @@
               <li>Worth the wait if there's a line</li>
             </ul>
             <div class="quick-links">
-              <a href="#" class="quick-link" onclick="return false;">📍 Directions [NEED LINK]</a>
-              <a href="#" class="quick-link" onclick="return false;">🌐 Website [NEED LINK]</a>
+              <a href="https://maps.app.goo.gl/kfFceJcJ9dN79frK8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://hotsuppa.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
             </div>
           </article>
         </div>
@@ -1187,7 +1389,12 @@
             <ul class="choice-list">
               <li>Browse at your own pace</li>
               <li>Last chance photos with lobster trap trees</li>
-              <li>[List specific shops - NEED INFO]</li>
+              <li>Viand Mercantile (food & home goods)</li>
+              <li>Portland Dry Goods (vintage clothing)</li>
+              <li>David Wood (menswear)</li>
+              <li>Joseph's of Portland (shoes & accessories)</li>
+              <li>Portland Trading Co (gifts & Maine goods)</li>
+              <li>Little Ghost (vintage & antiques)</li>
             </ul>
             <div class="quick-links">
               <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Shopping District</a>
@@ -1213,17 +1420,20 @@
           </article>
         </div>
       </section>
+      </div>
 
+      <!-- Tab 5: Heading Home -->
+      <div class="tab-panel" data-panel="heading-home">
       <section class="section" id="for-the-road">
         <div class="section-header">
           <div class="section-title">For The Road</div>
         </div>
 
         <div class="section-header" style="margin-top:18px;">
-          <div class="section-title">Last Chance: Frost Factory</div>
+          <div class="section-title">Fun Stops for the Way Home</div>
           <p class="section-subtitle">On the way home</p>
         </div>
-        <div class="choice-grid" style="grid-template-columns: 1fr;">
+        <div class="choice-grid">
           <article class="choice-card">
             <div class="choice-tag-row">
               <span class="choice-tag">Cannabis Dispensary</span>
@@ -1239,6 +1449,24 @@
               <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
               <a href="https://thefrostfactory.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
               <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" class="quick-link" target="_blank" rel="noopener">🎟️ Preorder</a>
+            </div>
+          </article>
+
+          <article class="choice-card">
+            <div class="choice-tag-row">
+              <span class="choice-tag">Scenic Stop</span>
+            </div>
+            <h2 class="choice-title">Portland Head Light</h2>
+            <p class="choice-meta">Cape Elizabeth · Iconic lighthouse</p>
+            <ul class="choice-list">
+              <li>Most photographed lighthouse in Maine</li>
+              <li>Short detour for stunning ocean views</li>
+              <li>Perfect for a quick photo op</li>
+              <li>Fort Williams Park (free to visit)</li>
+            </ul>
+            <div class="quick-links">
+              <a href="https://maps.app.goo.gl/9dY5uEzJxz8Qnfaj9" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
+              <a href="https://portlandheadlight.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
             </div>
           </article>
         </div>
@@ -1305,6 +1533,7 @@
           </article>
         </div>
       </section>
+      </div>
 
       <div class="footer-note">
         <div class="save-status" id="save-status">
@@ -1326,6 +1555,78 @@
   <script>
     (function () {
       const STORAGE_KEY_PREFIX = "matt-bday-2025-v2-";
+      const ACTIVE_TAB_KEY = STORAGE_KEY_PREFIX + "active-tab";
+
+      // Tab switching functionality
+      function switchTab(tabName) {
+        // Hide all panels
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+          panel.classList.remove('active');
+        });
+
+        // Deactivate all buttons
+        document.querySelectorAll('.tab-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+
+        // Show selected panel
+        const panel = document.querySelector(`[data-panel="${tabName}"]`);
+        if (panel) panel.classList.add('active');
+
+        // Activate selected button
+        const button = document.querySelector(`[data-tab="${tabName}"]`);
+        if (button) button.classList.add('active');
+
+        // Save active tab
+        try {
+          localStorage.setItem(ACTIVE_TAB_KEY, tabName);
+        } catch (e) {
+          console.warn("Unable to save active tab", e);
+        }
+      }
+
+      function updateTabIndicators() {
+        // Check each tab for selections
+        const tabs = {
+          'heading-out': ['saturdayBeforeCheckin'],
+          'saturday-day': [],
+          'saturday-night': ['saturdayAfterShow'],
+          'sunday-morning': ['sundayEarlyBaths', 'sundayBrunch', 'sundayAfternoon'],
+          'heading-home': []
+        };
+
+        Object.entries(tabs).forEach(([tabName, categories]) => {
+          const button = document.querySelector(`[data-tab="${tabName}"]`);
+          if (!button) return;
+
+          const hasSelections = categories.some(category => getSelection(category));
+          if (hasSelections) {
+            button.classList.add('has-selections');
+          } else {
+            button.classList.remove('has-selections');
+          }
+        });
+      }
+
+      function initTabs() {
+        // Set up tab click handlers
+        document.querySelectorAll('.tab-button').forEach(button => {
+          button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+            if (tabName) switchTab(tabName);
+          });
+        });
+
+        // Restore saved tab or default to first tab
+        const savedTab = localStorage.getItem(ACTIVE_TAB_KEY);
+        if (savedTab) {
+          switchTab(savedTab);
+        } else {
+          switchTab('heading-out');
+        }
+
+        updateTabIndicators();
+      }
 
       function flashSaveStatus() {
         const el = document.getElementById("save-status");
@@ -1427,6 +1728,7 @@
 
         if (!favId) {
           updateItinerary();
+          updateTabIndicators();
           return;
         }
 
@@ -1439,6 +1741,7 @@
           selectedBtn.classList.add("selected");
         }
         updateItinerary();
+        updateTabIndicators();
       }
 
       function resetAll() {
@@ -1492,6 +1795,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        initTabs();
         initSelections();
         updateItinerary();
 

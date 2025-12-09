@@ -5,417 +5,188 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lev's Birthday Weekend – Portland 2025</title>
   <style>
-    /* ===================================
-       RESET & BASE STYLES
-       =================================== */
+    /* SIMPLE, LIGHTWEIGHT STYLES - PHASE 1 */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    :root {
-      /* Colors */
-      --bg: #0a0412;
-      --accent: #4ade80;
-      --accent-hover: #22c55e;
-      --text-main: #f9fafb;
-      --text-muted: #c4b5d6;
-      --maroon: #6b2240;
-      --navy: #1e1b4b;
-      --purple: #581c87;
-      --border-unselected: rgba(139, 92, 246, 0.3);
-      --border-selected: rgba(34, 197, 94, 0.9);
-      --glow-green: rgba(22, 163, 74, 0.75);
-
-      /* Spacing */
-      --card-radius: 16px;
-      --page-radius: 28px;
-      --pill-radius: 999px;
-
-      /* Shadows */
-      --shadow-page: 0 18px 40px rgba(26, 10, 40, 0.9);
-      --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3);
-      --shadow-card-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
-      --shadow-selected: 0 0 0 1px rgba(22, 163, 74, 0.75), 0 18px 40px rgba(22, 163, 74, 0.7);
-    }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0412 0%, #1a0a28 50%, #0f0820 100%);
-      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #333;
       line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    /* ===================================
-       MAIN CONTAINER
-       =================================== */
-    .page-container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 32px 16px;
-    }
-
-    .page {
-      background: var(--bg);
-      border-radius: var(--page-radius);
-      box-shadow: var(--shadow-page);
-      overflow: hidden;
-    }
-
-    /* ===================================
-       FIXED HEADER
-       =================================== */
-    .header {
-      padding: 28px 24px;
-      border-bottom: 1px solid var(--border-unselected);
-      display: grid;
-      gap: 24px;
-    }
-
-    @media (min-width: 768px) {
-      .header {
-        grid-template-columns: 1fr 360px;
-        align-items: start;
-      }
-    }
-
-    .header-left h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    .header-subtitle {
-      color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .meta-boxes {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .meta-box {
-      background: rgba(88, 28, 135, 0.2);
-      border: 1px solid var(--border-unselected);
-      border-radius: 12px;
-      padding: 12px 16px;
-    }
-
-    .meta-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .meta-value {
-      font-size: 13px;
-      color: var(--text-main);
-    }
-
-    .map-button {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(34, 197, 94, 0.1));
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      color: var(--text-main);
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .map-button:hover {
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(34, 197, 94, 0.2));
-      transform: translateY(-2px);
-    }
-
-    .map-button-icon {
-      font-size: 24px;
-    }
-
-    .map-button-text {
-      flex: 1;
-    }
-
-    .map-button-title {
-      font-weight: 600;
-      font-size: 14px;
-      color: var(--accent);
-    }
-
-    .map-button-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    /* ===================================
-       SUMMARY PANEL
-       =================================== */
-    .summary-panel {
-      background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.05));
-      border: 2px solid rgba(74, 222, 128, 0.3);
-      border-radius: 12px;
-      padding: 16px;
-    }
-
-    .summary-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .summary-content {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .summary-section {
-      margin-bottom: 12px;
-    }
-
-    .summary-section-title {
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .summary-item {
-      padding-left: 12px;
-      margin-bottom: 2px;
-      color: var(--text-muted);
-    }
-
-    .summary-empty {
-      color: var(--text-muted);
-      font-style: italic;
-      text-align: center;
       padding: 20px;
     }
 
-    /* ===================================
-       TAB NAVIGATION
-       =================================== */
-    .tab-navigation {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #2c5282;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* Header Info */
+    .header-info {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .info-box {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #4299e1;
+    }
+
+    .info-label {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 5px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      color: #4a5568;
+      font-size: 14px;
+    }
+
+    /* Tabs */
+    .tabs {
       display: flex;
-      border-bottom: 2px solid var(--border-unselected);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      gap: 10px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #e2e8f0;
+      flex-wrap: wrap;
     }
 
     .tab-button {
-      flex: 1;
-      min-width: fit-content;
-      padding: 16px 24px;
+      padding: 12px 24px;
       background: none;
       border: none;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
       border-bottom: 3px solid transparent;
-      white-space: nowrap;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      color: #718096;
+      transition: all 0.2s;
     }
 
     .tab-button:hover {
-      color: var(--text-main);
+      color: #2d3748;
+      background: #f7fafc;
     }
 
     .tab-button.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
+      color: #2c5282;
+      border-bottom-color: #4299e1;
     }
 
-    .tab-indicator {
-      display: inline-block;
-      margin-left: 6px;
-      font-size: 11px;
-      padding: 2px 6px;
-      background: rgba(74, 222, 128, 0.2);
-      border-radius: var(--pill-radius);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .tab-button.has-selections .tab-indicator {
-      opacity: 1;
-    }
-
-    /* ===================================
-       TAB CONTENT
-       =================================== */
+    /* Tab Content */
     .tab-content {
-      padding: 32px 24px;
-    }
-
-    .tab-panel {
       display: none;
     }
 
-    .tab-panel.active {
+    .tab-content.active {
       display: block;
-      animation: fadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===================================
-       SECTIONS
-       =================================== */
+    /* Sections */
     .section {
       margin-bottom: 40px;
     }
 
-    .section:last-child {
-      margin-bottom: 0;
-    }
-
-    .section-header {
-      margin-bottom: 20px;
-    }
-
     .section-title {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 10px;
     }
 
     .section-description {
+      color: #718096;
+      margin-bottom: 20px;
       font-size: 14px;
-      color: var(--text-muted);
     }
 
-    /* ===================================
-       CARD GRID
-       =================================== */
+    /* Cards */
     .card-grid {
       display: grid;
       gap: 20px;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    @media (min-width: 720px) {
-      .card-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (min-width: 480px) and (max-width: 719px) {
-      .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* ===================================
-       ACTIVITY CARDS
-       =================================== */
     .card {
-      position: relative;
-      padding: 11px 12px 10px;
-      border-radius: var(--card-radius);
-      border: 1px solid var(--border-unselected);
-      background:
-        radial-gradient(circle at 20% 50%, rgba(107, 34, 64, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(30, 27, 75, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(88, 28, 135, 0.3) 0%, transparent 50%),
-        var(--bg);
-      box-shadow: var(--shadow-card);
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
+      background: white;
     }
 
     .card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-card-hover);
-      border-color: rgba(139, 92, 246, 0.5);
+      border-color: #cbd5e0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .card.selected {
-      border: 3px solid var(--border-selected);
-      box-shadow: var(--shadow-selected);
-      transform: none;
-      padding: 10px 11px 9px; /* Adjust for thicker border */
-    }
-
-    .card.selected::before {
-      content: '✓';
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 24px;
-      height: 24px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--bg);
-      font-weight: 700;
-      font-size: 14px;
-      box-shadow: 0 2px 8px rgba(74, 222, 128, 0.3);
-      z-index: 10;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 8px;
+      border-color: #4299e1;
+      background: #ebf8ff;
     }
 
     .card-title {
       font-size: 18px;
       font-weight: 600;
-      color: var(--text-main);
-      flex: 1;
+      color: #2d3748;
+      margin-bottom: 8px;
     }
 
     .card-tag {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      display: inline-block;
+      background: #edf2f7;
+      color: #4a5568;
       padding: 4px 12px;
-      border-radius: var(--pill-radius);
-      background: rgba(88, 28, 135, 0.3);
-      color: var(--text-muted);
-      white-space: nowrap;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .card.selected .card-tag {
+      background: #bee3f8;
+      color: #2c5282;
     }
 
     .card-description {
+      color: #4a5568;
       font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1.5;
     }
 
     .card-details {
+      color: #718096;
       font-size: 13px;
-      color: var(--text-muted);
       margin-bottom: 12px;
+      line-height: 1.4;
     }
 
     .card-links {
@@ -426,1310 +197,1061 @@
     }
 
     .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      color: var(--text-muted);
+      display: inline-block;
+      padding: 6px 12px;
+      background: #edf2f7;
+      color: #4a5568;
       text-decoration: none;
-      transition: color 0.2s ease;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: rgba(88, 28, 135, 0.2);
+      border-radius: 4px;
+      font-size: 12px;
+      transition: all 0.2s;
     }
 
     .card-link:hover {
-      color: var(--accent);
+      background: #e2e8f0;
+      color: #2d3748;
     }
 
-    /* ===================================
-       MINI CARDS (for shopping stores)
-       =================================== */
-    .mini-cards {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 480px) {
-      .mini-cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .mini-card {
-      padding: 8px 10px;
-      border-radius: 12px;
-      border: 1px solid var(--border-unselected);
-      background: rgba(10, 4, 18, 0.5);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      position: relative;
-    }
-
-    .mini-card:hover {
-      border-color: rgba(139, 92, 246, 0.5);
-      transform: translateY(-1px);
-    }
-
-    .mini-card.selected {
-      border: 2px solid var(--border-selected);
-      box-shadow: 0 0 0 1px var(--glow-green);
-      padding: 7px 9px; /* Adjust for thicker border */
-    }
-
-    .mini-card.selected::before {
-      content: '✓';
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 18px;
-      height: 18px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--bg);
-      font-weight: 700;
-      font-size: 11px;
-    }
-
-    .mini-card-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .mini-card-description {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 8px;
-    }
-
-    .mini-card-links {
-      display: flex;
-      gap: 6px;
-    }
-
-    .mini-card-link {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .mini-card-link:hover {
-      color: var(--accent);
-    }
-
-    /* ===================================
-       EXPANDABLE SECTIONS
-       =================================== */
-    .expandable-content {
-      display: none;
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-unselected);
-    }
-
-    .expandable-content.expanded {
-      display: block;
-    }
-
+    /* Expandable sections */
     .expand-button {
-      display: block;
       width: 100%;
-      padding: 12px 16px;
-      background: rgba(74, 222, 128, 0.1);
-      border: 2px solid rgba(74, 222, 128, 0.3);
-      border-radius: 12px;
-      color: var(--text-muted);
+      padding: 12px;
+      background: #edf2f7;
+      border: 2px solid #cbd5e0;
+      border-radius: 6px;
+      cursor: pointer;
       font-size: 14px;
-      font-weight: 600;
-      cursor: not-allowed;
-      transition: all 0.2s ease;
+      font-weight: 500;
+      color: #718096;
       margin-top: 20px;
-      opacity: 0.5;
+      transition: all 0.2s;
+    }
+
+    .expand-button:hover {
+      background: #e2e8f0;
     }
 
     .expand-button.enabled {
+      background: #bee3f8;
+      border-color: #4299e1;
+      color: #2c5282;
       cursor: pointer;
-      opacity: 1;
-      color: var(--accent);
-      border-color: var(--accent);
     }
 
-    .expand-button.enabled:hover {
-      background: rgba(74, 222, 128, 0.2);
+    .expandable-content {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #f7fafc;
+      border-radius: 6px;
     }
 
-    .expand-button.expanded {
-      background: rgba(74, 222, 128, 0.2);
-      border-color: var(--accent);
+    .expandable-content.show {
+      display: block;
     }
 
-    /* ===================================
-       SPECIAL CARDS
-       =================================== */
-    .fantasy-football-card {
-      background:
-        radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.3) 0%, transparent 50%),
-        var(--bg);
-      border-color: rgba(239, 68, 68, 0.5);
+    /* Mini cards for stores */
+    .mini-card {
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .fantasy-football-card .card-title {
-      color: #fca5a5;
+    .mini-card:hover {
+      border-color: #cbd5e0;
+      background: #f7fafc;
     }
 
-    .timeline-card {
-      background:
-        radial-gradient(circle at 70% 30%, rgba(30, 27, 75, 0.5) 0%, transparent 50%),
-        radial-gradient(circle at 30% 70%, rgba(107, 34, 64, 0.3) 0%, transparent 50%),
-        var(--bg);
+    .mini-card.selected {
+      border-color: #4299e1;
+      background: #ebf8ff;
     }
 
-    /* ===================================
-       FOOTER
-       =================================== */
-    .footer {
-      padding: 40px 24px;
-      border-top: 1px solid var(--border-unselected);
-      text-align: center;
+    .mini-card-title {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 5px;
     }
 
-    .footer-note {
+    .mini-card-description {
       font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 16px;
+      color: #4a5568;
+      margin-bottom: 8px;
+    }
+
+    /* Summary Panel */
+    .summary-panel {
+      position: sticky;
+      top: 20px;
+      background: #f7fafc;
+      padding: 20px;
+      border-radius: 8px;
+      border: 2px solid #bee3f8;
+      margin-bottom: 30px;
+    }
+
+    .summary-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c5282;
+      margin-bottom: 15px;
+    }
+
+    .summary-section {
+      margin-bottom: 15px;
+    }
+
+    .summary-section-title {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 5px;
+    }
+
+    .summary-item {
+      color: #4a5568;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    .summary-empty {
+      color: #718096;
+      font-style: italic;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #e2e8f0;
+      text-align: center;
+      color: #718096;
     }
 
     .reset-button {
+      margin: 20px 0;
       padding: 10px 20px;
-      background: none;
-      border: 2px solid var(--border-unselected);
-      border-radius: var(--pill-radius);
-      color: var(--text-muted);
-      font-size: 13px;
-      font-weight: 600;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 16px;
+      font-size: 14px;
+      transition: all 0.2s;
     }
 
     .reset-button:hover {
-      border-color: #ef4444;
-      color: #fca5a5;
-      background: rgba(239, 68, 68, 0.1);
+      border-color: #fc8181;
+      color: #c53030;
     }
 
-    .footer-love {
-      font-size: 14px;
-      color: var(--text-main);
-    }
-
-    /* ===================================
-       UTILITIES
-       =================================== */
+    /* Hidden utility */
     .hidden {
       display: none !important;
     }
 
-    /* ===================================
-       PRINT STYLES
-       =================================== */
-    @media print {
-      body {
-        background: white;
-      }
-
-      .page {
-        box-shadow: none;
-      }
-
-      .tab-navigation,
-      .reset-button {
-        display: none;
-      }
-
-      .tab-panel {
-        display: block !important;
-      }
-
-      .expandable-content {
-        display: block !important;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <div class="inner">
-      <header>
-        <div class="left-column">
-          <div class="title-block">
-            <div class="eyebrow">
-              <span class="pill-dot"></span>
-              <span>Dec 20-21, 2025 · Portland, ME</span>
-            </div>
-            <h1>35th Birthday Weekend</h1>
-            <p class="subtitle">
-              Portland awaits. Options selected especially for you! Differentiated by vibes to (hopefully) make choosing easy-peasy!
-            </p>
-          </div>
-          <div class="meta">
-            <div class="meta-row">
-              <div class="meta-label">Accommodations</div>
-              <div class="meta-value">AC Hotel Portland Downtown/Waterfront</div>
-            </div>
-            <div class="meta-box">
-              <div class="meta-label">Goal</div>
-              <div class="meta-value">Kicking off your 35th rotation around the sun!</div>
-            </div>
-            <div class="meta-row">
-              <div class="meta-label">How this works</div>
-              <div class="meta-value">Below is an interactive itinerary curated just for you (by yours truly). Scope out the options, use the quick links to satisfy your curiosity and get additional details. Simply select what looks good to you and the schedule will update automatically. Come back to this page anytime, it saves your picks automatically. <strong>No login, no fuss.</strong></div>
-            </div>
-            <div class="meta-row">
-              <div class="meta-label">Small Heads Up</div>
-              <div class="meta-value">Your girl made some reservations ahead of time to be sure you had the best to choose from. <strong>By Friday, December 19th, kindly send her a screenshot of the schedule you'd like so she can adjust accordinly.</strong></div>
-            </div>
-          </div>
+  <div class="container">
+    <h1>Lev's Birthday Weekend</h1>
+    <div class="subtitle">Portland, Maine • December 20-21, 2025</div>
 
-          <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" rel="noopener" class="map-button">
-            <span class="map-button-icon">🗺️</span>
-            <div class="map-button-text">
-              <div class="map-button-title">Portland Favorites Map</div>
-              <div class="map-button-subtitle">All the spots we've curated — food, drinks, shops & more</div>
-            </div>
-          </a>
-        </div>
-
-        <!-- SUMMARY PANEL -->
-        <div class="header-right">
-          <div class="summary-panel">
-            <div class="summary-title">🔥 YOUR WEEKEND</div>
-            <div class="summary-content" id="summary-content">
-              <div class="summary-empty">Make selections below to build your weekend!</div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- TAB NAVIGATION -->
-      <nav class="tab-navigation">
-        <button class="tab-button active" data-tab="heading-out">
-          Heading Out<span class="tab-indicator">✓</span>
-        </button>
-        <button class="tab-button" data-tab="saturday-night">
-          Saturday Night<span class="tab-indicator">✓</span>
-        </button>
-        <button class="tab-button" data-tab="sunday">
-          Sunday<span class="tab-indicator">✓</span>
-        </button>
-        <button class="tab-button" data-tab="heading-home">
-          Heading Home<span class="tab-indicator">✓</span>
-        </button>
-      </nav>
-
-      <!-- TAB CONTENT -->
-      <div class="tab-content">
-
-        <!-- TAB 1: HEADING OUT -->
-        <div class="tab-panel active" data-panel="heading-out">
-          <!-- Section: Choose Departure Time -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Choose Your Departure Time</h2>
-              <p class="section-description">Pick when you want to hit the road</p>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="depart-10am" data-group="departureTime">
-                <div class="card-header">
-                  <h3 class="card-title">Leave at 10:00 AM</h3>
-                  <span class="card-tag">Early Start</span>
-                </div>
-                <p class="card-description">Arrive by 12pm, more time in Portland</p>
-              </div>
-
-              <div class="card" data-card-id="depart-11am" data-group="departureTime">
-                <div class="card-header">
-                  <h3 class="card-title">Leave at 11:00 AM</h3>
-                  <span class="card-tag">Balanced</span>
-                </div>
-                <p class="card-description">Arrive by 1pm, leisurely morning</p>
-              </div>
-
-              <div class="card" data-card-id="depart-12pm" data-group="departureTime">
-                <div class="card-header">
-                  <h3 class="card-title">Leave at 12:00 PM</h3>
-                  <span class="card-tag">Sleep In</span>
-                </div>
-                <p class="card-description">Arrive by 2pm, maximize rest</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Section: Before Check-In Activities -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Before Check-In Activities</h2>
-              <p class="section-description">Pick activities to fill time before dinner at 5:30pm. Reminder: we can check-in to the hotel starting at 3pm.</p>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="before-oldport" data-group="beforeCheckin">
-                <div class="card-header">
-                  <h3 class="card-title">Explore Old Port + Novel Cocktail Bar</h3>
-                  <span class="card-tag">Wander & Drinks</span>
-                </div>
-                <p class="card-description">Wander the district, warm up with cocktails at Novel, see the lobster trap trees</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" target="_blank" rel="noopener" class="card-link">📍 Old Port</a>
-                  <a href="https://maps.app.goo.gl/g6gTPQq5osMav4WB7" target="_blank" rel="noopener" class="card-link">📍 Novel</a>
-                  <a href="https://www.novelmaine.com/" target="_blank" rel="noopener" class="card-link">🌐 Novel</a>
-                  <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" target="_blank" rel="noopener" class="card-link">🌐 About Trees</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="before-baths" data-group="beforeCheckin">
-                <div class="card-header">
-                  <h3 class="card-title">Washington Baths</h3>
-                  <span class="card-tag">Relax & Recharge</span>
-                </div>
-                <p class="card-description">Arrive early for ultimate relaxation. Sauna, cold plunge, hot pool (no time limit). Show up refreshed for check-in.</p>
-                <p class="card-details">$36/person, no time limit, Saturday hours: 12pm-9pm<br>Bring bathing suit, towel, sandals (towels $3 to rent)</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/f2xBGmGCVoqZvhFN9" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://washingtonbaths.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://washingtonbaths.com/faq.html" target="_blank" rel="noopener" class="card-link">🌐 FAQs</a>
-                </div>
-              </div>
-
-     <!-- Tab 2: Saturday Night -->
-<div class="tab-panel" data-panel="saturday-night">
-  <section class="section">
-    <!-- Check-In -->
-    <div class="section-header">
-      <div class="section-title">3:00 PM - Check-In</div>
-    </div>
-    <div class="choice-grid" style="grid-template-columns: 1fr;">
-      <article class="choice-card" data-choice-id="sat-checkin" data-category="saturdayCheckIn">
-        <button type="button" class="star-button" data-fav-button="saturdayCheckIn" data-fav-id="sat-checkin">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Recommended</span>
-        </div>
-        <h2 class="choice-title">Check-In ★</h2>
-        <p class="choice-meta">AC Hotel Portland Downtown/Waterfront</p>
-        <ul class="choice-list">
-          <li>Drop bags, check out harbor views</li>
-          <li>Settle in and get comfortable</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Freshen Up -->
-    <div class="section-header" style="margin-top:24px;">
-      <div class="section-title">4:30 PM - Freshen Up</div>
-    </div>
-    <div class="choice-grid" style="grid-template-columns: 1fr;">
-      <article class="choice-card" data-choice-id="sat-freshen" data-category="saturdayFreshenUp">
-        <button type="button" class="star-button" data-fav-button="saturdayFreshenUp" data-fav-id="sat-freshen">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Get Ready</span>
-        </div>
-        <h2 class="choice-title">Freshen Up</h2>
-        <p class="choice-meta">Get ready for dinner</p>
-        <ul class="choice-list">
-          <li>Change and refresh</li>
-          <li>Perfect timing before evening plans</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <!-- Fixed Evening Schedule -->
-    <div class="section-header">
-      <div class="section-title">Saturday Night</div>
-    </div>
-    <div class="timeline">
-      <div class="timeline-row">
-        <div class="time-pill">4:30</div>
-        <div class="timeline-card">
-          <div class="timeline-main">
-            <div class="timeline-title">Freshen Up and a Pre-Dinner Drink</div>
-          </div>
-          <p class="timeline-detail">
-            Get ready for dinner. Grab a drink at the hotel bar, AC Lounge (waterfront views)·
-            <em>If time allows: Stroll waterfront to see lobster trap trees lit up</em>·
-          </p>
-          <p><strong>⚠️ Reminder: Set fantasy football lineup!</strong></p>
-        </div>
-
-        <!-- Explore Old Port card (properly wrapped) -->
-        <article class="choice-card" data-choice-id="sat-predrink-oldport" data-category="saturdayPreDinner">
-          <div class="choice-tag-row">
-            <span class="choice-tag">Explore</span>
-          </div>
-          <h2 class="choice-title">Explore Old Port</h2>
-          <p class="choice-meta">Stroll waterfront, see lobster trap trees lit up</p>
-          <ul class="choice-list">
-            <li>Evening waterfront walk</li>
-            <li>See the holiday lights</li>
-            <li>Photo opportunities</li>
-          </ul>
-          <div class="quick-links">
-            <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" class="quick-link" target="_blank" rel="noopener">📍 Old Port</a>
-            <a href="https://92moose.fm/lobster-trap-christmas-trees-maine/" class="quick-link" target="_blank" rel="noopener">🌐 About Trees</a>
-          </div>
-        </article>
+    <!-- Header Info -->
+    <div class="header-info">
+      <div class="info-box">
+        <div class="info-label">Accommodations</div>
+        <div class="info-value">AC Hotel Portland Downtown/Waterfront</div>
       </div>
-
-      <!-- Optional: Chill in Room card -->
-      <article class="choice-card" data-choice-id="sat-predrink-chill" data-category="saturdayPreDinner">
-        <button type="button" class="star-button" data-fav-button="saturdayPreDinner" data-fav-id="sat-predrink-chill">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Relax</span>
-        </div>
-        <h2 class="choice-title">Chill in Room</h2>
-        <p class="choice-meta">Relax before dinner, save energy for the show</p>
-        <ul class="choice-list">
-          <li>Rest and recharge</li>
-          <li>Enjoy the room amenities</li>
-          <li>Save energy for later</li>
-        </ul>
-      </article>
-    </div>
-
-    <!-- Dinner -->
-    <div class="section-header" style="margin-top:24px;">
-      <div class="section-title">5:30 PM - Dinner</div>
-    </div>
-    <div class="choice-grid" style="grid-template-columns: 1fr;">
-      <article class="choice-card" data-choice-id="sat-dinner" data-category="saturdayDinner">
-        <button type="button" class="star-button" data-fav-button="saturdayDinner" data-fav-id="sat-dinner">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Reservation Confirmed</span>
-        </div>
-        <h2 class="choice-title">Dinner ★</h2>
-        <p class="choice-meta">Central Provisions (confirmed reservation)</p>
-        <ul class="choice-list">
-          <li>5 min walk from hotel</li>
-          <li>Tapas-style shareables, good cocktails</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/4VLy6RwdtkrGrEvP8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="http://www.central-provisions.com/menus" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Show Options -->
-    <div class="section-header" style="margin-top:24px;">
-      <div class="section-title">Show Options - Pick Your Entertainment</div>
-      <p class="section-subtitle">Choose your evening show</p>
-    </div>
-    <div class="choice-grid">
-      <article class="choice-card" data-choice-id="sat-show-ptf" data-category="saturdayShow">
-        <button type="button" class="star-button" data-fav-button="saturdayShow" data-fav-id="sat-show-ptf">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Reserved</span>
-        </div>
-        <h2 class="choice-title">Pink Talking Fish at State Theatre ★</h2>
-        <p class="choice-meta">Doors 7pm · Show 8pm · 5 min walk from dinner</p>
-        <ul class="choice-list">
-          <li>Tribute band fusion of Pink Floyd, Talking Heads, Phish</li>
-          <li>Reserved tickets</li>
-          <li>Close to restaurant</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/yduqxtskCQKXiBSS7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="https://click.email.ticketmaster.com/?qs=0b8e3ecdf60ecfccb3cb93cb65494801d247caec1fe2c925ea24196d5abad4eebc1360df9a6c1843d0c7cc6746467272f01a830c574ab2aa0fcce2bbc9891ea9" class="quick-link" target="_blank" rel="noopener">🎟️ Tickets</a>
-          <a href="https://statetheatreportland.com/events/pink-talking-fish/" class="quick-link" target="_blank" rel="noopener">🌐 Event Info</a>
-        </div>
-      </article>
-
-      <article class="choice-card" data-choice-id="sat-show-blue" data-category="saturdayShow">
-        <button type="button" class="star-button" data-fav-button="saturdayShow" data-fav-id="sat-show-blue">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Live Jazz</span>
-        </div>
-        <h2 class="choice-title">Blue Portland Maine</h2>
-        <p class="choice-meta">Doors 6pm · Carl Dimow Jazz Quartet @ 7pm · Rot On The Vine @ 9pm</p>
-        <ul class="choice-list">
-          <li>Pay What You Can at the door, bring cash!</li>
-          <li>Intimate live-music bar</li>
-          <li>Jazz, folk, and small-venue shows</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/UC4stiNfQf7Ntf7T8" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="http://www.blueportlandmaine.org/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-        </div>
-      </article>
-    </div>
-
-    <!-- After The Show -->
-    <div class="section-header" style="margin-top:24px;">
-      <div class="section-title">After The Show</div>
-      <p class="section-subtitle">Pick your post-show vibe</p>
-    </div>
-    <div class="choice-grid">
-      <article class="choice-card" data-choice-id="sat-after-hunt" data-category="saturdayAfterShow">
-        <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-hunt">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Cocktails & Small Plates</span>
-        </div>
-        <h2 class="choice-title">Hunt & Alpine</h2>
-        <p class="choice-meta">10:30pm Reservation · Scandinavian small plates</p>
-        <ul class="choice-list">
-          <li>Clever cocktails in minimalist space</li>
-          <li>Highlights: Bonecrusher, Green Chili Popcorn</li>
-          <li>Oysters, Espresso Martini</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/G5WbA7GazA23xxb79" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="http://www.huntandalpineclub.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-          <a href="https://indd.adobe.com/view/a2f6449c-e917-4f42-ac98-4158a9899f4a" class="quick-link" target="_blank" rel="noopener">🌐 Menu</a>
-        </div>
-      </article>
-
-      <article class="choice-card" data-choice-id="sat-after-blyth" data-category="saturdayAfterShow">
-        <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-blyth">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Upscale Cocktails</span>
-        </div>
-        <h2 class="choice-title">Blyth & Burrows</h2>
-        <p class="choice-meta">Saturday: 12 PM–12 AM · Maritime theme</p>
-        <ul class="choice-list">
-          <li>Vintage-inspired cocktail bar</li>
-          <li>House cocktails & upscale small plates</li>
-          <li>Maritime-themed ambiance</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/5KSA2oB92Ak83nC8A" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="https://www.blythandburrows.com/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-          <a href="https://www.blythandburrows.com/menu-2/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Menu</a>
-        </div>
-      </article>
-
-      <article class="choice-card" data-choice-id="sat-after-gritty" data-category="saturdayAfterShow">
-        <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-gritty">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Casual Brewpub</span>
-        </div>
-        <h2 class="choice-title">Gritty McDuff's Brew Pub</h2>
-        <p class="choice-meta">Open until ~1am Saturday · Old Port classic</p>
-        <ul class="choice-list">
-          <li>Known for house ales</li>
-          <li>Lively but unfussy atmosphere</li>
-          <li>Perfect easygoing last stop</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/cHRyAQnnQoQznhEQ6" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="https://grittys.com/portland-brew-pub/?utm_source=google&utm_medium=mybusiness" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-        </div>
-      </article>
-
-      <article class="choice-card" data-choice-id="sat-after-flask" data-category="saturdayAfterShow">
-        <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-flask">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Dancing & Nightlife</span>
-        </div>
-        <h2 class="choice-title">Flask Lounge</h2>
-        <p class="choice-meta">Open until ~1am Saturday · High-energy</p>
-        <ul class="choice-list">
-          <li>Bar and dance club with DJs</li>
-          <li>Themed nights and karaoke</li>
-          <li>Short walk from State Theatre</li>
-        </ul>
-        <div class="quick-links">
-          <a href="https://maps.app.goo.gl/Xm18wMEehsy1EHEj7" class="quick-link" target="_blank" rel="noopener">📍 Directions</a>
-          <a href="https://flasklounge.com/" class="quick-link" target="_blank" rel="noopener">🌐 Website</a>
-          <a href="https://flasklounge.com/event/among-moon-flowers/" class="quick-link" target="_blank" rel="noopener">🎟️ Dec 20 Event</a>
-        </div>
-      </article>
-
-      <article class="choice-card" data-choice-id="sat-after-luna" data-category="saturdayAfterShow">
-        <button type="button" class="star-button" data-fav-button="saturdayAfterShow" data-fav-id="sat-after-luna">☆</button>
-        <div class="choice-tag-row">
-          <span class="choice-tag">Rooftop Views</span>
-        </div>
-        <h2 class="choice-title">Luna Rooftop Bar</h2>
-        <p class="choice-meta">Open until ~11pm Saturday · Waterfront views</p
-
-
-      <!-- Tab 3: Sunday Morning -->
-      <div class="tab-panel" data-panel="sunday-morning">
-      <section class="section" id="sunday">
-        <div class="section-header">
-          <div class="section-title">Sunday Schedule</div>
-        </div>
-
-        <!-- TAB 3: SUNDAY -->
-        <div class="tab-panel" data-panel="sunday">
-          <!-- Early Morning Steam -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Optional: Early Morning Steam</h2>
-            </div>
-            <div class="card-grid" style="grid-template-columns: 1fr;">
-              <div class="card" data-card-id="sun-baths" data-group="sundayEarly">
-                <div class="card-header">
-                  <h3 class="card-title">Washington Baths (7am-12pm)</h3>
-                  <span class="card-tag">Winter Solstice Special</span>
-                </div>
-                <p class="card-description">Open 7am-12pm Sunday only (Winter Solstice!)</p>
-                <p class="card-details">$36/person, no time limit, closes at noon for rest of year. Sauna, cold plunge, hot pool. No reservations, all genders welcome.</p>
-                <div class="card-links">
-                  <a href="https://washingtonbaths.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://washingtonbaths.com/faq.html" target="_blank" rel="noopener" class="card-link">🌐 FAQs</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Brunch -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Brunch</h2>
-              <p class="section-description">To help us start the day!</p>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="brunch-union" data-group="sundayBrunch">
-                <div class="card-header">
-                  <h3 class="card-title">UNION</h3>
-                  <span class="card-tag">Classic Brunch</span>
-                </div>
-                <p class="card-description">10am reservation confirmed, 3 min walk from hotel. Good coffee, solid food, no rush.</p>
-                <p class="card-details">10am reservation ★</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/gBATyXPNz5DhrUwL6" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="http://www.unionportland.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://thepresshotel.com/wp-content/uploads/2025/11/Fall-Brunch-Menu-2025-2.pdf" target="_blank" rel="noopener" class="card-link">📋 Menu</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="brunch-juicery" data-group="sundayBrunch">
-                <div class="card-header">
-                  <h3 class="card-title">The Juicery</h3>
-                  <span class="card-tag">Light & Fresh</span>
-                </div>
-                <p class="card-description">Old Port, health-focused. Smoothie bowls, avocado toast, fresh juice. Light & energizing before exploring. No reservation needed.</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/3EM1gDuyW1KoSxS69" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://juicery.com/locations-and-menus/portland/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://orderjuicery.square.site/?location=11ea62fccaf5e5aba1470cc47a2aeaec#TE4ZF5ROZS6QJ6MXOZLSD5MM" target="_blank" rel="noopener" class="card-link">🛒 Order Ahead</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="brunch-hotsuppa" data-group="sundayBrunch">
-                <div class="card-header">
-                  <h3 class="card-title">Hot Suppa</h3>
-                  <span class="card-tag">Comfort Food</span>
-                </div>
-                <p class="card-description">Arts District, Southern comfort. Biscuits & gravy, fried chicken & waffles. Hearty, indulgent, stick-to-your-ribs brunch. Worth the wait if there's a line.</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/kfFceJcJ9dN79frK8" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://hotsuppa.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Checkout -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Checkout</h2>
-            </div>
-            <div class="card-grid" style="grid-template-columns: 1fr;">
-              <div class="card timeline-card" style="cursor: default; opacity: 0.8;">
-                <div class="card-header">
-                  <h3 class="card-title">12:00 PM - Checkout</h3>
-                </div>
-                <p class="card-description">Pack up, say goodbye to harbor views</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- Sunday Afternoon -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Sunday Afternoon Options</h2>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="sun-movie" data-group="sundayAfternoon">
-                <div class="card-header">
-                  <h3 class="card-title">Movie at Portland Museum of Art</h3>
-                  <span class="card-tag">Film & Art</span>
-                </div>
-                <p class="card-description">Watch Todd Haynes' acclaimed psychological drama Safe (1995) with a special introduction by actor Xander Berkeley. Perfect for a rainy afternoon or film buffs.</p>
-                <p class="card-details">Safe (1995), 12:00pm - 2:05pm, Introduced by Xander Berkeley</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/4mF7G9jUJmg1YL3JA" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://www.portlandmuseum.org/" target="_blank" rel="noopener" class="card-link">🌐 Museum</a>
-                  <a href="https://www.portlandmuseum.org/eventscalendar/safe-4" target="_blank" rel="noopener" class="card-link">🎟️ Tickets</a>
-                </div>
-              </div>
-
-              <!-- Expandable Shopping Card -->
-              <div class="card" data-card-id="sun-shopping" data-group="sundayAfternoon">
-                <div class="card-header">
-                  <h3 class="card-title">Explore Old Port Shopping</h3>
-                  <span class="card-tag">Wander & Explore</span>
-                </div>
-                <p class="card-description">Browse Portland's best independent shops for vintage finds, premium menswear, and unique gifts. Six curated stops within easy walking distance of each other—spend as much or as little time as you want.</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA" target="_blank" rel="noopener" class="card-link">📍 Shopping District</a>
-                </div>
-
-                <!-- Expandable Store Highlights -->
-                <div class="expandable-content" id="shopping-stores">
-                  <h4 style="color: var(--accent); margin-bottom: 12px; font-size: 16px;">Store Highlights</h4>
-                  <div class="mini-cards">
-                    <div class="mini-card" data-mini-id="store-viand">
-                      <div class="mini-card-title">Viand Mercantile</div>
-                      <div class="mini-card-description">A rotating selection of vintage and antique pieces alongside new décor, textiles, furniture, and small goods, often sourced from independent makers in Maine and beyond.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/LwXANijDnyf7utaE9" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="https://www.viandmercantile.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-
-                    <div class="mini-card" data-mini-id="store-drygoods">
-                      <div class="mini-card-title">Portland Dry Goods</div>
-                      <div class="mini-card-description">High-end, design‑driven casualwear and outerwear for men (and women) with a refined, slightly rugged vibe; great for premium denim, jackets, and elevated basics.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/nQc2mXJAFvyEWUNf6" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="http://portlanddrygoods.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-
-                    <div class="mini-card" data-mini-id="store-davidwood">
-                      <div class="mini-card-title">David Wood</div>
-                      <div class="mini-card-description">Classic, old‑school men's shop specializing in tailored clothing, custom suits, and polished casual pieces in a clubby, upscale setting.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/MH2tpmVFn4bBUznZ7" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="http://www.davidwood.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-
-                    <div class="mini-card" data-mini-id="store-josephs">
-                      <div class="mini-card-title">Joseph's of Portland</div>
-                      <div class="mini-card-description">Stylish brick‑and‑mortar men's store offering suits, tuxedos, custom tailoring, dress shoes, and sharp casualwear, good for weddings or a night‑out upgrade.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/djQ3dpSYbWRTXaP36" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="https://josephsofportland.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-
-                    <div class="mini-card" data-mini-id="store-trading">
-                      <div class="mini-card-title">Portland Trading Co</div>
-                      <div class="mini-card-description">Eclectic, well‑curated shop blending men's clothing with lifestyle and home goods; strong choice for modern, slightly artsy menswear and accessories.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/YvMJ8Vk6EK2oYPj8A" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="http://www.portlandtradingco.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-
-                    <div class="mini-card" data-mini-id="store-littleghost">
-                      <div class="mini-card-title">Little Ghost</div>
-                      <div class="mini-card-description">Offbeat vintage clothing store with a wide range of authentic pieces and sizes; a fun stop if you want unique, one‑off menswear and accessories.</div>
-                      <div class="mini-card-links">
-                        <a href="https://maps.app.goo.gl/GTzoJyNNuN4psdzN6" target="_blank" rel="noopener" class="mini-card-link">📍 Directions</a>
-                        <a href="http://littleghostvintage.com/" target="_blank" rel="noopener" class="mini-card-link">🌐 Website</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="sun-victoria" data-group="sundayAfternoon">
-                <div class="card-header">
-                  <h3 class="card-title">Victoria Mansion</h3>
-                  <span class="card-tag">Museum & History</span>
-                </div>
-                <p class="card-description">Didn't make it Saturday? This stunning Victorian house museum is worth the visit—decked out for the holidays and perfect for architecture and history enthusiasts.</p>
-                <p class="card-details">If you missed it Saturday, allow 1-1.5 hours</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/EnE277KkfbquWMmN7" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://victoriamansion.org/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://victoriamansion.org/visit-us/" target="_blank" rel="noopener" class="card-link">🎟️ Tickets</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="sun-lighthouse" data-group="sundayAfternoon">
-                <div class="card-header">
-                  <h3 class="card-title">Portland Head Light</h3>
-                  <span class="card-tag">Scenic Stop</span>
-                </div>
-                <p class="card-description">Cape Elizabeth's iconic lighthouse at Fort Williams Park. Quintessential Maine photo op and scenic coastal views—free to visit, 15 minutes from downtown.</p>
-                <p class="card-details">Cape Elizabeth, iconic lighthouse, Fort Williams Park (free)</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/iYV8cQbviunxzek96" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://portlandheadlight.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <!-- TAB 4: HEADING HOME -->
-        <div class="tab-panel" data-panel="heading-home">
-          <!-- Fun Stops -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Fun Stops for the Way Home</h2>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="home-frost" data-group="homeStops">
-                <div class="card-header">
-                  <h3 class="card-title">Frost Factory</h3>
-                  <span class="card-tag">Cannabis Dispensary</span>
-                </div>
-                <p class="card-description">South Portland, 10am-8pm, on the way home. Last chance to grab goodies for the ride home. Birthday gift for loyalty members!</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://thefrostfactory.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                  <a href="https://weedmaps.com/dispensaries/the-frost-factory-2" target="_blank" rel="noopener" class="card-link">🛒 Preorder</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="home-lighthouse" data-group="homeStops">
-                <div class="card-header">
-                  <h3 class="card-title">Portland Head Light</h3>
-                  <span class="card-tag">Scenic Landmark</span>
-                </div>
-                <p class="card-description">Historic lighthouse and scenic overlook at Fort Williams Park; a quintessential Maine photo op just 15 minutes from downtown Portland on your way out of the city.</p>
-                <div class="card-links">
-                  <a href="https://maps.app.goo.gl/iYV8cQbviunxzek96" target="_blank" rel="noopener" class="card-link">📍 Directions</a>
-                  <a href="https://portlandheadlight.com/" target="_blank" rel="noopener" class="card-link">🌐 Website</a>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Playlists -->
-          <section class="section">
-            <div class="section-header">
-              <h2 class="section-title">Playlists for the Drive</h2>
-              <p class="section-description">Pick your road trip soundtrack</p>
-            </div>
-            <div class="card-grid">
-              <div class="card" data-card-id="playlist-matt" data-group="playlists">
-                <div class="card-header">
-                  <h3 class="card-title">Matt</h3>
-                </div>
-                <p class="card-description">All the songs that remind Meag of her Honeybadger</p>
-                <p class="card-details" style="font-style: italic;">Personal playlist curated with love</p>
-                <div class="card-links">
-                  <a href="https://open.spotify.com/playlist/3b3sqpWJxPz8CbHDPRbB2i?si=16859a21d59b4af1&pt=a7171679a0353062752bdb80b89b73b0" target="_blank" rel="noopener" class="card-link">🎵 Play on Spotify</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="playlist-babson" data-group="playlists">
-                <div class="card-header">
-                  <h3 class="card-title">Babson Columbia '25</h3>
-                </div>
-                <p class="card-description">All the jams from your epic trip to Columbia</p>
-                <p class="card-details" style="font-style: italic;">Throwback to good times and great adventures</p>
-                <div class="card-links">
-                  <a href="https://open.spotify.com/playlist/5DVDPZQa1L4WnzDoPS6feo?si=fb9191444b114842" target="_blank" rel="noopener" class="card-link">🎵 Play on Spotify</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="playlist-notrap" data-group="playlists">
-                <div class="card-header">
-                  <h3 class="card-title">Not Rap</h3>
-                </div>
-                <p class="card-description">The famous playlist you created for Meag early days. Proof you listened to music other than rap. Evidence of why your Spotify age is 61</p>
-                <div class="card-links">
-                  <a href="https://open.spotify.com/playlist/1DVV7dznCQmD4cEcLZsa2G?si=dc93a837709f4719" target="_blank" rel="noopener" class="card-link">🎵 Play on Spotify</a>
-                </div>
-              </div>
-
-              <div class="card" data-card-id="playlist-acidjazz" data-group="playlists">
-                <div class="card-header">
-                  <h3 class="card-title">Acid Jazz</h3>
-                </div>
-                <p class="card-description">Could there be a list without this? The classic, the essential, the inevitable</p>
-                <div class="card-links">
-                  <a href="https://open.spotify.com/playlist/37i9dQZF1DWXHghfFFOaS6?si=e371f8926fc44b26" target="_blank" rel="noopener" class="card-link">🎵 Play on Spotify</a>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
+      <div class="info-box">
+        <div class="info-label">Goal</div>
+        <div class="info-value">Kicking off your 35th rotation around the sun!</div>
       </div>
+    </div>
 
-      <!-- FOOTER -->
-      <footer class="footer">
-        <p class="footer-note">Your picks save automatically. Come back anytime.</p>
-        <button class="reset-button" id="reset-button">Start over</button>
-        <p class="footer-love">Note: You are loved!</p>
-      </footer>
-    </main>
+    <!-- Summary Panel -->
+    <div class="summary-panel">
+      <div class="summary-title">🔥 Your Weekend Summary</div>
+      <div id="summary-content" class="summary-empty">
+        Make selections below to build your weekend!
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="heading-out">Heading Out</button>
+      <button class="tab-button" data-tab="saturday-night">Saturday Night</button>
+      <button class="tab-button" data-tab="sunday">Sunday</button>
+      <button class="tab-button" data-tab="heading-home">Heading Home</button>
+    </div>
+
+    <!-- Tab Content Container -->
+    <div id="tab-container"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Your selections save automatically</p>
+      <button class="reset-button" id="reset-btn">Reset All Selections</button>
+      <p style="margin-top: 20px; font-size: 16px; color: #2d3748;">Note: You are loved!</p>
+    </div>
   </div>
 
   <script>
-    // ===================================
-    // STATE MANAGEMENT
-    // ===================================
-    const STORAGE_KEY = 'lev-birthday-2025-selections';
+    // ============================================
+    // CONTENT DATA - EDIT THIS SECTION TO UPDATE ACTIVITIES
+    // ============================================
+    const CONTENT = {
+      // ============================================
+      // TAB 1: HEADING OUT
+      // ============================================
+      headingOut: {
+        sections: [
+          {
+            id: 'departure-time',
+            title: 'Choose Your Departure Time',
+            description: 'Pick when you want to hit the road',
+            selectionType: 'single',
+            cards: [
+              {
+                id: 'depart-10am',
+                title: 'Leave at 10:00 AM',
+                tag: 'Early Start',
+                description: 'Arrive by 12pm, more time in Portland'
+              },
+              {
+                id: 'depart-11am',
+                title: 'Leave at 11:00 AM',
+                tag: 'Balanced',
+                description: 'Arrive by 1pm, good balance'
+              },
+              {
+                id: 'depart-12pm',
+                title: 'Leave at 12:00 PM',
+                tag: 'Leisurely',
+                description: 'Arrive by 2pm, relaxed morning'
+              }
+            ]
+          },
+          {
+            id: 'before-checkin',
+            title: 'Before Check-In Activities',
+            description: 'What should we do before 3pm check-in? (Select any)',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'arabica',
+                title: 'Arabica Coffee House',
+                tag: 'Coffee',
+                description: 'Local coffee shop with cozy vibes',
+                details: '450 Forest Ave • Open 7am-5pm',
+                links: [
+                  { text: 'Website', url: 'https://www.arabicacoffeehouse.com' },
+                  { text: 'Menu', url: 'https://www.arabicacoffeehouse.com/menu' }
+                ]
+              },
+              {
+                id: 'headlight',
+                title: 'Headlight Brewing',
+                tag: 'Brewery',
+                description: 'Craft brewery with great atmosphere',
+                details: '590 Forest Ave • Open 12pm-10pm',
+                links: [
+                  { text: 'Website', url: 'https://headlightbrewing.com' }
+                ]
+              },
+              {
+                id: 'east-end',
+                title: 'Explore East End',
+                tag: 'Walking',
+                description: 'Walk around the artsy East End neighborhood',
+                details: 'Galleries, shops, and street art'
+              },
+              {
+                id: 'waterfront-walk',
+                title: 'Old Port Waterfront',
+                tag: 'Walking',
+                description: 'Stroll along the historic waterfront',
+                details: 'Scenic views, cobblestone streets'
+              }
+            ]
+          }
+        ]
+      },
 
-    // Initialize state
-    let state = {
-      departureTime: null,
-      beforeCheckin: [],
-      saturdayFixed: [],
-      saturdayShow: null,
-      lateNight: [],
-      reminder: [],
-      sundayEarly: [],
-      sundayBrunch: null,
-      sundayAfternoon: [],
-      homeStops: [],
-      playlists: [],
-      shoppingStores: []
+      // ============================================
+      // TAB 2: SATURDAY NIGHT
+      // ============================================
+      saturdayNight: {
+        sections: [
+          {
+            id: 'checkin',
+            title: 'Check-In',
+            description: 'Arrive at the hotel',
+            selectionType: 'none',
+            cards: [
+              {
+                id: 'hotel-checkin',
+                title: 'AC Hotel Check-In (3:00 PM)',
+                tag: 'Hotel',
+                description: 'Drop bags, settle in',
+                details: '433 Commercial St'
+              }
+            ]
+          },
+          {
+            id: 'freshen-up',
+            title: 'Freshen Up',
+            description: 'Get ready for the evening',
+            selectionType: 'none',
+            cards: [
+              {
+                id: 'get-ready',
+                title: 'Get Ready',
+                tag: 'Prep',
+                description: 'Change, relax, prepare for dinner and show'
+              }
+            ]
+          },
+          {
+            id: 'fantasy-reminder',
+            title: 'Fantasy Football',
+            description: 'Don\'t forget to set your lineup!',
+            selectionType: 'none',
+            cards: [
+              {
+                id: 'ff-lineup',
+                title: 'Set Fantasy Lineup',
+                tag: 'Important',
+                description: 'Week 16 games start Saturday - set your lineup before dinner!',
+                details: 'Games at 1pm, 4:25pm, and 8:15pm ET'
+              }
+            ]
+          },
+          {
+            id: 'dinner',
+            title: 'Dinner',
+            description: 'Pre-show dinner',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'eventide',
+                title: 'Eventide Oyster Co.',
+                tag: 'Seafood',
+                description: 'Award-winning oysters and creative seafood',
+                details: '86 Middle St • 4-9:30pm • Walk: 5 min',
+                links: [
+                  { text: 'Website', url: 'https://www.eventideoysterco.com' },
+                  { text: 'Menu', url: 'https://www.eventideoysterco.com/portland-menu' }
+                ]
+              },
+              {
+                id: 'duckfat',
+                title: 'Duckfat',
+                tag: 'Comfort Food',
+                description: 'Sandwiches, poutine, Belgian fries',
+                details: '43 Middle St • 11am-9pm • Walk: 5 min',
+                links: [
+                  { text: 'Website', url: 'https://duckfat.com' }
+                ]
+              },
+              {
+                id: 'central-provisions',
+                title: 'Central Provisions',
+                tag: 'Small Plates',
+                description: 'Inventive small plates, excellent cocktails',
+                details: '414 Fore St • 4-10pm • Walk: 3 min',
+                links: [
+                  { text: 'Website', url: 'https://www.central-provisions.com' }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'show',
+            title: 'Evening Show',
+            description: 'Choose your evening entertainment',
+            selectionType: 'single',
+            cards: [
+              {
+                id: 'magic-show',
+                title: 'Comedy/Magic Show at Jonathan\'s',
+                tag: 'Comedy & Magic',
+                description: 'Intimate venue with comedy and magic performances',
+                details: '92 Bourne St, Ogunquit (40 min drive) • Show: 8pm',
+                links: [
+                  { text: 'Website', url: 'https://jonathansogunquit.com' },
+                  { text: 'Tickets', url: 'https://jonathansogunquit.com/calendar' }
+                ]
+              },
+              {
+                id: 'live-music',
+                title: 'Live Music in Portland',
+                tag: 'Music',
+                description: 'Check local venues for live performances',
+                details: 'Port City Music Hall, One Longfellow Square, or State Theatre',
+                links: [
+                  { text: 'Port City', url: 'https://www.portcitymusichall.com' },
+                  { text: 'State Theatre', url: 'https://statetheatreportland.com' }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'late-night',
+            title: 'Late Night Options',
+            description: 'After the show... (Select any)',
+            selectionType: 'multiple',
+            expandable: true,
+            expandCondition: 'show-selected',
+            cards: [
+              {
+                id: 'novare-res',
+                title: 'Novare Res Bier Cafe',
+                tag: 'Beer Bar',
+                description: '500+ beers, European-style beer cafe',
+                details: '4 Canal Plaza • Open until 1am',
+                links: [
+                  { text: 'Website', url: 'https://novareresbiercafe.com' }
+                ]
+              },
+              {
+                id: 'portland-hunt',
+                title: 'Portland Hunt + Alpine Club',
+                tag: 'Cocktails',
+                description: 'Craft cocktails, cozy alpine-themed bar',
+                details: '75 Market St • Open until 1am',
+                links: [
+                  { text: 'Website', url: 'https://huntalpine.com' }
+                ]
+              },
+              {
+                id: 'brass-fox',
+                title: 'The Brass Fox',
+                tag: 'Speakeasy',
+                description: 'Hidden speakeasy-style cocktail bar',
+                details: '92 Exchange St • Open until 1am'
+              },
+              {
+                id: 'arcade',
+                title: 'Arcadia National Bar',
+                tag: 'Arcade Bar',
+                description: 'Retro arcade games and drinks',
+                details: '21 Hanover St • Open until 1am',
+                links: [
+                  { text: 'Website', url: 'https://arcadianationalbar.com' }
+                ]
+              },
+              {
+                id: 'hotel-bar',
+                title: 'Back to Hotel Bar',
+                tag: 'Nightcap',
+                description: 'Wind down at the AC Hotel bar',
+                details: 'Convenient, no travel needed'
+              }
+            ]
+          }
+        ]
+      },
+
+      // ============================================
+      // TAB 3: SUNDAY
+      // ============================================
+      sunday: {
+        sections: [
+          {
+            id: 'early-morning',
+            title: 'Early Morning',
+            description: 'Start the day relaxed',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'baths',
+                title: 'Hot Baths',
+                tag: 'Relaxation',
+                description: 'Hydrotherapy baths at East End neighborhood spot',
+                details: 'Portland Salt Co. - 547 Washington Ave • Book ahead',
+                links: [
+                  { text: 'Website', url: 'https://www.portlandsaltco.com' },
+                  { text: 'Book', url: 'https://www.portlandsaltco.com/book-now' }
+                ]
+              }
+            ]
+          },
+          {
+            id: 'brunch',
+            title: 'Sunday Brunch',
+            description: 'Pick your brunch spot',
+            selectionType: 'single',
+            cards: [
+              {
+                id: 'duckfat-brunch',
+                title: 'Duckfat',
+                tag: 'Comfort',
+                description: 'Breakfast sandwiches and famous fries',
+                details: '43 Middle St • 11am-9pm',
+                links: [
+                  { text: 'Website', url: 'https://duckfat.com' }
+                ]
+              },
+              {
+                id: 'becky-diner',
+                title: 'Becky\'s Diner',
+                tag: 'Classic',
+                description: 'Portland institution, hearty breakfast',
+                details: '390 Commercial St • 5am-9pm',
+                links: [
+                  { text: 'Website', url: 'https://beckysdiner.com' }
+                ]
+              },
+              {
+                id: 'brunch-hotel',
+                title: 'Hotel Breakfast',
+                tag: 'Easy',
+                description: 'Convenient breakfast at AC Hotel',
+                details: 'No travel, relaxed start'
+              }
+            ]
+          },
+          {
+            id: 'checkout',
+            title: 'Hotel Checkout',
+            description: 'Pack up and check out',
+            selectionType: 'none',
+            cards: [
+              {
+                id: 'hotel-checkout',
+                title: 'Check Out (11:00 AM)',
+                tag: 'Hotel',
+                description: 'Pack bags, check out, load car',
+                details: 'Can usually get late checkout if needed'
+              }
+            ]
+          },
+          {
+            id: 'afternoon',
+            title: 'Sunday Afternoon Activities',
+            description: 'Before heading home... (Select any)',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'shopping',
+                title: 'Shopping in Old Port',
+                tag: 'Shopping',
+                description: 'Browse unique stores and boutiques',
+                details: 'Exchange St, Commercial St, Fore St',
+                expandable: true,
+                stores: [
+                  {
+                    id: 'maine-store',
+                    name: 'Ferdinand',
+                    description: 'Curated Maine-made goods and vintage',
+                    location: '243 Congress St'
+                  },
+                  {
+                    id: 'bookstore',
+                    name: 'Longfellow Books',
+                    description: 'Independent bookstore',
+                    location: '1 Monument Way'
+                  },
+                  {
+                    id: 'outdoor',
+                    name: 'Lisa-Marie\'s Made in Maine',
+                    description: 'Local artisan products',
+                    location: '46 Exchange St'
+                  },
+                  {
+                    id: 'vintage',
+                    name: 'Blanche & Mimi',
+                    description: 'Vintage clothing and accessories',
+                    location: '25 Exchange St'
+                  },
+                  {
+                    id: 'mens',
+                    name: 'OTB',
+                    description: 'Men\'s clothing and accessories',
+                    location: '10 Moulton St'
+                  },
+                  {
+                    id: 'record',
+                    name: 'Bull Moose Music',
+                    description: 'Records, CDs, books, movies',
+                    location: '151 Middle St'
+                  }
+                ]
+              },
+              {
+                id: 'museum',
+                title: 'Portland Museum of Art',
+                tag: 'Culture',
+                description: 'Art museum with strong regional collection',
+                details: '7 Congress Square • 10am-6pm Sunday',
+                links: [
+                  { text: 'Website', url: 'https://www.portlandmuseum.org' }
+                ]
+              },
+              {
+                id: 'eastern-prom',
+                title: 'Eastern Promenade',
+                tag: 'Outdoors',
+                description: 'Waterfront park with harbor views',
+                details: 'Great for a walk before leaving town'
+              },
+              {
+                id: 'coffee-final',
+                title: 'Final Coffee Stop',
+                tag: 'Coffee',
+                description: 'Grab coffee for the road',
+                details: 'Tandem Coffee, Coffee by Design, or Arabica'
+              }
+            ]
+          }
+        ]
+      },
+
+      // ============================================
+      // TAB 4: HEADING HOME
+      // ============================================
+      headingHome: {
+        sections: [
+          {
+            id: 'fun-stops',
+            title: 'Fun Stops on the Way Home',
+            description: 'Break up the drive back (Select any)',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'freeport',
+                title: 'Freeport Outlets',
+                tag: 'Shopping',
+                description: 'L.L.Bean flagship and outlet shopping',
+                details: '20 min south of Portland • L.L.Bean open 24/7',
+                links: [
+                  { text: 'L.L.Bean', url: 'https://www.llbean.com/llb/shop/518672' }
+                ]
+              },
+              {
+                id: 'kennebunkport',
+                title: 'Kennebunkport',
+                tag: 'Scenic',
+                description: 'Charming coastal town worth a stroll',
+                details: '30 min south of Portland • Dock Square, ocean views'
+              }
+            ]
+          },
+          {
+            id: 'playlists',
+            title: 'Road Trip Playlists',
+            description: 'Music for the drive home (Select any)',
+            selectionType: 'multiple',
+            cards: [
+              {
+                id: 'playlist-chill',
+                title: 'Chill Vibes',
+                tag: 'Relaxed',
+                description: 'Mellow tunes for a relaxed drive home'
+              },
+              {
+                id: 'playlist-energy',
+                title: 'Energy Boost',
+                tag: 'Upbeat',
+                description: 'Upbeat music to keep energy up'
+              },
+              {
+                id: 'playlist-throwback',
+                title: 'Throwback Hits',
+                tag: 'Nostalgia',
+                description: 'Classic hits and sing-alongs'
+              },
+              {
+                id: 'podcast',
+                title: 'Podcast Time',
+                tag: 'Audio',
+                description: 'Catch up on favorite podcasts'
+              }
+            ]
+          }
+        ]
+      }
     };
 
-    // Load state from localStorage
-    function loadState() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          state = { ...state, ...JSON.parse(saved) };
-        }
-      } catch (e) {
-        console.error('Error loading state:', e);
-      }
-    }
+    // ============================================
+    // STATE MANAGEMENT
+    // ============================================
+    let selections = {
+      headingOut: {},
+      saturdayNight: {},
+      sunday: {},
+      headingHome: {}
+    };
 
-    // Save state to localStorage
-    function saveState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      } catch (e) {
-        console.error('Error saving state:', e);
-      }
-    }
-
-    // ===================================
-    // CARD SELECTION LOGIC
-    // ===================================
-
-    // Radio groups (only one can be selected)
-    const RADIO_GROUPS = ['departureTime', 'saturdayShow', 'sundayBrunch'];
-
-    function selectCard(cardId, group) {
-      if (RADIO_GROUPS.includes(group)) {
-        // Radio button behavior - only one selection
-        state[group] = state[group] === cardId ? null : cardId;
-      } else {
-        // Multi-select behavior
-        if (!Array.isArray(state[group])) {
-          state[group] = [];
-        }
-        const index = state[group].indexOf(cardId);
-        if (index > -1) {
-          state[group].splice(index, 1);
-        } else {
-          state[group].push(cardId);
+    // Load saved selections from localStorage
+    function loadSelections() {
+      const saved = localStorage.getItem('lev-bday-2025');
+      if (saved) {
+        try {
+          selections = JSON.parse(saved);
+        } catch (e) {
+          console.error('Error loading selections:', e);
         }
       }
-      saveState();
-      updateUI();
     }
 
-    function selectMiniCard(miniId) {
-      if (!state.shoppingStores) {
-        state.shoppingStores = [];
-      }
-      const index = state.shoppingStores.indexOf(miniId);
-      if (index > -1) {
-        state.shoppingStores.splice(index, 1);
-      } else {
-        state.shoppingStores.push(miniId);
-      }
-      saveState();
-      updateUI();
+    // Save selections to localStorage
+    function saveSelections() {
+      localStorage.setItem('lev-bday-2025', JSON.stringify(selections));
     }
 
-    // ===================================
-    // UI UPDATE
-    // ===================================
+    // ============================================
+    // RENDERING FUNCTIONS
+    // ============================================
 
-    function updateUI() {
-      // Update card selections
-      document.querySelectorAll('.card[data-card-id]').forEach(card => {
-        const cardId = card.dataset.cardId;
-        const group = card.dataset.group;
+    function renderCard(card, sectionId, selectionType, tabKey) {
+      const isSelected = selections[tabKey][sectionId]?.includes(card.id);
 
-        if (RADIO_GROUPS.includes(group)) {
-          card.classList.toggle('selected', state[group] === cardId);
-        } else if (Array.isArray(state[group])) {
-          card.classList.toggle('selected', state[group].includes(cardId));
-        }
-      });
+      let html = `
+        <div class="card ${isSelected ? 'selected' : ''}"
+             data-card-id="${card.id}"
+             data-section-id="${sectionId}"
+             data-selection-type="${selectionType}">
+          <div class="card-tag">${card.tag}</div>
+          <div class="card-title">${card.title}</div>
+          ${card.description ? `<div class="card-description">${card.description}</div>` : ''}
+          ${card.details ? `<div class="card-details">${card.details}</div>` : ''}
+      `;
 
-      // Update mini-card selections
-      document.querySelectorAll('.mini-card[data-mini-id]').forEach(miniCard => {
-        const miniId = miniCard.dataset.miniId;
-        miniCard.classList.toggle('selected', state.shoppingStores.includes(miniId));
-      });
-
-      // Update tab indicators
-      updateTabIndicators();
-
-      // Update summary panel
-      updateSummary();
-
-      // Handle late night button
-      updateLateNightButton();
-
-      // Handle shopping expansion
-      updateShoppingExpansion();
-    }
-
-    function updateTabIndicators() {
-      const tabGroups = {
-        'heading-out': ['departureTime', 'beforeCheckin'],
-        'saturday-night': ['saturdayFixed', 'saturdayShow', 'lateNight', 'reminder'],
-        'sunday': ['sundayEarly', 'sundayBrunch', 'sundayAfternoon', 'shoppingStores'],
-        'heading-home': ['homeStops', 'playlists']
-      };
-
-      Object.entries(tabGroups).forEach(([tab, groups]) => {
-        const button = document.querySelector(`[data-tab="${tab}"]`);
-        if (!button) return;
-
-        const hasSelections = groups.some(group => {
-          if (RADIO_GROUPS.includes(group)) {
-            return state[group] !== null;
-          } else {
-            return Array.isArray(state[group]) && state[group].length > 0;
-          }
+      if (card.links && card.links.length > 0) {
+        html += '<div class="card-links">';
+        card.links.forEach(link => {
+          html += `<a href="${link.url}" class="card-link" target="_blank" onclick="event.stopPropagation()">${link.text}</a>`;
         });
-
-        button.classList.toggle('has-selections', hasSelections);
-      });
-    }
-
-    function updateSummary() {
-      const summaryContent = document.getElementById('summary-content');
-      let html = '';
-
-      // Check if any selections exist
-      const hasAnySelections =
-        state.departureTime ||
-        state.beforeCheckin.length > 0 ||
-        state.saturdayShow ||
-        state.lateNight.length > 0 ||
-        state.sundayBrunch ||
-        state.sundayAfternoon.length > 0 ||
-        state.homeStops.length > 0 ||
-        state.playlists.length > 0;
-
-      if (!hasAnySelections) {
-        summaryContent.innerHTML = '<div class="summary-empty">Make selections below to build your weekend!</div>';
-        return;
+        html += '</div>';
       }
 
-      // Saturday
-      html += '<div class="summary-section"><div class="summary-section-title">Saturday</div>';
+      // Shopping stores expandable
+      if (card.stores && card.stores.length > 0) {
+        const expandId = `expand-${card.id}`;
+        html += `
+          <button class="expand-button ${isSelected ? 'enabled' : ''}" id="expand-btn-${card.id}" onclick="toggleExpand('${expandId}', event)">
+            ${isSelected ? 'Show Store Details ▼' : 'Select to see store options'}
+          </button>
+          <div class="expandable-content ${isSelected ? 'show' : ''}" id="${expandId}">
+        `;
 
-      if (state.departureTime) {
-        const depTime = state.departureTime.replace('depart-', '').toUpperCase();
-        html += `<div class="summary-item">🚗 Leave at ${depTime}</div>`;
-      }
-
-      if (state.beforeCheckin.length > 0) {
-        html += `<div class="summary-item">✓ ${state.beforeCheckin.length} activity before check-in</div>`;
-      }
-
-      if (state.saturdayShow) {
-        const showName = state.saturdayShow === 'show-ptf' ? 'Pink Talking Fish' : 'Blue Portland Maine';
-        html += `<div class="summary-item">🎵 ${showName}</div>`;
-      }
-
-      if (state.lateNight.length > 0) {
-        html += `<div class="summary-item">🌙 ${state.lateNight.length} late night spot${state.lateNight.length > 1 ? 's' : ''}</div>`;
-      }
-
-      html += '</div>';
-
-      // Sunday
-      html += '<div class="summary-section"><div class="summary-section-title">Sunday</div>';
-
-      if (state.sundayEarly.length > 0) {
-        html += '<div class="summary-item">🌅 Early morning baths</div>';
-      }
-
-      if (state.sundayBrunch) {
-        const brunchNames = {
-          'brunch-union': 'UNION',
-          'brunch-juicery': 'The Juicery',
-          'brunch-hotsuppa': 'Hot Suppa'
-        };
-        html += `<div class="summary-item">🍳 ${brunchNames[state.sundayBrunch]}</div>`;
-      }
-
-      if (state.sundayAfternoon.length > 0) {
-        html += `<div class="summary-item">✓ ${state.sundayAfternoon.length} afternoon activity</div>`;
-      }
-
-      if (state.shoppingStores.length > 0) {
-        html += `<div class="summary-item">🛍️ ${state.shoppingStores.length} shop${state.shoppingStores.length > 1 ? 's' : ''} selected</div>`;
-      }
-
-      html += '</div>';
-
-      // Heading Home
-      if (state.homeStops.length > 0 || state.playlists.length > 0) {
-        html += '<div class="summary-section"><div class="summary-section-title">Heading Home</div>';
-
-        if (state.homeStops.length > 0) {
-          html += `<div class="summary-item">📍 ${state.homeStops.length} stop${state.homeStops.length > 1 ? 's' : ''}</div>`;
-        }
-
-        if (state.playlists.length > 0) {
-          html += `<div class="summary-item">🎵 ${state.playlists.length} playlist${state.playlists.length > 1 ? 's' : ''}</div>`;
-        }
+        card.stores.forEach(store => {
+          const storeSelected = selections[tabKey][`${sectionId}-stores`]?.includes(store.id);
+          html += `
+            <div class="mini-card ${storeSelected ? 'selected' : ''}"
+                 data-card-id="${store.id}"
+                 data-section-id="${sectionId}-stores"
+                 data-selection-type="multiple"
+                 onclick="handleCardClick('${sectionId}-stores', '${store.id}', 'multiple', '${tabKey}', event)">
+              <div class="mini-card-title">${store.name}</div>
+              <div class="mini-card-description">${store.description}</div>
+              <div class="card-details">${store.location}</div>
+            </div>
+          `;
+        });
 
         html += '</div>';
       }
 
-      summaryContent.innerHTML = html;
+      html += '</div>';
+      return html;
     }
 
-    function updateLateNightButton() {
-      const button = document.getElementById('late-night-button');
-      const section = document.getElementById('late-night-section');
-      const hasShow = state.saturdayShow !== null;
+    function renderSection(section, tabKey) {
+      let html = `
+        <div class="section">
+          <h2 class="section-title">${section.title}</h2>
+          ${section.description ? `<div class="section-description">${section.description}</div>` : ''}
+          <div class="card-grid">
+      `;
 
-      button.classList.toggle('enabled', hasShow);
+      section.cards.forEach(card => {
+        html += renderCard(card, section.id, section.selectionType, tabKey);
+      });
 
-      if (hasShow) {
-        button.textContent = section.classList.contains('hidden')
-          ? 'Show Late Night Options'
-          : 'Hide Late Night Options';
-        button.classList.toggle('expanded', !section.classList.contains('hidden'));
+      html += '</div>';
+
+      // Late night expandable (shows after selecting a show)
+      if (section.expandable && section.expandCondition === 'show-selected') {
+        const showSelected = selections[tabKey]['show'] && selections[tabKey]['show'].length > 0;
+        html += `
+          <div class="expandable-content ${showSelected ? 'show' : ''}" id="expand-late-night">
+            <!-- Late night cards already rendered above -->
+          </div>
+        `;
+      }
+
+      html += '</div>';
+      return html;
+    }
+
+    function renderTab(tabKey, tabData) {
+      let html = `<div class="tab-content" id="tab-${tabKey}">`;
+
+      tabData.sections.forEach(section => {
+        // Handle late night expandable section
+        if (section.expandable && section.expandCondition === 'show-selected') {
+          const showSelected = selections[tabKey]['show'] && selections[tabKey]['show'].length > 0;
+          if (showSelected) {
+            html += renderSection(section, tabKey);
+          }
+        } else {
+          html += renderSection(section, tabKey);
+        }
+      });
+
+      html += '</div>';
+      return html;
+    }
+
+    function renderAllTabs() {
+      const container = document.getElementById('tab-container');
+      let html = '';
+
+      html += renderTab('heading-out', CONTENT.headingOut);
+      html += renderTab('saturday-night', CONTENT.saturdayNight);
+      html += renderTab('sunday', CONTENT.sunday);
+      html += renderTab('heading-home', CONTENT.headingHome);
+
+      container.innerHTML = html;
+
+      // Show first tab by default
+      document.querySelector('.tab-content').classList.add('active');
+
+      // Attach click handlers to all cards
+      attachCardHandlers();
+    }
+
+    // ============================================
+    // EVENT HANDLERS
+    // ============================================
+
+    function attachCardHandlers() {
+      document.querySelectorAll('.card').forEach(card => {
+        if (card.dataset.selectionType !== 'none') {
+          card.addEventListener('click', (e) => {
+            const sectionId = card.dataset.sectionId;
+            const cardId = card.dataset.cardId;
+            const selectionType = card.dataset.selectionType;
+            const tabKey = getCurrentTab();
+            handleCardClick(sectionId, cardId, selectionType, tabKey, e);
+          });
+        }
+      });
+    }
+
+    function getCurrentTab() {
+      const activeTab = document.querySelector('.tab-button.active');
+      return activeTab ? activeTab.dataset.tab : 'heading-out';
+    }
+
+    function handleCardClick(sectionId, cardId, selectionType, tabKey, event) {
+      if (event) event.stopPropagation();
+
+      if (!selections[tabKey][sectionId]) {
+        selections[tabKey][sectionId] = [];
+      }
+
+      if (selectionType === 'single') {
+        // Radio button behavior
+        selections[tabKey][sectionId] = [cardId];
       } else {
-        button.textContent = 'Show Late Night Options (Select a show first)';
-        section.classList.add('hidden');
+        // Multiple selection
+        const index = selections[tabKey][sectionId].indexOf(cardId);
+        if (index > -1) {
+          selections[tabKey][sectionId].splice(index, 1);
+        } else {
+          selections[tabKey][sectionId].push(cardId);
+        }
+      }
+
+      saveSelections();
+      renderAllTabs();
+      updateSummary();
+
+      // Restore active tab
+      switchTab(tabKey);
+
+      // Handle expandables
+      if (sectionId === 'show') {
+        updateLateNightVisibility();
       }
     }
 
-    function updateShoppingExpansion() {
-      const shoppingCard = document.querySelector('[data-card-id="sun-shopping"]');
-      const storesSection = document.getElementById('shopping-stores');
+    function toggleExpand(expandId, event) {
+      event.stopPropagation();
+      const element = document.getElementById(expandId);
+      element.classList.toggle('show');
+    }
 
-      if (shoppingCard && storesSection) {
-        if (state.sundayAfternoon.includes('sun-shopping')) {
-          storesSection.classList.add('expanded');
+    function updateLateNightVisibility() {
+      const showSelected = selections.saturdayNight['show'] && selections.saturdayNight['show'].length > 0;
+      const lateNightSection = document.getElementById('expand-late-night');
+      if (lateNightSection) {
+        if (showSelected) {
+          lateNightSection.classList.add('show');
         } else {
-          storesSection.classList.remove('expanded');
+          lateNightSection.classList.remove('show');
         }
       }
     }
 
-    // ===================================
-    // TAB SWITCHING
-    // ===================================
+    // ============================================
+    // SUMMARY PANEL
+    // ============================================
 
-    function switchTab(tabName) {
-      // Update buttons
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.tab === tabName);
-      });
+    function updateSummary() {
+      const summaryContent = document.getElementById('summary-content');
+      let html = '';
+      let hasSelections = false;
 
-      // Update panels
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.toggle('active', panel.dataset.panel === tabName);
-      });
+      // Helper to get card title by ID
+      function getCardTitle(tabKey, sectionId, cardId) {
+        const tab = CONTENT[tabKey.replace(/-/g, '')];
+        if (!tab) return cardId;
+
+        for (const section of tab.sections) {
+          if (section.id === sectionId) {
+            const card = section.cards.find(c => c.id === cardId);
+            if (card) return card.title;
+          }
+
+          // Check stores
+          for (const card of section.cards) {
+            if (card.stores && sectionId.includes('stores')) {
+              const store = card.stores.find(s => s.id === cardId);
+              if (store) return store.name;
+            }
+          }
+        }
+        return cardId;
+      }
+
+      // Heading Out
+      if (Object.keys(selections.headingOut).length > 0) {
+        html += '<div class="summary-section"><div class="summary-section-title">Heading Out</div>';
+        for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
+          if (cardIds.length > 0) {
+            cardIds.forEach(cardId => {
+              html += `<div class="summary-item">• ${getCardTitle('heading-out', sectionId, cardId)}</div>`;
+              hasSelections = true;
+            });
+          }
+        }
+        html += '</div>';
+      }
+
+      // Saturday Night
+      if (Object.keys(selections.saturdayNight).length > 0) {
+        html += '<div class="summary-section"><div class="summary-section-title">Saturday Night</div>';
+        for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
+          if (cardIds.length > 0) {
+            cardIds.forEach(cardId => {
+              html += `<div class="summary-item">• ${getCardTitle('saturday-night', sectionId, cardId)}</div>`;
+              hasSelections = true;
+            });
+          }
+        }
+        html += '</div>';
+      }
+
+      // Sunday
+      if (Object.keys(selections.sunday).length > 0) {
+        html += '<div class="summary-section"><div class="summary-section-title">Sunday</div>';
+        for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
+          if (cardIds.length > 0) {
+            cardIds.forEach(cardId => {
+              html += `<div class="summary-item">• ${getCardTitle('sunday', sectionId, cardId)}</div>`;
+              hasSelections = true;
+            });
+          }
+        }
+        html += '</div>';
+      }
+
+      // Heading Home
+      if (Object.keys(selections.headingHome).length > 0) {
+        html += '<div class="summary-section"><div class="summary-section-title">Heading Home</div>';
+        for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
+          if (cardIds.length > 0) {
+            cardIds.forEach(cardId => {
+              html += `<div class="summary-item">• ${getCardTitle('heading-home', sectionId, cardId)}</div>`;
+              hasSelections = true;
+            });
+          }
+        }
+        html += '</div>';
+      }
+
+      if (!hasSelections) {
+        summaryContent.innerHTML = '<div class="summary-empty">Make selections below to build your weekend!</div>';
+      } else {
+        summaryContent.innerHTML = html;
+      }
     }
 
-    // ===================================
-    // EVENT LISTENERS
-    // ===================================
+    // ============================================
+    // TAB SWITCHING
+    // ============================================
 
-    document.addEventListener('DOMContentLoaded', () => {
-      loadState();
-      updateUI();
-
-      // Card clicks
-      document.querySelectorAll('.card[data-card-id]').forEach(card => {
-        card.addEventListener('click', (e) => {
-          // Don't trigger on link clicks
-          if (e.target.closest('a')) return;
-
-          const cardId = card.dataset.cardId;
-          const group = card.dataset.group;
-
-          // Skip checkout card (no selection)
-          if (cardId === 'checkout') return;
-
-          selectCard(cardId, group);
-        });
+    function switchTab(tabKey) {
+      // Update buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
       });
+      document.querySelector(`[data-tab="${tabKey}"]`).classList.add('active');
 
-      // Mini-card clicks
-      document.querySelectorAll('.mini-card[data-mini-id]').forEach(miniCard => {
-        miniCard.addEventListener('click', (e) => {
-          // Don't trigger on link clicks
-          if (e.target.closest('a')) return;
-
-          const miniId = miniCard.dataset.miniId;
-          selectMiniCard(miniId);
-        });
+      // Update content
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
       });
+      document.getElementById(`tab-${tabKey}`).classList.add('active');
+    }
 
-      // Tab clicks
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load saved selections
+      loadSelections();
+
+      // Render all tabs
+      renderAllTabs();
+
+      // Update summary
+      updateSummary();
+
+      // Tab switching
       document.querySelectorAll('.tab-button').forEach(button => {
         button.addEventListener('click', () => {
-          switchTab(button.dataset.tab);
+          const tabKey = button.dataset.tab;
+          switchTab(tabKey);
         });
-      });
-
-      // Late night button
-      const lateNightButton = document.getElementById('late-night-button');
-      const lateNightSection = document.getElementById('late-night-section');
-
-      lateNightButton.addEventListener('click', () => {
-        if (!state.saturdayShow) return;
-
-        lateNightSection.classList.toggle('hidden');
-        updateLateNightButton();
       });
 
       // Reset button
-      document.getElementById('reset-button').addEventListener('click', () => {
-        if (confirm('Are you sure you want to start over? This will clear all your selections.')) {
-          // Reset state
-          state = {
-            departureTime: null,
-            beforeCheckin: [],
-            saturdayFixed: [],
-            saturdayShow: null,
-            lateNight: [],
-            reminder: [],
-            sundayEarly: [],
-            sundayBrunch: null,
-            sundayAfternoon: [],
-            homeStops: [],
-            playlists: [],
-            shoppingStores: []
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        if (confirm('Reset all selections? This cannot be undone.')) {
+          selections = {
+            headingOut: {},
+            saturdayNight: {},
+            sunday: {},
+            headingHome: {}
           };
-
-          saveState();
-          updateUI();
+          saveSelections();
+          renderAllTabs();
+          updateSummary();
+          switchTab('heading-out');
         }
       });
     });

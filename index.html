@@ -68,44 +68,18 @@
       font-size: 14px;
     }
 
-    /* Tabs */
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #e2e8f0;
-      flex-wrap: wrap;
+    /* Section Groups */
+    .section-group-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a365d;
+      margin: 40px 0 30px 0;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #4299e1;
     }
 
-    .tab-button {
-      padding: 12px 24px;
-      background: none;
-      border: none;
-      border-bottom: 3px solid transparent;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 500;
-      color: #718096;
-      transition: all 0.2s;
-    }
-
-    .tab-button:hover {
-      color: #2d3748;
-      background: #f7fafc;
-    }
-
-    .tab-button.active {
-      color: #2c5282;
-      border-bottom-color: #4299e1;
-    }
-
-    /* Tab Content */
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
+    .section-group-title:first-child {
+      margin-top: 20px;
     }
 
     /* Sections */
@@ -449,16 +423,8 @@
       </div>
     </div>
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab-button active" data-tab="heading-out">Heading Out</button>
-      <button class="tab-button" data-tab="saturday-night">Saturday Night</button>
-      <button class="tab-button" data-tab="sunday">Sunday</button>
-      <button class="tab-button" data-tab="heading-home">Heading Home</button>
-    </div>
-
-    <!-- Tab Content Container -->
-    <div id="tab-container"></div>
+    <!-- All Content -->
+    <div id="content-container"></div>
 
     <!-- Footer -->
     <div class="footer">
@@ -1161,38 +1127,42 @@
       return html;
     }
 
-    function renderTab(tabKey, tabData) {
-      let html = `<div class="tab-content" id="tab-${tabKey}">`;
+    function renderAllContent() {
+      const container = document.getElementById('content-container');
+      let html = '';
 
-      tabData.sections.forEach(section => {
-        // Handle late night expandable section
+      // Heading Out
+      html += '<h2 class="section-group-title">Heading Out</h2>';
+      CONTENT.headingOut.sections.forEach(section => {
+        html += renderSection(section, 'headingOut');
+      });
+
+      // Saturday Night
+      html += '<h2 class="section-group-title">Saturday Night</h2>';
+      CONTENT.saturdayNight.sections.forEach(section => {
         if (section.expandable && section.expandCondition === 'show-selected') {
-          const showSelected = selections[tabKey]['show'] && selections[tabKey]['show'].length > 0;
+          const showSelected = selections.saturdayNight['show'] && selections.saturdayNight['show'].length > 0;
           if (showSelected) {
-            html += renderSection(section, tabKey);
+            html += renderSection(section, 'saturdayNight');
           }
         } else {
-          html += renderSection(section, tabKey);
+          html += renderSection(section, 'saturdayNight');
         }
       });
 
-      html += '</div>';
-      return html;
-    }
+      // Sunday
+      html += '<h2 class="section-group-title">Sunday</h2>';
+      CONTENT.sunday.sections.forEach(section => {
+        html += renderSection(section, 'sunday');
+      });
 
-    function renderAllTabs() {
-      const container = document.getElementById('tab-container');
-      let html = '';
-
-      html += renderTab('heading-out', CONTENT.headingOut);
-      html += renderTab('saturday-night', CONTENT.saturdayNight);
-      html += renderTab('sunday', CONTENT.sunday);
-      html += renderTab('heading-home', CONTENT.headingHome);
+      // Heading Home
+      html += '<h2 class="section-group-title">Heading Home</h2>';
+      CONTENT.headingHome.sections.forEach(section => {
+        html += renderSection(section, 'headingHome');
+      });
 
       container.innerHTML = html;
-
-      // Show first tab by default
-      document.querySelector('.tab-content').classList.add('active');
 
       // Attach click handlers to all cards
       attachCardHandlers();
@@ -1204,21 +1174,14 @@
 
     function attachCardHandlers() {
       document.querySelectorAll('.card').forEach(card => {
-        if (card.dataset.selectionType !== 'none') {
-          card.addEventListener('click', (e) => {
-            const sectionId = card.dataset.sectionId;
-            const cardId = card.dataset.cardId;
-            const selectionType = card.dataset.selectionType;
-            const tabKey = getCurrentTab();
-            handleCardClick(sectionId, cardId, selectionType, tabKey, e);
-          });
-        }
+        card.addEventListener('click', (e) => {
+          const sectionId = card.dataset.sectionId;
+          const cardId = card.dataset.cardId;
+          const selectionType = card.dataset.selectionType;
+          const tabKey = card.dataset.tabKey;
+          handleCardClick(sectionId, cardId, selectionType, tabKey, e);
+        });
       });
-    }
-
-    function getCurrentTab() {
-      const activeTab = document.querySelector('.tab-button.active');
-      return activeTab ? activeTab.dataset.tab : 'heading-out';
     }
 
     function handleCardClick(sectionId, cardId, selectionType, tabKey, event) {
@@ -1242,11 +1205,8 @@
       }
 
       saveSelections();
-      renderAllTabs();
+      renderAllContent();
       updateSummary();
-
-      // Restore active tab
-      switchTab(tabKey);
 
       // Handle expandables
       if (sectionId === 'show') {
@@ -1388,24 +1348,6 @@
     }
 
     // ============================================
-    // TAB SWITCHING
-    // ============================================
-
-    function switchTab(tabKey) {
-      // Update buttons
-      document.querySelectorAll('.tab-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`[data-tab="${tabKey}"]`).classList.add('active');
-
-      // Update content
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-      });
-      document.getElementById(`tab-${tabKey}`).classList.add('active');
-    }
-
-    // ============================================
     // INITIALIZATION
     // ============================================
 
@@ -1413,19 +1355,11 @@
       // Load saved selections
       loadSelections();
 
-      // Render all tabs
-      renderAllTabs();
+      // Render all content
+      renderAllContent();
 
       // Update summary
       updateSummary();
-
-      // Tab switching
-      document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', () => {
-          const tabKey = button.dataset.tab;
-          switchTab(tabKey);
-        });
-      });
 
       // Reset button
       document.getElementById('reset-btn').addEventListener('click', () => {
@@ -1437,9 +1371,8 @@
             headingHome: {}
           };
           saveSelections();
-          renderAllTabs();
+          renderAllContent();
           updateSummary();
-          switchTab('heading-out');
         }
       });
     });

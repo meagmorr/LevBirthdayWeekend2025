@@ -821,49 +821,70 @@
             cards: [
               {
                 id: 'shopping',
-                title: 'Shopping in Old Port',
+                title: 'Explore Old Port Shopping',
                 time: '1:00p',
-                tag: 'Shopping',
-                description: 'Browse unique stores and boutiques',
-                details: 'Exchange St, Commercial St, Fore St',
+                tag: 'Wander & Explore',
+                description: 'Browse Portland\'s best independent shops for vintage finds, premium menswear, and unique gifts. Six curated stops within easy walking distance of each other—spend as much or as little time as you want.',
+                details: 'Old Port shopping district',
                 address: 'Old Port, Portland, ME',
+                links: [
+                  { text: 'Shopping District', url: 'https://maps.app.goo.gl/TMwTqYxuPjjMQEmZA' }
+                ],
                 expandable: true,
                 stores: [
                   {
-                    id: 'maine-store',
-                    name: 'Ferdinand',
-                    description: 'Curated Maine-made goods and vintage',
-                    location: '243 Congress St'
+                    id: 'viand-mercantile',
+                    name: 'Viand Mercantile',
+                    description: 'A rotating selection of vintage and antique pieces alongside new décor, textiles, furniture, and small goods, often sourced from independent makers in Maine and beyond.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/LwXANijDnyf7utaE9' },
+                      { text: 'Website', url: 'https://www.viandmercantile.com/' }
+                    ]
                   },
                   {
-                    id: 'bookstore',
-                    name: 'Longfellow Books',
-                    description: 'Independent bookstore',
-                    location: '1 Monument Way'
+                    id: 'portland-dry-goods',
+                    name: 'Portland Dry Goods',
+                    description: 'High-end, design‑driven casualwear and outerwear for men (and women) with a refined, slightly rugged vibe; great for premium denim, jackets, and elevated basics.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/nQc2mXJAFvyEWUNf6' },
+                      { text: 'Website', url: 'http://portlanddrygoods.com/' }
+                    ]
                   },
                   {
-                    id: 'outdoor',
-                    name: 'Lisa-Marie\'s Made in Maine',
-                    description: 'Local artisan products',
-                    location: '46 Exchange St'
+                    id: 'david-wood',
+                    name: 'David Wood',
+                    description: 'Classic, old‑school men\'s shop specializing in tailored clothing, custom suits, and polished casual pieces in a clubby, upscale setting.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/MH2tpmVFn4bBUznZ7' },
+                      { text: 'Website', url: 'http://www.davidwood.com/' }
+                    ]
                   },
                   {
-                    id: 'vintage',
-                    name: 'Blanche & Mimi',
-                    description: 'Vintage clothing and accessories',
-                    location: '25 Exchange St'
+                    id: 'josephs',
+                    name: 'Joseph\'s of Portland',
+                    description: 'Stylish brick‑and‑mortar men\'s store offering suits, tuxedos, custom tailoring, dress shoes, and sharp casualwear, good for weddings or a night‑out upgrade.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/djQ3dpSYbWRTXaP36' },
+                      { text: 'Website', url: 'https://josephsofportland.com/' }
+                    ]
                   },
                   {
-                    id: 'mens',
-                    name: 'OTB',
-                    description: 'Men\'s clothing and accessories',
-                    location: '10 Moulton St'
+                    id: 'portland-trading',
+                    name: 'Portland Trading Co',
+                    description: 'Eclectic, well‑curated shop blending men\'s clothing with lifestyle and home goods; strong choice for modern, slightly artsy menswear and accessories.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/YvMJ8Vk6EK2oYPj8A' },
+                      { text: 'Website', url: 'http://www.portlandtradingco.com/' }
+                    ]
                   },
                   {
-                    id: 'record',
-                    name: 'Bull Moose Music',
-                    description: 'Records, CDs, books, movies',
-                    location: '151 Middle St'
+                    id: 'little-ghost',
+                    name: 'Little Ghost',
+                    description: 'Offbeat vintage clothing store with a wide range of authentic pieces and sizes; a fun stop if you want unique, one‑off menswear and accessories.',
+                    links: [
+                      { text: 'Directions', url: 'https://maps.app.goo.gl/GTzoJyNNuN4psdzN6' },
+                      { text: 'Website', url: 'http://littleghostvintage.com/' }
+                    ]
                   }
                 ]
               },
@@ -1068,9 +1089,24 @@
                  onclick="handleCardClick('${sectionId}-stores', '${store.id}', 'multiple', '${tabKey}', event)">
               <div class="mini-card-title">${store.name}</div>
               <div class="mini-card-description">${store.description}</div>
-              <div class="card-details">${store.location}</div>
-            </div>
           `;
+
+          // Add quick links for stores
+          if (store.links && store.links.length > 0) {
+            html += '<div class="card-quick-links">';
+            store.links.forEach(link => {
+              if (link.text.toLowerCase().includes('direction')) {
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
+              } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
+              } else {
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 ${link.text}</a>`;
+              }
+            });
+            html += '</div>';
+          }
+
+          html += `</div>`;
         });
 
         html += '</div>';

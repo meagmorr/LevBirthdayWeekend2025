@@ -358,10 +358,27 @@
       margin-bottom: 5px;
     }
 
+    .summary-day {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2c5282;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #bee3f8;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-day:first-of-type {
+      margin-top: 0;
+    }
+
     .summary-item {
       color: #4a5568;
       font-size: 14px;
-      margin-left: 10px;
+      margin-bottom: 5px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
     }
 
     .summary-empty {
@@ -1209,9 +1226,15 @@
       let html = '';
       let hasSelections = false;
 
+      // Helper to convert kebab-case to camelCase
+      function toCamelCase(str) {
+        return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      }
+
       // Helper to get card info by ID
       function getCardInfo(tabKey, sectionId, cardId) {
-        const tab = CONTENT[tabKey.replace(/-/g, '')];
+        const camelKey = toCamelCase(tabKey);
+        const tab = CONTENT[camelKey];
         if (!tab) return { title: cardId, time: '' };
 
         for (const section of tab.sections) {
@@ -1231,74 +1254,75 @@
         return { title: cardId, time: '' };
       }
 
-      // Helper to render summary item with time
-      function renderSummaryItem(tabKey, sectionId, cardIds) {
-        if (cardIds.length === 0) return '';
+      // Collect all selections organized by day
+      const saturday = [];
+      const sunday = [];
 
-        const cardId = cardIds[0]; // Single selection now
+      // Helper to add item to day array
+      function addItem(dayArray, tabKey, sectionId, cardIds) {
+        if (cardIds.length === 0) return;
+
+        const cardId = cardIds[0];
         const info = getCardInfo(tabKey, sectionId, cardId);
+        const camelKey = toCamelCase(tabKey);
 
         // Check if this is shopping with stores selected
-        if (info.card && info.card.stores && selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`]) {
-          const storeIds = selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`];
+        if (info.card && info.card.stores && selections[camelKey][`${sectionId}-stores`]) {
+          const storeIds = selections[camelKey][`${sectionId}-stores`];
           const storeNames = storeIds.map(storeId => {
             const storeInfo = getCardInfo(tabKey, `${sectionId}-stores`, storeId);
             return storeInfo.title;
           });
-          const timePrefix = info.time ? `${info.time} ` : '';
-          return `<div class="summary-item">${timePrefix}${info.title}: ${storeNames.join('; ')};</div>`;
-        }
-
-        const timePrefix = info.time ? `${info.time} ` : '';
-        return `<div class="summary-item">${timePrefix}${info.title}</div>`;
-      }
-
-      // Heading Out
-      if (Object.keys(selections.headingOut).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
-          const item = renderSummaryItem('heading-out', sectionId, cardIds);
-          if (item) {
-            html += item;
-            hasSelections = true;
-          }
+          dayArray.push({
+            time: info.time || '',
+            title: `${info.title}: ${storeNames.join('; ')};`
+          });
+        } else {
+          dayArray.push({
+            time: info.time || '',
+            title: info.title
+          });
         }
       }
 
-      // Saturday Night
-      if (Object.keys(selections.saturdayNight).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
-          if (!sectionId.includes('stores')) { // Skip store selections, they're handled with shopping
-            const item = renderSummaryItem('saturday-night', sectionId, cardIds);
-            if (item) {
-              html += item;
-              hasSelections = true;
-            }
-          }
+      // Collect Saturday items (Heading Out + Saturday Night)
+      for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
+        addItem(saturday, 'heading-out', sectionId, cardIds);
+      }
+      for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
+        if (!sectionId.includes('stores')) {
+          addItem(saturday, 'saturday-night', sectionId, cardIds);
         }
       }
 
-      // Sunday
-      if (Object.keys(selections.sunday).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
-          if (!sectionId.includes('stores')) {
-            const item = renderSummaryItem('sunday', sectionId, cardIds);
-            if (item) {
-              html += item;
-              hasSelections = true;
-            }
-          }
+      // Collect Sunday items (Sunday + Heading Home)
+      for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
+        if (!sectionId.includes('stores')) {
+          addItem(sunday, 'sunday', sectionId, cardIds);
         }
       }
+      for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
+        addItem(sunday, 'heading-home', sectionId, cardIds);
+      }
 
-      // Heading Home
-      if (Object.keys(selections.headingHome).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
-          const item = renderSummaryItem('heading-home', sectionId, cardIds);
-          if (item) {
-            html += item;
-            hasSelections = true;
-          }
-        }
+      // Render Saturday
+      if (saturday.length > 0) {
+        html += '<div class="summary-day">SATURDAY</div>';
+        saturday.forEach(item => {
+          const timeStr = item.time ? item.time.padEnd(7) : '       ';
+          html += `<div class="summary-item">${timeStr} ${item.title}</div>`;
+          hasSelections = true;
+        });
+      }
+
+      // Render Sunday
+      if (sunday.length > 0) {
+        html += '<div class="summary-day">SUNDAY</div>';
+        sunday.forEach(item => {
+          const timeStr = item.time ? item.time.padEnd(7) : '       ';
+          html += `<div class="summary-item">${timeStr} ${item.title}</div>`;
+          hasSelections = true;
+        });
       }
 
       if (!hasSelections) {

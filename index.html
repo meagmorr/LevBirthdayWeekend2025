@@ -186,6 +186,38 @@
       color: #2d3748;
     }
 
+    /* Quick Link Buttons */
+    .card-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .quick-link-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #4299e1;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .quick-link-btn:hover {
+      background: #3182ce;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .card.selected .quick-link-btn {
+      background: #2c5282;
+      border-color: #2b6cb0;
+    }
+
     /* Expandable sections */
     .expand-button {
       width: 100%;
@@ -265,7 +297,7 @@
       border-radius: 8px;
       border: 2px solid #bee3f8;
       margin-bottom: 30px;
-      max-height: 400px;
+      max-height: 240px;
       overflow-y: auto;
     }
 
@@ -404,18 +436,21 @@
               {
                 id: 'depart-10am',
                 title: 'Leave at 10:00 AM',
+                time: '10:00a',
                 tag: 'Early Start',
                 description: 'Arrive by 12pm, more time in Portland'
               },
               {
                 id: 'depart-11am',
                 title: 'Leave at 11:00 AM',
+                time: '11:00a',
                 tag: 'Balanced',
                 description: 'Arrive by 1pm, good balance'
               },
               {
                 id: 'depart-12pm',
                 title: 'Leave at 12:00 PM',
+                time: '12:00p',
                 tag: 'Leisurely',
                 description: 'Arrive by 2pm, relaxed morning'
               }
@@ -424,15 +459,17 @@
           {
             id: 'before-checkin',
             title: 'Before Check-In Activities',
-            description: 'What should we do before 3pm check-in? (Select any)',
-            selectionType: 'multiple',
+            description: 'Pick one activity before 3pm check-in',
+            selectionType: 'single',
             cards: [
               {
                 id: 'arabica',
                 title: 'Arabica Coffee House',
+                time: '12:00p',
                 tag: 'Coffee',
                 description: 'Local coffee shop with cozy vibes',
                 details: '450 Forest Ave • Open 7am-5pm',
+                address: '450 Forest Ave, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://www.arabicacoffeehouse.com' },
                   { text: 'Menu', url: 'https://www.arabicacoffeehouse.com/menu' }
@@ -441,9 +478,11 @@
               {
                 id: 'headlight',
                 title: 'Headlight Brewing',
+                time: '12:00p',
                 tag: 'Brewery',
                 description: 'Craft brewery with great atmosphere',
                 details: '590 Forest Ave • Open 12pm-10pm',
+                address: '590 Forest Ave, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://headlightbrewing.com' }
                 ]
@@ -451,16 +490,20 @@
               {
                 id: 'east-end',
                 title: 'Explore East End',
+                time: '12:00p',
                 tag: 'Walking',
                 description: 'Walk around the artsy East End neighborhood',
-                details: 'Galleries, shops, and street art'
+                details: 'Galleries, shops, and street art',
+                address: 'East End, Portland, ME'
               },
               {
                 id: 'waterfront-walk',
                 title: 'Old Port Waterfront',
+                time: '12:00p',
                 tag: 'Walking',
                 description: 'Stroll along the historic waterfront',
-                details: 'Scenic views, cobblestone streets'
+                details: 'Scenic views, cobblestone streets',
+                address: 'Old Port, Portland, ME'
               }
             ]
           }
@@ -476,14 +519,19 @@
             id: 'checkin',
             title: 'Check-In',
             description: 'Arrive at the hotel',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'hotel-checkin',
-                title: 'AC Hotel Check-In (3:00 PM)',
+                title: 'AC Hotel Check-In',
+                time: '3:00p',
                 tag: 'Hotel',
                 description: 'Drop bags, settle in',
-                details: '433 Commercial St'
+                details: '433 Commercial St',
+                address: '433 Commercial St, Portland, ME',
+                links: [
+                  { text: 'Website', url: 'https://www.marriott.com/hotels/travel/pwmak-ac-hotel-portland-downtown-waterfront/' }
+                ]
               }
             ]
           },
@@ -491,11 +539,12 @@
             id: 'freshen-up',
             title: 'Freshen Up',
             description: 'Get ready for the evening',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'get-ready',
                 title: 'Get Ready',
+                time: '4:00p',
                 tag: 'Prep',
                 description: 'Change, relax, prepare for dinner and show'
               }
@@ -505,11 +554,12 @@
             id: 'fantasy-reminder',
             title: 'Fantasy Football',
             description: 'Don\'t forget to set your lineup!',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'ff-lineup',
                 title: 'Set Fantasy Lineup',
+                time: '5:00p',
                 tag: 'Important',
                 description: 'Week 16 games start Saturday - set your lineup before dinner!',
                 details: 'Games at 1pm, 4:25pm, and 8:15pm ET'
@@ -520,14 +570,16 @@
             id: 'dinner',
             title: 'Dinner',
             description: 'Pre-show dinner',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'eventide',
                 title: 'Eventide Oyster Co.',
+                time: '6:00p',
                 tag: 'Seafood',
                 description: 'Award-winning oysters and creative seafood',
                 details: '86 Middle St • 4-9:30pm • Walk: 5 min',
+                address: '86 Middle St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://www.eventideoysterco.com' },
                   { text: 'Menu', url: 'https://www.eventideoysterco.com/portland-menu' }
@@ -536,9 +588,11 @@
               {
                 id: 'duckfat',
                 title: 'Duckfat',
+                time: '6:00p',
                 tag: 'Comfort Food',
                 description: 'Sandwiches, poutine, Belgian fries',
                 details: '43 Middle St • 11am-9pm • Walk: 5 min',
+                address: '43 Middle St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://duckfat.com' }
                 ]
@@ -546,9 +600,11 @@
               {
                 id: 'central-provisions',
                 title: 'Central Provisions',
+                time: '6:00p',
                 tag: 'Small Plates',
                 description: 'Inventive small plates, excellent cocktails',
                 details: '414 Fore St • 4-10pm • Walk: 3 min',
+                address: '414 Fore St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://www.central-provisions.com' }
                 ]
@@ -564,9 +620,11 @@
               {
                 id: 'magic-show',
                 title: 'Comedy/Magic Show at Jonathan\'s',
+                time: '8:00p',
                 tag: 'Comedy & Magic',
                 description: 'Intimate venue with comedy and magic performances',
                 details: '92 Bourne St, Ogunquit (40 min drive) • Show: 8pm',
+                address: '92 Bourne St, Ogunquit, ME',
                 links: [
                   { text: 'Website', url: 'https://jonathansogunquit.com' },
                   { text: 'Tickets', url: 'https://jonathansogunquit.com/calendar' }
@@ -575,9 +633,11 @@
               {
                 id: 'live-music',
                 title: 'Live Music in Portland',
+                time: '8:00p',
                 tag: 'Music',
                 description: 'Check local venues for live performances',
                 details: 'Port City Music Hall, One Longfellow Square, or State Theatre',
+                address: 'Portland, ME',
                 links: [
                   { text: 'Port City', url: 'https://www.portcitymusichall.com' },
                   { text: 'State Theatre', url: 'https://statetheatreportland.com' }
@@ -589,7 +649,7 @@
             id: 'late-night',
             title: 'Late Night Options',
             description: 'After the show... (Select any)',
-            selectionType: 'multiple',
+            selectionType: 'single',
             expandable: true,
             expandCondition: 'show-selected',
             cards: [
@@ -651,7 +711,7 @@
             id: 'early-morning',
             title: 'Early Morning',
             description: 'Start the day relaxed',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'baths',
@@ -720,7 +780,7 @@
             id: 'afternoon',
             title: 'Sunday Afternoon Activities',
             description: 'Before heading home... (Select any)',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'shopping',
@@ -806,7 +866,7 @@
             id: 'fun-stops',
             title: 'Fun Stops on the Way Home',
             description: 'Break up the drive back (Select any)',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'freeport',
@@ -831,7 +891,7 @@
             id: 'playlists',
             title: 'Road Trip Playlists',
             description: 'Music for the drive home (Select any)',
-            selectionType: 'multiple',
+            selectionType: 'single',
             cards: [
               {
                 id: 'playlist-chill',
@@ -909,11 +969,29 @@
           ${card.details ? `<div class="card-details">${card.details}</div>` : ''}
       `;
 
-      if (card.links && card.links.length > 0) {
-        html += '<div class="card-links">';
-        card.links.forEach(link => {
-          html += `<a href="${link.url}" class="card-link" target="_blank" onclick="event.stopPropagation()">${link.text}</a>`;
-        });
+      // Quick link buttons
+      if (card.address || (card.links && card.links.length > 0)) {
+        html += '<div class="card-quick-links">';
+
+        // Directions button
+        if (card.address) {
+          const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(card.address)}`;
+          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
+        }
+
+        // Website and Tickets buttons
+        if (card.links && card.links.length > 0) {
+          card.links.forEach(link => {
+            if (link.text.toLowerCase().includes('ticket')) {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎟️ Tickets</a>`;
+            } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
+            } else {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 ${link.text}</a>`;
+            }
+          });
+        }
+
         html += '</div>';
       }
 
@@ -1091,82 +1169,96 @@
       let html = '';
       let hasSelections = false;
 
-      // Helper to get card title by ID
-      function getCardTitle(tabKey, sectionId, cardId) {
+      // Helper to get card info by ID
+      function getCardInfo(tabKey, sectionId, cardId) {
         const tab = CONTENT[tabKey.replace(/-/g, '')];
-        if (!tab) return cardId;
+        if (!tab) return { title: cardId, time: '' };
 
         for (const section of tab.sections) {
           if (section.id === sectionId) {
             const card = section.cards.find(c => c.id === cardId);
-            if (card) return card.title;
+            if (card) return { title: card.title, time: card.time || '', card: card };
           }
 
           // Check stores
           for (const card of section.cards) {
             if (card.stores && sectionId.includes('stores')) {
               const store = card.stores.find(s => s.id === cardId);
-              if (store) return store.name;
+              if (store) return { title: store.name, time: '', isStore: true };
             }
           }
         }
-        return cardId;
+        return { title: cardId, time: '' };
+      }
+
+      // Helper to render summary item with time
+      function renderSummaryItem(tabKey, sectionId, cardIds) {
+        if (cardIds.length === 0) return '';
+
+        const cardId = cardIds[0]; // Single selection now
+        const info = getCardInfo(tabKey, sectionId, cardId);
+
+        // Check if this is shopping with stores selected
+        if (info.card && info.card.stores && selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`]) {
+          const storeIds = selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`];
+          const storeNames = storeIds.map(storeId => {
+            const storeInfo = getCardInfo(tabKey, `${sectionId}-stores`, storeId);
+            return storeInfo.title;
+          });
+          const timePrefix = info.time ? `${info.time} ` : '';
+          return `<div class="summary-item">${timePrefix}${info.title}: ${storeNames.join('; ')};</div>`;
+        }
+
+        const timePrefix = info.time ? `${info.time} ` : '';
+        return `<div class="summary-item">${timePrefix}${info.title}</div>`;
       }
 
       // Heading Out
       if (Object.keys(selections.headingOut).length > 0) {
-        html += '<div class="summary-section"><div class="summary-section-title">Heading Out</div>';
         for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
-          if (cardIds.length > 0) {
-            cardIds.forEach(cardId => {
-              html += `<div class="summary-item">• ${getCardTitle('heading-out', sectionId, cardId)}</div>`;
-              hasSelections = true;
-            });
+          const item = renderSummaryItem('heading-out', sectionId, cardIds);
+          if (item) {
+            html += item;
+            hasSelections = true;
           }
         }
-        html += '</div>';
       }
 
       // Saturday Night
       if (Object.keys(selections.saturdayNight).length > 0) {
-        html += '<div class="summary-section"><div class="summary-section-title">Saturday Night</div>';
         for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
-          if (cardIds.length > 0) {
-            cardIds.forEach(cardId => {
-              html += `<div class="summary-item">• ${getCardTitle('saturday-night', sectionId, cardId)}</div>`;
+          if (!sectionId.includes('stores')) { // Skip store selections, they're handled with shopping
+            const item = renderSummaryItem('saturday-night', sectionId, cardIds);
+            if (item) {
+              html += item;
               hasSelections = true;
-            });
+            }
           }
         }
-        html += '</div>';
       }
 
       // Sunday
       if (Object.keys(selections.sunday).length > 0) {
-        html += '<div class="summary-section"><div class="summary-section-title">Sunday</div>';
         for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
-          if (cardIds.length > 0) {
-            cardIds.forEach(cardId => {
-              html += `<div class="summary-item">• ${getCardTitle('sunday', sectionId, cardId)}</div>`;
+          if (!sectionId.includes('stores')) {
+            const item = renderSummaryItem('sunday', sectionId, cardIds);
+            if (item) {
+              html += item;
               hasSelections = true;
-            });
+            }
           }
         }
-        html += '</div>';
       }
 
       // Heading Home
       if (Object.keys(selections.headingHome).length > 0) {
-        html += '<div class="summary-section"><div class="summary-section-title">Heading Home</div>';
         for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
-          if (cardIds.length > 0) {
-            cardIds.forEach(cardId => {
-              html += `<div class="summary-item">• ${getCardTitle('heading-home', sectionId, cardId)}</div>`;
-              hasSelections = true;
-            });
+          const item = renderSummaryItem('heading-home', sectionId, cardIds);
+          if (item) {
+            html += item;
+            hasSelections = true;
           }
         }
-        html += '</div>';
       }
 
       if (!hasSelections) {

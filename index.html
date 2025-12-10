@@ -265,6 +265,22 @@
       border-radius: 8px;
       border: 2px solid #bee3f8;
       margin-bottom: 30px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .summary-panel::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .summary-panel::-webkit-scrollbar-track {
+      background: #e2e8f0;
+      border-radius: 4px;
+    }
+
+    .summary-panel::-webkit-scrollbar-thumb {
+      background: #4299e1;
+      border-radius: 4px;
     }
 
     .summary-title {
@@ -460,7 +476,7 @@
             id: 'checkin',
             title: 'Check-In',
             description: 'Arrive at the hotel',
-            selectionType: 'none',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'hotel-checkin',
@@ -475,7 +491,7 @@
             id: 'freshen-up',
             title: 'Freshen Up',
             description: 'Get ready for the evening',
-            selectionType: 'none',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'get-ready',
@@ -489,7 +505,7 @@
             id: 'fantasy-reminder',
             title: 'Fantasy Football',
             description: 'Don\'t forget to set your lineup!',
-            selectionType: 'none',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'ff-lineup',
@@ -689,7 +705,7 @@
             id: 'checkout',
             title: 'Hotel Checkout',
             description: 'Pack up and check out',
-            selectionType: 'none',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'hotel-checkout',
@@ -1008,15 +1024,13 @@
 
     function attachCardHandlers() {
       document.querySelectorAll('.card').forEach(card => {
-        if (card.dataset.selectionType !== 'none') {
-          card.addEventListener('click', (e) => {
-            const sectionId = card.dataset.sectionId;
-            const cardId = card.dataset.cardId;
-            const selectionType = card.dataset.selectionType;
-            const tabKey = card.dataset.tabKey;
-            handleCardClick(sectionId, cardId, selectionType, tabKey, e);
-          });
-        }
+        card.addEventListener('click', (e) => {
+          const sectionId = card.dataset.sectionId;
+          const cardId = card.dataset.cardId;
+          const selectionType = card.dataset.selectionType;
+          const tabKey = card.dataset.tabKey;
+          handleCardClick(sectionId, cardId, selectionType, tabKey, e);
+        });
       });
     }
 

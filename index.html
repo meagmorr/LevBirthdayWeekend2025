@@ -82,6 +82,59 @@
       margin-top: 20px;
     }
 
+    /* Collapsible Tab Headers */
+    .tab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      margin: 40px 0 0 0;
+      padding: 15px 0;
+      border-bottom: 2px solid #bee3f8;
+    }
+
+    .tab-header:first-child {
+      margin-top: 20px;
+    }
+
+    .tab-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a365d;
+      margin: 0;
+    }
+
+    .tab-collapse-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #4a5568;
+      padding: 5px 10px;
+      transition: transform 0.2s;
+    }
+
+    .tab-collapse-btn:hover {
+      color: #2d3748;
+    }
+
+    .tab-collapse-btn.collapsed {
+      transform: rotate(-90deg);
+    }
+
+    .tab-content {
+      max-height: 50000px;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 1;
+    }
+
+    .tab-content.collapsed {
+      max-height: 0;
+      opacity: 0;
+    }
+
     /* Sections */
     .section {
       margin-bottom: 40px;
@@ -133,18 +186,24 @@
       margin-bottom: 8px;
     }
 
-    .card-tag {
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .card-tag-badge {
       display: inline-block;
       background: #edf2f7;
       color: #4a5568;
       padding: 4px 12px;
       border-radius: 12px;
       font-size: 12px;
-      margin-bottom: 10px;
       font-weight: 500;
     }
 
-    .card.selected .card-tag {
+    .card.selected .card-tag-badge {
       background: #bee3f8;
       color: #2c5282;
     }
@@ -477,7 +536,7 @@
             id: 'before-checkin',
             title: 'Before Check-In Activities',
             description: 'Pick activities to fill time before dinner at 5:30pm. Reminder: we can check-in to the hotel starting at 3pm.',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'old-port-novel',
@@ -546,7 +605,7 @@
             id: 'checkin-freshen',
             title: 'Check-In & Freshen Up',
             description: 'Arrive at the hotel and get ready for the evening',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'hotel-checkin',
@@ -618,7 +677,7 @@
               {
                 id: 'pink-talking-fish',
                 title: 'Pink Talking Fish at State Theatre',
-                time: '7:00p',
+                time: '8:00p',
                 tag: 'Tickets Secured',
                 description: 'Doors 7pm, Show 8pm, 5 min walk from dinner',
                 links: [
@@ -631,7 +690,7 @@
               {
                 id: 'blue-portland',
                 title: 'Blue Portland Maine',
-                time: '6:00p',
+                time: '7:00p',
                 tag: 'Live Jazz',
                 description: 'Intimate live-music bar on Congress Street that hosts jazz, folk, and other small-venue shows',
                 details: 'Doors 6pm, Carl Dimow Jazz Quartet @ 7pm, Rot On The Vine @ 9PM. Pay What You Can at the door, bring cash!',
@@ -797,7 +856,7 @@
               {
                 id: 'shopping',
                 title: 'Explore Old Port Shopping',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Wander & Explore',
                 description: 'Browse Portland\'s best independent shops for vintage finds, premium menswear, and unique gifts. Six curated stops within easy walking distance of each other—spend as much or as little time as you want.',
                 details: 'Old Port shopping district',
@@ -880,7 +939,7 @@
               {
                 id: 'victoria-mansion',
                 title: 'Victoria Mansion',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Museum & History',
                 description: 'Didn\'t make it Saturday? This stunning Victorian house museum is worth the visit—decked out for the holidays and perfect for architecture and history enthusiasts.',
                 details: 'If you missed it Saturday, allow 1-1.5 hours',
@@ -893,7 +952,7 @@
               {
                 id: 'portland-head-light',
                 title: 'Portland Head Light',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Scenic Stop',
                 description: 'Cape Elizabeth\'s iconic lighthouse at Fort Williams Park. Quintessential Maine photo op and scenic coastal views—free to visit, 15 minutes from downtown.',
                 details: 'Cape Elizabeth, iconic lighthouse, Fort Williams Park (free)',
@@ -922,7 +981,7 @@
                 id: 'frost-factory-stop',
                 title: 'Frost Factory',
                 time: '2:00p',
-                tag: 'Cannabis Dispensary, Birthday Gift',
+                tags: ['Cannabis Dispensary', 'Birthday Gift'],
                 description: 'South Portland, 10am-8pm, on the way home',
                 links: [
                   { text: 'Directions', url: 'https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8' },
@@ -936,13 +995,13 @@
             id: 'playlists',
             title: 'Playlists for the Drive',
             description: 'Pick your road trip soundtrack',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'playlist-matt',
                 title: 'Matt',
                 time: '3:00p',
-                tag: 'Lovey, Fun',
+                tags: ['Lovey', 'Fun'],
                 description: 'All the songs that remind Meag of her man',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/3b3sqpWJxPz8CbHDPRbB2i' }
@@ -952,7 +1011,7 @@
                 id: 'playlist-babson',
                 title: 'Babson Columbia \'25',
                 time: '3:00p',
-                tag: 'Memories, Joyful, Dancey',
+                tags: ['Memories', 'Joyful', 'Dancey'],
                 description: 'All the jams from your epic trip to Columbia',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/5DVDPZQa1L4WnzDoPS6feo' }
@@ -962,7 +1021,7 @@
                 id: 'playlist-not-rap',
                 title: 'Not Rap',
                 time: '3:00p',
-                tag: 'Movie Hits, Oldies, Classics',
+                tags: ['Movie Hits', 'Oldies', 'Classics'],
                 description: 'The famous playlist you created for Meag early days',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/1DVV7dznCQmD4cEcLZsa2G' }
@@ -972,7 +1031,7 @@
                 id: 'playlist-acid-jazz',
                 title: 'Acid Jazz',
                 time: '3:00p',
-                tag: 'Lev, Matthew, Anders, Matt, Honeybadger',
+                tags: ['Lev', 'Matthew', 'Anders', 'Matt', 'Honeybadger'],
                 description: 'The classic, the essential, the inevitable',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/37i9dQZF1DWXHghfFFOaS6' }
@@ -1018,13 +1077,21 @@
     function renderCard(card, sectionId, selectionType, tabKey) {
       const isSelected = selections[tabKey][sectionId]?.includes(card.id);
 
+      // Handle both single tag (string) and multiple tags (array)
+      let tagsHtml = '';
+      if (card.tags && Array.isArray(card.tags)) {
+        tagsHtml = card.tags.map(tag => `<span class="card-tag-badge">${tag}</span>`).join('');
+      } else if (card.tag) {
+        tagsHtml = `<span class="card-tag-badge">${card.tag}</span>`;
+      }
+
       let html = `
         <div class="card ${isSelected ? 'selected' : ''}"
              data-card-id="${card.id}"
              data-section-id="${sectionId}"
              data-selection-type="${selectionType}"
              data-tab-key="${tabKey}">
-          <div class="card-tag">${card.tag}</div>
+          <div class="card-tags">${tagsHtml}</div>
           <div class="card-title">${card.title}</div>
           ${card.description ? `<div class="card-description">${card.description}</div>` : ''}
           ${card.details ? `<div class="card-details">${card.details}</div>` : ''}
@@ -1136,13 +1203,26 @@
       let html = '';
 
       // Heading Out
-      html += '<h2 class="section-group-title">Heading Out</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('heading-out')">
+          <h2>Heading Out</h2>
+          <button class="tab-collapse-btn" id="tab-btn-heading-out">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-heading-out">
+      `;
       CONTENT.headingOut.sections.forEach(section => {
         html += renderSection(section, 'headingOut');
       });
+      html += '</div>';
 
       // Saturday Night
-      html += '<h2 class="section-group-title">Saturday Night</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('saturday-night')">
+          <h2>Saturday Night</h2>
+          <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-saturday-night">
+      `;
       CONTENT.saturdayNight.sections.forEach(section => {
         if (section.expandable && section.expandCondition === 'show-selected') {
           const showSelected = selections.saturdayNight['show'] && selections.saturdayNight['show'].length > 0;
@@ -1153,18 +1233,33 @@
           html += renderSection(section, 'saturdayNight');
         }
       });
+      html += '</div>';
 
       // Sunday
-      html += '<h2 class="section-group-title">Sunday</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('sunday')">
+          <h2>Sunday</h2>
+          <button class="tab-collapse-btn" id="tab-btn-sunday">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-sunday">
+      `;
       CONTENT.sunday.sections.forEach(section => {
         html += renderSection(section, 'sunday');
       });
+      html += '</div>';
 
       // Heading Home
-      html += '<h2 class="section-group-title">Heading Home</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('heading-home')">
+          <h2>Heading Home</h2>
+          <button class="tab-collapse-btn" id="tab-btn-heading-home">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-heading-home">
+      `;
       CONTENT.headingHome.sections.forEach(section => {
         html += renderSection(section, 'headingHome');
       });
+      html += '</div>';
 
       container.innerHTML = html;
 
@@ -1175,6 +1270,16 @@
     // ============================================
     // EVENT HANDLERS
     // ============================================
+
+    function toggleTab(tabId) {
+      const content = document.getElementById(`tab-content-${tabId}`);
+      const btn = document.getElementById(`tab-btn-${tabId}`);
+
+      if (content && btn) {
+        content.classList.toggle('collapsed');
+        btn.classList.toggle('collapsed');
+      }
+    }
 
     function attachCardHandlers() {
       document.querySelectorAll('.card').forEach(card => {
@@ -1196,8 +1301,14 @@
       }
 
       if (selectionType === 'single') {
-        // Radio button behavior
-        selections[tabKey][sectionId] = [cardId];
+        // Radio button behavior with toggle-off capability
+        if (selections[tabKey][sectionId][0] === cardId) {
+          // If clicking the same card, unselect it
+          selections[tabKey][sectionId] = [];
+        } else {
+          // Otherwise select the new card
+          selections[tabKey][sectionId] = [cardId];
+        }
       } else {
         // Multiple selection
         const index = selections[tabKey][sectionId].indexOf(cardId);

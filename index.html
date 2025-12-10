@@ -519,6 +519,18 @@
                   { text: 'Website', url: 'https://victoriamansion.org/' },
                   { text: 'Tickets', url: 'https://victoriamansion.org/visit-us/' }
                 ]
+              },
+              {
+                id: 'portland-head-light',
+                title: 'Portland Head Light',
+                time: '12:00p',
+                tag: 'Scenic Stop',
+                description: 'Cape Elizabeth\'s iconic lighthouse at Fort Williams Park. Quintessential Maine photo op and scenic coastal views—free to visit, 15 minutes from downtown.',
+                details: 'Cape Elizabeth, iconic lighthouse, Fort Williams Park (free)',
+                links: [
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/iYV8cQbviunxzek96' },
+                  { text: 'Website', url: 'https://portlandheadlight.com/' }
+                ]
               }
             ]
           }
@@ -531,37 +543,33 @@
       saturdayNight: {
         sections: [
           {
-            id: 'checkin',
-            title: 'Check-In',
-            description: 'Arrive at the hotel',
+            id: 'checkin-freshen',
+            title: 'Check-In & Freshen Up',
+            description: 'Arrive at the hotel and get ready for the evening',
             selectionType: 'single',
             cards: [
               {
                 id: 'hotel-checkin',
-                title: 'AC Hotel Check-In',
+                title: '3:00 PM - Check-In',
                 time: '3:00p',
                 tag: 'Hotel',
-                description: 'Drop bags, settle in',
-                details: '433 Commercial St',
-                address: '433 Commercial St, Portland, ME',
+                description: 'Drop bags, check out harbor views, etc. etc.',
+                address: 'AC Hotel Portland Downtown/Waterfront',
                 links: [
-                  { text: 'Website', url: 'https://www.marriott.com/hotels/travel/pwmak-ac-hotel-portland-downtown-waterfront/' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/qVkQX8hTFQEstE22A' },
+                  { text: 'Website', url: 'https://www.marriott.com/en-us/hotels/pwmac-ac-hotel-portland-downtown-waterfront-me/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0' },
+                  { text: 'Hotel Food and Drink Options', url: 'https://www.marriott.com/en-us/hotels/pwmac-ac-hotel-portland-downtown-waterfront-me/dining/' }
                 ]
-              }
-            ]
-          },
-          {
-            id: 'freshen-up',
-            title: 'Freshen Up',
-            description: 'Get ready for the evening',
-            selectionType: 'single',
-            cards: [
+              },
               {
-                id: 'get-ready',
-                title: 'Get Ready',
-                time: '4:00p',
-                tag: 'Prep',
-                description: 'Change, relax, prepare for dinner and show'
+                id: 'freshen-up',
+                title: '4:30 PM - Freshen Up',
+                time: '4:30p',
+                tag: 'Get Ready',
+                description: 'Ain\'t nobody dope as WE I\'m dressed so fresh so clean\n(And we are...) the coolest motherfunkers on the planet\n(In my mind...) the sky is fallin ain\'t no need to panic\n(But Oh oh.....) I got a stick and want yo automatic\n(Oh oh oh...) Compatible created in the attic',
+                links: [
+                  { text: 'So Fresh, So Clean', url: 'https://open.spotify.com/track/6glsMWIMIxQ4BedzLqGVi4?si=a8a67e0c9f584a6e' }
+                ]
               }
             ]
           },
@@ -584,143 +592,112 @@
           {
             id: 'dinner',
             title: 'Dinner',
-            description: 'Pre-show dinner',
+            description: 'Confirmed reservation at Central Provisions',
             selectionType: 'single',
             cards: [
               {
-                id: 'eventide',
-                title: 'Eventide Oyster Co.',
-                time: '6:00p',
-                tag: 'Seafood',
-                description: 'Award-winning oysters and creative seafood',
-                details: '86 Middle St • 4-9:30pm • Walk: 5 min',
-                address: '86 Middle St, Portland, ME',
-                links: [
-                  { text: 'Website', url: 'https://www.eventideoysterco.com' },
-                  { text: 'Menu', url: 'https://www.eventideoysterco.com/portland-menu' }
-                ]
-              },
-              {
-                id: 'duckfat',
-                title: 'Duckfat',
-                time: '6:00p',
-                tag: 'Comfort Food',
-                description: 'Sandwiches, poutine, Belgian fries',
-                details: '43 Middle St • 11am-9pm • Walk: 5 min',
-                address: '43 Middle St, Portland, ME',
-                links: [
-                  { text: 'Website', url: 'https://duckfat.com' }
-                ]
-              },
-              {
                 id: 'central-provisions',
-                title: 'Central Provisions',
-                time: '6:00p',
-                tag: 'Small Plates',
-                description: 'Inventive small plates, excellent cocktails',
-                details: '414 Fore St • 4-10pm • Walk: 3 min',
-                address: '414 Fore St, Portland, ME',
+                title: '5:30 PM - Dinner ★',
+                time: '5:30p',
+                tag: 'Reservation Confirmed',
+                description: '5 min walk from hotel, tapas-style shareables, good cocktails',
+                address: 'Central Provisions',
                 links: [
-                  { text: 'Website', url: 'https://www.central-provisions.com' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/4VLy6RwdtkrGrEvP8' },
+                  { text: 'Menu', url: 'http://www.central-provisions.com/menus' }
                 ]
               }
             ]
           },
           {
             id: 'show',
-            title: 'Evening Show',
-            description: 'Choose your evening entertainment',
+            title: 'Saturday Night Entertainment',
+            description: 'Select your entertainment for Saturday evening',
             selectionType: 'single',
             cards: [
               {
-                id: 'magic-show',
-                title: 'Comedy/Magic Show at Jonathan\'s',
-                time: '8:00p',
-                tag: 'Comedy & Magic',
-                description: 'Intimate venue with comedy and magic performances',
-                details: '92 Bourne St, Ogunquit (40 min drive) • Show: 8pm',
-                address: '92 Bourne St, Ogunquit, ME',
+                id: 'pink-talking-fish',
+                title: 'Pink Talking Fish at State Theatre',
+                time: '7:00p',
+                tag: 'Tickets Secured',
+                description: 'Doors 7pm, Show 8pm, 5 min walk from dinner',
                 links: [
-                  { text: 'Website', url: 'https://jonathansogunquit.com' },
-                  { text: 'Tickets', url: 'https://jonathansogunquit.com/calendar' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/yduqxtskCQKXiBSS7' },
+                  { text: 'Tickets', url: 'https://click.email.ticketmaster.com/?qs=0b8e3ecdf60ecfccb3cb93cb65494801d247caec1fe2c925ea24196d5abad4eebc1360df9a6c1843d0c7cc6746467272f01a830c574ab2aa0fcce2bbc9891ea9' },
+                  { text: 'Details', url: 'https://statetheatreportland.com/events/pink-talking-fish/' },
+                  { text: 'Band', url: 'https://www.pinktalkingfish.com/' }
                 ]
               },
               {
-                id: 'live-music',
-                title: 'Live Music in Portland',
-                time: '8:00p',
-                tag: 'Music',
-                description: 'Check local venues for live performances',
-                details: 'Port City Music Hall, One Longfellow Square, or State Theatre',
-                address: 'Portland, ME',
+                id: 'blue-portland',
+                title: 'Blue Portland Maine',
+                time: '6:00p',
+                tag: 'Live Jazz',
+                description: 'Intimate live-music bar on Congress Street that hosts jazz, folk, and other small-venue shows',
+                details: 'Doors 6pm, Carl Dimow Jazz Quartet @ 7pm, Rot On The Vine @ 9PM. Pay What You Can at the door, bring cash!',
                 links: [
-                  { text: 'Port City', url: 'https://www.portcitymusichall.com' },
-                  { text: 'State Theatre', url: 'https://statetheatreportland.com' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/UC4stiNfQf7Ntf7T8' },
+                  { text: 'Website', url: 'http://www.blueportlandmaine.org/' }
                 ]
               }
             ]
           },
           {
             id: 'late-night',
-            title: 'Late Night Options',
-            description: 'After the show... (Select any)',
-            selectionType: 'single',
-            expandable: true,
-            expandCondition: 'show-selected',
+            title: 'Late Night⚠️',
+            description: 'How would you like to wrap up the evening?',
+            selectionType: 'multiple',
             cards: [
               {
-                id: 'novare-res',
-                title: 'Novare Res Bier Cafe',
-                time: '10:00p',
-                tag: 'Beer Bar',
-                description: '500+ beers, European-style beer cafe',
-                details: '4 Canal Plaza • Open until 1am',
-                address: '4 Canal Plaza, Portland, ME',
+                id: 'hunt-alpine',
+                title: 'Hunt & Alpine',
+                time: '10:30p',
+                tag: 'Cocktails & Small Plates',
+                description: 'Scandinavian small plates & clever cocktails in a minimalist space with a bar & communal tables.',
+                details: '10:30pm reservation • Menu highlights: Bonecrusher (mezcal, lime, red pepper), Green Chili Popcorn, Green Eyes (gin, green chartreuse, lime, egg whites), Oysters, Espresso Martini',
                 links: [
-                  { text: 'Website', url: 'https://novareresbiercafe.com' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/G5WbA7GazA23xxb79' },
+                  { text: 'Website', url: 'http://www.huntandalpineclub.com/' },
+                  { text: 'Menu', url: 'https://indd.adobe.com/view/a2f6449c-e917-4f42-ac98-4158a9899f4a' }
                 ]
               },
               {
-                id: 'portland-hunt',
-                title: 'Portland Hunt + Alpine Club',
+                id: 'blyth-burrows',
+                title: 'Blyth & Burrows',
                 time: '10:00p',
-                tag: 'Cocktails',
-                description: 'Craft cocktails, cozy alpine-themed bar',
-                details: '75 Market St • Open until 1am',
-                address: '75 Market St, Portland, ME',
+                tag: 'Upscale Cocktails',
+                description: 'Vintage-inspired cocktail bar with a maritime theme serving house cocktails & upscale small plates.',
+                details: 'Saturday: 12 PM–12 AM',
                 links: [
-                  { text: 'Website', url: 'https://huntalpine.com' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/5KSA2oB92Ak83nC8A' },
+                  { text: 'Website', url: 'https://www.blythandburrows.com/?utm_source=google&utm_medium=mybusiness' },
+                  { text: 'Menu', url: 'https://www.blythandburrows.com/menu-2/?utm_source=google&utm_medium=mybusiness' }
                 ]
               },
               {
-                id: 'brass-fox',
-                title: 'The Brass Fox',
+                id: 'gritty-mcduffs',
+                title: 'Gritty McDuff\'s Brew Pub',
                 time: '10:00p',
-                tag: 'Speakeasy',
-                description: 'Hidden speakeasy-style cocktail bar',
-                details: '92 Exchange St • Open until 1am',
-                address: '92 Exchange St, Portland, ME'
-              },
-              {
-                id: 'arcade',
-                title: 'Arcadia National Bar',
-                time: '10:00p',
-                tag: 'Arcade Bar',
-                description: 'Retro arcade games and drinks',
-                details: '21 Hanover St • Open until 1am',
-                address: '21 Hanover St, Portland, ME',
+                tag: 'Casual Brewpub',
+                description: 'Classic Old Port brewpub known for its house ales and lively but unfussy atmosphere; open until about 1am on Saturdays, it fits well as an easygoing last stop before heading back to the hotel.',
+                details: 'Open until ~1am Saturday',
                 links: [
-                  { text: 'Website', url: 'https://arcadianationalbar.com' }
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/cHRyAQnnQoQznhEQ6' },
+                  { text: 'Website', url: 'https://grittys.com/portland-brew-pub/?utm_source=google&utm_medium=mybusiness' }
                 ]
               },
               {
-                id: 'hotel-bar',
-                title: 'Back to Hotel Bar',
+                id: 'flask-lounge',
+                title: 'Flask Lounge: Among Moon Flowers',
                 time: '10:00p',
-                tag: 'Nightcap',
-                description: 'Wind down at the AC Hotel bar',
-                details: 'Convenient, no travel needed',
-                address: '433 Commercial St, Portland, ME'
+                tag: 'Dancing & Nightlife',
+                description: 'Compact, high-energy bar and dance club with DJs, themed nights, and karaoke; on Saturdays it regularly runs until 1am, making it a good choice if you want to keep the night going with dancing a short walk from the State Theatre.',
+                details: 'Open until ~1am Saturday',
+                links: [
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/Xm18wMEehsy1EHEj7' },
+                  { text: 'Website', url: 'https://flasklounge.com/' },
+                  { text: 'Dec 20 Event', url: 'https://flasklounge.com/event/among-moon-flowers/' }
+                ]
               }
             ]
           }

@@ -332,10 +332,27 @@
       margin-bottom: 5px;
     }
 
+    .summary-day {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2c5282;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #bee3f8;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-day:first-of-type {
+      margin-top: 0;
+    }
+
     .summary-item {
       color: #4a5568;
       font-size: 14px;
-      margin-left: 10px;
+      margin-bottom: 5px;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
     }
 
     .summary-empty {
@@ -656,9 +673,11 @@
               {
                 id: 'novare-res',
                 title: 'Novare Res Bier Cafe',
+                time: '10:00p',
                 tag: 'Beer Bar',
                 description: '500+ beers, European-style beer cafe',
                 details: '4 Canal Plaza • Open until 1am',
+                address: '4 Canal Plaza, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://novareresbiercafe.com' }
                 ]
@@ -666,9 +685,11 @@
               {
                 id: 'portland-hunt',
                 title: 'Portland Hunt + Alpine Club',
+                time: '10:00p',
                 tag: 'Cocktails',
                 description: 'Craft cocktails, cozy alpine-themed bar',
                 details: '75 Market St • Open until 1am',
+                address: '75 Market St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://huntalpine.com' }
                 ]
@@ -676,16 +697,20 @@
               {
                 id: 'brass-fox',
                 title: 'The Brass Fox',
+                time: '10:00p',
                 tag: 'Speakeasy',
                 description: 'Hidden speakeasy-style cocktail bar',
-                details: '92 Exchange St • Open until 1am'
+                details: '92 Exchange St • Open until 1am',
+                address: '92 Exchange St, Portland, ME'
               },
               {
                 id: 'arcade',
                 title: 'Arcadia National Bar',
+                time: '10:00p',
                 tag: 'Arcade Bar',
                 description: 'Retro arcade games and drinks',
                 details: '21 Hanover St • Open until 1am',
+                address: '21 Hanover St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://arcadianationalbar.com' }
                 ]
@@ -693,9 +718,11 @@
               {
                 id: 'hotel-bar',
                 title: 'Back to Hotel Bar',
+                time: '10:00p',
                 tag: 'Nightcap',
                 description: 'Wind down at the AC Hotel bar',
-                details: 'Convenient, no travel needed'
+                details: 'Convenient, no travel needed',
+                address: '433 Commercial St, Portland, ME'
               }
             ]
           }
@@ -716,9 +743,11 @@
               {
                 id: 'baths',
                 title: 'Hot Baths',
+                time: '8:00a',
                 tag: 'Relaxation',
                 description: 'Hydrotherapy baths at East End neighborhood spot',
                 details: 'Portland Salt Co. - 547 Washington Ave • Book ahead',
+                address: '547 Washington Ave, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://www.portlandsaltco.com' },
                   { text: 'Book', url: 'https://www.portlandsaltco.com/book-now' }
@@ -735,9 +764,11 @@
               {
                 id: 'duckfat-brunch',
                 title: 'Duckfat',
+                time: '10:00a',
                 tag: 'Comfort',
                 description: 'Breakfast sandwiches and famous fries',
                 details: '43 Middle St • 11am-9pm',
+                address: '43 Middle St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://duckfat.com' }
                 ]
@@ -745,9 +776,11 @@
               {
                 id: 'becky-diner',
                 title: 'Becky\'s Diner',
+                time: '10:00a',
                 tag: 'Classic',
                 description: 'Portland institution, hearty breakfast',
                 details: '390 Commercial St • 5am-9pm',
+                address: '390 Commercial St, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://beckysdiner.com' }
                 ]
@@ -755,9 +788,11 @@
               {
                 id: 'brunch-hotel',
                 title: 'Hotel Breakfast',
+                time: '10:00a',
                 tag: 'Easy',
                 description: 'Convenient breakfast at AC Hotel',
-                details: 'No travel, relaxed start'
+                details: 'No travel, relaxed start',
+                address: '433 Commercial St, Portland, ME'
               }
             ]
           },
@@ -769,10 +804,12 @@
             cards: [
               {
                 id: 'hotel-checkout',
-                title: 'Check Out (11:00 AM)',
+                title: 'Check Out',
+                time: '11:00a',
                 tag: 'Hotel',
                 description: 'Pack bags, check out, load car',
-                details: 'Can usually get late checkout if needed'
+                details: 'Can usually get late checkout if needed',
+                address: '433 Commercial St, Portland, ME'
               }
             ]
           },
@@ -785,9 +822,11 @@
               {
                 id: 'shopping',
                 title: 'Shopping in Old Port',
+                time: '1:00p',
                 tag: 'Shopping',
                 description: 'Browse unique stores and boutiques',
                 details: 'Exchange St, Commercial St, Fore St',
+                address: 'Old Port, Portland, ME',
                 expandable: true,
                 stores: [
                   {
@@ -831,9 +870,11 @@
               {
                 id: 'museum',
                 title: 'Portland Museum of Art',
+                time: '1:00p',
                 tag: 'Culture',
                 description: 'Art museum with strong regional collection',
                 details: '7 Congress Square • 10am-6pm Sunday',
+                address: '7 Congress Square, Portland, ME',
                 links: [
                   { text: 'Website', url: 'https://www.portlandmuseum.org' }
                 ]
@@ -841,16 +882,20 @@
               {
                 id: 'eastern-prom',
                 title: 'Eastern Promenade',
+                time: '1:00p',
                 tag: 'Outdoors',
                 description: 'Waterfront park with harbor views',
-                details: 'Great for a walk before leaving town'
+                details: 'Great for a walk before leaving town',
+                address: 'Eastern Promenade, Portland, ME'
               },
               {
                 id: 'coffee-final',
                 title: 'Final Coffee Stop',
+                time: '2:00p',
                 tag: 'Coffee',
                 description: 'Grab coffee for the road',
-                details: 'Tandem Coffee, Coffee by Design, or Arabica'
+                details: 'Tandem Coffee, Coffee by Design, or Arabica',
+                address: 'Portland, ME'
               }
             ]
           }
@@ -871,9 +916,11 @@
               {
                 id: 'freeport',
                 title: 'Freeport Outlets',
+                time: '3:00p',
                 tag: 'Shopping',
                 description: 'L.L.Bean flagship and outlet shopping',
                 details: '20 min south of Portland • L.L.Bean open 24/7',
+                address: 'Freeport, ME',
                 links: [
                   { text: 'L.L.Bean', url: 'https://www.llbean.com/llb/shop/518672' }
                 ]
@@ -881,9 +928,11 @@
               {
                 id: 'kennebunkport',
                 title: 'Kennebunkport',
+                time: '3:00p',
                 tag: 'Scenic',
                 description: 'Charming coastal town worth a stroll',
-                details: '30 min south of Portland • Dock Square, ocean views'
+                details: '30 min south of Portland • Dock Square, ocean views',
+                address: 'Kennebunkport, ME'
               }
             ]
           },
@@ -896,24 +945,28 @@
               {
                 id: 'playlist-chill',
                 title: 'Chill Vibes',
+                time: '4:00p',
                 tag: 'Relaxed',
                 description: 'Mellow tunes for a relaxed drive home'
               },
               {
                 id: 'playlist-energy',
                 title: 'Energy Boost',
+                time: '4:00p',
                 tag: 'Upbeat',
                 description: 'Upbeat music to keep energy up'
               },
               {
                 id: 'playlist-throwback',
                 title: 'Throwback Hits',
+                time: '4:00p',
                 tag: 'Nostalgia',
                 description: 'Classic hits and sing-alongs'
               },
               {
                 id: 'podcast',
                 title: 'Podcast Time',
+                time: '4:00p',
                 tag: 'Audio',
                 description: 'Catch up on favorite podcasts'
               }
@@ -1169,9 +1222,15 @@
       let html = '';
       let hasSelections = false;
 
+      // Helper to convert kebab-case to camelCase
+      function toCamelCase(str) {
+        return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+      }
+
       // Helper to get card info by ID
       function getCardInfo(tabKey, sectionId, cardId) {
-        const tab = CONTENT[tabKey.replace(/-/g, '')];
+        const camelKey = toCamelCase(tabKey);
+        const tab = CONTENT[camelKey];
         if (!tab) return { title: cardId, time: '' };
 
         for (const section of tab.sections) {
@@ -1191,74 +1250,75 @@
         return { title: cardId, time: '' };
       }
 
-      // Helper to render summary item with time
-      function renderSummaryItem(tabKey, sectionId, cardIds) {
-        if (cardIds.length === 0) return '';
+      // Collect all selections organized by day
+      const saturday = [];
+      const sunday = [];
 
-        const cardId = cardIds[0]; // Single selection now
+      // Helper to add item to day array
+      function addItem(dayArray, tabKey, sectionId, cardIds) {
+        if (cardIds.length === 0) return;
+
+        const cardId = cardIds[0];
         const info = getCardInfo(tabKey, sectionId, cardId);
+        const camelKey = toCamelCase(tabKey);
 
         // Check if this is shopping with stores selected
-        if (info.card && info.card.stores && selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`]) {
-          const storeIds = selections[tabKey.replace(/-/g, '')][`${sectionId}-stores`];
+        if (info.card && info.card.stores && selections[camelKey][`${sectionId}-stores`]) {
+          const storeIds = selections[camelKey][`${sectionId}-stores`];
           const storeNames = storeIds.map(storeId => {
             const storeInfo = getCardInfo(tabKey, `${sectionId}-stores`, storeId);
             return storeInfo.title;
           });
-          const timePrefix = info.time ? `${info.time} ` : '';
-          return `<div class="summary-item">${timePrefix}${info.title}: ${storeNames.join('; ')};</div>`;
-        }
-
-        const timePrefix = info.time ? `${info.time} ` : '';
-        return `<div class="summary-item">${timePrefix}${info.title}</div>`;
-      }
-
-      // Heading Out
-      if (Object.keys(selections.headingOut).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
-          const item = renderSummaryItem('heading-out', sectionId, cardIds);
-          if (item) {
-            html += item;
-            hasSelections = true;
-          }
+          dayArray.push({
+            time: info.time || '',
+            title: `${info.title}: ${storeNames.join('; ')};`
+          });
+        } else {
+          dayArray.push({
+            time: info.time || '',
+            title: info.title
+          });
         }
       }
 
-      // Saturday Night
-      if (Object.keys(selections.saturdayNight).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
-          if (!sectionId.includes('stores')) { // Skip store selections, they're handled with shopping
-            const item = renderSummaryItem('saturday-night', sectionId, cardIds);
-            if (item) {
-              html += item;
-              hasSelections = true;
-            }
-          }
+      // Collect Saturday items (Heading Out + Saturday Night)
+      for (const [sectionId, cardIds] of Object.entries(selections.headingOut)) {
+        addItem(saturday, 'heading-out', sectionId, cardIds);
+      }
+      for (const [sectionId, cardIds] of Object.entries(selections.saturdayNight)) {
+        if (!sectionId.includes('stores')) {
+          addItem(saturday, 'saturday-night', sectionId, cardIds);
         }
       }
 
-      // Sunday
-      if (Object.keys(selections.sunday).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
-          if (!sectionId.includes('stores')) {
-            const item = renderSummaryItem('sunday', sectionId, cardIds);
-            if (item) {
-              html += item;
-              hasSelections = true;
-            }
-          }
+      // Collect Sunday items (Sunday + Heading Home)
+      for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
+        if (!sectionId.includes('stores')) {
+          addItem(sunday, 'sunday', sectionId, cardIds);
         }
       }
+      for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
+        addItem(sunday, 'heading-home', sectionId, cardIds);
+      }
 
-      // Heading Home
-      if (Object.keys(selections.headingHome).length > 0) {
-        for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
-          const item = renderSummaryItem('heading-home', sectionId, cardIds);
-          if (item) {
-            html += item;
-            hasSelections = true;
-          }
-        }
+      // Render Saturday
+      if (saturday.length > 0) {
+        html += '<div class="summary-day">SATURDAY</div>';
+        saturday.forEach(item => {
+          const timeStr = item.time ? item.time.padEnd(7) : '       ';
+          html += `<div class="summary-item">${timeStr} ${item.title}</div>`;
+          hasSelections = true;
+        });
+      }
+
+      // Render Sunday
+      if (sunday.length > 0) {
+        html += '<div class="summary-day">SUNDAY</div>';
+        sunday.forEach(item => {
+          const timeStr = item.time ? item.time.padEnd(7) : '       ';
+          html += `<div class="summary-item">${timeStr} ${item.title}</div>`;
+          hasSelections = true;
+        });
       }
 
       if (!hasSelections) {

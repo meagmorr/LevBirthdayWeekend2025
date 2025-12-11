@@ -31,14 +31,14 @@
       padding: 40px;
       border-radius: 16px;
       box-shadow:
-        0 4px 12px rgba(94, 58, 141, 0.15),
+        0 4px 12px rgba(107, 38, 75, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
-      border: 1px solid rgba(94, 58, 141, 0.1);
+      border: 1px solid rgba(107, 38, 75, 0.1);
     }
 
     h1 {
       font-family: Georgia, 'Times New Roman', serif;
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 10px;
       font-weight: 700;
       text-transform: uppercase;
@@ -46,7 +46,7 @@
     }
 
     .subtitle {
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 20px;
       font-size: 14px;
       text-transform: uppercase;
@@ -59,19 +59,19 @@
       gap: 15px;
       margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 2px solid #5e3a8d; /* Deep purple */
+      border-bottom: 2px solid #6b264b; /* Magenta purple */
     }
 
     .info-box {
-      background: rgba(202, 209, 131, 0.15); /* Light citron tint */
+      background: rgba(187, 223, 50, 0.12); /* Light acid lime tint */
       padding: 15px;
       border-radius: 16px;
-      border-left: 4px solid #CAD183; /* Citron accent */
+      border-left: 4px solid #bbdf32; /* Acid lime accent */
     }
 
     .info-label {
       font-weight: 700;
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 5px;
       font-size: 12px;
       text-transform: uppercase;
@@ -81,8 +81,10 @@
 
     /* Portland Favorites Map Button */
     .map-button {
-      display: inline-block;
-      background: #5e3a8d; /* Deep purple */
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #6b264b; /* Magenta purple */
       color: white;
       padding: 12px 20px;
       border-radius: 16px;
@@ -92,14 +94,25 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       transition: all 0.2s;
-      border: 2px solid #5e3a8d;
+      border: 2px solid #6b264b;
       margin-top: 15px;
     }
 
     .map-button:hover {
-      background: #CAD183; /* Citron on hover */
-      color: #5e3a8d;
-      border-color: #CAD183;
+      background: #bbdf32; /* Acid lime on hover */
+      color: #6b264b;
+      border-color: #bbdf32;
+    }
+
+    .map-button-icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1); /* Makes it white */
+    }
+
+    .map-button:hover .map-button-icon {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* Changes to magenta on hover */
     }
 
     .info-value {
@@ -130,9 +143,9 @@
       user-select: none;
       margin: 40px 0 0 0;
       padding: 20px;
-      border: 3px solid #5e3a8d; /* Deep purple border */
+      border: 3px solid #6b264b; /* Magenta purple border */
       border-radius: 16px;
-      background: rgba(202, 209, 131, 0.08); /* Subtle citron tint */
+      background: rgba(187, 223, 50, 0.08); /* Subtle acid lime tint */
       position: relative;
     }
 
@@ -143,30 +156,40 @@
     .tab-header h2 {
       font-size: 32px;
       font-weight: 700;
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       margin: 0;
       font-family: Georgia, 'Times New Roman', serif;
       text-transform: uppercase;
       letter-spacing: 2px;
       /* Letterpress emboss effect */
       text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tab-icon {
+      width: 38px;
+      height: 38px;
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* This filter converts to magenta purple #6b264b */
     }
 
     .tab-collapse-btn {
       background: none;
-      border: 2px solid #5e3a8d;
+      border: 2px solid #6b264b;
       cursor: pointer;
       font-size: 20px;
-      color: #5e3a8d;
+      color: #6b264b;
       padding: 8px 12px;
       transition: all 0.2s;
       border-radius: 16px;
     }
 
     .tab-collapse-btn:hover {
-      background: #CAD183; /* Citron */
-      color: white;
-      border-color: #CAD183;
+      background: #bbdf32; /* Acid lime */
+      color: #6b264b;
+      border-color: #bbdf32;
     }
 
     .tab-collapse-btn.collapsed {
@@ -211,35 +234,52 @@
     }
 
     .card {
-      border: 3px solid #9b87c7; /* Lavender border */
+      border: 3px solid #c4a4d4; /* Soft lavender border */
       border-radius: 16px;
       padding: 11px 12px 10px 12px;
       cursor: pointer;
       transition: all 0.2s;
       background: white;
-      box-shadow: 2px 2px 0 rgba(155, 135, 199, 0.1);
+      box-shadow: 2px 2px 0 rgba(196, 164, 212, 0.1);
       min-height: 120px;
+      position: relative;
     }
 
     .card:hover {
-      border-color: #CAD183; /* Citron on hover */
-      box-shadow: 0 0 0 1px rgba(202, 209, 131, 0.5),
-                  0 8px 20px rgba(202, 209, 131, 0.3);
+      border-color: #bbdf32; /* Acid lime on hover */
+      box-shadow: 0 0 0 1px rgba(187, 223, 50, 0.5),
+                  0 8px 20px rgba(187, 223, 50, 0.3);
       transform: translate(0, -2px);
     }
 
     .card.selected {
-      border: 3px solid rgba(202, 209, 131, 0.9); /* Citron when selected */
-      background: rgba(202, 209, 131, 0.08); /* Light citron tint */
+      border: 3px solid rgba(187, 223, 50, 0.9); /* Acid lime when selected */
+      background: rgba(187, 223, 50, 0.08); /* Light acid lime tint */
       box-shadow:
-        0 0 0 1px rgba(202, 209, 131, 0.75),
-        0 18px 40px rgba(202, 209, 131, 0.7);
+        0 0 0 1px rgba(187, 223, 50, 0.75),
+        0 18px 40px rgba(187, 223, 50, 0.7);
+    }
+
+    /* Selected card indicator - tracks icon overlay */
+    .card.selected::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background-image: url('images/green_tracks_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 2px 4px rgba(107, 38, 75, 0.3));
+      z-index: 10;
     }
 
     .card-title {
       font-size: 18px;
       font-weight: 700;
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 8px;
       font-family: Georgia, serif;
     }
@@ -254,10 +294,10 @@
     .card-tag-badge {
       display: inline-block;
       background: transparent;
-      color: #5e3a8d; /* Deep purple */
+      color: #6b264b; /* Magenta purple */
       padding: 4px 12px;
       border-radius: 16px;
-      border: 2px solid #9b87c7; /* Lavender */
+      border: 2px solid #c4a4d4; /* Soft lavender */
       font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
@@ -265,9 +305,9 @@
     }
 
     .card.selected .card-tag-badge {
-      background: #CAD183; /* Citron fill */
-      color: #5e3a8d; /* Deep purple text */
-      border-color: #CAD183;
+      background: #bbdf32; /* Acid lime fill */
+      color: #6b264b; /* Magenta purple text */
+      border-color: #bbdf32;
     }
 
     .card-description {
@@ -318,27 +358,27 @@
     .quick-link-btn {
       display: inline-block;
       padding: 8px 14px;
-      background: #CAD183; /* Citron */
-      color: #5e3a8d; /* Deep purple text */
+      background: #bbdf32; /* Acid lime */
+      color: #6b264b; /* Magenta purple text */
       text-decoration: none;
       border-radius: 16px;
       font-size: 12px;
       font-weight: 600;
       transition: all 0.2s;
-      border: 2px solid #CAD183;
+      border: 2px solid #bbdf32;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .quick-link-btn:hover {
-      background: #5e3a8d; /* Deep purple on hover */
+      background: #6b264b; /* Magenta purple on hover */
       color: white;
-      border-color: #5e3a8d;
+      border-color: #6b264b;
     }
 
     .card.selected .quick-link-btn {
-      background: #5e3a8d; /* Deep purple when card selected */
-      border-color: #5e3a8d;
+      background: #6b264b; /* Magenta purple when card selected */
+      border-color: #6b264b;
       color: white;
     }
 
@@ -346,25 +386,25 @@
     .expand-button {
       width: 100%;
       padding: 12px;
-      background: rgba(202, 209, 131, 0.1);
-      border: 2px solid #CAD183;
+      background: rgba(187, 223, 50, 0.1);
+      border: 2px solid #bbdf32;
       border-radius: 16px;
       cursor: pointer;
       font-size: 14px;
       font-weight: 500;
-      color: #5e3a8d;
+      color: #6b264b;
       margin-top: 20px;
       transition: all 0.2s;
     }
 
     .expand-button:hover {
-      background: rgba(202, 209, 131, 0.2);
+      background: rgba(187, 223, 50, 0.2);
     }
 
     .expand-button.enabled {
-      background: rgba(202, 209, 131, 0.25);
-      border-color: #CAD183;
-      color: #5e3a8d;
+      background: rgba(187, 223, 50, 0.25);
+      border-color: #bbdf32;
+      color: #6b264b;
       cursor: pointer;
     }
 
@@ -372,7 +412,7 @@
       display: none;
       margin-top: 20px;
       padding: 20px;
-      background: rgba(202, 209, 131, 0.05);
+      background: rgba(187, 223, 50, 0.05);
       border-radius: 16px;
     }
 
@@ -382,7 +422,7 @@
 
     /* Mini cards for stores */
     .mini-card {
-      border: 2px solid #9b87c7;
+      border: 2px solid #c4a4d4;
       padding: 15px;
       border-radius: 16px;
       margin-bottom: 12px;
@@ -392,18 +432,18 @@
     }
 
     .mini-card:hover {
-      border-color: #CAD183;
-      background: rgba(202, 209, 131, 0.05);
+      border-color: #bbdf32;
+      background: rgba(187, 223, 50, 0.05);
     }
 
     .mini-card.selected {
-      border-color: #CAD183;
-      background: rgba(202, 209, 131, 0.15);
+      border-color: #bbdf32;
+      background: rgba(187, 223, 50, 0.15);
     }
 
     .mini-card-title {
       font-weight: 600;
-      color: #5e3a8d;
+      color: #6b264b;
       margin-bottom: 5px;
     }
 
@@ -417,14 +457,14 @@
     .summary-panel {
       position: sticky;
       top: 20px;
-      background: linear-gradient(135deg, #6e3a8d 0%, #9b87c7 100%); /* Lavender smoke gradient */
+      background: linear-gradient(135deg, #6b264b 0%, #8b3a6b 100%); /* Magenta purple gradient */
       padding: 25px;
       border-radius: 16px;
-      border: 3px solid #5e3a8d; /* Deep purple */
+      border: 3px solid #6b264b;
       margin-bottom: 30px;
       max-height: 240px;
       overflow-y: auto;
-      box-shadow: 0 8px 24px rgba(94, 58, 141, 0.25);
+      box-shadow: 0 8px 24px rgba(107, 38, 75, 0.35);
     }
 
     .summary-panel::-webkit-scrollbar {
@@ -437,7 +477,7 @@
     }
 
     .summary-panel::-webkit-scrollbar-thumb {
-      background: #CAD183; /* Citron */
+      background: #bbdf32; /* Acid lime */
       border-radius: 16px;
     }
 
@@ -449,8 +489,17 @@
       font-family: Georgia, serif;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border-bottom: 2px solid #CAD183; /* Citron underline */
+      border-bottom: 2px solid #bbdf32; /* Acid lime underline */
       padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-icon {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1); /* Makes it white */
     }
 
     .summary-section {
@@ -470,7 +519,7 @@
       margin-top: 15px;
       margin-bottom: 8px;
       padding-bottom: 4px;
-      border-bottom: 2px solid rgba(202, 209, 131, 0.5);
+      border-bottom: 2px solid rgba(187, 223, 50, 0.5);
       letter-spacing: 0.5px;
     }
 
@@ -504,12 +553,12 @@
       margin: 20px 0;
       padding: 10px 20px;
       background: white;
-      border: 2px solid #9b87c7;
+      border: 2px solid #c4a4d4;
       border-radius: 16px;
       cursor: pointer;
       font-size: 14px;
       transition: all 0.2s;
-      color: #5e3a8d;
+      color: #6b264b;
     }
 
     .reset-button:hover {
@@ -547,13 +596,17 @@
         <div class="info-value">Kicking off your 35th rotation around the sun!</div>
       </div>
       <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" class="map-button">
-        🗺️ Portland Favorites Map
+        <img src="images/green_maine_map_button.png" alt="Map" class="map-button-icon">
+        Portland Favorites Map
       </a>
     </div>
 
     <!-- Summary Panel -->
     <div class="summary-panel">
-      <div class="summary-title">🔥 Your Weekend Summary</div>
+      <div class="summary-title">
+        <img src="images/pink_negroni_button.png" alt="Cocktail" class="summary-icon">
+        Your Weekend Summary
+      </div>
       <div id="summary-content" class="summary-empty">
         Make selections below to build your weekend!
       </div>
@@ -1282,7 +1335,7 @@
       // Friday - Heading Out
       html += `
         <div class="tab-header" onclick="toggleTab('heading-out')">
-          <h2>🦞 Friday</h2>
+          <h2><img src="images/green_lobster_decor.png" alt="Lobster" class="tab-icon"> Friday</h2>
           <button class="tab-collapse-btn" id="tab-btn-heading-out">▼</button>
         </div>
         <div class="tab-content" id="tab-content-heading-out">
@@ -1295,7 +1348,7 @@
       // Saturday Night
       html += `
         <div class="tab-header" onclick="toggleTab('saturday-night')">
-          <h2>🏔️ Saturday</h2>
+          <h2><img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday</h2>
           <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
         </div>
         <div class="tab-content" id="tab-content-saturday-night">
@@ -1315,7 +1368,7 @@
       // Sunday
       html += `
         <div class="tab-header" onclick="toggleTab('sunday')">
-          <h2>🦌 Sunday</h2>
+          <h2><img src="images/green_moose_icon.png" alt="Moose" class="tab-icon"> Sunday</h2>
           <button class="tab-collapse-btn" id="tab-btn-sunday">▼</button>
         </div>
         <div class="tab-content" id="tab-content-sunday">
@@ -1328,7 +1381,7 @@
       // Heading Home
       html += `
         <div class="tab-header" onclick="toggleTab('heading-home')">
-          <h2>🏠 Heading Home</h2>
+          <h2><img src="images/green_tracks_button.png" alt="Tracks" class="tab-icon"> Heading Home</h2>
           <button class="tab-collapse-btn" id="tab-btn-heading-home">▼</button>
         </div>
         <div class="tab-content" id="tab-content-heading-home">

@@ -34,6 +34,44 @@
         0 4px 12px rgba(107, 38, 75, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(107, 38, 75, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Watercolor lobster background decorations */
+    .container::before,
+    .container::after {
+      content: '';
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.08;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container::before {
+      width: 400px;
+      height: 400px;
+      background-image: url('images/lightpurp_lobster_decor.png');
+      top: -50px;
+      right: -80px;
+      transform: rotate(25deg);
+    }
+
+    .container::after {
+      width: 350px;
+      height: 350px;
+      background-image: url('images/pink_lobster_decor.png');
+      bottom: -30px;
+      left: -60px;
+      transform: rotate(-15deg);
+    }
+
+    /* Ensure content stays above decorations */
+    .container > * {
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -268,7 +306,7 @@
       right: 8px;
       width: 32px;
       height: 32px;
-      background-image: url('images/green_tracks_button.png');
+      background-image: url('images/orange_tracks_button.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -465,6 +503,78 @@
       max-height: 240px;
       overflow-y: auto;
       box-shadow: 0 8px 24px rgba(107, 38, 75, 0.35);
+      z-index: 100; /* Stay on top of cards */
+      position: relative;
+    }
+
+    .summary-expand-btn {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      background: #bbdf32;
+      color: #6b264b;
+      border: none;
+      border-radius: 16px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .summary-expand-btn:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    /* Full screen summary modal */
+    .summary-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .summary-modal.show {
+      display: flex;
+    }
+
+    .summary-modal-content {
+      background: linear-gradient(135deg, #6b264b 0%, #8b3a6b 100%);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(107, 38, 75, 0.5);
+    }
+
+    .summary-modal-close {
+      float: right;
+      background: #bbdf32;
+      color: #6b264b;
+      border: none;
+      border-radius: 16px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      margin-bottom: 20px;
+    }
+
+    .summary-modal-close:hover {
+      background: white;
     }
 
     .summary-panel::-webkit-scrollbar {
@@ -603,12 +713,25 @@
 
     <!-- Summary Panel -->
     <div class="summary-panel">
+      <button class="summary-expand-btn" id="expand-summary-btn">⛶ Expand</button>
       <div class="summary-title">
         <img src="images/pink_negroni_button.png" alt="Cocktail" class="summary-icon">
         Your Weekend Summary
       </div>
       <div id="summary-content" class="summary-empty">
         Make selections below to build your weekend!
+      </div>
+    </div>
+
+    <!-- Full Screen Summary Modal -->
+    <div class="summary-modal" id="summary-modal">
+      <div class="summary-modal-content">
+        <button class="summary-modal-close" id="close-summary-modal">✕ Close</button>
+        <div class="summary-title">
+          <img src="images/pink_negroni_button.png" alt="Cocktail" class="summary-icon">
+          Your Weekend Summary
+        </div>
+        <div id="summary-modal-content"></div>
       </div>
     </div>
 
@@ -1130,7 +1253,6 @@
               {
                 id: 'playlist-matt',
                 title: 'Matt',
-                time: '3:00p',
                 tags: ['Lovey', 'Fun'],
                 description: 'All the songs that remind Meag of her man',
                 links: [
@@ -1140,7 +1262,6 @@
               {
                 id: 'playlist-babson',
                 title: 'Babson Columbia \'25',
-                time: '3:00p',
                 tags: ['Memories', 'Joyful', 'Dancey'],
                 description: 'All the jams from your epic trip to Columbia',
                 links: [
@@ -1150,7 +1271,6 @@
               {
                 id: 'playlist-not-rap',
                 title: 'Not Rap',
-                time: '3:00p',
                 tags: ['Movie Hits', 'Oldies', 'Classics'],
                 description: 'The famous playlist you created for Meag early days',
                 links: [
@@ -1160,7 +1280,6 @@
               {
                 id: 'playlist-acid-jazz',
                 title: 'Acid Jazz',
-                time: '3:00p',
                 tags: ['Lev', 'Matthew', 'Anders', 'Matt', 'Honeybadger'],
                 description: 'The classic, the essential, the inevitable',
                 links: [
@@ -1562,7 +1681,9 @@
         }
       }
       for (const [sectionId, cardIds] of Object.entries(selections.headingHome)) {
-        addItem(sunday, 'heading-home', sectionId, cardIds);
+        if (sectionId !== 'playlists') {  // Exclude playlists from summary
+          addItem(sunday, 'heading-home', sectionId, cardIds);
+        }
       }
 
       // Render Saturday
@@ -1603,8 +1724,38 @@
       // Render all content
       renderAllContent();
 
+      // Collapse all tabs by default
+      ['heading-out', 'saturday-night', 'sunday', 'heading-home'].forEach(tabId => {
+        const content = document.getElementById(`tab-content-${tabId}`);
+        const btn = document.getElementById(`tab-btn-${tabId}`);
+        if (content && btn) {
+          content.classList.add('collapsed');
+          btn.classList.add('collapsed');
+        }
+      });
+
       // Update summary
       updateSummary();
+
+      // Full screen summary toggle
+      document.getElementById('expand-summary-btn').addEventListener('click', () => {
+        const modal = document.getElementById('summary-modal');
+        const modalContent = document.getElementById('summary-modal-content');
+        const summaryContent = document.getElementById('summary-content');
+        modalContent.innerHTML = summaryContent.innerHTML;
+        modal.classList.add('show');
+      });
+
+      document.getElementById('close-summary-modal').addEventListener('click', () => {
+        document.getElementById('summary-modal').classList.remove('show');
+      });
+
+      // Close modal on background click
+      document.getElementById('summary-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'summary-modal') {
+          e.target.classList.remove('show');
+        }
+      });
 
       // Reset button
       document.getElementById('reset-btn').addEventListener('click', () => {

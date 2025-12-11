@@ -14,29 +14,43 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
+      background: #f5efe0; /* Warm cream */
       color: #333;
       line-height: 1.6;
       padding: 20px;
+      /* Subtle paper texture */
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background: #faf6ed; /* Light cream */
+      padding: 40px;
+      border-radius: 0;
+      box-shadow:
+        0 4px 12px rgba(102, 2, 60, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(102, 2, 60, 0.1);
     }
 
     h1 {
-      color: #2c5282;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #66023C; /* Plum/fig */
       margin-bottom: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .subtitle {
-      color: #666;
+      color: #66023C;
       margin-bottom: 20px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* Header Info */
@@ -45,26 +59,28 @@
       gap: 15px;
       margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 2px solid #e2e8f0;
+      border-bottom: 2px solid #66023C; /* Plum */
     }
 
     .info-box {
-      background: #f7fafc;
+      background: rgba(202, 209, 131, 0.1); /* Light citron tint */
       padding: 15px;
-      border-radius: 4px;
-      border-left: 4px solid #4299e1;
+      border-radius: 0;
+      border-left: 4px solid #ffa719; /* Yellow accent */
     }
 
     .info-label {
-      font-weight: 600;
-      color: #2d3748;
+      font-weight: 700;
+      color: #66023C; /* Plum */
       margin-bottom: 5px;
       font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: Georgia, serif;
     }
 
     .info-value {
-      color: #4a5568;
+      color: #333;
       font-size: 14px;
     }
 
@@ -82,7 +98,7 @@
       margin-top: 20px;
     }
 
-    /* Collapsible Tab Headers */
+    /* Collapsible Tab Headers - Letterpress Style */
     .tab-header {
       display: flex;
       align-items: center;
@@ -90,8 +106,10 @@
       cursor: pointer;
       user-select: none;
       margin: 40px 0 0 0;
-      padding: 15px 0;
-      border-bottom: 2px solid #bee3f8;
+      padding: 20px;
+      border: 3px solid #66023C; /* Plum border */
+      background: rgba(255, 167, 25, 0.05); /* Subtle yellow tint */
+      position: relative;
     }
 
     .tab-header:first-child {
@@ -99,24 +117,31 @@
     }
 
     .tab-header h2 {
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 700;
-      color: #1a365d;
+      color: #66023C; /* Plum */
       margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      /* Letterpress emboss effect */
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
     }
 
     .tab-collapse-btn {
       background: none;
-      border: none;
+      border: 2px solid #66023C;
       cursor: pointer;
-      font-size: 24px;
-      color: #4a5568;
-      padding: 5px 10px;
-      transition: transform 0.2s;
+      font-size: 20px;
+      color: #66023C;
+      padding: 8px 12px;
+      transition: all 0.2s;
+      border-radius: 0;
     }
 
     .tab-collapse-btn:hover {
-      color: #2d3748;
+      background: #ffa719; /* Yellow */
+      color: white;
     }
 
     .tab-collapse-btn.collapsed {
@@ -161,29 +186,33 @@
     }
 
     .card {
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
+      border: 3px solid #66023C; /* Plum border */
+      border-radius: 0;
       padding: 20px;
       cursor: pointer;
       transition: all 0.2s;
       background: white;
+      box-shadow: 2px 2px 0 rgba(102, 2, 60, 0.1);
     }
 
     .card:hover {
-      border-color: #cbd5e0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-color: #ffa719; /* Yellow on hover */
+      box-shadow: 3px 3px 0 rgba(255, 167, 25, 0.2);
+      transform: translate(-1px, -1px);
     }
 
     .card.selected {
-      border-color: #4299e1;
-      background: #ebf8ff;
+      border-color: #ffa719; /* Yellow when selected */
+      background: rgba(255, 167, 25, 0.05); /* Light yellow tint */
+      box-shadow: inset 0 2px 4px rgba(255, 167, 25, 0.1);
     }
 
     .card-title {
       font-size: 18px;
-      font-weight: 600;
-      color: #2d3748;
+      font-weight: 700;
+      color: #66023C; /* Plum */
       margin-bottom: 8px;
+      font-family: Georgia, serif;
     }
 
     .card-tags {
@@ -195,17 +224,21 @@
 
     .card-tag-badge {
       display: inline-block;
-      background: #edf2f7;
-      color: #4a5568;
+      background: transparent;
+      color: #66023C; /* Plum */
       padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 500;
+      border-radius: 0;
+      border: 2px solid #66023C;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .card.selected .card-tag-badge {
-      background: #bee3f8;
-      color: #2c5282;
+      background: #ffa719; /* Yellow fill */
+      color: white;
+      border-color: #ffa719;
     }
 
     .card-description {
@@ -256,25 +289,28 @@
     .quick-link-btn {
       display: inline-block;
       padding: 8px 14px;
-      background: #4299e1;
-      color: white;
+      background: #CAD183; /* Citron */
+      color: #66023C; /* Plum text */
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 500;
+      border-radius: 0;
+      font-size: 12px;
+      font-weight: 600;
       transition: all 0.2s;
-      border: 2px solid transparent;
+      border: 2px solid #CAD183;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .quick-link-btn:hover {
-      background: #3182ce;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: #66023C; /* Plum on hover */
+      color: white;
+      border-color: #66023C;
     }
 
     .card.selected .quick-link-btn {
-      background: #2c5282;
-      border-color: #2b6cb0;
+      background: #ffa719; /* Yellow when card selected */
+      border-color: #ffa719;
+      color: white;
     }
 
     /* Expandable sections */
@@ -351,34 +387,40 @@
     .summary-panel {
       position: sticky;
       top: 20px;
-      background: #f7fafc;
-      padding: 20px;
-      border-radius: 8px;
-      border: 2px solid #bee3f8;
+      background: rgba(255, 167, 25, 0.08); /* Light yellow tint */
+      padding: 25px;
+      border-radius: 0;
+      border: 3px solid #66023C; /* Plum */
       margin-bottom: 30px;
       max-height: 240px;
       overflow-y: auto;
+      box-shadow: inset 0 1px 3px rgba(102, 2, 60, 0.1);
     }
 
     .summary-panel::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
 
     .summary-panel::-webkit-scrollbar-track {
-      background: #e2e8f0;
-      border-radius: 4px;
+      background: rgba(202, 209, 131, 0.2); /* Citron track */
+      border-radius: 0;
     }
 
     .summary-panel::-webkit-scrollbar-thumb {
-      background: #4299e1;
-      border-radius: 4px;
+      background: #CAD183; /* Citron */
+      border-radius: 0;
     }
 
     .summary-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #2c5282;
+      font-size: 20px;
+      font-weight: 700;
+      color: #66023C; /* Plum */
       margin-bottom: 15px;
+      font-family: Georgia, serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #ffa719; /* Yellow underline */
+      padding-bottom: 8px;
     }
 
     .summary-section {
@@ -1202,10 +1244,10 @@
       const container = document.getElementById('content-container');
       let html = '';
 
-      // Heading Out
+      // Friday - Heading Out
       html += `
         <div class="tab-header" onclick="toggleTab('heading-out')">
-          <h2>Heading Out</h2>
+          <h2>🦞 Friday</h2>
           <button class="tab-collapse-btn" id="tab-btn-heading-out">▼</button>
         </div>
         <div class="tab-content" id="tab-content-heading-out">
@@ -1218,7 +1260,7 @@
       // Saturday Night
       html += `
         <div class="tab-header" onclick="toggleTab('saturday-night')">
-          <h2>Saturday Night</h2>
+          <h2>🏔️ Saturday</h2>
           <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
         </div>
         <div class="tab-content" id="tab-content-saturday-night">
@@ -1238,7 +1280,7 @@
       // Sunday
       html += `
         <div class="tab-header" onclick="toggleTab('sunday')">
-          <h2>Sunday</h2>
+          <h2>🦌 Sunday</h2>
           <button class="tab-collapse-btn" id="tab-btn-sunday">▼</button>
         </div>
         <div class="tab-content" id="tab-content-sunday">
@@ -1251,7 +1293,7 @@
       // Heading Home
       html += `
         <div class="tab-header" onclick="toggleTab('heading-home')">
-          <h2>Heading Home</h2>
+          <h2>🏠 Heading Home</h2>
           <button class="tab-collapse-btn" id="tab-btn-heading-home">▼</button>
         </div>
         <div class="tab-content" id="tab-content-heading-home">

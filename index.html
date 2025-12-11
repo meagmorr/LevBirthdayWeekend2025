@@ -14,29 +14,43 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f5f5f5;
+      background: #FFFEF0; /* Pale yellow */
       color: #333;
       line-height: 1.6;
       padding: 20px;
+      /* Subtle paper texture */
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px);
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background: #FFFEF8; /* Lighter pale yellow */
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 12px rgba(107, 38, 75, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(107, 38, 75, 0.1);
     }
 
     h1 {
-      color: #2c5282;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .subtitle {
-      color: #666;
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 20px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* Header Info */
@@ -45,26 +59,64 @@
       gap: 15px;
       margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 2px solid #e2e8f0;
+      border-bottom: 2px solid #6b264b; /* Magenta purple */
     }
 
     .info-box {
-      background: #f7fafc;
+      background: rgba(187, 223, 50, 0.12); /* Light acid lime tint */
       padding: 15px;
-      border-radius: 4px;
-      border-left: 4px solid #4299e1;
+      border-radius: 16px;
+      border-left: 4px solid #bbdf32; /* Acid lime accent */
     }
 
     .info-label {
-      font-weight: 600;
-      color: #2d3748;
+      font-weight: 700;
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 5px;
       font-size: 12px;
       text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: Georgia, serif;
+    }
+
+    /* Portland Favorites Map Button */
+    .map-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #6b264b; /* Magenta purple */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      border: 2px solid #6b264b;
+      margin-top: 15px;
+    }
+
+    .map-button:hover {
+      background: #bbdf32; /* Acid lime on hover */
+      color: #6b264b;
+      border-color: #bbdf32;
+    }
+
+    .map-button-icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1); /* Makes it white */
+    }
+
+    .map-button:hover .map-button-icon {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* Changes to magenta on hover */
     }
 
     .info-value {
-      color: #4a5568;
+      color: #333;
       font-size: 14px;
     }
 
@@ -80,6 +132,80 @@
 
     .section-group-title:first-child {
       margin-top: 20px;
+    }
+
+    /* Collapsible Tab Headers - Letterpress Style */
+    .tab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+      margin: 40px 0 0 0;
+      padding: 20px;
+      border: 3px solid #6b264b; /* Magenta purple border */
+      border-radius: 16px;
+      background: rgba(187, 223, 50, 0.08); /* Subtle acid lime tint */
+      position: relative;
+    }
+
+    .tab-header:first-child {
+      margin-top: 20px;
+    }
+
+    .tab-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #6b264b; /* Magenta purple */
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      /* Letterpress emboss effect */
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tab-icon {
+      width: 38px;
+      height: 38px;
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* This filter converts to magenta purple #6b264b */
+    }
+
+    .tab-collapse-btn {
+      background: none;
+      border: 2px solid #6b264b;
+      cursor: pointer;
+      font-size: 20px;
+      color: #6b264b;
+      padding: 8px 12px;
+      transition: all 0.2s;
+      border-radius: 16px;
+    }
+
+    .tab-collapse-btn:hover {
+      background: #bbdf32; /* Acid lime */
+      color: #6b264b;
+      border-color: #bbdf32;
+    }
+
+    .tab-collapse-btn.collapsed {
+      transform: rotate(-90deg);
+    }
+
+    .tab-content {
+      max-height: 50000px;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+      opacity: 1;
+    }
+
+    .tab-content.collapsed {
+      max-height: 0;
+      opacity: 0;
     }
 
     /* Sections */
@@ -108,45 +234,80 @@
     }
 
     .card {
-      border: 2px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 20px;
+      border: 3px solid #c4a4d4; /* Soft lavender border */
+      border-radius: 16px;
+      padding: 11px 12px 10px 12px;
       cursor: pointer;
       transition: all 0.2s;
       background: white;
+      box-shadow: 2px 2px 0 rgba(196, 164, 212, 0.1);
+      min-height: 120px;
+      position: relative;
     }
 
     .card:hover {
-      border-color: #cbd5e0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-color: #bbdf32; /* Acid lime on hover */
+      box-shadow: 0 0 0 1px rgba(187, 223, 50, 0.5),
+                  0 8px 20px rgba(187, 223, 50, 0.3);
+      transform: translate(0, -2px);
     }
 
     .card.selected {
-      border-color: #4299e1;
-      background: #ebf8ff;
+      border: 3px solid rgba(187, 223, 50, 0.9); /* Acid lime when selected */
+      background: rgba(187, 223, 50, 0.08); /* Light acid lime tint */
+      box-shadow:
+        0 0 0 1px rgba(187, 223, 50, 0.75),
+        0 18px 40px rgba(187, 223, 50, 0.7);
+    }
+
+    /* Selected card indicator - tracks icon overlay */
+    .card.selected::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 32px;
+      height: 32px;
+      background-image: url('images/green_tracks_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 2px 4px rgba(107, 38, 75, 0.3));
+      z-index: 10;
     }
 
     .card-title {
       font-size: 18px;
-      font-weight: 600;
-      color: #2d3748;
+      font-weight: 700;
+      color: #6b264b; /* Magenta purple */
       margin-bottom: 8px;
+      font-family: Georgia, serif;
     }
 
-    .card-tag {
-      display: inline-block;
-      background: #edf2f7;
-      color: #4a5568;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
       margin-bottom: 10px;
-      font-weight: 500;
     }
 
-    .card.selected .card-tag {
-      background: #bee3f8;
-      color: #2c5282;
+    .card-tag-badge {
+      display: inline-block;
+      background: transparent;
+      color: #6b264b; /* Magenta purple */
+      padding: 4px 12px;
+      border-radius: 16px;
+      border: 2px solid #c4a4d4; /* Soft lavender */
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .card.selected .card-tag-badge {
+      background: #bbdf32; /* Acid lime fill */
+      color: #6b264b; /* Magenta purple text */
+      border-color: #bbdf32;
     }
 
     .card-description {
@@ -197,50 +358,53 @@
     .quick-link-btn {
       display: inline-block;
       padding: 8px 14px;
-      background: #4299e1;
-      color: white;
+      background: #bbdf32; /* Acid lime */
+      color: #6b264b; /* Magenta purple text */
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: 500;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 600;
       transition: all 0.2s;
-      border: 2px solid transparent;
+      border: 2px solid #bbdf32;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .quick-link-btn:hover {
-      background: #3182ce;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      background: #6b264b; /* Magenta purple on hover */
+      color: white;
+      border-color: #6b264b;
     }
 
     .card.selected .quick-link-btn {
-      background: #2c5282;
-      border-color: #2b6cb0;
+      background: #6b264b; /* Magenta purple when card selected */
+      border-color: #6b264b;
+      color: white;
     }
 
     /* Expandable sections */
     .expand-button {
       width: 100%;
       padding: 12px;
-      background: #edf2f7;
-      border: 2px solid #cbd5e0;
-      border-radius: 6px;
+      background: rgba(187, 223, 50, 0.1);
+      border: 2px solid #bbdf32;
+      border-radius: 16px;
       cursor: pointer;
       font-size: 14px;
       font-weight: 500;
-      color: #718096;
+      color: #6b264b;
       margin-top: 20px;
       transition: all 0.2s;
     }
 
     .expand-button:hover {
-      background: #e2e8f0;
+      background: rgba(187, 223, 50, 0.2);
     }
 
     .expand-button.enabled {
-      background: #bee3f8;
-      border-color: #4299e1;
-      color: #2c5282;
+      background: rgba(187, 223, 50, 0.25);
+      border-color: #bbdf32;
+      color: #6b264b;
       cursor: pointer;
     }
 
@@ -248,8 +412,8 @@
       display: none;
       margin-top: 20px;
       padding: 20px;
-      background: #f7fafc;
-      border-radius: 6px;
+      background: rgba(187, 223, 50, 0.05);
+      border-radius: 16px;
     }
 
     .expandable-content.show {
@@ -258,27 +422,28 @@
 
     /* Mini cards for stores */
     .mini-card {
-      border: 1px solid #e2e8f0;
+      border: 2px solid #c4a4d4;
       padding: 15px;
-      border-radius: 6px;
+      border-radius: 16px;
       margin-bottom: 12px;
       cursor: pointer;
       transition: all 0.2s;
+      background: white;
     }
 
     .mini-card:hover {
-      border-color: #cbd5e0;
-      background: #f7fafc;
+      border-color: #bbdf32;
+      background: rgba(187, 223, 50, 0.05);
     }
 
     .mini-card.selected {
-      border-color: #4299e1;
-      background: #ebf8ff;
+      border-color: #bbdf32;
+      background: rgba(187, 223, 50, 0.15);
     }
 
     .mini-card-title {
       font-weight: 600;
-      color: #2d3748;
+      color: #6b264b;
       margin-bottom: 5px;
     }
 
@@ -292,34 +457,49 @@
     .summary-panel {
       position: sticky;
       top: 20px;
-      background: #f7fafc;
-      padding: 20px;
-      border-radius: 8px;
-      border: 2px solid #bee3f8;
+      background: linear-gradient(135deg, #6b264b 0%, #8b3a6b 100%); /* Magenta purple gradient */
+      padding: 25px;
+      border-radius: 16px;
+      border: 3px solid #6b264b;
       margin-bottom: 30px;
       max-height: 240px;
       overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(107, 38, 75, 0.35);
     }
 
     .summary-panel::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
 
     .summary-panel::-webkit-scrollbar-track {
-      background: #e2e8f0;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
     }
 
     .summary-panel::-webkit-scrollbar-thumb {
-      background: #4299e1;
-      border-radius: 4px;
+      background: #bbdf32; /* Acid lime */
+      border-radius: 16px;
     }
 
     .summary-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #2c5282;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
       margin-bottom: 15px;
+      font-family: Georgia, serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #bbdf32; /* Acid lime underline */
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-icon {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1); /* Makes it white */
     }
 
     .summary-section {
@@ -328,18 +508,18 @@
 
     .summary-section-title {
       font-weight: 600;
-      color: #2d3748;
+      color: white;
       margin-bottom: 5px;
     }
 
     .summary-day {
       font-size: 14px;
       font-weight: 700;
-      color: #2c5282;
+      color: white;
       margin-top: 15px;
       margin-bottom: 8px;
       padding-bottom: 4px;
-      border-bottom: 2px solid #bee3f8;
+      border-bottom: 2px solid rgba(187, 223, 50, 0.5);
       letter-spacing: 0.5px;
     }
 
@@ -348,7 +528,7 @@
     }
 
     .summary-item {
-      color: #4a5568;
+      color: rgba(255, 255, 255, 0.95);
       font-size: 14px;
       margin-bottom: 5px;
       font-family: 'Courier New', Courier, monospace;
@@ -356,7 +536,7 @@
     }
 
     .summary-empty {
-      color: #718096;
+      color: rgba(255, 255, 255, 0.8);
       font-style: italic;
     }
 
@@ -373,16 +553,18 @@
       margin: 20px 0;
       padding: 10px 20px;
       background: white;
-      border: 2px solid #e2e8f0;
-      border-radius: 6px;
+      border: 2px solid #c4a4d4;
+      border-radius: 16px;
       cursor: pointer;
       font-size: 14px;
       transition: all 0.2s;
+      color: #6b264b;
     }
 
     .reset-button:hover {
       border-color: #fc8181;
       color: #c53030;
+      background: rgba(252, 129, 129, 0.05);
     }
 
     /* Hidden utility */
@@ -413,11 +595,18 @@
         <div class="info-label">Goal</div>
         <div class="info-value">Kicking off your 35th rotation around the sun!</div>
       </div>
+      <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" class="map-button">
+        <img src="images/green_maine_map_button.png" alt="Map" class="map-button-icon">
+        Portland Favorites Map
+      </a>
     </div>
 
     <!-- Summary Panel -->
     <div class="summary-panel">
-      <div class="summary-title">🔥 Your Weekend Summary</div>
+      <div class="summary-title">
+        <img src="images/pink_negroni_button.png" alt="Cocktail" class="summary-icon">
+        Your Weekend Summary
+      </div>
       <div id="summary-content" class="summary-empty">
         Make selections below to build your weekend!
       </div>
@@ -477,7 +666,7 @@
             id: 'before-checkin',
             title: 'Before Check-In Activities',
             description: 'Pick activities to fill time before dinner at 5:30pm. Reminder: we can check-in to the hotel starting at 3pm.',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'old-port-novel',
@@ -546,7 +735,7 @@
             id: 'checkin-freshen',
             title: 'Check-In & Freshen Up',
             description: 'Arrive at the hotel and get ready for the evening',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'hotel-checkin',
@@ -618,7 +807,7 @@
               {
                 id: 'pink-talking-fish',
                 title: 'Pink Talking Fish at State Theatre',
-                time: '7:00p',
+                time: '8:00p',
                 tag: 'Tickets Secured',
                 description: 'Doors 7pm, Show 8pm, 5 min walk from dinner',
                 links: [
@@ -631,7 +820,7 @@
               {
                 id: 'blue-portland',
                 title: 'Blue Portland Maine',
-                time: '6:00p',
+                time: '7:00p',
                 tag: 'Live Jazz',
                 description: 'Intimate live-music bar on Congress Street that hosts jazz, folk, and other small-venue shows',
                 details: 'Doors 6pm, Carl Dimow Jazz Quartet @ 7pm, Rot On The Vine @ 9PM. Pay What You Can at the door, bring cash!',
@@ -797,7 +986,7 @@
               {
                 id: 'shopping',
                 title: 'Explore Old Port Shopping',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Wander & Explore',
                 description: 'Browse Portland\'s best independent shops for vintage finds, premium menswear, and unique gifts. Six curated stops within easy walking distance of each other—spend as much or as little time as you want.',
                 details: 'Old Port shopping district',
@@ -880,7 +1069,7 @@
               {
                 id: 'victoria-mansion',
                 title: 'Victoria Mansion',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Museum & History',
                 description: 'Didn\'t make it Saturday? This stunning Victorian house museum is worth the visit—decked out for the holidays and perfect for architecture and history enthusiasts.',
                 details: 'If you missed it Saturday, allow 1-1.5 hours',
@@ -893,7 +1082,7 @@
               {
                 id: 'portland-head-light',
                 title: 'Portland Head Light',
-                time: '1:00p',
+                time: '11:00a',
                 tag: 'Scenic Stop',
                 description: 'Cape Elizabeth\'s iconic lighthouse at Fort Williams Park. Quintessential Maine photo op and scenic coastal views—free to visit, 15 minutes from downtown.',
                 details: 'Cape Elizabeth, iconic lighthouse, Fort Williams Park (free)',
@@ -922,7 +1111,7 @@
                 id: 'frost-factory-stop',
                 title: 'Frost Factory',
                 time: '2:00p',
-                tag: 'Cannabis Dispensary, Birthday Gift',
+                tags: ['Cannabis Dispensary', 'Birthday Gift'],
                 description: 'South Portland, 10am-8pm, on the way home',
                 links: [
                   { text: 'Directions', url: 'https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8' },
@@ -936,13 +1125,13 @@
             id: 'playlists',
             title: 'Playlists for the Drive',
             description: 'Pick your road trip soundtrack',
-            selectionType: 'single',
+            selectionType: 'multiple',
             cards: [
               {
                 id: 'playlist-matt',
                 title: 'Matt',
                 time: '3:00p',
-                tag: 'Lovey, Fun',
+                tags: ['Lovey', 'Fun'],
                 description: 'All the songs that remind Meag of her man',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/3b3sqpWJxPz8CbHDPRbB2i' }
@@ -952,7 +1141,7 @@
                 id: 'playlist-babson',
                 title: 'Babson Columbia \'25',
                 time: '3:00p',
-                tag: 'Memories, Joyful, Dancey',
+                tags: ['Memories', 'Joyful', 'Dancey'],
                 description: 'All the jams from your epic trip to Columbia',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/5DVDPZQa1L4WnzDoPS6feo' }
@@ -962,7 +1151,7 @@
                 id: 'playlist-not-rap',
                 title: 'Not Rap',
                 time: '3:00p',
-                tag: 'Movie Hits, Oldies, Classics',
+                tags: ['Movie Hits', 'Oldies', 'Classics'],
                 description: 'The famous playlist you created for Meag early days',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/1DVV7dznCQmD4cEcLZsa2G' }
@@ -972,7 +1161,7 @@
                 id: 'playlist-acid-jazz',
                 title: 'Acid Jazz',
                 time: '3:00p',
-                tag: 'Lev, Matthew, Anders, Matt, Honeybadger',
+                tags: ['Lev', 'Matthew', 'Anders', 'Matt', 'Honeybadger'],
                 description: 'The classic, the essential, the inevitable',
                 links: [
                   { text: 'Spotify', url: 'https://open.spotify.com/playlist/37i9dQZF1DWXHghfFFOaS6' }
@@ -1018,13 +1207,21 @@
     function renderCard(card, sectionId, selectionType, tabKey) {
       const isSelected = selections[tabKey][sectionId]?.includes(card.id);
 
+      // Handle both single tag (string) and multiple tags (array)
+      let tagsHtml = '';
+      if (card.tags && Array.isArray(card.tags)) {
+        tagsHtml = card.tags.map(tag => `<span class="card-tag-badge">${tag}</span>`).join('');
+      } else if (card.tag) {
+        tagsHtml = `<span class="card-tag-badge">${card.tag}</span>`;
+      }
+
       let html = `
         <div class="card ${isSelected ? 'selected' : ''}"
              data-card-id="${card.id}"
              data-section-id="${sectionId}"
              data-selection-type="${selectionType}"
              data-tab-key="${tabKey}">
-          <div class="card-tag">${card.tag}</div>
+          <div class="card-tags">${tagsHtml}</div>
           <div class="card-title">${card.title}</div>
           ${card.description ? `<div class="card-description">${card.description}</div>` : ''}
           ${card.details ? `<div class="card-details">${card.details}</div>` : ''}
@@ -1135,14 +1332,27 @@
       const container = document.getElementById('content-container');
       let html = '';
 
-      // Heading Out
-      html += '<h2 class="section-group-title">Heading Out</h2>';
+      // Friday - Heading Out
+      html += `
+        <div class="tab-header" onclick="toggleTab('heading-out')">
+          <h2><img src="images/green_lobster_decor.png" alt="Lobster" class="tab-icon"> Friday</h2>
+          <button class="tab-collapse-btn" id="tab-btn-heading-out">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-heading-out">
+      `;
       CONTENT.headingOut.sections.forEach(section => {
         html += renderSection(section, 'headingOut');
       });
+      html += '</div>';
 
       // Saturday Night
-      html += '<h2 class="section-group-title">Saturday Night</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('saturday-night')">
+          <h2><img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday</h2>
+          <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-saturday-night">
+      `;
       CONTENT.saturdayNight.sections.forEach(section => {
         if (section.expandable && section.expandCondition === 'show-selected') {
           const showSelected = selections.saturdayNight['show'] && selections.saturdayNight['show'].length > 0;
@@ -1153,18 +1363,33 @@
           html += renderSection(section, 'saturdayNight');
         }
       });
+      html += '</div>';
 
       // Sunday
-      html += '<h2 class="section-group-title">Sunday</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('sunday')">
+          <h2><img src="images/green_moose_icon.png" alt="Moose" class="tab-icon"> Sunday</h2>
+          <button class="tab-collapse-btn" id="tab-btn-sunday">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-sunday">
+      `;
       CONTENT.sunday.sections.forEach(section => {
         html += renderSection(section, 'sunday');
       });
+      html += '</div>';
 
       // Heading Home
-      html += '<h2 class="section-group-title">Heading Home</h2>';
+      html += `
+        <div class="tab-header" onclick="toggleTab('heading-home')">
+          <h2><img src="images/green_tracks_button.png" alt="Tracks" class="tab-icon"> Heading Home</h2>
+          <button class="tab-collapse-btn" id="tab-btn-heading-home">▼</button>
+        </div>
+        <div class="tab-content" id="tab-content-heading-home">
+      `;
       CONTENT.headingHome.sections.forEach(section => {
         html += renderSection(section, 'headingHome');
       });
+      html += '</div>';
 
       container.innerHTML = html;
 
@@ -1175,6 +1400,16 @@
     // ============================================
     // EVENT HANDLERS
     // ============================================
+
+    function toggleTab(tabId) {
+      const content = document.getElementById(`tab-content-${tabId}`);
+      const btn = document.getElementById(`tab-btn-${tabId}`);
+
+      if (content && btn) {
+        content.classList.toggle('collapsed');
+        btn.classList.toggle('collapsed');
+      }
+    }
 
     function attachCardHandlers() {
       document.querySelectorAll('.card').forEach(card => {
@@ -1196,8 +1431,14 @@
       }
 
       if (selectionType === 'single') {
-        // Radio button behavior
-        selections[tabKey][sectionId] = [cardId];
+        // Radio button behavior with toggle-off capability
+        if (selections[tabKey][sectionId][0] === cardId) {
+          // If clicking the same card, unselect it
+          selections[tabKey][sectionId] = [];
+        } else {
+          // Otherwise select the new card
+          selections[tabKey][sectionId] = [cardId];
+        }
       } else {
         // Multiple selection
         const index = selections[tabKey][sectionId].indexOf(cardId);

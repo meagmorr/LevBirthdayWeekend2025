@@ -38,66 +38,76 @@
       overflow: hidden;
     }
 
-    /* Watercolor lobster background decorations */
-    .container::before,
-    .container::after {
+    /* Watercolor lobster and moose background decorations - multiple layers */
+    .container::before {
       content: '';
       position: absolute;
+      width: 400px;
+      height: 400px;
+      background-image: url('images/lightpurp_lobster_decor.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.08;
+      top: -50px;
+      right: -80px;
+      transform: rotate(25deg);
+      opacity: 0.15;
       z-index: 0;
       pointer-events: none;
     }
 
-    .container::before {
-      width: 400px;
-      height: 400px;
-      background-image: url('images/lightpurp_lobster_decor.png');
-      top: -50px;
-      right: -80px;
-      transform: rotate(25deg);
-    }
-
     .container::after {
+      content: '';
+      position: absolute;
       width: 350px;
       height: 350px;
       background-image: url('images/pink_lobster_decor.png');
+      background-size: contain;
+      background-repeat: no-repeat;
       bottom: -30px;
       left: -60px;
       transform: rotate(-15deg);
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Additional background decorations on body */
+    body::before {
+      content: '';
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background-image: url('images/purple_moose_decor.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: 50%;
+      left: -100px;
+      transform: translateY(-50%) rotate(20deg);
+      opacity: 0.12;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      width: 280px;
+      height: 280px;
+      background-image: url('images/pink_lobster_decor.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      bottom: 15%;
+      right: -90px;
+      transform: rotate(-25deg);
+      opacity: 0.12;
+      z-index: -1;
+      pointer-events: none;
     }
 
     /* Ensure content stays above decorations */
     .container > * {
       position: relative;
       z-index: 1;
-    }
-
-    /* Flower header decorations */
-    h1::before,
-    h1::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.12;
-      z-index: -1;
-    }
-
-    h1::before {
-      background-image: url('images/flowers_up_decor.png');
-      top: -20px;
-      left: -30px;
-    }
-
-    h1::after {
-      background-image: url('images/flowers_down_decor.png');
-      top: -20px;
-      right: -30px;
-      transform: scaleX(-1);
     }
 
     h1 {
@@ -108,6 +118,10 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+      /* Embossed effect */
+      text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.8),
+        2px 2px 3px rgba(107, 38, 75, 0.2);
     }
 
     .subtitle {
@@ -125,6 +139,23 @@
       margin-bottom: 30px;
       padding-bottom: 20px;
       border-bottom: 2px solid #6b264b; /* Magenta purple */
+      position: relative;
+    }
+
+    /* Watercolor lighthouse decoration in header */
+    .header-info::before {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background-image: url('images/lightpurp_lighthouse_decor.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      top: -30px;
+      right: -40px;
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
     }
 
     .info-box {
@@ -132,6 +163,8 @@
       padding: 15px;
       border-radius: 16px;
       border-left: 4px solid #bbdf32; /* Acid lime accent */
+      position: relative;
+      z-index: 1;
     }
 
     .info-label {
@@ -144,10 +177,18 @@
       font-family: Georgia, serif;
     }
 
+    /* Header Buttons Container */
+    .header-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
     /* Portland Favorites Map Button */
     .map-button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       background: #6b264b; /* Magenta purple */
       color: white;
@@ -160,7 +201,7 @@
       letter-spacing: 0.5px;
       transition: all 0.2s;
       border: 2px solid #6b264b;
-      margin-top: 15px;
+      flex: 1;
     }
 
     .map-button:hover {
@@ -178,6 +219,75 @@
     .map-button:hover .map-button-icon {
       filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
       /* Changes to magenta on hover */
+    }
+
+    /* Share Button */
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #6b264b; /* Magenta purple */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      border: 2px solid #6b264b;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .share-button:hover {
+      background: #bbdf32; /* Acid lime on hover */
+      color: #6b264b;
+      border-color: #bbdf32;
+    }
+
+    .share-button-icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1); /* Makes it white */
+    }
+
+    .share-button:hover .share-button-icon {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* Changes to magenta on hover */
+    }
+
+    /* Reset Header Button */
+    .reset-header-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #6b264b; /* Magenta purple */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      border: 2px solid #6b264b;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .reset-header-button:hover {
+      background: #fc8181;
+      color: white;
+      border-color: #fc8181;
+    }
+
+    .reset-button-icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1); /* Makes it white */
     }
 
     .info-value {
@@ -226,11 +336,34 @@
       font-family: Georgia, 'Times New Roman', serif;
       text-transform: uppercase;
       letter-spacing: 2px;
-      /* Letterpress emboss effect */
-      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+      /* Enhanced letterpress emboss effect */
+      text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.8),
+        2px 2px 4px rgba(107, 38, 75, 0.25);
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fantasy-reminder-badge {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: none;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 16px;
+      text-shadow: none;
+      border: 2px solid #c53030;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
     }
 
     .tab-icon {
@@ -261,20 +394,6 @@
       transform: rotate(-90deg);
     }
 
-    /* Decorative tab dividers */
-    .tab-divider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 30px 0;
-      opacity: 0.15;
-    }
-
-    .tab-divider img {
-      width: 180px;
-      height: auto;
-    }
-
     /* Washington Baths blueberries decoration */
     .card[data-card-id="washington-baths"]::after {
       content: '';
@@ -292,30 +411,7 @@
       pointer-events: none;
     }
 
-    /* Washington Baths when selected - combine tracks (top-right) and blueberries (bottom-right) */
-    .card[data-card-id="washington-baths"].selected::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: auto;
-      width: auto;
-      height: auto;
-      background-image:
-        url('images/orange_tracks_button.png'),
-        url('images/blueberries_button.png');
-      background-size:
-        32px 32px,
-        45px 45px;
-      background-repeat: no-repeat, no-repeat;
-      background-position:
-        right 8px top 8px,
-        right 8px bottom 8px;
-      filter: drop-shadow(0 2px 4px rgba(107, 38, 75, 0.3));
-      opacity: 1;
-      z-index: 10;
-    }
+    /* Washington Baths keeps blueberries even when selected (Maine stamp will show via .card.selected::before) */
 
     /* Card background watermarks by category */
     /* Food/Restaurant cards - burger watermark */
@@ -452,10 +548,21 @@
     }
 
     .section-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #6b264b; /* Magenta purple */
+      margin-bottom: 15px;
+      font-family: Georgia, serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 10px 15px;
+      background: rgba(187, 223, 50, 0.08);
+      border-left: 4px solid #bbdf32;
+      border-radius: 8px;
+      /* Embossed effect */
+      text-shadow:
+        1px 1px 0 rgba(255, 255, 255, 0.7),
+        1px 1px 2px rgba(107, 38, 75, 0.15);
     }
 
     .section-description {
@@ -498,7 +605,7 @@
         0 18px 40px rgba(187, 223, 50, 0.7);
     }
 
-    /* Selected card indicators - Maine stamp + tracks */
+    /* Selected card indicator - Maine stamp only */
     .card.selected::before {
       content: '';
       position: absolute;
@@ -512,21 +619,6 @@
       background-position: center;
       opacity: 0.3;
       transform: rotate(-8deg);
-      z-index: 10;
-    }
-
-    .card.selected::after {
-      content: '';
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 32px;
-      height: 32px;
-      background-image: url('images/orange_tracks_button.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      filter: drop-shadow(0 2px 4px rgba(107, 38, 75, 0.3));
       z-index: 10;
     }
 
@@ -613,44 +705,52 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 14px;
-      background: #bbdf32; /* Acid lime */
+      padding: 6px 12px;
+      background: transparent;
       color: #6b264b; /* Magenta purple text */
       text-decoration: none;
-      border-radius: 16px;
-      font-size: 12px;
-      font-weight: 600;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
       transition: all 0.2s;
-      border: 2px solid #bbdf32;
+      border: 1px solid #c4a4d4; /* Soft lavender border */
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      opacity: 0.75;
     }
 
     .quick-link-btn:hover {
-      background: #6b264b; /* Magenta purple on hover */
-      color: white;
-      border-color: #6b264b;
+      background: rgba(187, 223, 50, 0.15);
+      color: #6b264b;
+      border-color: #bbdf32;
+      opacity: 1;
     }
 
     .card.selected .quick-link-btn {
-      background: #6b264b; /* Magenta purple when card selected */
+      background: rgba(107, 38, 75, 0.08);
       border-color: #6b264b;
-      color: white;
+      color: #6b264b;
+      opacity: 0.85;
+    }
+
+    .card.selected .quick-link-btn:hover {
+      opacity: 1;
     }
 
     .quick-link-icon {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
       filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
       /* Converts icon to magenta purple */
+      opacity: 0.7;
     }
 
     .quick-link-btn:hover .quick-link-icon {
-      filter: brightness(0) invert(1); /* White on hover */
+      opacity: 1;
     }
 
     .card.selected .quick-link-btn .quick-link-icon {
-      filter: brightness(0) invert(1); /* White when selected */
+      opacity: 0.8;
     }
 
     /* Expandable sections */
@@ -931,17 +1031,23 @@
     <!-- Header Info -->
     <div class="header-info">
       <div class="info-box">
-        <div class="info-label">Accommodations</div>
-        <div class="info-value">AC Hotel Portland Downtown/Waterfront</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">SURPRISE-ish Plans</div>
+        <div class="info-label">Goal</div>
         <div class="info-value">Kicking off your 35th rotation around the sun!</div>
       </div>
-      <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" class="map-button">
-        <img src="images/green_maine_map_button.png" alt="Map" class="map-button-icon">
-        Portland Favorites Map
-      </a>
+      <div class="header-buttons">
+        <a href="https://maps.app.goo.gl/qncvtMqeFtQFpso37" target="_blank" class="map-button">
+          <img src="images/green_maine_map_button.png" alt="Map" class="map-button-icon">
+          Portland Map
+        </a>
+        <button class="share-button" id="share-link-btn" onclick="copyShareLink()" data-share-url="">
+          <img src="images/green_lobster_decor.png" alt="Share" class="share-button-icon">
+          Share Link
+        </button>
+        <button class="reset-header-button" id="reset-header-btn">
+          <img src="images/orange_tracks_button.png" alt="Reset" class="reset-button-icon">
+          Reset All
+        </button>
+      </div>
     </div>
 
     <!-- Summary Panel -->
@@ -1076,6 +1182,19 @@
                   { text: 'Directions', url: 'https://maps.app.goo.gl/iYV8cQbviunxzek96' },
                   { text: 'Website', url: 'https://portlandheadlight.com/' }
                 ]
+              },
+              {
+                id: 'frost-factory-saturday',
+                title: 'Frost Factory',
+                time: '12:00p',
+                tags: ['Cannabis Dispensary', 'Birthday Gift'],
+                description: 'South Portland, 10am-8pm. Stop by on the way into town or before hotel check-in.',
+                details: 'Open 10am-8pm Saturday',
+                links: [
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8' },
+                  { text: 'Website', url: 'https://thefrostfactory.com' },
+                  { text: 'Preorder', url: 'https://weedmaps.com/dispensaries/the-frost-factory-2' }
+                ]
               }
             ]
           }
@@ -1115,22 +1234,6 @@
                 links: [
                   { text: 'So Fresh, So Clean', url: 'https://open.spotify.com/track/6glsMWIMIxQ4BedzLqGVi4?si=a8a67e0c9f584a6e' }
                 ]
-              }
-            ]
-          },
-          {
-            id: 'fantasy-reminder',
-            title: 'Fantasy Football',
-            description: 'Don\'t forget to set your lineup!',
-            selectionType: 'single',
-            cards: [
-              {
-                id: 'ff-lineup',
-                title: 'Set Fantasy Lineup',
-                time: '5:00p',
-                tag: 'Important',
-                description: 'Week 16 games start Saturday - set your lineup before dinner!',
-                details: 'Games at 1pm, 4:25pm, and 8:15pm ET'
               }
             ]
           },
@@ -1446,6 +1549,19 @@
                   { text: 'Directions', url: 'https://maps.app.goo.gl/9dY5uEzJxz8Qnfaj9' },
                   { text: 'Website', url: 'https://portlandheadlight.com' }
                 ]
+              },
+              {
+                id: 'frost-factory-sunday',
+                title: 'Frost Factory',
+                time: '2:00p',
+                tags: ['Cannabis Dispensary', 'Birthday Gift'],
+                description: 'Last stop before heading home! South Portland, 10am-8pm Sunday.',
+                details: 'Open 10am-8pm Sunday',
+                links: [
+                  { text: 'Directions', url: 'https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8' },
+                  { text: 'Website', url: 'https://thefrostfactory.com' },
+                  { text: 'Preorder', url: 'https://weedmaps.com/dispensaries/the-frost-factory-2' }
+                ]
               }
             ]
           }
@@ -1457,26 +1573,6 @@
       // ============================================
       headingHome: {
         sections: [
-          {
-            id: 'frost-factory',
-            title: 'Final Reminder: Frost Factory',
-            description: 'Last stop before heading home',
-            selectionType: 'single',
-            cards: [
-              {
-                id: 'frost-factory-stop',
-                title: 'Frost Factory',
-                time: '2:00p',
-                tags: ['Cannabis Dispensary', 'Birthday Gift'],
-                description: 'South Portland, 10am-8pm, on the way home',
-                links: [
-                  { text: 'Directions', url: 'https://maps.app.goo.gl/D4ik3m1t8gCvXvjn8' },
-                  { text: 'Website', url: 'https://thefrostfactory.com' },
-                  { text: 'Preorder', url: 'https://weedmaps.com/dispensaries/the-frost-factory-2' }
-                ]
-              }
-            ]
-          },
           {
             id: 'playlists',
             title: 'Playlists for the Drive',
@@ -1535,8 +1631,27 @@
       headingHome: {}
     };
 
-    // Load saved selections from localStorage
+    // Load saved selections from localStorage or URL
     function loadSelections() {
+      // First, check URL for shared selections
+      const urlParams = new URLSearchParams(window.location.search);
+      const sharedData = urlParams.get('selections');
+
+      if (sharedData) {
+        try {
+          // Decode and load from URL
+          selections = JSON.parse(atob(sharedData));
+          // Save to localStorage for persistence
+          localStorage.setItem('lev-bday-2025', JSON.stringify(selections));
+          // Clean URL (remove query params)
+          window.history.replaceState({}, document.title, window.location.pathname);
+          return;
+        } catch (e) {
+          console.error('Error loading shared selections:', e);
+        }
+      }
+
+      // Otherwise, load from localStorage
       const saved = localStorage.getItem('lev-bday-2025');
       if (saved) {
         try {
@@ -1550,6 +1665,35 @@
     // Save selections to localStorage
     function saveSelections() {
       localStorage.setItem('lev-bday-2025', JSON.stringify(selections));
+      updateShareLink();
+    }
+
+    // Generate shareable link
+    function updateShareLink() {
+      const encoded = btoa(JSON.stringify(selections));
+      const shareUrl = `${window.location.origin}${window.location.pathname}?selections=${encoded}`;
+
+      // Update share link button if it exists
+      const shareLinkBtn = document.getElementById('share-link-btn');
+      if (shareLinkBtn) {
+        shareLinkBtn.setAttribute('data-share-url', shareUrl);
+      }
+    }
+
+    // Copy share link to clipboard
+    function copyShareLink() {
+      const shareLinkBtn = document.getElementById('share-link-btn');
+      const shareUrl = shareLinkBtn.getAttribute('data-share-url');
+
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        const originalText = shareLinkBtn.innerHTML;
+        shareLinkBtn.innerHTML = '<img src="images/green_moose_icon.png" alt="Check" class="share-button-icon" style="filter: brightness(0) invert(1);"> Copied!';
+        setTimeout(() => {
+          shareLinkBtn.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        alert('Share URL: ' + shareUrl);
+      });
     }
 
     // ============================================
@@ -1701,13 +1845,13 @@
       });
       html += '</div>';
 
-      // Lighthouse divider between Friday and Saturday
-      html += '<div class="tab-divider"><img src="images/purple_lighthouse_decor.png" alt=""></div>';
-
       // Saturday Night
       html += `
         <div class="tab-header" onclick="toggleTab('saturday-night')">
-          <h2><img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday</h2>
+          <h2>
+            <img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday
+            <span class="fantasy-reminder-badge">⚠️ Set Fantasy Lineup (5pm)</span>
+          </h2>
           <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
         </div>
         <div class="tab-content" id="tab-content-saturday-night">
@@ -1723,9 +1867,6 @@
         }
       });
       html += '</div>';
-
-      // Moose divider between Saturday and Sunday
-      html += '<div class="tab-divider"><img src="images/purple_moose_decor.png" alt=""></div>';
 
       // Sunday
       html += `
@@ -1917,6 +2058,12 @@
         }
       }
 
+      // Add Fantasy Football reminder to Saturday (always appears)
+      saturday.push({
+        time: '5:00p',
+        title: 'Set Fantasy Lineup ⚠️'
+      });
+
       // Collect Sunday items (Sunday + Heading Home)
       for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {
         if (!sectionId.includes('stores')) {
@@ -1980,6 +2127,9 @@
       // Update summary
       updateSummary();
 
+      // Initialize share link
+      updateShareLink();
+
       // Full screen summary toggle
       document.getElementById('expand-summary-btn').addEventListener('click', () => {
         const modal = document.getElementById('summary-modal');
@@ -2002,6 +2152,21 @@
 
       // Reset button
       document.getElementById('reset-btn').addEventListener('click', () => {
+        if (confirm('Reset all selections? This cannot be undone.')) {
+          selections = {
+            headingOut: {},
+            saturdayNight: {},
+            sunday: {},
+            headingHome: {}
+          };
+          saveSelections();
+          renderAllContent();
+          updateSummary();
+        }
+      });
+
+      // Reset header button
+      document.getElementById('reset-header-btn').addEventListener('click', () => {
         if (confirm('Reset all selections? This cannot be undone.')) {
           selections = {
             headingOut: {},

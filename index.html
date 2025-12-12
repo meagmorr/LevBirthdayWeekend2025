@@ -110,32 +110,6 @@
       z-index: 1;
     }
 
-    /* Flower header decorations */
-    h1::before,
-    h1::after {
-      content: '';
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.12;
-      z-index: -1;
-    }
-
-    h1::before {
-      background-image: url('images/flowers_up_decor.png');
-      top: -20px;
-      left: -30px;
-    }
-
-    h1::after {
-      background-image: url('images/flowers_down_decor.png');
-      top: -20px;
-      right: -30px;
-      transform: scaleX(-1);
-    }
-
     h1 {
       font-family: Georgia, 'Times New Roman', serif;
       color: #6b264b; /* Magenta purple */
@@ -243,6 +217,43 @@
     }
 
     .map-button:hover .map-button-icon {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* Changes to magenta on hover */
+    }
+
+    /* Share Button */
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #6b264b; /* Magenta purple */
+      color: white;
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+      border: 2px solid #6b264b;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    .share-button:hover {
+      background: #bbdf32; /* Acid lime on hover */
+      color: #6b264b;
+      border-color: #bbdf32;
+    }
+
+    .share-button-icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1); /* Makes it white */
+    }
+
+    .share-button:hover .share-button-icon {
       filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
       /* Changes to magenta on hover */
     }
@@ -1028,6 +1039,10 @@
           <img src="images/green_maine_map_button.png" alt="Map" class="map-button-icon">
           Portland Map
         </a>
+        <button class="share-button" id="share-link-btn" onclick="copyShareLink()" data-share-url="">
+          <img src="images/green_lobster_decor.png" alt="Share" class="share-button-icon">
+          Share Link
+        </button>
         <button class="reset-header-button" id="reset-header-btn">
           <img src="images/orange_tracks_button.png" alt="Reset" class="reset-button-icon">
           Reset All
@@ -1616,8 +1631,27 @@
       headingHome: {}
     };
 
-    // Load saved selections from localStorage
+    // Load saved selections from localStorage or URL
     function loadSelections() {
+      // First, check URL for shared selections
+      const urlParams = new URLSearchParams(window.location.search);
+      const sharedData = urlParams.get('selections');
+
+      if (sharedData) {
+        try {
+          // Decode and load from URL
+          selections = JSON.parse(atob(sharedData));
+          // Save to localStorage for persistence
+          localStorage.setItem('lev-bday-2025', JSON.stringify(selections));
+          // Clean URL (remove query params)
+          window.history.replaceState({}, document.title, window.location.pathname);
+          return;
+        } catch (e) {
+          console.error('Error loading shared selections:', e);
+        }
+      }
+
+      // Otherwise, load from localStorage
       const saved = localStorage.getItem('lev-bday-2025');
       if (saved) {
         try {
@@ -1631,6 +1665,35 @@
     // Save selections to localStorage
     function saveSelections() {
       localStorage.setItem('lev-bday-2025', JSON.stringify(selections));
+      updateShareLink();
+    }
+
+    // Generate shareable link
+    function updateShareLink() {
+      const encoded = btoa(JSON.stringify(selections));
+      const shareUrl = `${window.location.origin}${window.location.pathname}?selections=${encoded}`;
+
+      // Update share link button if it exists
+      const shareLinkBtn = document.getElementById('share-link-btn');
+      if (shareLinkBtn) {
+        shareLinkBtn.setAttribute('data-share-url', shareUrl);
+      }
+    }
+
+    // Copy share link to clipboard
+    function copyShareLink() {
+      const shareLinkBtn = document.getElementById('share-link-btn');
+      const shareUrl = shareLinkBtn.getAttribute('data-share-url');
+
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        const originalText = shareLinkBtn.innerHTML;
+        shareLinkBtn.innerHTML = '<img src="images/green_moose_icon.png" alt="Check" class="share-button-icon" style="filter: brightness(0) invert(1);"> Copied!';
+        setTimeout(() => {
+          shareLinkBtn.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        alert('Share URL: ' + shareUrl);
+      });
     }
 
     // ============================================
@@ -2063,6 +2126,9 @@
 
       // Update summary
       updateSummary();
+
+      // Initialize share link
+      updateShareLink();
 
       // Full screen summary toggle
       document.getElementById('expand-summary-btn').addEventListener('click', () => {

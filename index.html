@@ -704,19 +704,20 @@
     .quick-link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
+      gap: 8px;
+      padding: 10px 16px;
       background: transparent;
       color: #6b264b; /* Magenta purple text */
       text-decoration: none;
       border-radius: 12px;
-      font-size: 11px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 600;
       transition: all 0.2s;
-      border: 1px solid #c4a4d4; /* Soft lavender border */
+      border: 2px solid #c4a4d4; /* Soft lavender border */
       text-transform: uppercase;
       letter-spacing: 0.3px;
-      opacity: 0.75;
+      opacity: 0.85;
+      min-height: 44px; /* iOS minimum touch target */
     }
 
     .quick-link-btn:hover {
@@ -724,13 +725,14 @@
       color: #6b264b;
       border-color: #bbdf32;
       opacity: 1;
+      transform: translateY(-1px);
     }
 
     .card.selected .quick-link-btn {
       background: rgba(107, 38, 75, 0.08);
       border-color: #6b264b;
       color: #6b264b;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .card.selected .quick-link-btn:hover {
@@ -738,19 +740,20 @@
     }
 
     .quick-link-icon {
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
       /* Converts icon to magenta purple */
-      opacity: 0.7;
+      opacity: 1;
     }
 
     .quick-link-btn:hover .quick-link-icon {
       opacity: 1;
+      transform: scale(1.1);
     }
 
     .card.selected .quick-link-btn .quick-link-icon {
-      opacity: 0.8;
+      opacity: 1;
     }
 
     /* Expandable sections */
@@ -1730,13 +1733,15 @@
         // Directions button
         if (card.address) {
           const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(card.address)}`;
-          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> Directions</a>`;
+          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 Directions</a>`;
         }
 
         // Website and Tickets buttons
         if (card.links && card.links.length > 0) {
           card.links.forEach(link => {
-            if (link.text.toLowerCase().includes('ticket')) {
+            if (link.text.toLowerCase().includes('direction')) {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 ${link.text}</a>`;
+            } else if (link.text.toLowerCase().includes('ticket')) {
               html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/pink_negroni_button.png" alt="" class="quick-link-icon"> Tickets</a>`;
             } else if (link.text.toLowerCase().includes('menu')) {
               html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_burger_button.png" alt="" class="quick-link-icon"> Menu</a>`;
@@ -1780,7 +1785,7 @@
             html += '<div class="card-quick-links">';
             store.links.forEach(link => {
               if (link.text.toLowerCase().includes('direction')) {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> Directions</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 ${link.text}</a>`;
               } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
                 html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_lighthouse_icon.png" alt="" class="quick-link-icon"> Website</a>`;
               } else {

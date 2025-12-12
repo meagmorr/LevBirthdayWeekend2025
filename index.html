@@ -352,12 +352,12 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       text-transform: none;
       letter-spacing: 0.3px;
-      background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
-      color: white;
+      background: linear-gradient(135deg, #bbdf32 0%, #a8cc28 100%);
+      color: #6b264b;
       padding: 6px 14px;
       border-radius: 16px;
       text-shadow: none;
-      border: 2px solid #c53030;
+      border: 2px solid #8fb525;
       animation: pulse 2s ease-in-out infinite;
     }
 
@@ -1127,7 +1127,7 @@
           {
             id: 'before-checkin',
             title: 'Before Check-In Activities',
-            description: 'Pick activities to fill time before dinner at 5:30pm. Reminder: we can check-in to the hotel starting at 3pm.',
+            description: 'Pick activities to fill time before dinner at 5:30pm. Reminder: we can check-in to the hotel starting at 3pm. <strong>Your departure time determines how many activities you can select: 10am = 3 activities, 11am = 2 activities, Noon = 1 activity.</strong>',
             selectionType: 'multiple',
             cards: [
               {
@@ -1245,7 +1245,7 @@
             cards: [
               {
                 id: 'central-provisions',
-                title: '5:30 PM - Dinner ★',
+                title: '5:30 PM - Dinner',
                 time: '5:30p',
                 tag: 'Reservation Confirmed',
                 description: '5 min walk from hotel, tapas-style shareables, good cocktails',
@@ -1292,7 +1292,7 @@
           },
           {
             id: 'late-night',
-            title: 'Late Night⚠️',
+            title: 'Late Night',
             description: 'How would you like to wrap up the evening?',
             selectionType: 'multiple',
             cards: [
@@ -1389,7 +1389,7 @@
                 time: '10:00a',
                 tag: 'Classic Brunch',
                 description: '10am reservation confirmed, 3 min walk from hotel. Good coffee, solid food, no rush.',
-                details: '10am reservation ★',
+                details: '10am reservation',
                 links: [
                   { text: 'Directions', url: 'https://maps.app.goo.gl/gBATyXPNz5DhrUwL6' },
                   { text: 'Website', url: 'http://www.unionportland.com/' },
@@ -1929,6 +1929,9 @@
     function handleCardClick(sectionId, cardId, selectionType, tabKey, event) {
       if (event) event.stopPropagation();
 
+      // Ensure the correct tab is open
+      ensureTabOpen(tabKey);
+
       if (!selections[tabKey][sectionId]) {
         selections[tabKey][sectionId] = [];
       }
@@ -1943,11 +1946,21 @@
           selections[tabKey][sectionId] = [cardId];
         }
       } else {
-        // Multiple selection
+        // Multiple selection with departure time limits for before-checkin
         const index = selections[tabKey][sectionId].indexOf(cardId);
         if (index > -1) {
+          // Unselect
           selections[tabKey][sectionId].splice(index, 1);
         } else {
+          // Check if this is before-checkin section and enforce limits
+          if (sectionId === 'before-checkin' && tabKey === 'headingOut') {
+            const maxActivities = getMaxBeforeCheckinActivities();
+            if (selections[tabKey][sectionId].length >= maxActivities) {
+              alert(`You can select up to ${maxActivities} activit${maxActivities === 1 ? 'y' : 'ies'} based on your ${getDepartureTimeLabel()} departure time.`);
+              return;
+            }
+          }
+          // Select
           selections[tabKey][sectionId].push(cardId);
         }
       }
@@ -1960,6 +1973,52 @@
       if (sectionId === 'show') {
         updateLateNightVisibility();
       }
+    }
+
+    // Ensure the correct tab is open when clicking a card
+    function ensureTabOpen(tabKey) {
+      const tabIdMap = {
+        'headingOut': 'heading-out',
+        'saturdayNight': 'saturday-night',
+        'sunday': 'sunday',
+        'headingHome': 'heading-home'
+      };
+
+      const tabId = tabIdMap[tabKey];
+      if (!tabId) return;
+
+      const content = document.getElementById(`tab-content-${tabId}`);
+      const btn = document.getElementById(`tab-btn-${tabId}`);
+
+      if (content && btn && content.classList.contains('collapsed')) {
+        // Open this tab if it's collapsed
+        content.classList.remove('collapsed');
+        btn.classList.remove('collapsed');
+      }
+    }
+
+    // Get max before-checkin activities based on departure time
+    function getMaxBeforeCheckinActivities() {
+      const departureTime = selections.headingOut['departure-time'];
+      if (!departureTime || departureTime.length === 0) return 999; // No limit if no departure time selected
+
+      const selected = departureTime[0];
+      if (selected === 'depart-10am') return 3;
+      if (selected === 'depart-11am') return 2;
+      if (selected === 'depart-12pm') return 1;
+      return 999;
+    }
+
+    // Get departure time label for alert message
+    function getDepartureTimeLabel() {
+      const departureTime = selections.headingOut['departure-time'];
+      if (!departureTime || departureTime.length === 0) return '';
+
+      const selected = departureTime[0];
+      if (selected === 'depart-10am') return '10:00 AM';
+      if (selected === 'depart-11am') return '11:00 AM';
+      if (selected === 'depart-12pm') return '12:00 PM';
+      return '';
     }
 
     function toggleExpand(expandId, event) {
@@ -2021,31 +2080,35 @@
       const saturday = [];
       const sunday = [];
 
-      // Helper to add item to day array
+      // Helper to add item to day array (handles both single and multiple selections)
       function addItem(dayArray, tabKey, sectionId, cardIds) {
         if (cardIds.length === 0) return;
 
-        const cardId = cardIds[0];
-        const info = getCardInfo(tabKey, sectionId, cardId);
         const camelKey = toCamelCase(tabKey);
+        const hideTime = sectionId === 'before-checkin';
 
-        // Check if this is shopping with stores selected
-        if (info.card && info.card.stores && selections[camelKey][`${sectionId}-stores`]) {
-          const storeIds = selections[camelKey][`${sectionId}-stores`];
-          const storeNames = storeIds.map(storeId => {
-            const storeInfo = getCardInfo(tabKey, `${sectionId}-stores`, storeId);
-            return storeInfo.title;
-          });
-          dayArray.push({
-            time: info.time || '',
-            title: `${info.title}: ${storeNames.join('; ')};`
-          });
-        } else {
-          dayArray.push({
-            time: info.time || '',
-            title: info.title
-          });
-        }
+        // Process each card (handles multiple selections)
+        cardIds.forEach(cardId => {
+          const info = getCardInfo(tabKey, sectionId, cardId);
+
+          // Check if this is shopping with stores selected
+          if (info.card && info.card.stores && selections[camelKey][`${sectionId}-stores`]) {
+            const storeIds = selections[camelKey][`${sectionId}-stores`];
+            const storeNames = storeIds.map(storeId => {
+              const storeInfo = getCardInfo(tabKey, `${sectionId}-stores`, storeId);
+              return storeInfo.title;
+            });
+            dayArray.push({
+              time: hideTime ? '' : (info.time || ''),
+              title: `${info.title}: ${storeNames.join('; ')};`
+            });
+          } else {
+            dayArray.push({
+              time: hideTime ? '' : (info.time || ''),
+              title: info.title
+            });
+          }
+        });
       }
 
       // Collect Saturday items (Heading Out + Saturday Night)

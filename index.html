@@ -74,9 +74,36 @@
       z-index: 1;
     }
 
+    /* Flower header decorations */
+    h1::before,
+    h1::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.12;
+      z-index: -1;
+    }
+
+    h1::before {
+      background-image: url('images/flowers_up_decor.png');
+      top: -20px;
+      left: -30px;
+    }
+
+    h1::after {
+      background-image: url('images/flowers_down_decor.png');
+      top: -20px;
+      right: -30px;
+      transform: scaleX(-1);
+    }
+
     h1 {
       font-family: Georgia, 'Times New Roman', serif;
       color: #6b264b; /* Magenta purple */
+      position: relative;
       margin-bottom: 10px;
       font-weight: 700;
       text-transform: uppercase;
@@ -234,6 +261,179 @@
       transform: rotate(-90deg);
     }
 
+    /* Decorative tab dividers */
+    .tab-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px 0;
+      opacity: 0.15;
+    }
+
+    .tab-divider img {
+      width: 180px;
+      height: auto;
+    }
+
+    /* Washington Baths blueberries decoration */
+    .card[data-card-id="washington-baths"]::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 45px;
+      height: 45px;
+      background-image: url('images/blueberries_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.3;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Washington Baths when selected - combine tracks (top-right) and blueberries (bottom-right) */
+    .card[data-card-id="washington-baths"].selected::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      width: auto;
+      height: auto;
+      background-image:
+        url('images/orange_tracks_button.png'),
+        url('images/blueberries_button.png');
+      background-size:
+        32px 32px,
+        45px 45px;
+      background-repeat: no-repeat, no-repeat;
+      background-position:
+        right 8px top 8px,
+        right 8px bottom 8px;
+      filter: drop-shadow(0 2px 4px rgba(107, 38, 75, 0.3));
+      opacity: 1;
+      z-index: 10;
+    }
+
+    /* Card background watermarks by category */
+    /* Food/Restaurant cards - burger watermark */
+    .card[data-card-id="central-provisions"]::before,
+    .card[data-card-id="union"]::before,
+    .card[data-card-id="the-juicery"]::before,
+    .card[data-card-id="hot-suppa"]::before,
+    .card[data-card-id="hunt-alpine"]::before,
+    .card[data-card-id="blyth-burrows"]::before,
+    .card[data-card-id="gritty-mcduffs"]::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      background-image: url('images/green_burger_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.06;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Activity/Scenic cards - moose watermark */
+    .card[data-card-id="old-port-novel"]::before,
+    .card[data-card-id="victoria-mansion"]::before,
+    .card[data-card-id="portland-head-light"]::before,
+    .card[data-card-id="shopping"]::before,
+    .card[data-card-id="pma-movie"]::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background-image: url('images/green_moose_icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Entertainment/Shows - negroni watermark */
+    .card[data-card-id="pink-talking-fish"]::before,
+    .card[data-card-id="blue-portland"]::before,
+    .card[data-card-id="flask-lounge"]::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      background-image: url('images/pink_negroni_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.07;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Hotel cards - tracks watermark */
+    .card[data-card-id="hotel-checkin"]::before,
+    .card[data-card-id="freshen-up"]::before,
+    .card[data-card-id="hotel-checkout"]::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background-image: url('images/green_tracks_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.05;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Ensure these watermarks don't override selected state's ::before (Maine stamp) */
+    .card.selected[data-card-id="central-provisions"]::before,
+    .card.selected[data-card-id="union"]::before,
+    .card.selected[data-card-id="the-juicery"]::before,
+    .card.selected[data-card-id="hot-suppa"]::before,
+    .card.selected[data-card-id="hunt-alpine"]::before,
+    .card.selected[data-card-id="blyth-burrows"]::before,
+    .card.selected[data-card-id="gritty-mcduffs"]::before,
+    .card.selected[data-card-id="old-port-novel"]::before,
+    .card.selected[data-card-id="victoria-mansion"]::before,
+    .card.selected[data-card-id="portland-head-light"]::before,
+    .card.selected[data-card-id="shopping"]::before,
+    .card.selected[data-card-id="pma-movie"]::before,
+    .card.selected[data-card-id="pink-talking-fish"]::before,
+    .card.selected[data-card-id="blue-portland"]::before,
+    .card.selected[data-card-id="flask-lounge"]::before,
+    .card.selected[data-card-id="hotel-checkin"]::before,
+    .card.selected[data-card-id="freshen-up"]::before,
+    .card.selected[data-card-id="hotel-checkout"]::before {
+      /* Maine stamp takes priority when selected */
+      width: 60px;
+      height: 60px;
+      background-image: url('images/green_deeppurp_mainestamp_button.png');
+      top: 8px;
+      left: 8px;
+      transform: rotate(-8deg) translate(0, 0);
+      opacity: 0.3;
+      z-index: 10;
+    }
+
     .tab-content {
       max-height: 50000px;
       overflow: hidden;
@@ -298,7 +498,23 @@
         0 18px 40px rgba(187, 223, 50, 0.7);
     }
 
-    /* Selected card indicator - tracks icon overlay */
+    /* Selected card indicators - Maine stamp + tracks */
+    .card.selected::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 60px;
+      height: 60px;
+      background-image: url('images/green_deeppurp_mainestamp_button.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.3;
+      transform: rotate(-8deg);
+      z-index: 10;
+    }
+
     .card.selected::after {
       content: '';
       position: absolute;
@@ -394,7 +610,9 @@
     }
 
     .quick-link-btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 8px 14px;
       background: #bbdf32; /* Acid lime */
       color: #6b264b; /* Magenta purple text */
@@ -418,6 +636,21 @@
       background: #6b264b; /* Magenta purple when card selected */
       border-color: #6b264b;
       color: white;
+    }
+
+    .quick-link-icon {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0) saturate(100%) invert(18%) sepia(53%) saturate(2463%) hue-rotate(311deg) brightness(89%) contrast(96%);
+      /* Converts icon to magenta purple */
+    }
+
+    .quick-link-btn:hover .quick-link-icon {
+      filter: brightness(0) invert(1); /* White on hover */
+    }
+
+    .card.selected .quick-link-btn .quick-link-icon {
+      filter: brightness(0) invert(1); /* White when selected */
     }
 
     /* Expandable sections */
@@ -1109,7 +1342,7 @@
               {
                 id: 'shopping',
                 title: 'Explore Old Port Shopping',
-                time: '11:00a',
+                time: '12:30p',
                 tag: 'Wander & Explore',
                 description: 'Browse Portland\'s best independent shops for vintage finds, premium menswear, and unique gifts. Six curated stops within easy walking distance of each other—spend as much or as little time as you want.',
                 details: 'Old Port shopping district',
@@ -1192,7 +1425,7 @@
               {
                 id: 'victoria-mansion',
                 title: 'Victoria Mansion',
-                time: '11:00a',
+                time: '12:30p',
                 tag: 'Museum & History',
                 description: 'Didn\'t make it Saturday? This stunning Victorian house museum is worth the visit—decked out for the holidays and perfect for architecture and history enthusiasts.',
                 details: 'If you missed it Saturday, allow 1-1.5 hours',
@@ -1205,7 +1438,7 @@
               {
                 id: 'portland-head-light',
                 title: 'Portland Head Light',
-                time: '11:00a',
+                time: '12:30p',
                 tag: 'Scenic Stop',
                 description: 'Cape Elizabeth\'s iconic lighthouse at Fort Williams Park. Quintessential Maine photo op and scenic coastal views—free to visit, 15 minutes from downtown.',
                 details: 'Cape Elizabeth, iconic lighthouse, Fort Williams Park (free)',
@@ -1353,18 +1586,22 @@
         // Directions button
         if (card.address) {
           const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(card.address)}`;
-          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
+          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> Directions</a>`;
         }
 
         // Website and Tickets buttons
         if (card.links && card.links.length > 0) {
           card.links.forEach(link => {
             if (link.text.toLowerCase().includes('ticket')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎟️ Tickets</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/pink_negroni_button.png" alt="" class="quick-link-icon"> Tickets</a>`;
+            } else if (link.text.toLowerCase().includes('menu')) {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_burger_button.png" alt="" class="quick-link-icon"> Menu</a>`;
+            } else if (link.text.toLowerCase().includes('spotify')) {
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/pink_negroni_button.png" alt="" class="quick-link-icon"> Spotify</a>`;
             } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_lighthouse_icon.png" alt="" class="quick-link-icon"> Website</a>`;
             } else {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 ${link.text}</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_moose_icon.png" alt="" class="quick-link-icon"> ${link.text}</a>`;
             }
           });
         }
@@ -1399,11 +1636,11 @@
             html += '<div class="card-quick-links">';
             store.links.forEach(link => {
               if (link.text.toLowerCase().includes('direction')) {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> Directions</a>`;
               } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_lighthouse_icon.png" alt="" class="quick-link-icon"> Website</a>`;
               } else {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 ${link.text}</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_moose_icon.png" alt="" class="quick-link-icon"> ${link.text}</a>`;
               }
             });
             html += '</div>';
@@ -1464,6 +1701,9 @@
       });
       html += '</div>';
 
+      // Lighthouse divider between Friday and Saturday
+      html += '<div class="tab-divider"><img src="images/purple_lighthouse_decor.png" alt=""></div>';
+
       // Saturday Night
       html += `
         <div class="tab-header" onclick="toggleTab('saturday-night')">
@@ -1483,6 +1723,9 @@
         }
       });
       html += '</div>';
+
+      // Moose divider between Saturday and Sunday
+      html += '<div class="tab-divider"><img src="images/purple_moose_decor.png" alt=""></div>';
 
       // Sunday
       html += `

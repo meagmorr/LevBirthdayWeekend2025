@@ -332,6 +332,27 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .fantasy-reminder-badge {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-transform: none;
+      letter-spacing: 0.3px;
+      background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 16px;
+      text-shadow: none;
+      border: 2px solid #c53030;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
     }
 
     .tab-icon {
@@ -1202,22 +1223,6 @@
             ]
           },
           {
-            id: 'fantasy-reminder',
-            title: 'Fantasy Football',
-            description: 'Don\'t forget to set your lineup!',
-            selectionType: 'single',
-            cards: [
-              {
-                id: 'ff-lineup',
-                title: 'Set Fantasy Lineup',
-                time: '5:00p',
-                tag: 'Important',
-                description: 'Week 16 games start Saturday - set your lineup before dinner!',
-                details: 'Games at 1pm, 4:25pm, and 8:15pm ET'
-              }
-            ]
-          },
-          {
             id: 'dinner',
             title: 'Dinner',
             description: 'Confirmed reservation at Central Provisions',
@@ -1780,7 +1785,10 @@
       // Saturday Night
       html += `
         <div class="tab-header" onclick="toggleTab('saturday-night')">
-          <h2><img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday</h2>
+          <h2>
+            <img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday
+            <span class="fantasy-reminder-badge">⚠️ Set Fantasy Lineup (5pm)</span>
+          </h2>
           <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
         </div>
         <div class="tab-content" id="tab-content-saturday-night">
@@ -1986,6 +1994,12 @@
           addItem(saturday, 'saturday-night', sectionId, cardIds);
         }
       }
+
+      // Add Fantasy Football reminder to Saturday (always appears)
+      saturday.push({
+        time: '5:00p',
+        title: 'Set Fantasy Lineup ⚠️'
+      });
 
       // Collect Sunday items (Sunday + Heading Home)
       for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {

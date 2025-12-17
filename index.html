@@ -42,15 +42,15 @@
     .container::before {
       content: '';
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 500px;
+      height: 500px;
       background-image: url('images/lightpurp_lobster_decor.png');
       background-size: contain;
       background-repeat: no-repeat;
-      top: -50px;
-      right: -80px;
-      transform: rotate(25deg);
-      opacity: 0.15;
+      top: -80px;
+      left: -100px;
+      transform: rotate(-35deg);
+      opacity: 0.18;
       z-index: 0;
       pointer-events: none;
     }
@@ -58,15 +58,15 @@
     .container::after {
       content: '';
       position: absolute;
-      width: 350px;
-      height: 350px;
+      width: 520px;
+      height: 520px;
       background-image: url('images/pink_lobster_decor.png');
       background-size: contain;
       background-repeat: no-repeat;
-      bottom: -30px;
-      left: -60px;
-      transform: rotate(-15deg);
-      opacity: 0.15;
+      bottom: -80px;
+      right: -100px;
+      transform: rotate(145deg);
+      opacity: 0.18;
       z-index: 0;
       pointer-events: none;
     }
@@ -216,6 +216,23 @@
       opacity: 0.12;
       z-index: 0;
       pointer-events: none;
+    }
+
+    /* Pink lighthouse decoration in header (lower right) */
+    .header-info::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-image: url('images/pink_lighthouse_decor.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      bottom: -50px;
+      right: 20px;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      transform: rotate(-8deg);
     }
 
     .info-box {

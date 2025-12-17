@@ -106,62 +106,62 @@
 
     /* Additional decorative elements */
     .decoration {
-      position: absolute;
+      position: fixed;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
     .decoration-1 {
-      width: 320px;
-      height: 320px;
+      width: 380px;
+      height: 380px;
       background-image: url('images/green_lobster_decor.png');
-      top: 20%;
-      right: -70px;
+      top: 15%;
+      right: 5%;
       transform: rotate(15deg);
-      opacity: 0.12;
+      opacity: 0.18;
     }
 
     .decoration-2 {
-      width: 280px;
-      height: 280px;
+      width: 320px;
+      height: 320px;
       background-image: url('images/lightpurp_lighthouse_decor.png');
-      top: 60%;
-      left: -60px;
+      top: 50%;
+      left: 2%;
       transform: rotate(-10deg);
-      opacity: 0.10;
+      opacity: 0.15;
     }
 
     .decoration-3 {
-      width: 250px;
-      height: 250px;
+      width: 300px;
+      height: 300px;
       background-image: url('images/purple_moose_decor.png');
-      bottom: 10%;
-      right: -50px;
+      bottom: 15%;
+      right: 8%;
       transform: rotate(25deg);
-      opacity: 0.13;
+      opacity: 0.18;
     }
 
     .decoration-4 {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       background-image: url('images/pink_lobster_decor.png');
-      top: 35%;
-      left: -80px;
+      top: 30%;
+      left: 5%;
       transform: rotate(-20deg);
-      opacity: 0.11;
+      opacity: 0.16;
     }
 
     .decoration-5 {
-      width: 260px;
-      height: 260px;
+      width: 310px;
+      height: 310px;
       background-image: url('images/lightpurp_lighthouse_decor.png');
-      bottom: 25%;
-      right: -55px;
+      bottom: 20%;
+      right: 3%;
       transform: rotate(12deg);
-      opacity: 0.12;
+      opacity: 0.17;
     }
 
     /* Ensure content stays above decorations */
@@ -584,7 +584,8 @@
       height: 60px;
       background-image: url('images/green_deeppurp_mainestamp_button.png');
       top: 8px;
-      left: 8px;
+      right: 8px;
+      left: auto;
       transform: rotate(-8deg) translate(0, 0);
       opacity: 0.3;
       z-index: 10;
@@ -670,7 +671,7 @@
       content: '';
       position: absolute;
       top: 8px;
-      left: 8px;
+      right: 8px;
       width: 60px;
       height: 60px;
       background-image: url('images/green_deeppurp_mainestamp_button.png');
@@ -1200,7 +1201,7 @@
         width: 50px;
         height: 50px;
         top: 6px;
-        left: 6px;
+        right: 6px;
       }
 
       .card-title {
@@ -1390,10 +1391,14 @@
 
     <!-- Header Info -->
     <div class="header-info">
-      <div class="info-box">
-        <div class="info-label">An interactive itinerary to help you craft your perfect Portland weekend</div>
-        <div class="info-value" style="line-height: 1.8;">
-          ✨ <strong>Explore Your Options!</strong> Click on the sections to see options curated just for you. Each card shows hand-picked choices just for you! As you explore you can 🎯 <strong>Build Your Itinerary.</strong> Select your preferred activities, dining spots, and entertainment. Your selections automatically save as you go, so you can browse at your own pace. Don't worry, I've tried to think of everything including how you can 📋 <strong>Track Your Plans.</strong> The "Your Weekend Summary" box at the top updates in real-time, showing your personalized schedule as it takes shape. And there is, of course, 🔄 <strong>Flexibility Built In</strong>, you can change your mind anytime! Click "Reset All" to start fresh, or simply select a different option to switch things up. This weekend is all about what you want to do. For 🗺️ <strong>Easy Navigation</strong> each option includes map links (📍) and website buttons so you can explore more about each spot and get there stress-free.
+      <div class="info-box" style="background: rgba(187, 223, 50, 0.15); border-left-width: 5px;">
+        <div class="info-label" style="font-size: 16px; color: #6b264b; margin-bottom: 12px;">How to Use This Interactive Itinerary</div>
+        <div class="info-value" style="font-size: 13px; line-height: 1.8;">
+          <p style="margin: 0 0 10px 0;">✨ <strong>Explore Your Options</strong> – Click sections to see activities curated for you</p>
+          <p style="margin: 0 0 10px 0;">🎯 <strong>Build Your Itinerary</strong> – Select what interests you (auto-saves!)</p>
+          <p style="margin: 0 0 10px 0;">📋 <strong>Track Your Plans</strong> – See your schedule update in real-time</p>
+          <p style="margin: 0 0 10px 0;">🔄 <strong>Change Anytime</strong> – Click "Reset All" or pick new options</p>
+          <p style="margin: 0;">🗺️ <strong>Easy Navigation</strong> – Every option has map links (📍) and websites</p>
         </div>
       </div>
       <div class="info-box">

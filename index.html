@@ -104,6 +104,66 @@
       pointer-events: none;
     }
 
+    /* Additional decorative elements */
+    .decoration {
+      position: absolute;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .decoration-1 {
+      width: 320px;
+      height: 320px;
+      background-image: url('images/green_lobster_decor.png');
+      top: 20%;
+      right: -70px;
+      transform: rotate(15deg);
+      opacity: 0.12;
+    }
+
+    .decoration-2 {
+      width: 280px;
+      height: 280px;
+      background-image: url('images/lightpurp_lighthouse_decor.png');
+      top: 60%;
+      left: -60px;
+      transform: rotate(-10deg);
+      opacity: 0.10;
+    }
+
+    .decoration-3 {
+      width: 250px;
+      height: 250px;
+      background-image: url('images/purple_moose_decor.png');
+      bottom: 10%;
+      right: -50px;
+      transform: rotate(25deg);
+      opacity: 0.13;
+    }
+
+    .decoration-4 {
+      width: 300px;
+      height: 300px;
+      background-image: url('images/pink_lobster_decor.png');
+      top: 35%;
+      left: -80px;
+      transform: rotate(-20deg);
+      opacity: 0.11;
+    }
+
+    .decoration-5 {
+      width: 260px;
+      height: 260px;
+      background-image: url('images/lightpurp_lighthouse_decor.png');
+      bottom: 25%;
+      right: -55px;
+      transform: rotate(12deg);
+      opacity: 0.12;
+    }
+
     /* Ensure content stays above decorations */
     .container > * {
       position: relative;
@@ -1320,11 +1380,22 @@
 </head>
 <body>
   <div class="container">
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+    <div class="decoration decoration-3"></div>
+    <div class="decoration decoration-4"></div>
+    <div class="decoration decoration-5"></div>
     <h1>Lev's Birthday Weekend</h1>
     <div class="subtitle">Portland, Maine • December 20-21, 2025</div>
 
     <!-- Header Info -->
     <div class="header-info">
+      <div class="info-box">
+        <div class="info-label">An interactive itinerary to help you craft your perfect Portland weekend</div>
+        <div class="info-value" style="line-height: 1.8;">
+          ✨ <strong>Explore Your Options!</strong> Click on the sections to see options curated just for you. Each card shows hand-picked choices just for you! As you explore you can 🎯 <strong>Build Your Itinerary.</strong> Select your preferred activities, dining spots, and entertainment. Your selections automatically save as you go, so you can browse at your own pace. Don't worry, I've tried to think of everything including how you can 📋 <strong>Track Your Plans.</strong> The "Your Weekend Summary" box at the top updates in real-time, showing your personalized schedule as it takes shape. And there is, of course, 🔄 <strong>Flexibility Built In</strong>, you can change your mind anytime! Click "Reset All" to start fresh, or simply select a different option to switch things up. This weekend is all about what you want to do. For 🗺️ <strong>Easy Navigation</strong> each option includes map links (📍) and website buttons so you can explore more about each spot and get there stress-free.
+        </div>
+      </div>
       <div class="info-box">
         <div class="info-label">Goal</div>
         <div class="info-value">Kicking off your 35th rotation around the sun!</div>
@@ -2025,24 +2096,24 @@
         // Directions button
         if (card.address) {
           const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(card.address)}`;
-          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 Directions</a>`;
+          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
         }
 
         // Website and Tickets buttons
         if (card.links && card.links.length > 0) {
           card.links.forEach(link => {
             if (link.text.toLowerCase().includes('direction')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 ${link.text}</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 ${link.text}</a>`;
             } else if (link.text.toLowerCase().includes('ticket')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/pink_negroni_button.png" alt="" class="quick-link-icon"> Tickets</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎟️ Tickets</a>`;
             } else if (link.text.toLowerCase().includes('menu')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_burger_button.png" alt="" class="quick-link-icon"> Menu</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🍽️ Menu</a>`;
             } else if (link.text.toLowerCase().includes('spotify')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/pink_negroni_button.png" alt="" class="quick-link-icon"> Spotify</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎵 Spotify</a>`;
             } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_lighthouse_icon.png" alt="" class="quick-link-icon"> Website</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
             } else {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_moose_icon.png" alt="" class="quick-link-icon"> ${link.text}</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🔗 ${link.text}</a>`;
             }
           });
         }
@@ -2077,11 +2148,11 @@
             html += '<div class="card-quick-links">';
             store.links.forEach(link => {
               if (link.text.toLowerCase().includes('direction')) {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_maine_map_button.png" alt="" class="quick-link-icon"> 📍 ${link.text}</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 ${link.text}</a>`;
               } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_lighthouse_icon.png" alt="" class="quick-link-icon"> Website</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
               } else {
-                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()"><img src="images/green_moose_icon.png" alt="" class="quick-link-icon"> ${link.text}</a>`;
+                html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🔗 ${link.text}</a>`;
               }
             });
             html += '</div>';
@@ -2126,6 +2197,15 @@
     }
 
     function renderAllContent() {
+      // Save current tab states before re-rendering
+      const tabStates = {};
+      ['heading-out', 'saturday-night', 'sunday', 'heading-home'].forEach(tabId => {
+        const content = document.getElementById(`tab-content-${tabId}`);
+        if (content) {
+          tabStates[tabId] = content.classList.contains('collapsed');
+        }
+      });
+
       const container = document.getElementById('content-container');
       let html = '';
 
@@ -2192,6 +2272,16 @@
       html += '</div>';
 
       container.innerHTML = html;
+
+      // Restore tab states
+      Object.keys(tabStates).forEach(tabId => {
+        const content = document.getElementById(`tab-content-${tabId}`);
+        const btn = document.getElementById(`tab-btn-${tabId}`);
+        if (content && btn && tabStates[tabId]) {
+          content.classList.add('collapsed');
+          btn.classList.add('collapsed');
+        }
+      });
 
       // Attach click handlers to all cards
       attachCardHandlers();
@@ -2515,8 +2605,12 @@
         if (confirm('Reset all selections? This cannot be undone.')) {
           selections = {
             headingOut: {},
-            saturdayNight: {},
-            sunday: {},
+            saturdayNight: {
+              show: ['pink-talking-fish']
+            },
+            sunday: {
+              brunch: ['union']
+            },
             headingHome: {}
           };
           saveSelections();
@@ -2530,8 +2624,12 @@
         if (confirm('Reset all selections? This cannot be undone.')) {
           selections = {
             headingOut: {},
-            saturdayNight: {},
-            sunday: {},
+            saturdayNight: {
+              show: ['pink-talking-fish']
+            },
+            sunday: {
+              brunch: ['union']
+            },
             headingHome: {}
           };
           saveSelections();

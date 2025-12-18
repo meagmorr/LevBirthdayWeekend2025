@@ -164,6 +164,159 @@
       opacity: 0.14;
     }
 
+    /* Lighthouse color variants */
+    .bg-decoration-6 {
+      width: 245px;
+      height: 245px;
+      background-image: url('images/yellow_lighthouse_decor.png');
+      top: 20%;
+      left: 2%;
+      transform: rotate(-8deg);
+      opacity: 0.11;
+    }
+
+    .bg-decoration-7 {
+      width: 255px;
+      height: 255px;
+      background-image: url('images/green_lighthouse_decor.png');
+      top: 68%;
+      right: 4%;
+      transform: rotate(15deg);
+      opacity: 0.13;
+    }
+
+    .bg-decoration-8 {
+      width: 250px;
+      height: 250px;
+      background-image: url('images/orange_lighthouse_decor.png');
+      bottom: 8%;
+      left: 3%;
+      transform: rotate(-10deg);
+      opacity: 0.12;
+    }
+
+    .bg-decoration-9 {
+      width: 260px;
+      height: 260px;
+      background-image: url('images/purple_lighthouse_decor.png');
+      top: 42%;
+      right: 1%;
+      transform: rotate(12deg);
+      opacity: 0.14;
+    }
+
+    .bg-decoration-10 {
+      width: 248px;
+      height: 248px;
+      background-image: url('images/pink_lighthouse_decor.png');
+      bottom: 45%;
+      left: 1%;
+      transform: rotate(-14deg);
+      opacity: 0.11;
+    }
+
+    .bg-decoration-11 {
+      width: 252px;
+      height: 252px;
+      background-image: url('images/blue_lighthouse_decor.png');
+      top: 82%;
+      right: 6%;
+      transform: rotate(8deg);
+      opacity: 0.13;
+    }
+
+    /* Moose color variants */
+    .bg-decoration-12 {
+      width: 268px;
+      height: 268px;
+      background-image: url('images/orange_moose_decor.png');
+      top: 15%;
+      right: 7%;
+      transform: rotate(-16deg);
+      opacity: 0.14;
+    }
+
+    .bg-decoration-13 {
+      width: 262px;
+      height: 262px;
+      background-image: url('images/blue_moose_decor.png');
+      top: 48%;
+      left: 5%;
+      transform: rotate(14deg);
+      opacity: 0.12;
+    }
+
+    .bg-decoration-14 {
+      width: 258px;
+      height: 258px;
+      background-image: url('images/green_moose_decor.png');
+      bottom: 18%;
+      left: 2%;
+      transform: rotate(-11deg);
+      opacity: 0.13;
+    }
+
+    .bg-decoration-15 {
+      width: 264px;
+      height: 264px;
+      background-image: url('images/yellow_moose_decor.png');
+      top: 28%;
+      right: 3%;
+      transform: rotate(17deg);
+      opacity: 0.11;
+    }
+
+    .bg-decoration-16 {
+      width: 270px;
+      height: 270px;
+      background-image: url('images/darkpurple_moose_decor.png');
+      bottom: 35%;
+      right: 5%;
+      transform: rotate(-9deg);
+      opacity: 0.14;
+    }
+
+    .bg-decoration-17 {
+      width: 256px;
+      height: 256px;
+      background-image: url('images/pink_moose_decor.png');
+      top: 62%;
+      left: 4%;
+      transform: rotate(13deg);
+      opacity: 0.12;
+    }
+
+    /* Maine stamp variants */
+    .bg-decoration-18 {
+      width: 180px;
+      height: 180px;
+      background-image: url('images/yellow_deeppurple_mainestamp_button.png');
+      top: 75%;
+      left: 6%;
+      transform: rotate(-7deg);
+      opacity: 0.15;
+    }
+
+    .bg-decoration-19 {
+      width: 185px;
+      height: 185px;
+      background-image: url('images/green_deeppurple_mainestamp_button.png');
+      bottom: 52%;
+      right: 4%;
+      transform: rotate(11deg);
+      opacity: 0.14;
+    }
+
+    .bg-decoration-20 {
+      width: 175px;
+      height: 175px;
+      background-image: url('images/blue_yellow_mainestamp_button.png');
+      top: 5%;
+      left: 5%;
+      transform: rotate(-13deg);
+      opacity: 0.13;
+    }
+
     /* Ensure content stays above decorations */
     .container > * {
       position: relative;
@@ -629,7 +782,7 @@
       font-size: 22px;
       font-weight: 700;
       color: #6b264b; /* Magenta purple */
-      margin-bottom: 15px;
+      margin-bottom: 40px;
       font-family: Georgia, serif;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -1474,6 +1627,24 @@
   <div class="bg-decoration bg-decoration-3"></div>
   <div class="bg-decoration bg-decoration-4"></div>
   <div class="bg-decoration bg-decoration-5"></div>
+  <!-- Lighthouse color variants -->
+  <div class="bg-decoration bg-decoration-6"></div>
+  <div class="bg-decoration bg-decoration-7"></div>
+  <div class="bg-decoration bg-decoration-8"></div>
+  <div class="bg-decoration bg-decoration-9"></div>
+  <div class="bg-decoration bg-decoration-10"></div>
+  <div class="bg-decoration bg-decoration-11"></div>
+  <!-- Moose color variants -->
+  <div class="bg-decoration bg-decoration-12"></div>
+  <div class="bg-decoration bg-decoration-13"></div>
+  <div class="bg-decoration bg-decoration-14"></div>
+  <div class="bg-decoration bg-decoration-15"></div>
+  <div class="bg-decoration bg-decoration-16"></div>
+  <div class="bg-decoration bg-decoration-17"></div>
+  <!-- Maine stamp variants -->
+  <div class="bg-decoration bg-decoration-18"></div>
+  <div class="bg-decoration bg-decoration-19"></div>
+  <div class="bg-decoration bg-decoration-20"></div>
 
   <script>
     // ============================================
@@ -2120,7 +2291,7 @@
         // Directions button
         if (card.address) {
           const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(card.address)}`;
-          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 Directions</a>`;
+          html += `<a href="${mapsUrl}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">Directions</a>`;
         }
 
         // Website and Tickets buttons

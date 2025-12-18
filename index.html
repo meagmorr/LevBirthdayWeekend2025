@@ -2251,7 +2251,6 @@
         <div class="tab-header" onclick="toggleTab('saturday-night')">
           <h2>
             <img src="images/green_lighthouse_icon.png" alt="Lighthouse" class="tab-icon"> Saturday
-            <span class="fantasy-reminder-badge">⚠️ Set Fantasy Lineup (5pm)</span>
           </h2>
           <button class="tab-collapse-btn" id="tab-btn-saturday-night">▼</button>
         </div>
@@ -2531,12 +2530,6 @@
           addItem(saturday, 'saturday-night', sectionId, cardIds);
         }
       }
-
-      // Add Fantasy Football reminder to Saturday (always appears)
-      saturday.push({
-        time: '5:00p',
-        title: 'Set Fantasy Lineup ⚠️'
-      });
 
       // Collect Sunday items (Sunday + Heading Home)
       for (const [sectionId, cardIds] of Object.entries(selections.sunday)) {

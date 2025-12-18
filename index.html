@@ -2267,13 +2267,13 @@
             if (link.text.toLowerCase().includes('direction')) {
               html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">📍 ${link.text}</a>`;
             } else if (link.text.toLowerCase().includes('ticket')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎟️ Tickets</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎟️ ${link.text}</a>`;
             } else if (link.text.toLowerCase().includes('menu')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🍽️ Menu</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🍽️ ${link.text}</a>`;
             } else if (link.text.toLowerCase().includes('spotify')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎵 Spotify</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🎵 ${link.text}</a>`;
             } else if (link.text.toLowerCase().includes('website') || link.text.toLowerCase().includes('site')) {
-              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 Website</a>`;
+              html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🌐 ${link.text}</a>`;
             } else {
               html += `<a href="${link.url}" class="quick-link-btn" target="_blank" onclick="event.stopPropagation()">🔗 ${link.text}</a>`;
             }
